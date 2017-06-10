@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.myTv.members.service.impl.MemberMapper">
+
+	<insert id="insertMember" parameterType="member">
+        <![CDATA[  
+        INSERT INTO MEMBERS(MEMBER_ID
+        					, PASSWORD
+        					, NICK_NAME
+        					, MEMBER_NAME
+        					, BIRTH_DATE
+        					, EMAIL
+        					, TEL
+        					, MEMBER_IMAGE) 
+        VALUES(#{memberId}
+        		, #{password}
+        		, #{nickName}
+        		, #{memberName}
+				, #{birthDate}
+        		, #{email}
+        		, #{tel}
+        		, #{memberImage})
+        ]]>
+	</insert>
+
+	<update id="updateMember">
+        <![CDATA[
+        UPDATE MEMBERS SET
+        		PASSWORD = #{password}
+                , NICK_NAME = #{memberName}
+                , EMAIL = #{email}
+                , TEL = #{tel}
+                , MEMBER_IMAGE = #{memberImage}
+                , BANK = #{bank}
+        WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</update>
+	
+	<update id="updatePoint">
+        <![CDATA[
+        UPDATE MEMBERS SET
+        		POINT = 
+        		POINT + #{chargePoint}
+        WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</update>
+	
+
+	<delete id="deleteMember">
+        <![CDATA[
+        DELETE MEMBERS
+        WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</delete>
+
+	<select id="getMember" resultMap="memberMap">
+        <![CDATA[
+        SELECT MEMBER_ID
+        		, PASSWORD
+        		, NICK_NAME
+        		, MEMBER_NAME
+        		, BIRTH_DATE
+        		, EMAIL
+        		, TEL
+        		, POINT
+        		, MEMBER_IMAGE
+        		, BANK
+        		, ACCOUNT 
+        FROM MEMBERS
+        WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</select>
+
+	<resultMap type="member" id="memberMap">
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="password" column="PASSWORD" />
+		<result property="nickName" column="NICK_NAME" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="birthDate" column="BIRTH_DATE" />
+		<result property="email" column="EMAIL" />
+		<result property="tel" column="TEL" />
+		<result property="point" column="POINT" />
+		<result property="memberImage" column="MEMBER_IMAGE" />
+		<result property="bank" column="BANK" />
+		<result property="account" column="ACCOUNT" />
+	</resultMap>
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.myTv.charges.service.impl.ChargeMapper">
+
+	
+
+	<insert id="subUpdateCharge" parameterType="charge">
+	<selectKey keyProperty="chargeNo" resultType="int" order="BEFORE">
+	SELECT NVL(MAX(CHARGE_NO), 0) + 1 FROM CHARGES
+	</selectKey>
+        <![CDATA[  
+        INSERT INTO CHARGES(CHARGE_NO
+        					, APPROVE_STATUS
+        					, CHARGE_MONEY
+        					, CHARGE_POINT
+        					, PAYMENT_WAY
+        					, REQUEST_DATE
+        					, MEMBER_ID)
+        VALUES(#{chargeNo}
+        		, '대기'
+        		, #{chargeMoney}
+        		, #{chargePoint}
+        		, #{paymentWay}
+        		, #{requestDate}
+        		, #{memberId})
+        ]]>
+	</insert>
+	
+	<update id="mainUpdateCharge">
+        <![CDATA[
+        UPDATE CHARGES SET
+        		APPROVE_STATUS = '승인'
+        		, APPROVE_DATE = SYSDATE
+        WHERE CHARGE_NO = #{chargeNo}
+        ]]>
+	</update>
+
+	<select id="getCharge" resultMap="chargeMap">
+        <![CDATA[
+        SELECT CHARGE_NO
+        		, REQUEST_DATE
+        		, CHARGE_MONEY
+        		, PAYMENT_WAY
+        		, CHARGE_POINT
+        		, APPROVE_DATE
+        		, APPROVE_STATUS
+        		, MEMBER_ID 
+        FROM CHARGES 
+        WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</select>
+
+	<resultMap type="charge" id="chargeMap">
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="chargeNo" column="CHARGE_NO" />
+		<result property="requestDate" column="REQUEST_DATE" />
+		<result property="chargeMoney" column="CHARGE_MONEY" />
+		<result property="paymentWay" column="PAYMENT_WAY" />
+		<result property="chargePoint" column="CHARGE_POINT" />
+		<result property="approveDate" column="APPROVE_DATE" />
+		<result property="approveStatus" column="APPROVE_STATUS" />
+	</resultMap>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.myTv.broadcasts.service.impl.BroadcastMapper">
+
+	<resultMap id="broadcastResult" type="broadcast" >
+		<id property="broadcastNo" column="BROADCAST_NO"/>
+		<result property="broadcastTitle" column="BROADCAST_TITLE"/>
+		<result property="startDate" column="START_DATE"/>
+		<result property="broadcastStatus" column="BROADCAST_STATUS"/>
+		<result property="contentCode" column="CONTENT_CODE"/>
+		<result property="memberId" column="MEMBER_ID"/>
+	</resultMap>
+
+	<insert id="insertBroadcast" parameterType="broadcast">
+        <![CDATA[
+        INSERT INTO USERS(ID, PASSWORD, NAME, ROLE) 
+        VALUES(#{id}, #{password}, #{name}, ${role})
+        ]]>
+	</insert>
+
+	<update id="updateBroadcast">
+        <![CDATA[
+        UPDATE USERS SET
+            NAME = #{name}, 
+            PASSWORD = #{password},
+        WHERE ID = #{id}
+        ]]>
+	</update>
+
+	<delete id="deleteBroadcast">
+        <![CDATA[
+        DELETE USERS
+        WHERE ID = #{id}
+        ]]>
+	</delete>
+
+	<select id="getBroadcast" resultType="broadcast">
+        <![CDATA[
+        SELECT BROADCAST_NO
+        	 , BROADCAST_TITLE
+        	 , START_DATE
+        	 , BROADCAST_STATUS
+        	 , CONTENT_CODE
+        	 , MEMBER_ID
+        FROM BROADCASTS
+        WHERE BROADCAST_NO = #{broadcastNo}
+        ]]>
+	</select>
+
+	<select id="getBroadcastList" resultType="map">
+		SELECT BROADCAST_NO as "broadcastNo"
+			 , BROADCAST_TITLE as "broadcastTitle"
+			 , START_DATE as "startDate"
+			 , BROADCAST_STATUS as "broadcastStatus"
+			 , CONTENT_CODE as "contentCode"
+			 , MEMBER_ID as "memberId"
+		FROM BROADCASTS
+		WHERE 1 = 1
+		<if test="broadcastStatus == 'on'">
+		AND BROADCAST_STATUS = 'on'
+		</if>
+		<if test="broadcastStatus == 'off'">
+		AND BROADCAST_STATUS = 'off'
+		</if>
+	</select>
+
+</mapper>

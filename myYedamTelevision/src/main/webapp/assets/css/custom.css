@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* 게시판 배경 */
+.breadcrumbs-v5.breadcrumbs-v5-bg-img-v.3 {
+  background: url(../../assets/img/1920x1080/notice.jpg) no-repeat;
+  background-size: cover;
+  background-position: 50% 100%;
+}
+
+.breadcrumbs-v5.breadcrumbs-v5-bg-img-v-3 {
+  background: url(../../assets/img/1920x1080/question1.jpg) no-repeat;
+  background-size: cover;
+  background-position: 50% 100%;
+}
+
+/* Viewer.jsp 비디오 재생 영역 */
+.video-player {
+	/* overflow: hidden; */
+	/* min-width: 460px; */
+	background: #000;
+	/* max-height: 760px !important; */
+	/* margin: 0 !important; */
+	border-bottom: 2px solid #00bcd4;
+}

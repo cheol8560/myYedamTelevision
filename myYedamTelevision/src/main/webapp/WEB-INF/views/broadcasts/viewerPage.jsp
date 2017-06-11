@@ -220,6 +220,8 @@
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/app.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/custom.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/animsition.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/scrollbar.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/form-modal.js"></script>

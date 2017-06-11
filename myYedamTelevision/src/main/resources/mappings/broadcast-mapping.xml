@@ -14,19 +14,21 @@
 	</resultMap>
 
 	<insert id="insertBroadcast" parameterType="broadcast">
-        <![CDATA[
-        INSERT INTO USERS(ID, PASSWORD, NAME, ROLE) 
-        VALUES(#{id}, #{password}, #{name}, ${role})
-        ]]>
+		<selectKey keyProperty="broadcastNo" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(BROADCAST_NO), 1)+1 FROM BROADCASTS
+		</selectKey>
+		INSERT INTO BROADCASTS(BROADCAST_NO, BROADCAST_TITLE, START_DATE, BROADCAST_STATUS, CONTENT_CODE, MEMBER_ID, CHANNEL_ID)
+		VALUES(#{broadcastNo}, #{broadcastTitle}, SYSDATE, 'e1', #{contentCode}, #{memberId}, #{channelId})
 	</insert>
 
 	<update id="updateBroadcast">
-        <![CDATA[
-        UPDATE USERS SET
-            NAME = #{name}, 
-            PASSWORD = #{password},
-        WHERE ID = #{id}
-        ]]>
+        UPDATE BROADCASTS SET
+            BROADCAST_TITLE = #{broadcastTitle}, 
+            CONTENT_CODE = #{contentCode},
+            CHANNEL_ID = #{channel},
+            BROADCAST_STATUS = #{broadcastStatus},
+            START_DATE = #{startDate}
+        WHERE BROADCAST_NO = #{broadcastNo}
 	</update>
 
 	<delete id="deleteBroadcast">
@@ -37,16 +39,21 @@
 	</delete>
 
 	<select id="getBroadcast" resultType="broadcast">
-        <![CDATA[
         SELECT BROADCAST_NO
         	 , BROADCAST_TITLE
         	 , START_DATE
         	 , BROADCAST_STATUS
         	 , CONTENT_CODE
         	 , MEMBER_ID
+        	 , CHANNEL_ID
         FROM BROADCASTS
-        WHERE BROADCAST_NO = #{broadcastNo}
-        ]]>
+        WHERE 1=1
+        <if test="broadcastNo != 0">
+        AND BROADCAST_NO = #{broadcastNo}
+        </if>
+        <if test="broadcastNo == 0">
+        AND MEMBER_ID = #{memberId}
+        </if>
 	</select>
 
 	<select id="getBroadcastList" resultType="map">
@@ -56,13 +63,20 @@
 			 , BROADCAST_STATUS as "broadcastStatus"
 			 , CONTENT_CODE as "contentCode"
 			 , MEMBER_ID as "memberId"
+			 , CHANNEL_ID as "channelId"
 		FROM BROADCASTS
 		WHERE 1 = 1
-		<if test="broadcastStatus == 'on'">
-		AND BROADCAST_STATUS = 'on'
+		<if test="broadcastStatus == 'e1'">
+		AND BROADCAST_STATUS = 'e1'
 		</if>
-		<if test="broadcastStatus == 'off'">
-		AND BROADCAST_STATUS = 'off'
+		<if test="broadcastStatus == 'e2'">
+		AND BROADCAST_STATUS = 'e2'
+		</if>
+		<if test="broadcastStatus == 'e3'">
+		AND BROADCAST_STATUS = 'e3'
+		</if>
+		<if test="broadcastStatus == 'e4'">
+		AND BROADCAST_STATUS = 'e4'
 		</if>
 	</select>
 

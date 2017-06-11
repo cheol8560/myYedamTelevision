@@ -7,11 +7,11 @@ public interface BroadcastService {
 	// 방송 등록
 	void insertBroadcast(BroadcastVO vo);
 	
+	// 방송 수정
+		void updateBroadcast(BroadcastVO vo);
+	
 	// 방송 삭제
 	void deleteBroadcast(BroadcastVO vo);
-	
-	// 방송 수정
-	void updateBroadcast(BroadcastVO vo);
 	
 	// 방송 상세 조회
 	BroadcastVO getBroadcast(BroadcastVO vo);

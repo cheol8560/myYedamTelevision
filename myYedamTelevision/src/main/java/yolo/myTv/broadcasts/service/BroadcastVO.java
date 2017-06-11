@@ -4,17 +4,19 @@ import java.util.Date;
 
 public class BroadcastVO {
 	
-	private String broadcastNo;
+	private int broadcastNo;
 	private String broadcastTitle;
 	private Date startDate;
 	private String broadcastStatus;
 	private String contentCode;
 	private String memberId;
+	private String channelId;
+	private int viewerCount;
 	
-	public String getBroadcastNo() {
+	public int getBroadcastNo() {
 		return broadcastNo;
 	}
-	public void setBroadcastNo(String broadcastNo) {
+	public void setBroadcastNo(int broadcastNo) {
 		this.broadcastNo = broadcastNo;
 	}
 	public String getBroadcastTitle() {
@@ -47,12 +49,25 @@ public class BroadcastVO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	@Override
-	public String toString() {
-		return "BroadcastVO [braodcastNo=" + broadcastNo + ", broadcastTitle="
-				+ broadcastTitle + ", startDate=" + startDate
-				+ ", broadcastStatus=" + broadcastStatus + ", contentCode="
-				+ contentCode + ", memberId=" + memberId + "]";
+	public String getChannelId() {
+		return channelId;
+	}
+	public void setChannelId(String channelId) {
+		this.channelId = channelId;
+	}
+	public int getViewerCount() {
+		return viewerCount;
+	}
+	public void setViewerCount(int viewerCount) {
+		this.viewerCount = viewerCount;
 	}
 	
+	@Override
+	public String toString() {
+		return "BroadcastVO [broadcastNo=" + broadcastNo + ", broadcastTitle="
+				+ broadcastTitle + ", startDate=" + startDate
+				+ ", broadcastStatus=" + broadcastStatus + ", contentCode="
+				+ contentCode + ", memberId=" + memberId + ", channelId="
+				+ channelId + ", viewerCount=" + viewerCount + "]";
+	}
 }

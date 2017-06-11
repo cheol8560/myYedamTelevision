@@ -20,18 +20,18 @@ public class BroadcastServiceImpl implements BroadcastService {
 		broadcastMapper.insertBroadcast(vo);
 	}
 
-	// 방송 삭제
-	@Override
-	public void deleteBroadcast(BroadcastVO vo) {
-		broadcastMapper.deleteBroadcast(vo);
-	}
-
 	// 방송 수정
 	@Override
 	public void updateBroadcast(BroadcastVO vo) {
 		broadcastMapper.updateBroadcast(vo);
 	}
 
+	// 방송 삭제
+	@Override
+	public void deleteBroadcast(BroadcastVO vo) {
+		broadcastMapper.deleteBroadcast(vo);
+	}	
+	
 	// 방송 조회
 	@Override
 	public BroadcastVO getBroadcast(BroadcastVO vo) {

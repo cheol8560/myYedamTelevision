@@ -11,9 +11,9 @@ public interface BroadcastMapper {
 
 	public void insertBroadcast(BroadcastVO vo);
 	
-	public void updateBroadcast(BroadcastVO vo);
-	
 	public void deleteBroadcast(BroadcastVO vo);
+	
+	public void updateBroadcast(BroadcastVO vo);
 	
 	public BroadcastVO getBroadcast(BroadcastVO vo); 
 	

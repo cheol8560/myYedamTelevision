@@ -140,6 +140,7 @@
 <!-- PAGE LEVEL SCRIPTS -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/app.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/custom.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc.js"></script>
 	<!-- components -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/animated-headline.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/animsition.js"></script>

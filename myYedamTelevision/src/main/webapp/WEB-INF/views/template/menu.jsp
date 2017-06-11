@@ -58,7 +58,7 @@
 	                    </c:if>
 	                    <c:if test="${!empty login}">
 							<button type="button" class="btn-dark-bg btn-base-animate-to-top btn-base-md radius-50"
-									onclick="bjOpen('${pageContext.request.contextPath}/insertBroadcastForm.do', '${login.nickName}')">
+									onclick="bjOpen('${pageContext.request.contextPath}/insUpdBroadcastForm.do', '${login.nickName}')">
 								<b>방송하기</b>
 	                        	<span class="btn-base-element-md">
 	                        		<i class="btn-base-element-icon fa fa-video-camera"></i>
@@ -67,7 +67,12 @@
 	                    </c:if>
 						</div>
 			            <!-- End 방송하기 버튼 -->                    
-                    
+
+
+
+
+
+						<!-- 사용자 메뉴 -->
                         <ul class="header-vertical-menu margin-b-30">
                             
                             <!-- My 정보 -->
@@ -148,6 +153,7 @@
                             <!-- End 고객센터 -->
 
                         </ul>
+                        <!-- End 사용자 메뉴 -->
                         
                         <!-- 로그아웃 버튼 -->
 						<div class="row text-center margin-b-30">

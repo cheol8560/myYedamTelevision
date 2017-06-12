@@ -69,8 +69,10 @@
 
 						<div class="row">
 							<div class="col-md-3">
-								<a href="UpdateNoticeForm.do?boardNo=${notice.boardNo}"><button type="button" class="btn-grey-brd btn-base-xs">수정</button></a>
-								<a href="deleteNotice.do?boardNo=${notice.boardNo}"><button type="button" class="btn-grey-brd btn-base-xs">삭제</button></a>
+								<a href="UpdateNoticeForm.do?boardNo=${notice.boardNo}"><button
+										type="button" class="btn-grey-brd btn-base-xs">수정</button></a> <a
+									href="deleteNotice.do?boardNo=${notice.boardNo}"><button
+										type="button" class="btn-grey-brd btn-base-xs">삭제</button></a>
 							</div>
 							<div class="col-md-1 col-md-offset-10">
 								<button class="btn-base-bg btn-base-sm radius">목록으로</button>
@@ -81,7 +83,10 @@
 					</form>
 
 					<!-- Comment Form v1 -->
-
+					<jsp:include
+						page="${pageContext.request.contextPath}/comments/commentList.jsp">
+						<jsp:param name="boardNo" value="${notice.boardNo}" />
+					</jsp:include>
 				</div>
 				<!-- End Comment Form v1 -->
 			</div>

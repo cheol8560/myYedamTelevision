@@ -75,7 +75,7 @@
 		                    </li>
 		                    <li class="theme-icons-wrap">
 			                    <button type="button" id="broadcastStartBtn" class="btn-base-bg btn-base-xs radius-3">방송시작</button>
-			                    <button type="button" id="broadcastStartBtn" class="btn-base-brd btn-base-xs radius-3" disabled="disabled">방송종료</button>
+			                    <button type="button" id="broadcastEndBtn" class="btn-grey-brd btn-base-xs radius-3" disabled="disabled">방송종료</button>
 							</li>
 		                </ul>
 		                <!-- End Theme Icons Base On Hover -->
@@ -129,6 +129,7 @@
                         <div class="blog-sidebar-content">
 							<!-- Comment Form v1 -->
 							<form id="broadcastForm" class="comment-form-v1">
+								<input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}">
 								<input type="hidden" name="channelId" id="channelId" value="">
 								<div class="row">
 									<div class="col-md-12 margin-b-30">
@@ -146,7 +147,8 @@
 											required>
 									</div>
 								</div>
-								<button type="submit" class="btn-base-bg btn-base-sm radius-3">방송적용</button>
+								<button type="submit" id="broadcastInfoUpdBtn" class="btn-grey-brd btn-base-xs radius-3" 
+										disabled="disabled">방송적용</button>
 							</form>
 							<!-- Comment Form v1 -->
 						</div>
@@ -205,37 +207,50 @@
 
 <!-- Page Javascript Code -->
 <script>
-'use strict';
+"use strict";
 
 	/* BJ 관련 자바스크립트 */
 	
-	var broadcastStartBtn = document.querySelector('#broadcastStartBtn');
-	var inputChannelId = document.querySelector('#channelId');
+	var broadcastStartBtn = document.querySelector("#broadcastStartBtn");
+	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
+	var broadcastInfoUpdBtn = document.querySelector("#broadcastInfoUpdBtn");
+	var inputChannelId = document.querySelector("#channelId");
+	var inputBroadcastNo = document.querySelector("#broadcastNo");
 	var appBj;
 	var userId;
 	var nickName;
 	
+	// BJ 객체 설정
 	appBj = new PlayRTC({
-		projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
-		localMediaTarget: 'localVideo', 
+		projectKey: "60ba608a-e228-4530-8711-fa38004719c1",
+		localMediaTarget: "localVideo", 
 		video: {
 			"minWidth": 1000,
 			"minHeight": 562
 		}
 	});
 	 
-	appBj.on('connectChannel', function(channelId) {
+	/* BJ 이벤트 핸들러 처리 */ 
+	
+	// BJ connectChannel 이벤트 핸들러
+	appBj.on("connectChannel", function(channelId) {
 		inputChannelId.value = channelId;
+		inputBroadcastNo.value = "${broadcast.broadcastNo}";
 		
 		// 방송 등록 AJAX 처리
-		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1"
+		var param = $("#broadcastForm").serialize();
 		$.getJSON("insUpdBroadcast.do", param, function(data) {
 			$("#applyBroadcastTitle").text(data.broadcastTitle);
 		});
 	});
-	 
+	
+	// BJ error 이벤트 핸들러
+	appBj.on("error", function(code, desc, playload) {
+		alert("Error! \n" + code + " : " + desc);
+	});
+	
 	// 방송 시작
-	broadcastStartBtn.addEventListener('click', function(event) {
+	broadcastStartBtn.addEventListener("click", function(event) {
 		event.preventDefault();
 		userId = "${login.memberId}";
 		nickName = "${login.nickName}"
@@ -245,8 +260,51 @@
 				userName: nickName
 			}
 		});
+		
+		// 방송시작 버튼
+		broadcastStartBtn.setAttribute("disabled", "disabled");
+		broadcastStartBtn.classList.remove("btn-base-bg");
+		broadcastStartBtn.classList.add("btn-grey-bg");
+		// 방송종료 버튼
+		broadcastEndBtn.removeAttribute("disabled");
+		broadcastStartBtn.classList.remove("btn-grey-bg");
+		broadcastStartBtn.classList.add("btn-base-bg");
+		// 방송적용 버튼
+		broadcastInfoUpdBtn.removeAttribute("disabled");
+		broadcastInfoUpdBtn.classList.remove("btn-grey-bg");
+		broadcastInfoUpdBtn.classList.add("btn-base-bg");
+		
 	}, false);
-
+	
+	// 방송 종료 이벤트(방송종료 버튼)
+	broadcastEndBtn.addEventListener("click", function(event) {
+		event.preventDefault();
+		if(confirm("방송을 종료하시겠습니까?")) {
+			appBj.deleteChannel();
+			
+			// 방송종료 AJAX 처리
+			$.getJSON("insUpdBroadcast.do", function(data) {
+				self.close();
+			});
+		}
+	}, false);
+	
+	// 방송 종료 이벤트(브라우저 X 버튼)
+	window.onunload = function() {
+		if(confirm("방송을 종료하시겠습니까?")) {
+			self.close();
+		}
+	};
+	
+	// 방송 중 정보수정
+	broadcastInfoUpdBtn.addEventListener("click", function() {
+		event.preventDefault();
+		if(confirm("방송정보를 수정하시겠습니까?")) {
+			var param = $("#broadcastForm").serialize() + ;
+			$.getJSON("")
+		}
+	});
+	
 	/* End BJ 방송 관련 자바스크립트 */
 	
 </script>

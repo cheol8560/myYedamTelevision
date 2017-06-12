@@ -17,6 +17,7 @@ import yolo.myTv.broadcasts.service.BroadcastVO;
 import yolo.myTv.members.service.MemberVO;
 
 @Controller
+@SessionAttributes("broadcast")
 public class BroadcastController {
 
 	@Autowired
@@ -27,9 +28,7 @@ public class BroadcastController {
 	public String insUpdBroadcastForm(BroadcastVO vo, HttpSession session, Model model) {
 		MemberVO bj = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(bj.getMemberId());
-		System.out.println(vo);
 		BroadcastVO result = broadcastService.getBroadcast(vo);
-		System.out.println(result);
 		if(result != null) {
 			model.addAttribute("broadcastResult", result);
 		}
@@ -41,7 +40,6 @@ public class BroadcastController {
 	public @ResponseBody BroadcastVO insUpdBroadcast(@ModelAttribute("broadcast") BroadcastVO vo, HttpSession session) {
 		MemberVO bj = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(bj.getMemberId());
-		System.out.println(vo);
 		BroadcastVO check = broadcastService.getBroadcast(vo);
 		// ID 생성 후 첫 방송의 경우
 		if(check == null) {		
@@ -49,14 +47,18 @@ public class BroadcastController {
 		} 
 		// 기존 방송이 있는 경우
 		else {	
+			vo.setBroadcastNo(check.getBroadcastNo());
 			// 방송 종료 상태에서 방송 시작의 경우
-			if(vo.getBroadcastStatus().equals("e1")) {	
-				
+			if(check.getBroadcastStatus().equals("e3")) {	
+				vo.setBroadcastStatus("e1");
+				broadcastService.updateBroadcast(vo);
 			}
 			
 			// 방송 종료
-			else if(vo.getBroadcastStatus().equals("e3")) {
-				
+			else if(check.getBroadcastStatus().equals("e1")) {
+				vo.setBroadcastStatus("e3");
+				vo.setChannelId(null);
+				broadcastService.updateBroadcast(vo);
 			}
 			// 방송 대기
 		}

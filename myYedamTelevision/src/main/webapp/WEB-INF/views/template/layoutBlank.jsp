@@ -45,6 +45,7 @@
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/favicon.ico"/>
 	<!-- END FAVICON -->
+	
 </head>
 <!-- END HEAD -->
 <tiles:insertAttribute name="body"/>

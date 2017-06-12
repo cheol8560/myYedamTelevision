@@ -4,7 +4,7 @@
 <!-- FAQ -->
 <div class="faq">
 	<div class="container-xs">
-		<h2 class="faq-title">My 문의내역  </h2>
+		<h2 class="faq-title">My 문의내역</h2>
 	</div>
 </div>
 <!-- End FAQ -->

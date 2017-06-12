@@ -12,6 +12,7 @@ public class BroadcastVO {
 	private String memberId;
 	private String channelId;
 	private int viewerCount;
+	private boolean updateCheck;
 	
 	public int getBroadcastNo() {
 		return broadcastNo;
@@ -61,6 +62,12 @@ public class BroadcastVO {
 	public void setViewerCount(int viewerCount) {
 		this.viewerCount = viewerCount;
 	}
+	public boolean isUpdateCheck() {
+		return updateCheck;
+	}
+	public void setUpdateCheck(boolean updateCheck) {
+		this.updateCheck = updateCheck;
+	}
 	
 	@Override
 	public String toString() {
@@ -68,6 +75,8 @@ public class BroadcastVO {
 				+ broadcastTitle + ", startDate=" + startDate
 				+ ", broadcastStatus=" + broadcastStatus + ", contentCode="
 				+ contentCode + ", memberId=" + memberId + ", channelId="
-				+ channelId + ", viewerCount=" + viewerCount + "]";
+				+ channelId + ", viewerCount=" + viewerCount + ", updateCheck="
+				+ updateCheck + "]";
 	}
+	
 }

@@ -54,7 +54,7 @@
 							</div>
 							 -->
 							<div class="icon-box-v4-body">
-								<h3 class="icon-box-v4-body-title" id="applyBroadcastTitle">${broadcast.broadcastTitle}</h3>
+								<h3 class="icon-box-v4-body-title" id="applyBroadcastTitle"></h3>
 								<!-- <p class="icon-box-v4-body-text">송욜로</p> -->
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 		                <ul class="list-inline" style="margin:0;">
 		                    <li class="theme-icons-wrap">
 			                    <i class="theme-icons theme-icons-sm radius-circle fa fa-twitter margin-0"></i>
-			                    <span class="view-count">2</span> 명 시청중
+			                    <span class="view-count">2</span> 명 시청
 							</li>
 							<li class="theme-icons-wrap">
 		                    	<a href="#" style="text-decoration: none;">
@@ -129,7 +129,7 @@
                         <div class="blog-sidebar-content">
 							<!-- Comment Form v1 -->
 							<form id="broadcastForm" class="comment-form-v1">
-								<input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}">
+								<%-- <input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}"> --%>
 								<input type="hidden" name="channelId" id="channelId" value="">
 								<div class="row">
 									<div class="col-md-12 margin-b-30">
@@ -235,13 +235,33 @@
 	// BJ connectChannel 이벤트 핸들러
 	appBj.on("connectChannel", function(channelId) {
 		inputChannelId.value = channelId;
-		inputBroadcastNo.value = "${broadcast.broadcastNo}";
+		// inputBroadcastNo.value = "${broadcast.broadcastNo}";
 		
 		// 방송 등록 AJAX 처리
-		var param = $("#broadcastForm").serialize();
-		$.getJSON("insUpdBroadcast.do", param, function(data) {
-			$("#applyBroadcastTitle").text(data.broadcastTitle);
-		});
+		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1";
+		$.getJSON( "insUpdBroadcast.do", param )
+			.done(function(data) {
+				$("#applyBroadcastTitle").text(data.broadcastTitle);
+				
+				// 방송시작 버튼
+				broadcastStartBtn.setAttribute("disabled", "disabled");
+				broadcastStartBtn.classList.remove("btn-base-bg");
+				broadcastStartBtn.classList.add("btn-grey-bg");
+				// 방송종료 버튼
+				broadcastEndBtn.removeAttribute("disabled");
+				broadcastEndBtn.classList.remove("btn-grey-bg");
+				broadcastEndBtn.classList.add("btn-base-bg");
+				// 방송적용 버튼
+				broadcastInfoUpdBtn.removeAttribute("disabled");
+				broadcastInfoUpdBtn.classList.remove("btn-grey-bg");
+				broadcastInfoUpdBtn.classList.add("btn-base-bg");
+				
+			})
+			.fail(function(jqxhr, textStatus, error) {
+				var err = textStatus + " : " + error;
+				alert(err);
+			});
+		
 	});
 	
 	// BJ error 이벤트 핸들러
@@ -249,7 +269,7 @@
 		alert("Error! \n" + code + " : " + desc);
 	});
 	
-	// 방송 시작
+	// 방송 시작 버튼 이벤트
 	broadcastStartBtn.addEventListener("click", function(event) {
 		event.preventDefault();
 		userId = "${login.memberId}";
@@ -260,32 +280,37 @@
 				userName: nickName
 			}
 		});
-		
-		// 방송시작 버튼
-		broadcastStartBtn.setAttribute("disabled", "disabled");
-		broadcastStartBtn.classList.remove("btn-base-bg");
-		broadcastStartBtn.classList.add("btn-grey-bg");
-		// 방송종료 버튼
-		broadcastEndBtn.removeAttribute("disabled");
-		broadcastStartBtn.classList.remove("btn-grey-bg");
-		broadcastStartBtn.classList.add("btn-base-bg");
-		// 방송적용 버튼
-		broadcastInfoUpdBtn.removeAttribute("disabled");
-		broadcastInfoUpdBtn.classList.remove("btn-grey-bg");
-		broadcastInfoUpdBtn.classList.add("btn-base-bg");
-		
 	}, false);
 	
 	// 방송 종료 이벤트(방송종료 버튼)
 	broadcastEndBtn.addEventListener("click", function(event) {
 		event.preventDefault();
 		if(confirm("방송을 종료하시겠습니까?")) {
-			appBj.deleteChannel();
-			
 			// 방송종료 AJAX 처리
-			$.getJSON("insUpdBroadcast.do", function(data) {
-				self.close();
-			});
+			$.getJSON("insUpdBroadcast.do", "broadcastStatus=e3")
+				.done(function(data) {
+					// self.close();
+					appBj.deleteChannel();
+					$("#applyBroadcastTitle").text("");
+					
+					// 방송시작 버튼
+					broadcastStartBtn.removeAttribute("disabled");
+					broadcastStartBtn.classList.remove("btn-grey-bg");
+					broadcastStartBtn.classList.add("btn-base-bg");
+					// 방송종료 버튼
+					broadcastEndBtn.setAttribute("disabled", "disabled");
+					broadcastEndBtn.classList.remove("btn-base-bg");
+					broadcastEndBtn.classList.add("btn-grey-bg");
+					// 방송적용 버튼
+					broadcastInfoUpdBtn.setAttribute("disabled", "disabled");
+					broadcastInfoUpdBtn.classList.remove("btn-base-bg");
+					broadcastInfoUpdBtn.classList.add("btn-grey-bg");
+					
+				})
+				.fail(function(jqxhr, textStatus, error) {
+					var err = textStatus + " : " + error;
+					alert(err);
+				});
 		}
 	}, false);
 	
@@ -299,10 +324,16 @@
 	// 방송 중 정보수정
 	broadcastInfoUpdBtn.addEventListener("click", function() {
 		event.preventDefault();
-		if(confirm("방송정보를 수정하시겠습니까?")) {
-			var param = $("#broadcastForm").serialize() + ;
-			$.getJSON("")
-		}
+		var param = $("#broadcastForm").serialize();
+		$.getJSON( "updateBroadcast.do", param )
+			.done(function(data) {
+				$("#applyBroadcastTitle").text(data.broadcastTitle);
+				alert("적용되었습니다.");
+			})
+			.fail(function(jqxhr, textStatus, error) {
+				var err = textStatus + " : " + error;
+				alert(err);
+			});
 	});
 	
 	/* End BJ 방송 관련 자바스크립트 */

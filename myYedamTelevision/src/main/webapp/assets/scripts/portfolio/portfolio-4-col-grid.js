@@ -6,6 +6,8 @@ var Portfolio = function() {
     var handlePortfolio4ColGrid = function() {
         $('#portfolio-4-col-grid').cubeportfolio({
             filters: '#portfolio-4-col-grid-filter',
+            loadMore: '#portfolio-grid-load-more-button',
+            loadMoreAction: 'click',
             layoutMode: 'grid',
             defaultFilter: '*',
             animationType: 'rotateRoom',

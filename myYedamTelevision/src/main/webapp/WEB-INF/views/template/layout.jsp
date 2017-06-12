@@ -157,7 +157,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/wow.js"></script>
 	<!-- components -->
 	<!-- portfolio -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/portfolio/portfolio-4-col-grid.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/portfolio/portfolio-5-col-grid.js"></script>
 	<!-- End portfolio -->
 
 <!-- END PAGE LEVEL SCRIPTS -->

@@ -25,25 +25,20 @@
 	<update id="updateBroadcast">
         UPDATE BROADCASTS SET
         	<if test="broadcastStatus == 'e1'">
-        	BROADCAST_TITLE = #{broadcastTitle},
-        	CONTENT_CODE = #{contentCode},
-        	CHANNEL_ID = #{channel},
-        	BROADCAST_STATUS = #{broadcastStatus},
-        	START_DATE = #{startDate}
+        	  BROADCAST_TITLE = #{broadcastTitle}
+       		, CONTENT_CODE = #{contentCode}
+	        	<if test="updateCheck == false">
+	        	, CHANNEL_ID = #{channelId}
+        		, BROADCAST_STATUS = #{broadcastStatus}
+	        	, START_DATE = SYSDATE
+	        	</if>
         	</if>
         	<if test="broadcastStatus == 'e3'">
-        	CHANNEL_ID = '',
-        	BROADCAST_STATUS = #{broadcastStatus}
+        	  CHANNEL_ID = ''
+        	, BROADCAST_STATUS = #{broadcastStatus}
         	</if>
         WHERE BROADCAST_NO = #{broadcastNo}
 	</update>
-
-	<delete id="deleteBroadcast">
-        <![CDATA[
-        DELETE USERS
-        WHERE ID = #{id}
-        ]]>
-	</delete>
 
 	<select id="getBroadcast" resultMap="broadcastResult">
         SELECT BROADCAST_NO

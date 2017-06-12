@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
                 <div class="page-title">
-                    <h3>카테고리 관리</h3>
+                    <h3>카테고리 관리 </h3>
                    
                 </div>
                 <div id="main-wrapper">

@@ -13,7 +13,7 @@ public class ContentServiceImpl implements ContentService{
 
 	@Autowired
 	private ContentMapper contentMapper;
-	
+	 
 	@Override
 	public void insertContent(ContentVO vo) {
 		contentMapper.insertContent(vo);
@@ -32,7 +32,7 @@ public class ContentServiceImpl implements ContentService{
 
 	@Override
 	public ContentVO getContent(ContentVO vo) {
-		return null;
+		return contentMapper.getContent(vo);
 	}
 
 	@Override

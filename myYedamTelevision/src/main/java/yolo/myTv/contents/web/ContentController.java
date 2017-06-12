@@ -16,14 +16,14 @@ public class ContentController {
 	@Autowired	ContentService contentService;
 	
 	//등록
-	@RequestMapping("contentsInsert.do")
+	@RequestMapping("/insertContent")
 	public String insertContent(ContentVO vo){
 		contentService.insertContent(vo);
-		return"";
+		return "redirect:/getContentList.do";
 	}
 	
 	//수정
-	@RequestMapping("contentsUpdate.do")
+	@RequestMapping("updateContent.do")
 	public String updateContent(ContentVO vo){
 		
 		contentService.updateContent(vo);
@@ -31,7 +31,7 @@ public class ContentController {
 	}
 	
 	//삭제
-	@RequestMapping("contentsDelete.do")
+	@RequestMapping("deleteContent.do")
 	public String deleteContent(ContentVO vo){
 		contentService.deleteContent(vo);
 		return"";
@@ -48,7 +48,7 @@ public class ContentController {
 	@RequestMapping("/getContentList.do")
 	public String getContentsList(ContentVO vo, Model model) throws Exception {
 		model.addAttribute("contentList", contentService.getContentList(vo));
-		return "/admin/contents/content";
+		return "admin/contents/content";
 	}
 	
 

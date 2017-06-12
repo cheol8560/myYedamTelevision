@@ -3,15 +3,15 @@ package yolo.myTv.contents.service;
 public class ContentVO {
 
 
-	private String contentCode;
+	private int contentCode;
 	private String contentName;
 	private String contentIcon;
 	private String contentIntro;
 	
-	public String getContentCode() {
+	public int getContentCode() {
 		return contentCode;
 	}
-	public void setContentCode(String contentCode) {
+	public void setContentCode(int contentCode) {
 		this.contentCode = contentCode;
 	}
 	public String getContentName() {

@@ -84,9 +84,9 @@
 
 					<!-- Comment Form v1 -->
 					<jsp:include
-						page="${pageContext.request.contextPath}/comments/commentList.jsp">
+						page="${pageContext.request.contextPath}/CommentController">
 						<jsp:param name="boardNo" value="${notice.boardNo}" />
-					</jsp:include>
+					</jsp:include> 
 				</div>
 				<!-- End Comment Form v1 -->
 			</div>

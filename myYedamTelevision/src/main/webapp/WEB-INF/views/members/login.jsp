@@ -15,6 +15,8 @@
                 <a href="${pageContext.request.contextPath}/">
                     <img class="login-form-logo" src="${pageContext.request.contextPath}/assets/img/mayetel-logo.png" alt="Home">
                 </a>
+                
+                
             </div>
             <!-- End Login Form Logo -->
 

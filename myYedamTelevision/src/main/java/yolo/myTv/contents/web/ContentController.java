@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import yolo.myTv.contents.service.ContentService;
@@ -23,25 +24,26 @@ public class ContentController {
 	}
 	
 	//수정
-	@RequestMapping("updateContent.do")
+	@RequestMapping("/updateContent.do")
 	public String updateContent(ContentVO vo){
 		
 		contentService.updateContent(vo);
-		return"";
+		return "redirect:/getContentList.do";
 	}
 	
 	//삭제
-	@RequestMapping("deleteContent.do")
+	@RequestMapping("/deleteContent.do")
 	public String deleteContent(ContentVO vo){
 		contentService.deleteContent(vo);
-		return"";
+		return "redirect:/getContentList.do";
 	}
 	
 	//단건조회
-	@RequestMapping("getContent.do")
-	public String getContents(ContentVO vo, Model model) throws Exception {
-		model.addAttribute("contents", contentService.getContent(vo));
-		return "";
+	@RequestMapping("/getContent.do")
+	
+	public @ResponseBody ContentVO getContents(ContentVO vo, Model model) throws Exception {
+		
+		return contentService.getContent(vo);
 	}
 	
 	//다건조회

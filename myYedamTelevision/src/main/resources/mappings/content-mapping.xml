@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.myTv.contents.service.impl.ContentMapper">
+
+	<select id="getContent" parameterType="content" resultType="content">
+		SELECT
+		CONTENT_CODE,
+		CONTENT_NAME,
+		CONTENT_iCON,
+		CONTENT_INTRO
+		FROM CONTENTS
+		WHERE CONTENT_CODE = #{content_code}
+	</select>
+
+	<resultMap type="content" id="content">
+		<id property="contentCode" column="CONTENT_CODE" />
+		<result property="contentName" column="CONTENT_NAME" />
+		<result property="contentIcon" column="CONTENT_ICON" />
+		<result property="contentIntro" column="CONTENT_Intro" />
+	</resultMap>
+
+	<select id="getContentList" resultMap="content">
+		SELECT
+		CONTENT_CODE,
+		CONTENT_NAME,
+		CONTENT_iCON,
+		CONTENT_INTRO
+		FROM CONTENTS 
+	</select>
+		
+	<insert id="insertContent" parameterType="content">
+	<selectKey keyProperty="contentCode" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(CONTENT_CODE), 0) + 1 FROM CONTENTS		
+		</selectKey>
+		INSERT INTO CONTENTS (CONTENT_CODE, CONTENT_NAME, CONTENT_iCON, CONTENT_INTRO)
+		VALUES (#{contentCode}, #{contentName}, #{contentIcon}, #{contentIntro})
+	</insert>
+
+	<update id="updateContent" parameterType="content">
+		UPDATE CONTENTS
+		SET
+		CONTENT_CODE=#{content_code},
+		CONTENT_NAME=#{content_name},
+		CONTENT_iCON=#{content_icon},
+		CONTENT_INTRO=#{content_intro}
+		WHERE
+		CONTENT_CODE = #{content_code}
+	</update>
+
+	<delete id="deleteContent" parameterType="int">
+		DELETE FROM CONTENTS WHERE
+		CONTENT_CODE = #{content_code}
+	</delete>
+
+</mapper>

@@ -40,14 +40,14 @@ public class ChargeController {
 	
 	// 결제 페이지
 	@RequestMapping("/insertPoint.do")
-	public String insertPoint(@ModelAttribute("charge")ChargeVO vo, Model model,HttpSession session) {
+	public String insertPoint(@ModelAttribute("charge")ChargeVO vo, Model model, HttpSession session) {
 		model.addAttribute("charge",vo);
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
 		vo.setRequestDate(new Date());
 		chargeService.subUpdateCharge(vo);
 		chargeService.mainUpdateCharge(vo);
-		memberService.updatePoint(member, vo.getChargePoint());
+		chargeService.updatePoint(vo);
 		return "redirect:getHoldingPointList.do";
 	}
 

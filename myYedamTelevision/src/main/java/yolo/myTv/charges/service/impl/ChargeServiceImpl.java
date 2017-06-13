@@ -3,6 +3,7 @@ package yolo.myTv.charges.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import yolo.myTv.charges.service.ChargeService;
 import yolo.myTv.charges.service.ChargeVO;
 
@@ -27,4 +28,9 @@ public class ChargeServiceImpl implements ChargeService {
 		ChargeDAO.getCharge(vo);
 	}
 	
+	@Override
+	public void updatePoint(ChargeVO vo) {
+		ChargeDAO.updatePoint(vo);
+		
+	}
 }

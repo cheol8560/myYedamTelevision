@@ -13,7 +13,14 @@
         					, BIRTH_DATE
         					, EMAIL
         					, TEL
-        					, MEMBER_IMAGE) 
+        					]]>
+        					<if test="memberImage != null and memberImage !='' ">	<!--ATTATCH_FILENAME이 있으면   -->
+        					<![CDATA[
+        					, MEMBER_IMAGE
+        					]]>
+        					</if>
+        					<![CDATA[
+        					) 
         VALUES(#{memberId}
         		, #{password}
         		, #{nickName}
@@ -21,8 +28,12 @@
 				, #{birthDate}
         		, #{email}
         		, #{tel}
+        		]]>
+        		<if test="memberImage != null and memberImage !='' ">
+        		<![CDATA[
         		, #{memberImage})
-        ]]>
+        		]]>
+        		</if>
 	</insert>
 
 	<update id="updateMember">

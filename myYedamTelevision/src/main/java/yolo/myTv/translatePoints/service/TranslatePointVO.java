@@ -8,6 +8,12 @@ public class TranslatePointVO {
 	private String sendMemberId; 
 	private String receiveMemberId;
 	private Date translateDate;
+	private int totalPoint;
+	private int sendPoint;
+	private int receivePoint;
+	private String memberId;
+	
+	
 	public String getTranslateId() {
 		return translateId;
 	}
@@ -37,6 +43,32 @@ public class TranslatePointVO {
 	}
 	public void setTranslateDate(Date translateDate) {
 		this.translateDate = translateDate;
+	}
+
+	public int getTotalPoint() {
+		return totalPoint;
+	}
+	public void setTotalPoint(int totalPoint) {
+		this.totalPoint = totalPoint;
+	}
+	public int getSendPoint() {
+		return sendPoint;
+	}
+	public void setSendPoint(int sendPoint) {
+		this.sendPoint = sendPoint;
+	}
+	public int getRecivePoint() {
+		return receivePoint;
+	}
+	public void setRecivePoint(int receivePoint) {
+		this.receivePoint = receivePoint;
+	}
+	
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	@Override
 	public String toString() {

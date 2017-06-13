@@ -24,7 +24,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
-							<figure class="counter color-base counters-v2-no">${MemberVO.point}</figure>
+							<figure class="counter color-base counters-v2-no">${login.point}</figure>
 							<h4 class="counters-v2-title">보유중인 기쁨</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
@@ -34,7 +34,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-trophy"></i>
-							<figure class="counter color-base counters-v2-no">782</figure>
+							<figure class="counter color-base counters-v2-no">${total[0].receivePoint}</figure>
 							<h4 class="counters-v2-title">선물받은 기쁨</h4>
 							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
@@ -44,7 +44,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-happy"></i>
-							<figure class="counter color-base counters-v2-no">272</figure>
+							<figure class="counter color-base counters-v2-no">${total[0].sendPoint}</figure>
 							<h4 class="counters-v2-title">선물한 기쁨</h4>
 							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
@@ -54,7 +54,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-tools"></i>
-							<figure class="counter color-base counters-v2-no">312</figure>
+							<figure class="counter color-base counters-v2-no">${total[0].totalPoint}</figure>
 							<h4 class="counters-v2-title">충전한 기쁨</h4>
 							<span class="counters-v2-subtitle">Customizability</span>
 						</div>

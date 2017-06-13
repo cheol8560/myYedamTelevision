@@ -31,7 +31,7 @@
 								
 				<!-- Video Player -->
                 <div class="full-width-container">
-					<video id="localVideo" width="100%" height="100%"></video>
+					<video id="bjVideo" width="100%" height="100%"></video>
 				</div>
                 <!-- End Video Player -->
 				
@@ -142,9 +142,15 @@
 								<div class="row">
 									<div class="col-md-12 margin-b-30">
 										<label for="contentCode">방송주제</label>
-										<input type="text" class="form-control comment-form-v1-input"
-											name="contentCode" id="contentCode" value="${broadcastResult.contentCode}"
-											required>
+										<select id="contentCode" name="contentCode" class="form-control comment-form-v1-input" required>
+										<c:forEach items="${contentList}" var="content">
+											<option class="form-control comment-form-v1-input"
+													value="${content.contentCode}">${content.contentName}</option>	
+										</c:forEach>
+										</select>
+										<script>
+											$("#contentCode").val("${broadcastResult.contentCode}");
+										</script>
 									</div>
 								</div>
 								<button type="submit" id="broadcastInfoUpdBtn" class="btn-grey-brd btn-base-xs radius-3" 
@@ -198,6 +204,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/app.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/custom.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc-debug-view.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/animsition.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/scrollbar.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/form-modal.js"></script>
@@ -209,7 +216,7 @@
 <script>
 "use strict";
 
-	/* BJ 관련 자바스크립트 */
+	/* BJ 관련 Javascript */
 	
 	var broadcastStartBtn = document.querySelector("#broadcastStartBtn");
 	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
@@ -217,13 +224,12 @@
 	var inputChannelId = document.querySelector("#channelId");
 	var inputBroadcastNo = document.querySelector("#broadcastNo");
 	var appBj;
-	var userId;
-	var nickName;
+	var options;
 	
-	// BJ 객체 설정
+	// BJ 객체 및 변수 설정
 	appBj = new PlayRTC({
 		projectKey: "60ba608a-e228-4530-8711-fa38004719c1",
-		localMediaTarget: "localVideo", 
+		localMediaTarget: "bjVideo",
 		video: {
 			"minWidth": 1000,
 			"minHeight": 562
@@ -233,9 +239,17 @@
 	/* BJ 이벤트 핸들러 처리 */ 
 	
 	// BJ connectChannel 이벤트 핸들러
-	appBj.on("connectChannel", function(channelId) {
+	appBj.on("connectChannel", function(channelId, options) {
 		inputChannelId.value = channelId;
-		// inputBroadcastNo.value = "${broadcast.broadcastNo}";
+		
+		options = {
+			peer: {
+				uid: "${login.memberId}",
+				userName: "${login.nickName}"
+			}
+		};
+		
+		console.log(appBj.getAllPeer());
 		
 		// 방송 등록 AJAX 처리
 		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1";
@@ -272,14 +286,12 @@
 	// 방송 시작 버튼 이벤트
 	broadcastStartBtn.addEventListener("click", function(event) {
 		event.preventDefault();
-		userId = "${login.memberId}";
-		nickName = "${login.nickName}"
-		appBj.createChannel({
-			peer: {
-				uid: userId,
-				userName: nickName
-			}
-		});
+		if(PlayRTC.utils.userMediaSupport) {
+			appBj.createChannel();
+		} else {
+			alert("방송 가능한 미디어 장치가 없습니다.");
+		}
+		
 	}, false);
 	
 	// 방송 종료 이벤트(방송종료 버튼)
@@ -336,7 +348,7 @@
 			});
 	});
 	
-	/* End BJ 방송 관련 자바스크립트 */
+	/* End BJ 방송 관련 Javascript */
 	
 </script>
 <!-- End Page Javascript Code -->

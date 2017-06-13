@@ -8,15 +8,15 @@
 <div class="wrapper animsition fullheight" >
 	<!-- Logo -->
 	<div class="bg-color-white" style="border-bottom: 2px solid #00bcd4;">
-		<div class="container-sm" style="margin-left: 30px;">
+		<div class="full-width-container" style="margin-left: 30px;">
 			<div class="col-md-10">
-				
 				<p class="font-size-30 font-style-italic font-family-droid line-height-2 margin-b-0">
 					<a href="${pageContext.request.contextPath}/">My Yedam Television</a>
 				</p>
 			</div>
-			<div class="col-md-2">
-			
+			<div class="col-md-2 text-center" style="padding-top:15px;">
+				<button type="button" id="broadcastEndBtn" class="btn-base-brd btn-base-xs radius-3">방송종료</button>
+				<button type="button" id="debugViewBtn" class="btn-base-brd btn-base-xs radius-3">디버그뷰</button>
 			</div>
 		</div>
 	</div>
@@ -30,7 +30,7 @@
             <div class="col-md-8">
                 <!-- Video Player -->
                 <div class="full-width-container">
-					<video src="${pageContext.request.contextPath}/assets/video/sail-away/sail-away.mp4" autoplay="autoplay" controls="controls" width="100%" height="100%"></video>
+					<video id="viewerVideo" width="100%" height="100%"></video>
 				</div>
                 <!-- End Video Player -->
 				
@@ -51,8 +51,8 @@
 								<i class="theme-icons theme-icons-dark-bg theme-icons-lg radius-circle icon-genius"></i>
 							</div>
 							<div class="icon-box-v4-body">
-								<h3 class="icon-box-v4-body-title">송욜로의 점심시간</h3>
-								<p class="icon-box-v4-body-text">송욜로</p>
+								<h3 class="icon-box-v4-body-title">${broadcastResult.broadcastTitle}</h3>
+								<p class="icon-box-v4-body-text">${broadcastResult.nickName}</p>
 							</div>
 						</div>
 						<!-- End Icon Box v4 -->
@@ -227,6 +227,55 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/form-modal.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/magnific-popup.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- Page Javascript Code -->
+<script>
+"use strict";
+
+	/* 시청자 방송 관련 Javascript */
+	
+	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
+	var channelId = "${broadcastResult.channelId}";
+	var appViewer;
+	var options;
+	
+	// 시청자 객체 및 변수 설정
+	appViewer = new PlayRTC({
+	      projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
+	      remoteMediaTarget: 'viewerVideo',
+	      data: true,
+	      video: false,
+	      audio: false
+	});
+	
+	// 시청자 입장 후 방송 시작
+	window.addEventListener("load", function() {
+		options = {
+			peer: {
+				uid: "${login.memberId}",
+				userName: "${login.nickName}"
+			}
+		}
+		
+		appViewer.connectChannel(channelId, options);
+	});
+	
+	broadcastEndBtn.addEventListener("click", function() {
+		console.log(appViewer.getPeerId());
+		if(confirm("방송을 종료하시겠습니까?")) {
+			appViewer.disconnectChannel();
+		}
+	})
+	
+	$("#debugViewBtn").click(function() {
+		PlayRTC.utils.debugViewShow();
+	});
+	
+	/* End 시청자 방송 관련 Javascript */
+
+</script>
+<!-- End Page Javascript Code -->
+
 <!--========== END JAVASCRIPTS ==========-->
 </body>
 <!-- END BODY -->

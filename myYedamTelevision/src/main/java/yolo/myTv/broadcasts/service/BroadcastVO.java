@@ -11,6 +11,7 @@ public class BroadcastVO {
 	private String contentCode;
 	private String memberId;
 	private String channelId;
+	private String nickName;
 	private int viewerCount;
 	private boolean updateCheck;
 	
@@ -55,6 +56,12 @@ public class BroadcastVO {
 	}
 	public void setChannelId(String channelId) {
 		this.channelId = channelId;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public int getViewerCount() {
 		return viewerCount;

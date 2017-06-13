@@ -21,7 +21,7 @@ public class MainController {
 	public String main(Locale locale, Model model) {
 		logger.info("Welcome main! The client locale is {}.", locale);
 		
-		return "broadcasts/mainBroadcastList";
+		return "redirect:/getOnBroadcastList.do";
 	}
 	
 }

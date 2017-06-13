@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 		<!--========== PAGE CONTENT ==========-->
 		<div class="bg-color-sky-light">
@@ -11,22 +12,19 @@
 						<div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
 							All	<div class="cbp-filter-counter"></div>
 						</div>
-						<div data-filter=".idea" class="cbp-filter-item">
-							Idea <div class="cbp-filter-counter"></div>
+					<c:forEach items="${contentList}" var="content">	
+						<div data-filter=".${content.contentCode}" class="cbp-filter-item">
+							${content.contentName} <div class="cbp-filter-counter"></div>
 						</div>
-						<div data-filter=".web-design" class="cbp-filter-item">
-							Web Design <div class="cbp-filter-counter"></div>
-						</div>
-						<div data-filter=".graphic" class="cbp-filter-item">
-							Graphic <div class="cbp-filter-counter"></div>
-						</div>
+					</c:forEach>	
 					</div>
 					<!-- End Portfolio 5 Columns Grid Filter -->
 		
 					<!-- Portfolio 5 Columns Grid -->
 					<div id="portfolio-5-col-grid" class="cbp">
+					<c:forEach items="${broadcastList}" var="broadcast" >	
 						<!-- Cbp Item -->
-						<div class="cbp-item idea web-design theme-portfolio-item-v2 theme-portfolio-item-xs">
+						<div class="cbp-item ${broadcast.contentCode} theme-portfolio-item-v2 theme-portfolio-item-xs">
 							<div class="cbp-caption">
 								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
 									<img src="assets/img/970x647/01.jpg" alt="">
@@ -39,10 +37,12 @@
 							</div>
 							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
 								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="${pageContext.request.contextPath}/getOnBroadcast.do">송욜로의 점심시간</a>
+									<a href="getOnBroadcast.do?broadcastNo=${broadcast.broadcastNo}">
+										${broadcast.broadcastTitle}
+									</a>
 								</h4>
 								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
-									<span style="float: left;">송욜로</span> 
+									<span style="float: left;">${broadcast.nickName}</span> 
 									<span style="float: right;">
 										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
 									</span>
@@ -50,7 +50,8 @@
 							</div>
 						</div>
 						<!-- End Cbp Item -->
-		
+					</c:forEach>
+					
 						<!-- Cbp Item -->
 						<div class="cbp-item idea web-design theme-portfolio-item-v2 theme-portfolio-item-xs">
 							<div class="cbp-caption">

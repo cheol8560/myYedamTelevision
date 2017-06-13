@@ -60,7 +60,7 @@
             $('#questionTable').DataTable();
             $('#chargeTable').DataTable();
             $('#translateTable').DataTable();
-            $('#contentTable').DataTable();
+            
         } );
         </script>
         

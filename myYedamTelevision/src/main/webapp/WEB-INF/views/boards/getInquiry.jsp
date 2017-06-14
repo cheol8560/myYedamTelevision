@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--========== PAGE CONTENT ==========-->
 <!-- FAQ -->
 <div class="faq">
@@ -75,9 +76,11 @@
 
 							</div>
 						</div>
-						<input type="hidden" name="category" value="d2" />
+						<input type="hidden" name="category" value="d2" /><br><br>
 					</form>
 					<!-- Comment Form v1 -->
+				<c:import url="../comments/commentList.jsp?boardNo=${inquiry.boardNo}"></c:import>  
+				
 				</div>
 				<!-- End Comment Form v1 -->
 			</div>

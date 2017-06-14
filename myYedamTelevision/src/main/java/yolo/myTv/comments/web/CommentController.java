@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import yolo.myTv.comments.service.Comments;
 import yolo.myTv.comments.service.CommentsDAO;
 
-import org.json.simple.JSONValue;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @SuppressWarnings("restriction")
@@ -33,6 +33,7 @@ public class CommentController {
 		PrintWriter out = response.getWriter();
 		String cmd = request.getParameter("cmd");
 		HashMap<String, String> msg ;
+		
 		
 		 if (cmd.equals("selectAll")) { // 전체조회
 			
@@ -105,14 +106,14 @@ public class CommentController {
 	
 	private String toXML(String result, HashMap data) throws IOException{
 		StringBuffer sb = new StringBuffer();
+		ObjectMapper mapper = new ObjectMapper();
+		
 		sb.append("<result>");
 		sb.append("<code>");
 		sb.append(result);
 		sb.append("</code>");
 		sb.append(" <data><![CDATA[ ");
-		StringWriter sw = new StringWriter();
-		JSONValue.writeJSONString(data, sw);
-		sb.append(sw.toString());
+		sb.append(mapper.writeValueAsString(data));
 		sb.append("]]></data>");
 		sb.append("</result>");
 		return sb.toString();

@@ -51,5 +51,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<Map<String, Object>> getMemberList(MemberVO vo) {
 		return MemberDAO.getMemberList(vo);
 	}
+	@Override
+	public int chkDupId(MemberVO vo) {
+		return MemberDAO.chkDupId(vo);
+	}
+
 	
 }

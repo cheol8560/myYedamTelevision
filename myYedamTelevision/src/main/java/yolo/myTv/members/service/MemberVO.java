@@ -20,6 +20,10 @@ public class MemberVO {
 	private String email;
 	private String tel;
 	private int point;
+	
+	private int cnt;
+	
+	
 	@XmlTransient
 	private MultipartFile uploadFile;
 	private String bank;
@@ -100,14 +104,25 @@ public class MemberVO {
 	public void setMemberImage(String memberImage) {
 		this.memberImage = memberImage;
 	}
+	
+	
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [memberId=" + memberId + ", password=" + password
 				+ ", nickName=" + nickName + ", memberName=" + memberName
 				+ ", birthDate=" + birthDate + ", email=" + email + ", tel="
-				+ tel + ", point=" + point + ", bank=" + bank + ", account="
-				+ account + ", memberImage=" + memberImage + "]";
+				+ tel + ", point=" + point + ", cnt=" + cnt + ", uploadFile="
+				+ uploadFile + ", bank=" + bank + ", account=" + account
+				+ ", memberImage=" + memberImage + "]";
 	}
+	
 	
 
 

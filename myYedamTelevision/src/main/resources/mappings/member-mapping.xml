@@ -83,6 +83,20 @@
         WHERE MEMBER_ID = #{memberId}
         ]]>
 	</select>
+	
+	 
+	
+	<select id="chkDupId" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*) AS CNT
+		FROM MEMBERS
+		WHERE 1 = 1
+		AND MEMBERS.MEMBER_ID = #{memberId}
+        ]]>
+	</select>
+	
+	
+	
 
 	<resultMap type="member" id="memberMap">
 		<result property="memberId" column="MEMBER_ID" />
@@ -96,5 +110,6 @@
 		<result property="memberImage" column="MEMBER_IMAGE" />
 		<result property="bank" column="BANK" />
 		<result property="account" column="ACCOUNT" />
+		<result property="cnt" column="CNT" /> 
 	</resultMap>
 </mapper>

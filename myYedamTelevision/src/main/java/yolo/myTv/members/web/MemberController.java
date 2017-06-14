@@ -97,6 +97,32 @@ public class MemberController {
 	   out.print("1");
 	  }
 	 }
+	 
+	 
+	 
+	 
+	 @RequestMapping(value = "/chkDupNick.do")
+	 public void checkNick(HttpServletRequest req, HttpServletResponse res,
+	   ModelMap model) throws Exception {
+	  PrintWriter out = res.getWriter();
+	  try {
+
+	   // 넘어온 ID를 받는다.
+	   String paramNick = (req.getParameter("prmNick") == null) ? "" : String
+	     .valueOf(req.getParameter("prmNick"));
+
+	   MemberVO vo = new MemberVO();
+	   vo.setNickName(paramNick.trim());
+	   int chkPoint = memberService.chkDupNick(vo);
+
+	   out.print(chkPoint);
+	   out.flush();
+	   out.close();
+	  } catch (Exception e) {
+	   e.printStackTrace();
+	   out.print("1");
+	  }
+	 }
 
 
 	

@@ -96,6 +96,14 @@
 	</select>
 	
 	
+	<select id="chkDupNick" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*) AS CNT
+		FROM MEMBERS
+		WHERE 1 = 1
+		AND MEMBERS.NICK_NAME = #{nickName}
+        ]]>
+	</select>
 	
 
 	<resultMap type="member" id="memberMap">

@@ -1,5 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<script type="text/javascript">
+
+	function chkDupId() {
+		var prmId = $('#insertId').val();
+
+		if ($("#insertId").val() == '') {
+			alert('ID를 입력해주세요.');
+			return;
+		}
+
+		$.ajax({
+			type : 'POST',
+			data : "prmId=" + prmId,
+			dataType : 'text',
+			url : './chkDupId.do',
+			success : function(rData, textStatus, xhr) {
+				var chkRst = rData;
+				if (chkRst==0) {
+					alert("등록 가능 합니다.");
+					$("#idChk").val('Y');
+				} else {
+					alert("중복 되어 있습니다.");
+					$("#idChk").val('N');
+				}
+			},
+			error : function(xhr, status, e) {
+				alert(e);
+			}
+		});
+	}
+
+	function insertChk() {
+
+		var frm = document.companyForm;
+
+		if (!chkVal('insertId', '아이디'))
+			return false;
+		if ($("#idChk").val() == 'N') {
+			alert('ID체크를 해주세요.');
+			return;
+		}
+	}
+	/* -------------------------------------------------------------------------------------- */
+	
+	function chkDupNick() {
+		var prmNick = $('#insertNick').val();
+
+		if ($("#insertNick").val() == '') {
+			alert('Nick를 입력해주세요.');
+			return;
+		}
+
+		$.ajax({
+			type : 'POST',
+			data : "prmNick=" + prmNick,
+			dataType : 'text',
+			url : './chkDupNick.do',
+			success : function(rData, textStatus, xhr) {
+				var chkRst = rData;
+				if (chkRst==0) {
+					alert("등록 가능 합니다.");
+					$("#NickChk").val('Y');
+				} else {
+					alert("중복 되어 있습니다.");
+					$("#NickChk").val('N');
+				}
+			},
+			error : function(xhr, status, e) {
+				alert(e);
+			}
+		});
+	}
+
+	function insertChk2() {
+
+		var frm = document.companyForm;
+
+		if (!chkVal('insertNick', '아이디'))
+			return false;
+		if ($("#NickChk").val() == 'N') {
+			alert('Nick체크를 해주세요.');
+			return;
+		}
+	}
+	
+	
+	
+</script>
 <!-- BODY -->
 <body data-vide-bg="${pageContext.request.contextPath}/include/video/sail-away/sail-away" data-vide-options="{posterType: 'detect'}">
 
@@ -74,7 +163,13 @@
                         <h1 class="login-form-title">회원가입</h1>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" id="memberId" placeholder="ID" name="memberId"/>
+                    	<input type="hidden" id="idChk" value="N" /><!-- ID체크 했는지, 안했는지. -->
+                    	<div class="col-md-9">
+                        <input class="form-control" type="text" id="insertId" placeholder="ID" name="memberId"/>
+                        </div>
+                        <div class="col-md-3">
+                    	<input class="btn-base-bg btn-base-xs btn-block radius-3 margin-b-5" type="button" value="ID CHK" onclick="javascript:chkDupId();" />
+                    	</div>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="password" autocomplete="on" id="signup_password" placeholder="Password" name="password"/>
@@ -86,7 +181,13 @@
                         <input class="form-control" type="text" autocomplete="on" id="memberName" placeholder="name" name="memberName"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" id="nickName" placeholder="nickname" name="nickName"/>
+                    <input type="hidden" id="nickChk" value="N" />
+                    	<div class="col-md-9">
+                        <input class="form-control" type="text" autocomplete="on" id="insertNick" placeholder="nickname" name="nickName"/>
+                    	</div>
+                    	<div class="col-md-3">
+                    	<input class="btn-base-bg btn-base-xs btn-block radius-3 margin-b-5" type="button" value="NICK CHK" onclick="javascript:chkDupNick();" />
+                    	</div>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="date" autocomplete="on" id="birthDate" placeholder="birth" name="birthDate"/>

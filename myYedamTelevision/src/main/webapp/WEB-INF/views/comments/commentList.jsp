@@ -62,8 +62,8 @@ function makeCommentView(comment){
 	
 	var s="";
 	if(comment.memberId == "admin" /* "${login}" */){
-		s = "<input class=\"button\" type=\"button\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.commentNo+"')\"/>"
-		+"<input class=\"button\" type=\"button\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.commentNo+"')\"/>"
+		s = "<input class=\"button\" type=\"button\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.commentNo+"')\"/>"
+			+"<input class=\"button\" type=\"button\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.commentNo+"')\"/>"
 	}
 	var str = "<strong>" + comment.memberId +" : "+ "</strong>" + comment.commentText +"<span class=\"date\">"+ comment.writeDate+"</span>" 
 				+s

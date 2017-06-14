@@ -19,7 +19,7 @@
         					, REQUEST_DATE
         					, MEMBER_ID)
         VALUES(#{chargeNo}
-        		, '대기'
+        		, '0bb1'
         		, #{chargeMoney}
         		, #{chargePoint}
         		, #{paymentWay}
@@ -31,9 +31,18 @@
 	<update id="mainUpdateCharge">
         <![CDATA[
         UPDATE CHARGES SET
-        		APPROVE_STATUS = '승인'
+        		APPROVE_STATUS = '0bb2'
         		, APPROVE_DATE = SYSDATE
         WHERE CHARGE_NO = #{chargeNo}
+        ]]>
+	</update>
+
+	<update id="updatePoint"> 
+        <![CDATA[
+        UPDATE MEMBERS SET
+        		POINT = POINT + #{chargePoint}
+        WHERE MEMBER_ID = #{memberId}
+        
         ]]>
 	</update>
 

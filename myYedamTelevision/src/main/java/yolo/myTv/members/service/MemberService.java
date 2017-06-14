@@ -13,4 +13,5 @@ public interface MemberService {
     getMemberList(MemberVO vo);
 	public MemberVO login(MemberVO vo);
 	public void updatePoint(MemberVO vo, int point);
+	public int chkDupId(MemberVO vo);
 }

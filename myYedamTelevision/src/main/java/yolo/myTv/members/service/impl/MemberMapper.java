@@ -17,4 +17,5 @@ public interface MemberMapper {
     			getMemberList(MemberVO vo);
 	public List<MemberVO> getMemberListVO(MemberVO vo);
 	public void updatePoint(MemberVO vo, int point);
+	public int chkDupId(MemberVO vo);
 }

@@ -13,7 +13,14 @@
         					, BIRTH_DATE
         					, EMAIL
         					, TEL
-        					, MEMBER_IMAGE) 
+        					]]>
+        					<if test="memberImage != null and memberImage !='' ">	<!--ATTATCH_FILENAME이 있으면   -->
+        					<![CDATA[
+        					, MEMBER_IMAGE
+        					]]>
+        					</if>
+        					<![CDATA[
+        					) 
         VALUES(#{memberId}
         		, #{password}
         		, #{nickName}
@@ -21,8 +28,12 @@
 				, #{birthDate}
         		, #{email}
         		, #{tel}
+        		]]>
+        		<if test="memberImage != null and memberImage !='' ">
+        		<![CDATA[
         		, #{memberImage})
-        ]]>
+        		]]>
+        		</if>
 	</insert>
 
 	<update id="updateMember">
@@ -72,6 +83,20 @@
         WHERE MEMBER_ID = #{memberId}
         ]]>
 	</select>
+	
+	 
+	
+	<select id="chkDupId" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*) AS CNT
+		FROM MEMBERS
+		WHERE 1 = 1
+		AND MEMBERS.MEMBER_ID = #{memberId}
+        ]]>
+	</select>
+	
+	
+	
 
 	<resultMap type="member" id="memberMap">
 		<result property="memberId" column="MEMBER_ID" />
@@ -85,5 +110,6 @@
 		<result property="memberImage" column="MEMBER_IMAGE" />
 		<result property="bank" column="BANK" />
 		<result property="account" column="ACCOUNT" />
+		<result property="cnt" column="CNT" /> 
 	</resultMap>
 </mapper>

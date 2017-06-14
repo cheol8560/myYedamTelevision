@@ -68,7 +68,8 @@
                 <!-- End Forgot Password Form -->
 
                 <!-- Registration Form -->
-                <form class="signup-form display-none" action="${pageContext.request.contextPath}/memberInsert.do" method="post">
+                <form class="signup-form display-none" action="${pageContext.request.contextPath}/memberInsert.do" method="post"
+                			enctype="multipart/form-data">
                     <div class="margin-b-30">
                         <h1 class="login-form-title">회원가입</h1>
                     </div>
@@ -97,7 +98,7 @@
                         <input class="form-control" type="text" autocomplete="on" id="tel" placeholder="phoneNum" name="tel"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="file" autocomplete="on" id="memberImage" placeholder="img" name="memberImage"/>
+                        <input class="form-control" type="file" autocomplete="on" placeholder="img" name="uploadFile"/>
                     </div>
                     <div class="margin-b-30">
                         <p class="font-size-13">

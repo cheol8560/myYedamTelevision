@@ -12,6 +12,7 @@
 		<result property="broadcastStatus" column="BROADCAST_STATUS"/>
 		<result property="contentCode" column="CONTENT_CODE"/>
 		<result property="memberId" column="MEMBER_ID"/>
+		<result property="nickName" column="NICK_NAME"/>
 	</resultMap>
 
 	<insert id="insertBroadcast" parameterType="broadcast">
@@ -48,6 +49,7 @@
         	 , BROADCAST_STATUS
         	 , CONTENT_CODE
         	 , MEMBER_ID
+        	 , (SELECT NICK_NAME FROM MEMBERS WHERE MEMBER_ID = #{memberId}) as "nickName"
         FROM BROADCASTS
         WHERE 1=1
         <if test="broadcastNo != 0">
@@ -59,15 +61,17 @@
 	</select>
 
 	<select id="getBroadcastList" resultType="map">
-		SELECT BROADCAST_NO as "broadcastNo"
-			 , BROADCAST_TITLE as "broadcastTitle"
-			 , START_DATE as "startDate"
-			 , BROADCAST_STATUS as "broadcastStatus"
-			 , CONTENT_CODE as "contentCode"
-			 , MEMBER_ID as "memberId"
-			 , CHANNEL_ID as "channelId"
-		FROM BROADCASTS
+		SELECT B.BROADCAST_NO as "broadcastNo"
+			 , B.BROADCAST_TITLE as "broadcastTitle"
+			 , B.START_DATE as "startDate"
+			 , B.BROADCAST_STATUS as "broadcastStatus"
+			 , B.CONTENT_CODE as "contentCode"
+			 , B.MEMBER_ID as "memberId"
+			 , M.NICK_NAME as "nickName"
+			 , B.CHANNEL_ID as "channelId"
+		FROM BROADCASTS B, MEMBERS M
 		WHERE 1 = 1
+		AND B.MEMBER_ID = M.MEMBER_ID
 		<if test="broadcastStatus == 'e1'">
 		AND BROADCAST_STATUS = 'e1'
 		</if>

@@ -8,15 +8,14 @@
 <div class="wrapper animsition fullheight" >
 	<!-- Logo -->
 	<div class="bg-color-white" style="border-bottom: 2px solid #00bcd4;">
-		<div class="container-sm" style="margin-left: 30px;">
+		<div class="full-width-container" style="margin-left: 30px;">
 			<div class="col-md-10">
-				
 				<p class="font-size-30 font-style-italic font-family-droid line-height-2 margin-b-0">
 					<a href="${pageContext.request.contextPath}/">My Yedam Television</a>
 				</p>
 			</div>
-			<div class="col-md-2">
-			
+			<div class="col-md-2 text-center" style="padding-top:15px;">
+				<button type="button" id="broadcastEndBtn" class="btn-base-brd btn-base-xs radius-3">방송종료</button>
 			</div>
 		</div>
 	</div>
@@ -27,11 +26,9 @@
     <div class="full-width-container">
         <div class="row no-space-row">
             <!-- Left Area -->
-            <div class="col-md-8">
+            <div class="col-md-8" id="leftArea">
                 <!-- Video Player -->
-                <div class="full-width-container">
-					<video src="${pageContext.request.contextPath}/assets/video/sail-away/sail-away.mp4" autoplay="autoplay" controls="controls" width="100%" height="100%"></video>
-				</div>
+                <div class="full-width-container" id="videoArea"></div>
                 <!-- End Video Player -->
 				
 				<!-- Divider v1 -->
@@ -51,8 +48,8 @@
 								<i class="theme-icons theme-icons-dark-bg theme-icons-lg radius-circle icon-genius"></i>
 							</div>
 							<div class="icon-box-v4-body">
-								<h3 class="icon-box-v4-body-title">송욜로의 점심시간</h3>
-								<p class="icon-box-v4-body-text">송욜로</p>
+								<h3 class="icon-box-v4-body-title">${broadcastResult.broadcastTitle}</h3>
+								<p class="icon-box-v4-body-text">${broadcastResult.nickName}</p>
 							</div>
 						</div>
 						<!-- End Icon Box v4 -->
@@ -87,7 +84,7 @@
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
-                        <div class="blog-sidebar-content scrollbar" style="min-height:665px;">
+                        <div class="blog-sidebar-content scrollbar" id="chattingArea">
                            
                         </div>
                         <div class="margin-b-20" style="border-top: 1px solid #00bcd4;">
@@ -227,6 +224,74 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/form-modal.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/magnific-popup.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
+
+<!-- Page Javascript Code -->
+<script>
+"use strict";
+
+	/* 시청자 방송 관련 Javascript */
+	
+	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
+	var channelId = "${broadcastResult.channelId}";
+	var appViewer;
+	var options;
+	
+	// 시청자 객체 및 변수 설정
+	appViewer = new PlayRTC({
+	      projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
+	      // remoteMediaTarget: 'viewerVideo',
+	      data: true,
+	      video: false,
+	      audio: false
+	});
+	
+	// 시청자 입장 후 방송 시작
+	window.addEventListener("load", function(event) {
+		event.preventDefault();
+		options = {
+			peer: {
+				uid: "${login.memberId}",
+				userName: "${login.nickName}"
+			}
+		}
+		appViewer.connectChannel(channelId, options);
+	}, false);
+	
+	// 방송 시작 후 video Tag 생성
+	appViewer.on("addRemoteStream", function(pid, uid, stream) {
+		var video = PlayRTC.utils.createVideo(stream, {
+			autoPlay: true,
+			controls: false,
+			width: "100%",
+			height: "100%"
+		});
+		document.getElementById("videoArea").appendChild(video);
+	});
+	
+	// 시청자 입장 후 방송 종료
+	broadcastEndBtn.addEventListener("click", function(event) {
+		event.preventDefault();
+		var peerId = appViewer.getPeerId(); 
+		if(confirm("방송을 종료하시겠습니까?")) {
+			appViewer.disconnectChannel();
+			$("video").remove();
+		}
+	});
+	
+	/* End 시청자 방송 관련 Javascript */
+
+	// 동적 크기 조절
+	$(function() {
+		$("#videoArea").css( "height", $("#leftArea").width()/2+40 );
+		$("#chattingArea").css( "height", $("#videoArea").height()-22 );
+		$(window).resize(function() {
+			$("#chattingArea").css( "height", $("#videoArea").height()-22 );
+		});
+	});
+	
+</script>
+<!-- End Page Javascript Code -->
+
 <!--========== END JAVASCRIPTS ==========-->
 </body>
 <!-- END BODY -->

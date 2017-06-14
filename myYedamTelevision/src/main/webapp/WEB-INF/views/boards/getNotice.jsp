@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!--========== PAGE CONTENT ==========-->
 <!-- FAQ -->
@@ -80,13 +81,13 @@
 							</div>
 						</div>
 						<input type="hidden" name="category" value="d1" />
+					<br><br>
 					</form>
 
 					<!-- Comment Form v1 -->
-					<jsp:include
-						page="${pageContext.request.contextPath}/CommentController">
-						<jsp:param name="boardNo" value="${notice.boardNo}" />
-					</jsp:include> 
+					
+					
+					<c:import url="../comments/commentList.jsp?boardNo=${notice.boardNo}"></c:import>  
 				</div>
 				<!-- End Comment Form v1 -->
 			</div>

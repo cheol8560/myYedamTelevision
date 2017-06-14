@@ -27,12 +27,10 @@
     <div class="full-width-container">
         <div class="row no-space-row">
             <!-- Left Area -->
-            <div class="col-md-8">
+            <div class="col-md-8" id="leftArea">
 								
 				<!-- Video Player -->
-                <div class="full-width-container">
-					<video id="localVideo" width="100%" height="100%"></video>
-				</div>
+                <div class="full-width-container" id="videoArea"></div>
                 <!-- End Video Player -->
 				
 				<!-- Divider v1 -->
@@ -55,7 +53,6 @@
 							 -->
 							<div class="icon-box-v4-body">
 								<h3 class="icon-box-v4-body-title" id="applyBroadcastTitle"></h3>
-								<!-- <p class="icon-box-v4-body-text">송욜로</p> -->
 							</div>
 						</div>
 						<!-- End Icon Box v4 -->
@@ -86,7 +83,7 @@
             <!--  End Left Area -->
             
             <!-- Right Area --> 
-            <div class="col-md-4">
+            <div class="col-md-4 ">
                 <!-- Chatting Area -->
 				<div class="col-md-6 padding-0" style="border-right:1px solid #00bcd4; border-left:1px solid #00bcd4;">
                     <div class="blog-sidebar">
@@ -94,9 +91,23 @@
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
-                        <div class="blog-sidebar-content scrollbar" style="height:510px;">
-                           
-                        </div>
+                        
+                        <div class="blog-sidebar-content scrollbar" id="chattingArea">
+							<!-- 
+							<article class="latest-tuts">
+								<div class="latest-tuts-media">
+									<img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/06.jpg" alt="">
+								</div>
+								<div class="latest-tuts-content">
+									<h5 class="latest-tuts-content-title">
+										<a href="#">Visual brand designing</a>
+									</h5>
+									<small class="latest-tuts-content-time">35 minutes ago</small>
+								</div>
+							</article>
+							 -->
+						</div>
+						
                         <div class="margin-b-10" style="border-top: 1px solid #00bcd4; height:145px;">
 		                    <!-- Comment Form v1 -->
 		                    <div class="bg-color-white">
@@ -142,9 +153,15 @@
 								<div class="row">
 									<div class="col-md-12 margin-b-30">
 										<label for="contentCode">방송주제</label>
-										<input type="text" class="form-control comment-form-v1-input"
-											name="contentCode" id="contentCode" value="${broadcastResult.contentCode}"
-											required>
+										<select id="contentCode" name="contentCode" class="form-control comment-form-v1-input" required>
+										<c:forEach items="${contentList}" var="content">
+											<option class="form-control comment-form-v1-input"
+													value="${content.contentCode}">${content.contentName}</option>	
+										</c:forEach>
+										</select>
+										<script>
+											$("#contentCode").val("${broadcastResult.contentCode}");
+										</script>
 									</div>
 								</div>
 								<button type="submit" id="broadcastInfoUpdBtn" class="btn-grey-brd btn-base-xs radius-3" 
@@ -209,7 +226,7 @@
 <script>
 "use strict";
 
-	/* BJ 관련 자바스크립트 */
+	/* BJ 관련 Javascript */
 	
 	var broadcastStartBtn = document.querySelector("#broadcastStartBtn");
 	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
@@ -217,25 +234,30 @@
 	var inputChannelId = document.querySelector("#channelId");
 	var inputBroadcastNo = document.querySelector("#broadcastNo");
 	var appBj;
-	var userId;
-	var nickName;
+	var options;
 	
-	// BJ 객체 설정
+	// BJ 객체 및 변수 설정
 	appBj = new PlayRTC({
 		projectKey: "60ba608a-e228-4530-8711-fa38004719c1",
-		localMediaTarget: "localVideo", 
+		localMediaTarget: "bjVideo",
 		video: {
-			"minWidth": 1000,
-			"minHeight": 562
+			"minWidth": 800,
+			"minHeight": 600
 		}
 	});
 	 
 	/* BJ 이벤트 핸들러 처리 */ 
 	
 	// BJ connectChannel 이벤트 핸들러
-	appBj.on("connectChannel", function(channelId) {
+	appBj.on("connectChannel", function(channelId, options) {
 		inputChannelId.value = channelId;
-		// inputBroadcastNo.value = "${broadcast.broadcastNo}";
+		
+		options = {
+			peer: {
+				uid: "${login.memberId}",
+				userName: "${login.nickName}"
+			}
+		};
 		
 		// 방송 등록 AJAX 처리
 		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1";
@@ -264,6 +286,18 @@
 		
 	});
 	
+	// 방송 시작 후 video Tag 생성
+	appBj.on("addLocalStream", function(localStream) {
+		var video = PlayRTC.utils.createVideo(localStream, {
+			autoPlay: true,
+			controls: false,
+			width: "100%",
+			height: "100%"
+		});
+		
+		document.getElementById("videoArea").appendChild(video);
+	});
+	
 	// BJ error 이벤트 핸들러
 	appBj.on("error", function(code, desc, playload) {
 		alert("Error! \n" + code + " : " + desc);
@@ -272,14 +306,12 @@
 	// 방송 시작 버튼 이벤트
 	broadcastStartBtn.addEventListener("click", function(event) {
 		event.preventDefault();
-		userId = "${login.memberId}";
-		nickName = "${login.nickName}"
-		appBj.createChannel({
-			peer: {
-				uid: userId,
-				userName: nickName
-			}
-		});
+		if(PlayRTC.utils.userMediaSupport) {
+			appBj.createChannel();
+		} else {
+			alert("방송 가능한 미디어 장치가 없습니다.");
+		}
+		
 	}, false);
 	
 	// 방송 종료 이벤트(방송종료 버튼)
@@ -306,6 +338,7 @@
 					broadcastInfoUpdBtn.classList.remove("btn-base-bg");
 					broadcastInfoUpdBtn.classList.add("btn-grey-bg");
 					
+					$("video").remove();
 				})
 				.fail(function(jqxhr, textStatus, error) {
 					var err = textStatus + " : " + error;
@@ -336,7 +369,17 @@
 			});
 	});
 	
-	/* End BJ 방송 관련 자바스크립트 */
+	/* End BJ 방송 관련 Javascript */
+	
+	// 동적 크기 조절
+	$(function() {
+		$("#videoArea").css( "height", $("#leftArea").width()/2 );
+		$("#chattingArea").css( "height", $("#videoArea").height()-27 );
+		$(window).resize(function() {
+			$("#videoArea").css( "height", $("#leftArea").width()/2 );
+			$("#chattingArea").css( "height", $("#videoArea").height()-27 );
+		});
+	});
 	
 </script>
 <!-- End Page Javascript Code -->

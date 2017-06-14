@@ -2,6 +2,15 @@ package yolo.myTv.members.service;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class MemberVO {
 	private String memberId;
 	private String password;
@@ -11,21 +20,19 @@ public class MemberVO {
 	private String email;
 	private String tel;
 	private int point;
-	private String memberImage = "";
+	
+	private int cnt;
+	
+	
+	@XmlTransient
+	private MultipartFile uploadFile;
 	private String bank;
 	private String account;
+	@XmlTransient
+	private String memberImage;
 	public String getMemberId() {
 		return memberId;
 	}
-	
-	public String getMemberName() {
-		return memberName;
-	}
-
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
-	}
-
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
@@ -40,6 +47,12 @@ public class MemberVO {
 	}
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 	public Date getBirthDate() {
 		return birthDate;
@@ -65,11 +78,12 @@ public class MemberVO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	public String getMemberImage() {
-		return memberImage;
+	@JsonIgnore
+	public MultipartFile getUploadFile() {
+		return uploadFile;
 	}
-	public void setMemberImage(String memberImage) {
-		this.memberImage = memberImage;
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	public String getBank() {
 		return bank;
@@ -83,15 +97,33 @@ public class MemberVO {
 	public void setAccount(String account) {
 		this.account = account;
 	}
-
+	@JsonIgnore
+	public String getMemberImage() {
+		return memberImage;
+	}
+	public void setMemberImage(String memberImage) {
+		this.memberImage = memberImage;
+	}
+	
+	
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	@Override
 	public String toString() {
 		return "MemberVO [memberId=" + memberId + ", password=" + password
 				+ ", nickName=" + nickName + ", memberName=" + memberName
 				+ ", birthDate=" + birthDate + ", email=" + email + ", tel="
-				+ tel + ", point=" + point + ", memberImage=" + memberImage
-				+ ", bank=" + bank + ", account=" + account + "]";
+				+ tel + ", point=" + point + ", cnt=" + cnt + ", uploadFile="
+				+ uploadFile + ", bank=" + bank + ", account=" + account
+				+ ", memberImage=" + memberImage + "]";
 	}
 	
+	
+
 
 }

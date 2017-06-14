@@ -5,8 +5,8 @@
 'use strict';
 
 	function bjOpen(url, name) {
-		var userwidth = (window.outerWidth - window.innerWidth);
-		var userheight = (window.outerHeight - window.innerHeight);
+		var userWidth = $( document ).width() * 0.7;
+		var userHeight = $( document ).height() * 0.74;
 		window.open(url, name,'scrollbars=yes, toolbar=no, location=no, status=yes, ' + 
-				' menubar=no, resizable=yes, width=1500, height=780, left=0, top=0');
+				' menubar=no, resizable=yes, width='+userWidth+', height='+userHeight+', left=0, top=0');
 	}

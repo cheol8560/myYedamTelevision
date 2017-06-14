@@ -16,7 +16,6 @@
 			</div>
 			<div class="col-md-2 text-center" style="padding-top:15px;">
 				<button type="button" id="broadcastEndBtn" class="btn-base-brd btn-base-xs radius-3">방송종료</button>
-				<button type="button" id="debugViewBtn" class="btn-base-brd btn-base-xs radius-3">디버그뷰</button>
 			</div>
 		</div>
 	</div>
@@ -27,11 +26,9 @@
     <div class="full-width-container">
         <div class="row no-space-row">
             <!-- Left Area -->
-            <div class="col-md-8">
+            <div class="col-md-8" id="leftArea">
                 <!-- Video Player -->
-                <div class="full-width-container">
-					<video id="viewerVideo" width="100%" height="100%"></video>
-				</div>
+                <div class="full-width-container" id="videoArea"></div>
                 <!-- End Video Player -->
 				
 				<!-- Divider v1 -->
@@ -87,7 +84,7 @@
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
-                        <div class="blog-sidebar-content scrollbar" style="min-height:665px;">
+                        <div class="blog-sidebar-content scrollbar" id="chattingArea">
                            
                         </div>
                         <div class="margin-b-20" style="border-top: 1px solid #00bcd4;">
@@ -242,37 +239,56 @@
 	// 시청자 객체 및 변수 설정
 	appViewer = new PlayRTC({
 	      projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
-	      remoteMediaTarget: 'viewerVideo',
+	      // remoteMediaTarget: 'viewerVideo',
 	      data: true,
 	      video: false,
 	      audio: false
 	});
 	
 	// 시청자 입장 후 방송 시작
-	window.addEventListener("load", function() {
+	window.addEventListener("load", function(event) {
+		event.preventDefault();
 		options = {
 			peer: {
 				uid: "${login.memberId}",
 				userName: "${login.nickName}"
 			}
 		}
-		
 		appViewer.connectChannel(channelId, options);
+	}, false);
+	
+	// 방송 시작 후 video Tag 생성
+	appViewer.on("addRemoteStream", function(pid, uid, stream) {
+		var video = PlayRTC.utils.createVideo(stream, {
+			autoPlay: true,
+			controls: false,
+			width: "100%",
+			height: "100%"
+		});
+		document.getElementById("videoArea").appendChild(video);
 	});
 	
-	broadcastEndBtn.addEventListener("click", function() {
-		console.log(appViewer.getPeerId());
+	// 시청자 입장 후 방송 종료
+	broadcastEndBtn.addEventListener("click", function(event) {
+		event.preventDefault();
+		var peerId = appViewer.getPeerId(); 
 		if(confirm("방송을 종료하시겠습니까?")) {
 			appViewer.disconnectChannel();
+			$("video").remove();
 		}
-	})
-	
-	$("#debugViewBtn").click(function() {
-		PlayRTC.utils.debugViewShow();
 	});
 	
 	/* End 시청자 방송 관련 Javascript */
 
+	// 동적 크기 조절
+	$(function() {
+		$("#videoArea").css( "height", $("#leftArea").width()/2+40 );
+		$("#chattingArea").css( "height", $("#videoArea").height()-22 );
+		$(window).resize(function() {
+			$("#chattingArea").css( "height", $("#videoArea").height()-22 );
+		});
+	});
+	
 </script>
 <!-- End Page Javascript Code -->
 

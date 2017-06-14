@@ -22,6 +22,7 @@
 		
 					<!-- Portfolio 5 Columns Grid -->
 					<div id="portfolio-5-col-grid" class="cbp">
+					
 					<c:forEach items="${broadcastList}" var="broadcast" >	
 						<!-- Cbp Item -->
 						<div class="cbp-item ${broadcast.contentCode} theme-portfolio-item-v2 theme-portfolio-item-xs">
@@ -52,11 +53,12 @@
 						<!-- End Cbp Item -->
 					</c:forEach>
 					
+					
 						<!-- Cbp Item -->
-						<div class="cbp-item idea web-design theme-portfolio-item-v2 theme-portfolio-item-xs">
+						<div class="cbp-item 1 theme-portfolio-item-v2 theme-portfolio-item-xs">
 							<div class="cbp-caption">
 								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
-									<img src="assets/img/970x647/02.jpg" alt="">
+									<img src="assets/img/970x647/01.jpg" alt="">
 									<div class="theme-icons-wrap theme-portfolio-lightbox">
 										<a class="cbp-lightbox" href="assets/img/970x647/02.jpg" data-title="Portfolio"> 
 											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
@@ -66,122 +68,19 @@
 							</div>
 							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
 								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="${pageContext.request.contextPath}/getOnBroadcast.do">송욜로의 점심시간</a>
+									<a href="#">
+										송욜로의 점심시간
+									</a>
 								</h4>
 								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
-									<span style="float: left;">송욜로</span> 
+									<span style="float: left;">BJ송욜로</span> 
 									<span style="float: right;">
 										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
 									</span>
 								</span>
 							</div>
-						</div>
 						<!-- End Cbp Item -->
-		
-						<!-- Cbp Item -->
-						<div class="cbp-item graphic web-design theme-portfolio-item-v2 theme-portfolio-item-xs">
-							<div class="cbp-caption">
-								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
-									<img src="assets/img/970x647/03.jpg" alt="">
-									<div class="theme-icons-wrap theme-portfolio-lightbox">
-										<a class="cbp-lightbox" href="assets/img/970x647/03.jpg" data-title="Portfolio"> 
-											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
-								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="${pageContext.request.contextPath}/getOnBroadcast.do">송욜로의 점심시간</a>
-								</h4>
-								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
-									<span style="float: left;">송욜로</span> 
-									<span style="float: right;">
-										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
-									</span>
-								</span>
-							</div>
 						</div>
-						<!-- End Cbp Item -->
-		
-						<!-- Cbp Item -->
-						<div class="cbp-item idea graphic theme-portfolio-item-v2 theme-portfolio-item-xs">
-							<div class="cbp-caption">
-								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
-									<img src="assets/img/970x647/04.jpg" alt="">
-									<div class="theme-icons-wrap theme-portfolio-lightbox">
-										<a class="cbp-lightbox" href="assets/img/970x647/04.jpg" data-title="Portfolio"> 
-											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
-								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="${pageContext.request.contextPath}/getOnBroadcast.do">송욜로의 점심시간</a>
-								</h4>
-								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
-									<span style="float: left;">송욜로</span> 
-									<span style="float: right;">
-										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
-									</span>
-								</span>
-							</div>
-						</div>
-						<!-- End Cbp Item -->
-						
-						<!-- Cbp Item -->
-						<div class="cbp-item idea graphic theme-portfolio-item-v2 theme-portfolio-item-xs">
-							<div class="cbp-caption">
-								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
-									<img src="assets/img/970x647/04.jpg" alt="">
-									<div class="theme-icons-wrap theme-portfolio-lightbox">
-										<a class="cbp-lightbox" href="assets/img/970x647/04.jpg" data-title="Portfolio"> 
-											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
-								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="${pageContext.request.contextPath}/getOnBroadcast.do">송욜로의 점심시간</a>
-								</h4>
-								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
-									<span style="float: left;">송욜로</span> 
-									<span style="float: right;">
-										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
-									</span>
-								</span>
-							</div>
-						</div>
-						<!-- End Cbp Item -->
-						
-						<!-- Cbp Item -->
-						<div class="cbp-item idea graphic theme-portfolio-item-v2 theme-portfolio-item-xs">
-							<div class="cbp-caption">
-								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
-									<img src="assets/img/970x647/04.jpg" alt="">
-									<div class="theme-icons-wrap theme-portfolio-lightbox">
-										<a class="cbp-lightbox" href="assets/img/970x647/04.jpg" data-title="Portfolio"> 
-											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
-								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="${pageContext.request.contextPath}/getOnBroadcast.do">송욜로의 점심시간</a>
-								</h4>
-								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
-									<span style="float: left;">송욜로</span> 
-									<span style="float: right;">
-										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
-									</span>
-								</span>
-							</div>
-						</div>
-						<!-- End Cbp Item -->
-						
 					</div>
 					<!-- End Portfolio 5 Columns Grid -->
 		

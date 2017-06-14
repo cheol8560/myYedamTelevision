@@ -27,12 +27,10 @@
     <div class="full-width-container">
         <div class="row no-space-row">
             <!-- Left Area -->
-            <div class="col-md-8">
+            <div class="col-md-8" id="leftArea">
 								
 				<!-- Video Player -->
-                <div class="full-width-container">
-					<video id="bjVideo" width="100%" height="100%"></video>
-				</div>
+                <div class="full-width-container" id="videoArea"></div>
                 <!-- End Video Player -->
 				
 				<!-- Divider v1 -->
@@ -55,7 +53,6 @@
 							 -->
 							<div class="icon-box-v4-body">
 								<h3 class="icon-box-v4-body-title" id="applyBroadcastTitle"></h3>
-								<!-- <p class="icon-box-v4-body-text">송욜로</p> -->
 							</div>
 						</div>
 						<!-- End Icon Box v4 -->
@@ -86,7 +83,7 @@
             <!--  End Left Area -->
             
             <!-- Right Area --> 
-            <div class="col-md-4">
+            <div class="col-md-4 ">
                 <!-- Chatting Area -->
 				<div class="col-md-6 padding-0" style="border-right:1px solid #00bcd4; border-left:1px solid #00bcd4;">
                     <div class="blog-sidebar">
@@ -94,9 +91,23 @@
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
-                        <div class="blog-sidebar-content scrollbar" style="height:510px;">
-                           
-                        </div>
+                        
+                        <div class="blog-sidebar-content scrollbar" id="chattingArea">
+							<!-- 
+							<article class="latest-tuts">
+								<div class="latest-tuts-media">
+									<img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/06.jpg" alt="">
+								</div>
+								<div class="latest-tuts-content">
+									<h5 class="latest-tuts-content-title">
+										<a href="#">Visual brand designing</a>
+									</h5>
+									<small class="latest-tuts-content-time">35 minutes ago</small>
+								</div>
+							</article>
+							 -->
+						</div>
+						
                         <div class="margin-b-10" style="border-top: 1px solid #00bcd4; height:145px;">
 		                    <!-- Comment Form v1 -->
 		                    <div class="bg-color-white">
@@ -204,7 +215,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/app.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/custom.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc-debug-view.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/animsition.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/scrollbar.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/form-modal.js"></script>
@@ -231,8 +241,8 @@
 		projectKey: "60ba608a-e228-4530-8711-fa38004719c1",
 		localMediaTarget: "bjVideo",
 		video: {
-			"minWidth": 1000,
-			"minHeight": 562
+			"minWidth": 800,
+			"minHeight": 600
 		}
 	});
 	 
@@ -248,8 +258,6 @@
 				userName: "${login.nickName}"
 			}
 		};
-		
-		console.log(appBj.getAllPeer());
 		
 		// 방송 등록 AJAX 처리
 		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1";
@@ -276,6 +284,18 @@
 				alert(err);
 			});
 		
+	});
+	
+	// 방송 시작 후 video Tag 생성
+	appBj.on("addLocalStream", function(localStream) {
+		var video = PlayRTC.utils.createVideo(localStream, {
+			autoPlay: true,
+			controls: false,
+			width: "100%",
+			height: "100%"
+		});
+		
+		document.getElementById("videoArea").appendChild(video);
 	});
 	
 	// BJ error 이벤트 핸들러
@@ -318,6 +338,7 @@
 					broadcastInfoUpdBtn.classList.remove("btn-base-bg");
 					broadcastInfoUpdBtn.classList.add("btn-grey-bg");
 					
+					$("video").remove();
 				})
 				.fail(function(jqxhr, textStatus, error) {
 					var err = textStatus + " : " + error;
@@ -349,6 +370,16 @@
 	});
 	
 	/* End BJ 방송 관련 Javascript */
+	
+	// 동적 크기 조절
+	$(function() {
+		$("#videoArea").css( "height", $("#leftArea").width()/2 );
+		$("#chattingArea").css( "height", $("#videoArea").height()-27 );
+		$(window).resize(function() {
+			$("#videoArea").css( "height", $("#leftArea").width()/2 );
+			$("#chattingArea").css( "height", $("#videoArea").height()-27 );
+		});
+	});
 	
 </script>
 <!-- End Page Javascript Code -->

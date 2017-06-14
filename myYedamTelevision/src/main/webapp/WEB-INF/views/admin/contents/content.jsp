@@ -13,9 +13,7 @@
 		
 		$('#contentUpdate').modal({backdrop:false});
 		
-		$.get( '${pageContext.request.contextPath}/getContent.do', "contentCode="+t, function(jqXHR) {
-		    alert( "success" );
-		}, 'json' /* xml, text, script, html */)
+		$.get( '${pageContext.request.contextPath}/getContent.do', "contentCode="+t, 'json' /* xml, text, script, html */)
 		.done(function(data) {
 			$('[name="contentCode"]').val(data.contentCode);
 			$('[name="contentName"]').val(data.contentName);
@@ -23,11 +21,6 @@
 			$('[name="contentIntro"]').val(data.contentIntro);
 			
 		})
-		.fail(function(jqXHR) {
-		    alert( "error" );
-		})
-		.always(function(jqXHR) {
-		});
 
 	}
 	
@@ -73,15 +66,15 @@
 									<div class="modal-body">
 										<div class="form-group">
 											<input type="text" id="name-input" class="form-control"
-												placeholder="컨텐츠 명" name="contentName">
+												placeholder="컨텐츠 명" name="contentName" >
 										</div>
 										<div class="form-group">
 											<input type="text" id="position-input" class="form-control"
-												placeholder="컨텐츠 아이콘" name="contentIcon">
+												placeholder="컨텐츠 아이콘" name="contentIcon" >
 										</div>
 										<div class="form-group">
 											<input type="text" id="age-input" class="form-control"
-												placeholder="컨텐츠 소개" name="contentIntro">
+												placeholder="컨텐츠 소개" name="contentIntro" >
 										</div>
 									</div>
 
@@ -107,7 +100,7 @@
 									<div class="modal-body">
 									<div class="form-group">
 											<input type="text" id="name-input" class="form-control"
-												placeholder="컨텐츠 코드" name="contentCode" >
+												placeholder="컨텐츠 코드" name="contentCode" readonly="readonly" >
 										</div>
 										<div class="form-group">
 											<input type="text" id="name-input" class="form-control"

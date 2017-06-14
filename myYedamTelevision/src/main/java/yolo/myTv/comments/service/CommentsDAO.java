@@ -29,15 +29,15 @@ public class CommentsDAO extends DAO {
 		try {
 			conn = connect();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from COMMENTS where boardNo="+boardNo+" order by commentNo ");
+			rs = stmt.executeQuery("select * from COMMENTS where board_No="+boardNo+" order by comment_No ");
 			
 			while (rs.next()) {
 				HashMap<String, Object> map = new HashMap<String, Object>();
-				map.put("commentNo", rs.getString("commentNo"));
-				map.put("memberId", rs.getString("memberId"));
-				map.put(("commentText"), rs.getString("commentText"));
-				map.put("writeDate", rs.getString("writeDate"));
-				map.put("boardNo", rs.getString("boardNo"));
+				map.put("commentNo", rs.getString("comment_No"));
+				map.put("memberId", rs.getString("member_Id"));
+				map.put(("commentText"), rs.getString("comment_Text"));
+				map.put("writeDate", rs.getString("write_Date"));
+				map.put("boardNo", rs.getString("board_No"));
 				list.add(map);
 			}
 		} catch (Throwable e) {
@@ -70,31 +70,32 @@ public class CommentsDAO extends DAO {
 		try {
 			conn = connect();
 			conn.setAutoCommit(false);   //트랜잭션 처리
-			String sql ="update COMMENTS set  commentText=?, writeDate=sysdate where commentNO=? "; 
+			String sql ="update COMMENTS set  comment_Text=?, write_Date=sysdate where comment_No=? "; 
 			pstmtCommentInsert = conn.prepareStatement(sql);
 			//pstmtCommentInsert.setString(1, bean.getWriter());
 			pstmtCommentInsert.setString(1, bean.getCommentText());
-			pstmtCommentInsert.setString(2, bean.getCommentText());
+			pstmtCommentInsert.setString(2, bean.getCommentNo());
 			pstmtCommentInsert.executeUpdate();
 			conn.commit();   // 커밋
 			
-			sql="select * from COMMENTS where commentNO=?";
+			sql="select * from COMMENTS where comment_No=?";
 			pstmt = conn.prepareStatement(sql) ;
-			pstmt.setString(1, bean.getCommentText());
+			pstmt.setString(1, bean.getCommentNo());
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("commentNO", rs.getString("commentNO"));
-			map.put("memberId",  rs.getString("memberId"));
-			map.put(("commentText"), rs.getString("commentText"));
-			map.put("writeDate", rs.getString("writeDate"));
+			map.put("commentNo", rs.getString("comment_No"));
+			map.put("memberId",  rs.getString("member_Id"));
+			map.put(("commentText"), rs.getString("comment_Text"));
+			map.put("writeDate", rs.getString("write_Date"));
 			
 			return map;
 		} catch (Throwable e) {
 			try {
 				conn.rollback();  //롤백
 			} catch (SQLException ex) {
-			}
+				ex.printStackTrace();
+			}e.printStackTrace();
 			throw new Exception(e.getMessage());
 		} finally {
 			conn.close();
@@ -107,13 +108,13 @@ public class CommentsDAO extends DAO {
 		try {
 			conn = connect();
 			conn.setAutoCommit(false);   //트랜잭션 처리
-			String sql ="delete COMMENTS where commentNO=? "; 
+			String sql ="delete COMMENTS where comment_No=? "; 
 			pstmtCommentInsert = conn.prepareStatement(sql);
-			pstmtCommentInsert.setString(1, bean.getCommentNO());
+			pstmtCommentInsert.setString(1, bean.getCommentNo());
 			pstmtCommentInsert.executeUpdate();
 			conn.commit();   // 커밋
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("commentNo", bean.getCommentNO()); 
+			map.put("commentNo", bean.getCommentNo()); 
 			return map;
 		} catch (Throwable e) {
 			try {
@@ -138,14 +139,14 @@ public class CommentsDAO extends DAO {
 			conn = connect();
 			conn.setAutoCommit(false);   //트랜잭션 처리
 			stmtIdSelect = conn.createStatement();
-			rsIdSelect = stmtIdSelect.executeQuery("SELECT NVL(MAX(commentNo), 0) + 1 FROM COMMENTS");
+			rsIdSelect = stmtIdSelect.executeQuery("SELECT NVL(MAX(comment_No), 0) + 1 as Comment_No,sysdate FROM COMMENTS");
 			if (rsIdSelect.next()) {
-				nextcommentNo = rsIdSelect.getInt("VALUE");
+				nextcommentNo = rsIdSelect.getInt("Comment_No");
 				date=rsIdSelect.getString(2);
 				System.out.println(date);
 			}
 			nextcommentNo++;  //시퀀스 용도
-			pstmtCommentInsert = conn.prepareStatement("insert into COMMENTS(commentNo, memberId, commentText, writeDate, boardNo) values (?, ?, ?, sysdate, ?)");
+			pstmtCommentInsert = conn.prepareStatement("insert into COMMENTS(comment_No, member_Id, comment_Text, write_Date, board_No) values (?, ?, ?, sysdate, ?)");
 			pstmtCommentInsert.setInt(1, nextcommentNo);
 			pstmtCommentInsert.setString(2, bean.getMemberId());
 			pstmtCommentInsert.setString(3, bean.getCommentText());
@@ -164,6 +165,7 @@ public class CommentsDAO extends DAO {
 			try {
 				conn.rollback();  //롤백
 			} catch (SQLException ex) {
+				ex.printStackTrace();
 			}
 			throw new Exception(e.getMessage());
 		}
@@ -174,7 +176,7 @@ public class CommentsDAO extends DAO {
 		try {
 			conn = connect();
 			conn.setAutoCommit(false);   //트랜잭션 처리
-			String sql ="delete COMMENTS where boardNo=? "; 
+			String sql ="delete COMMENTS where board_No=? "; 
 			pstmtCommentInsert = conn.prepareStatement(sql);
 			pstmtCommentInsert.setString(1, boardNo);
 			pstmtCommentInsert.executeUpdate();

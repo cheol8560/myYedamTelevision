@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.myTv.exchanges.service.impl.ExchangeMapper">
+
+	<resultMap type="exchange" id="exchangeResult">
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="exchangeNo" column="EXCHANGE_NO" />
+		<result property="requestDate" column="REQUEST_DATE" />
+		<result property="requestPoint" column="REQUEST_POINT" />
+		<result property="realReceipt" column="REAL_RECEIPT" />
+		<result property="commission" column="COMMISSION" />
+		<result property="approveDate" column="APPROVE_DATE" />
+		<result property="approveStatus" column="APPROVE_STATUS" />
+	</resultMap>
+
+	<insert id="insertExchange" parameterType="exchange">
+	<selectKey keyProperty="exchangeNo" resultType="int" order="BEFORE">
+	SELECT NVL(MAX(EXCHANGE_NO), 0) + 1 FROM EXCHANGES
+	</selectKey>
+        <![CDATA[  
+        INSERT INTO EXCHANGES(EXCHANGE_NO
+        					, REQUEST_DATE
+        					, REQUEST_POINT
+        					, REAL_RECEIPT
+        					, COMMISSION
+        					, APPROVE_DATE
+        					, APPROVE_STATUS
+        					, MEMBER_ID)
+        VALUES(#{exchangeNo}
+        		, #{requestDate}
+        		, #{requestPoint}
+        		, #{realReceipt}
+        		, #{commission}
+        		, #{approveDate}
+        		, '0bb1'
+        		, #{memberId})
+        ]]>
+	</insert>
+	
+	<update id="mainUpdateCharge">
+        <![CDATA[
+        UPDATE CHARGES SET
+        		APPROVE_STATUS = '0bb2'
+        		, APPROVE_DATE = SYSDATE
+        WHERE EXCHANGE_NO = #{exchangeNo}
+        ]]>
+	</update>
+
+	<update id="updatePoint"> 
+        <![CDATA[
+        UPDATE MEMBERS SET
+        		POINT = POINT - #{exchangePoint}
+        WHERE MEMBER_ID = #{memberId}
+        
+        ]]>
+	</update>
+
+	<select id="getCharge" resultMap="exchangeResult">
+        <![CDATA[
+        SELECT EXCHANGE_NO
+        		, REQUEST_DATE
+        		, REQUEST_POINT
+        		, REAL_RECEIPT
+        		, COMMISSION
+        		, APPROVE_DATE
+        		, APPROVE_STATUS
+        		, MEMBER_ID
+        FROM EXCHANGES 
+        WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</select>
+
+	
+</mapper>

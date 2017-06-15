@@ -31,9 +31,17 @@
 		<result property="sendPoint" column="SEND_POINT" />
 		<result property="receivePoint" column="RECEIVE_POINT" />
 	</resultMap>
+	
+	<resultMap type="translate" id="translatePointVOMap">
+		<result property="translateId" column="TRANSLATE_ID" />
+		<result property="translatePoint" column="TRANSLATE_POINT" />
+		<result property="sendMemberId" column="SEND_MEMBER_ID" />
+		<result property="receiveMemberId" column="RECEIVE_MEMBER_ID" />
+		<result property="translateDate" column="TRANSLATE_DATE" />
+	</resultMap>
 
 
-	<select id="getTranslatePointList" resultType="translate">
+	<select id="getTranslatePointList" resultMap="translatePointVOMap">
 		SELECT
 		TRANSLATE_ID,
 		TRANSLATE_POINT,

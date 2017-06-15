@@ -13,16 +13,21 @@
 	<table> 
 		<tr>
 			<td>상대방 아이디</td>
-			<td><input type="text"></td>
+			<td><input type="text" value="${inReceiveMemberId }"></td>
 
 		</tr>
 		<tr>
 			<td>보낸 포인트</td>
-			<td><input type="text"></td>
+			<td><input type="text" value="${translatePoint}"></td>
+		</tr>
+		
+		<tr>
+			<td>보낸 시간</td>
+			<td><input type="date" value="${translateDate}"></td>
 		</tr>
 		<tr>
 			<td>남은 나의 보유포인트</td>
-			<td><input type="text"></td>
+			<td><input type="text" value="${ point}"></td>
 		</tr>
 		<tr>
 			<td colspan="2"><button>확인</button></td>

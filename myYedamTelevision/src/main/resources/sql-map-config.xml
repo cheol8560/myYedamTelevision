@@ -12,6 +12,7 @@
 		<typeAlias alias="charge" type="yolo.myTv.charges.service.ChargeVO"/>
 		<typeAlias alias="translate" type="yolo.myTv.translatePoints.service.TranslatePointVO"/>
 		<typeAlias alias="transVO" type="yolo.myTv.translatePoints.service.TransVO"/>
+		<typeAlias alias="exchange" type="yolo.myTv.exchanges.service.ExchangeVO"/>
 	</typeAliases>
 
 </configuration>

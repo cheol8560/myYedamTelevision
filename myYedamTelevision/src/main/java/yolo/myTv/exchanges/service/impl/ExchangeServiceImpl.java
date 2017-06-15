@@ -17,11 +17,20 @@ public class ExchangeServiceImpl implements ExchangeService{
 	
 	public void insertExchange(ExchangeVO vo){
 		exchangeDAO.insertExchange(vo);
+		exchangeDAO.updateExchange(vo);
 	}
 	
 	@Override
-	public List<Map<String, Object>> ExchangePoint(ExchangeVO vo) {
+	public List<Map<String, Object>> ExchangeList(ExchangeVO vo) {
 		// TODO Auto-generated method stub
-		return exchangeDAO.ExchangePoint(vo);
+		return exchangeDAO.ExchangeList(vo);
 	}
+
+	@Override
+	public Map<String, Object> getExchange(ExchangeVO vo) {
+		// TODO Auto-generated method stub
+		return exchangeDAO.getExchange(vo);
+	}
+	
+	
 }

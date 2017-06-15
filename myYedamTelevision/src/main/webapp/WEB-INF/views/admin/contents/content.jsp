@@ -35,7 +35,7 @@
 		if (confirm("삭제할까요?")){
 			
 			var no = $('[name="contentCode"]').val();
-			console.log(no);
+			
 			location.href="${pageContext.request.contextPath}/deleteContent.do?contentCode="+no;
 		}
 	}

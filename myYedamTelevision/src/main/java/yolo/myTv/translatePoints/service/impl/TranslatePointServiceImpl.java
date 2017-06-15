@@ -15,35 +15,32 @@ import yolo.myTv.translatePoints.service.TranslatePointVO;
 public class TranslatePointServiceImpl implements TranslatePointService {
 	
 	@Autowired
-	private TranslatePointMapper TranslatePointDAO;
+	private TranslatePointMapper translatePointDAO;
 	
 	@Override
 	public List<Map<String, Object>> totalPoint(TranslatePointVO vo) {	
-		return TranslatePointDAO.totalPoint(vo);
+		return translatePointDAO.totalPoint(vo);
 	}
 
 	@Override
 	public List<TranslatePointVO> getTranslatePointList(TranslatePointVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return translatePointDAO.getTranslatePointList(vo);
 	}
 
 	@Override
 	public void updateTranslatePoint(TranslatePointVO vo) {
-		// TODO Auto-generated method stub
-		
+		translatePointDAO.updateTranslatePoint(vo);
 	}
 
 	@Override
 	public void deleteTranslatePoint(TranslatePointVO vo) {
-		// TODO Auto-generated method stub
-		
+		translatePointDAO.deleteTranslatePoint(vo);
 	}
 
 	//거래발생 프로시져
 	@Override
 	public void insertTrans(TransVO vo) {
-		TranslatePointDAO.insertTrans(vo);
+		translatePointDAO.insertTrans(vo);
 	}
  
 	

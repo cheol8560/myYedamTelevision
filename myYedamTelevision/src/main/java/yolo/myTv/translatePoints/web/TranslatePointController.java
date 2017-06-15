@@ -45,8 +45,15 @@ public class TranslatePointController {
 	@RequestMapping("/insertTrans.do")
 	public String getTranslatePointList(TransVO vo, Model model){
 		translatePointService.insertTrans(vo);
-		return "translatePoints/translatePointResult";
+		return "redirect:/getTranslatePointList.do";
 	}
 	
+	//교환내역 조회
+		@RequestMapping("/getTranslatePointList.do")
+		public String getTranslatePointList(TranslatePointVO vo, Model model){
+			
+			model.addAttribute("translateList", translatePointService.getTranslatePointList(vo));
+			return "admin/translates/translate";
+		}
 	
 }

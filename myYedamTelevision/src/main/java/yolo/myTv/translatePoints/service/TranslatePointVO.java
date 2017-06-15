@@ -75,7 +75,9 @@ public class TranslatePointVO {
 		return "TranslatePointVO [translateId=" + translateId
 				+ ", translatePoint=" + translatePoint + ", sendMemberId="
 				+ sendMemberId + ", receiveMemberId=" + receiveMemberId
-				+ ", translateDate=" + translateDate + "]";
+				+ ", translateDate=" + translateDate + ", totalPoint="
+				+ totalPoint + ", sendPoint=" + sendPoint + ", receivePoint="
+				+ receivePoint + ", memberId=" + memberId + "]";
 	}
 	
 

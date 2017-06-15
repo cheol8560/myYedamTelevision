@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" id="">
+	<form action="insertTrans.do" id="insertTrans">
 	<table> 
 		<tr>
 			<td>내아이디</td>
 			<td><input type="text" name="inSendMemberId"></td>
-
 		</tr>
 		<tr>
 			<td>받을아이디</td>
@@ -27,7 +26,7 @@
 			<td><input type="text" name="inTranslatePoint"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><button>보내기</button><button>취소</button></td>
+			<td colspan="2"><button type="submit">보내기</button><button>취소</button></td>
 		</tr>
 	</table>
 	</form>

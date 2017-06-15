@@ -1,5 +1,14 @@
 package yolo.myTv.exchanges.service;
 
-public class ExchangeService {
+import java.util.List;
+import java.util.Map;
 
+public interface ExchangeService {
+	
+	
+	//포인트 환전 등록
+	void insertExchange(ExchangeVO vo);
+	
+	//포인트 내역조회
+	List<Map<String, Object>> ExchangePoint(ExchangeVO vo);
 }

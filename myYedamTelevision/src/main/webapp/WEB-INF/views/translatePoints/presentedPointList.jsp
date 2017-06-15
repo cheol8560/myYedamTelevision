@@ -20,7 +20,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
-							<figure class="counter color-base counters-v2-no">808</figure>
+							<figure class="counter color-base counters-v2-no">${login.point}</figure>
 							<h4 class="counters-v2-title">보유중인 기쁨</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
@@ -30,7 +30,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-trophy"></i>
-							<figure class="counter color-base counters-v2-no">782</figure>
+							<figure class="counter color-base counters-v2-no">${total[0].receivePoint}</figure>
 							<h4 class="counters-v2-title">선물받은 기쁨</h4>
 							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
@@ -40,7 +40,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-happy"></i>
-							<figure class="counter color-base counters-v2-no">272</figure>
+							<figure class="counter color-base counters-v2-no">${total[0].sendPoint}</figure>
 							<h4 class="counters-v2-title">선물한 기쁨</h4>
 							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
@@ -50,7 +50,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-tools"></i>
-							<figure class="counter color-base counters-v2-no">312</figure>
+							<figure class="counter color-base counters-v2-no">${total[0].totalPoint}</figure>
 							<h4 class="counters-v2-title">충전한 기쁨</h4>
 							<span class="counters-v2-subtitle">Customizability</span>
 						</div>
@@ -184,13 +184,13 @@
 									<thead>
 										<tr>
 											<th style="font-size: 2em; text-align: center;">
-												님이 보유하신 기쁨은 개 입니다.
+												${login.memberId} 님이 보유하신 기쁨은 ${login.point}개 입니다.
 											</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td>▶ 이미 환전한 기쁨 :</td>
+											<td>▶ 이미 환전한 기쁨 : ${exchange.exchangePoint} </td>
 										</tr>
 										<tr>
 											<td>환전 가능한 기쁨이 개 이상이어야 환전이 가능합니다.</td>
@@ -210,7 +210,7 @@
 				<!-- Button -->
 				<div class="overflow-h">
 					<div class="center-block wow fadeInUp" data-wow-duration=".2" data-wow-delay=".3s">
-						<a class="btn-white-bg btn-base-md radius-3" href="#">기쁨 환전</a>
+						<a class="btn-white-bg btn-base-md radius-3" href="insertExchange.do?exchange=${exchangeNo}">기쁨 환전</a>
 					</div>
 				</div>
 				<!-- Button -->

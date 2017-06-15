@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import yolo.myTv.members.service.MemberVO;
+import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointService;
 import yolo.myTv.translatePoints.service.TranslatePointVO;
 
@@ -39,5 +40,13 @@ public class TranslatePointController {
 	public String getPresentedPointList() {
 		return "translatePoints/presentedPointList";
 	}
+	
+	//거래발생 프로시져
+	@RequestMapping("/insertTrans.do")
+	public String getTranslatePointList(TransVO vo, Model model){
+		translatePointService.insertTrans(vo);
+		return "translatePoints/translatePointResult";
+	}
+	
 	
 }

@@ -3,24 +3,24 @@
                          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="yolo.myTv.translatePoints.service.impl.TranslatePointMapper">
- 
-	 <select id="totalPoint" resultType="map">
-        
-        SELECT POINT
-	        ,(SELECT NVL(SUM(CHARGE_POINT),0) 
-	        	FROM CHARGES
-	        	WHERE MEMBER_ID = #{memberId}) as "totalPoint",
-	        (SELECT NVL(SUM(TRANSLATE_POINT),0) 
-	        	FROM TRANSLATE_POINTS
-	        	WHERE SEND_MEMBER_ID = #{memberId}) as "sendPoint",
-	        (SELECT NVL(SUM(TRANSLATE_POINT),0) 
-	        	FROM TRANSLATE_POINTS
-	      	    WHERE RECEIVE_MEMBER_ID = #{memberId}) as "receivePoint"
-        FROM MEMBERS 
-        WHERE MEMBER_ID = #{memberId}
-        
-	</select> 
-  
+
+	<select id="totalPoint" resultType="map">
+
+		SELECT POINT
+		,(SELECT NVL(SUM(CHARGE_POINT),0)
+		FROM CHARGES
+		WHERE MEMBER_ID = #{memberId}) as "totalPoint",
+		(SELECT NVL(SUM(TRANSLATE_POINT),0)
+		FROM TRANSLATE_POINTS
+		WHERE SEND_MEMBER_ID = #{memberId}) as "sendPoint",
+		(SELECT NVL(SUM(TRANSLATE_POINT),0)
+		FROM TRANSLATE_POINTS
+		WHERE RECEIVE_MEMBER_ID = #{memberId}) as "receivePoint"
+		FROM MEMBERS
+		WHERE MEMBER_ID = #{memberId}
+
+	</select>
+
 	<resultMap type="translate" id="translateMap">
 		<result property="translateId" column="TRANSLATE_ID" />
 		<result property="translatePoint" column="TRANSLATE_POINT" />
@@ -31,4 +31,42 @@
 		<result property="sendPoint" column="SEND_POINT" />
 		<result property="receivePoint" column="RECEIVE_POINT" />
 	</resultMap>
+
+
+	<select id="getTranslatePointList" resultType="translate">
+		SELECT
+		TRANSLATE_ID,
+		TRANSLATE_POINT,
+		SEND_MEMBER_ID,
+		RECEIVE_MEMBER_ID,
+		TRANSLATE_DATE
+		FROM TRANSLATE_POINTS
+	</select>
+
+	<update id="updateTranslatePoint" parameterType="translate">
+		UPDATE
+		TRANSLATE_POINTS
+		SET TRANSLATE_ID = ${translateId},
+		TRANSLATE_POINT = ${translatePoint},
+		SEND_MEMBER_ID = ${sendMemberId},
+		RECEIVE_MEMBER_ID = ${receiveMemberId},
+		TRANSLATE_DATE = ${translateDate}
+		WHERE TRANSLATE_ID = ${translateId}
+	</update>
+
+	<delete id="deleteTranslatePoint" parameterType="int">
+		DELETE FROM
+		TRANSLATE_POINTS
+		WHERE TRANSLATE_ID= ${translateId}
+	</delete>
+
+	<insert id="insertTrans" statementType="CALLABLE"	parameterType="transVO">
+		{ call TRANS(
+		#{inTranslatePoint},
+		#{inSendMemberId},
+		#{inReceiveMemberId},
+		#{outErrorcode, mode=OUT, jdbcType=NUMERIC, javaType=int},
+		#{outMessage, mode=OUT, jdbcType=VARCHAR, javaType=string})
+		}
+	</insert>
 </mapper>

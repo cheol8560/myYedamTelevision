@@ -112,41 +112,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Item #1</td>
-									<td>Apple</td>
-									<td>100GB</td>
-									<td>Item #1</td>
-									<td>Apple</td>
-								</tr>
-								<tr>
-									<td>Item #1</td>
-									<td>Apple</td>
-									<td>100GB</td>
-									<td>Item #1</td>
-									<td>Apple</td>
-								</tr>
-								<tr>
-									<td>Item #1</td>
-									<td>Apple</td>
-									<td>100GB</td>
-									<td>Item #1</td>
-									<td>Apple</td>
-								</tr>
-								<tr>
-									<td>Item #1</td>
-									<td>Apple</td>
-									<td>100GB</td>
-									<td>Item #1</td>
-									<td>Apple</td>
-								</tr>
-								<tr>
-									<td>Item #1</td>
-									<td>Apple</td>
-									<td>100GB</td>
-									<td>Item #1</td>
-									<td>Apple</td>
-								</tr>
+			<!-- 여기 -->		<c:forEach items="${translateList}" var="translates">
+										<tr>
+											<td>${translates.translateId}</td>
+											<td>${translates.translatePoint}</td>
+											<td>${translates.sendMemberId}</td>
+											<td>${translates.receiveMemberId}</td>
+											<td>${translates.translateDate}</td>
+										</tr>
+									</c:forEach>
 							</tbody>
 						</table>
 						<!-- End Table Striped -->

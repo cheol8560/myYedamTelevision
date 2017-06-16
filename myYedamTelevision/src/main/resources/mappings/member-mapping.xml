@@ -52,12 +52,20 @@
 	<update id="updatePoint">
         <![CDATA[
         UPDATE MEMBERS SET
-        		POINT = 
-        		POINT + #{chargePoint}
+        		POINT = POINT + #{chargePoint}
         WHERE MEMBER_ID = #{memberId}
         ]]>
 	</update>
 	
+	<update id="updateAdmin">
+        <![CDATA[ 
+        UPDATE MEMBERS SET
+        		PASSWORD = #{password}
+                , EMAIL = #{email}
+                , POINT = #{point}
+        WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</update>
 
 	<delete id="deleteMember">
         <![CDATA[
@@ -81,6 +89,23 @@
         		, ACCOUNT 
         FROM MEMBERS
         WHERE MEMBER_ID = #{memberId}
+        ]]>
+	</select>
+	
+	
+	<select id="getMemberList" resultMap="memberMap">
+        <![CDATA[
+        SELECT MEMBER_ID
+        		, NICK_NAME
+        		, MEMBER_NAME
+        		, BIRTH_DATE
+        		, EMAIL
+        		, TEL
+        		, POINT
+        		, MEMBER_IMAGE
+        		, BANK
+        		, ACCOUNT 
+        FROM MEMBERS
         ]]>
 	</select>
 	

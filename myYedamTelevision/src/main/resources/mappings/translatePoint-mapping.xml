@@ -6,7 +6,7 @@
 
 	<select id="totalPoint" resultType="map">
 
-		SELECT POINT
+		SELECT POINT as "point"
 		,(SELECT NVL(SUM(CHARGE_POINT),0)
 		FROM CHARGES
 		WHERE MEMBER_ID = #{memberId}) as "totalPoint",
@@ -21,7 +21,7 @@
 
 	</select>
 
-	<resultMap type="translate" id="translateMap">
+	<resultMap type="translate" id="translateMap"> 
 		<result property="translateId" column="TRANSLATE_ID" />
 		<result property="translatePoint" column="TRANSLATE_POINT" />
 		<result property="sendMemberId" column="MEMBER_ID" />
@@ -30,6 +30,7 @@
 		<result property="totalPoint" column="TOTAL_POINT" />
 		<result property="sendPoint" column="SEND_POINT" />
 		<result property="receivePoint" column="RECEIVE_POINT" />
+		<result property="point" column="POINT" />
 	</resultMap>
 	
 	<resultMap type="translate" id="translatePointVOMap">

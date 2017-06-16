@@ -46,4 +46,5 @@ public class ChargeServiceImpl implements ChargeService {
 	public List<Map<String, Object>> adminChargeList(ChargeVO vo) {
 		return ChargeDAO.adminChargeList(vo);
 	}
+
 }

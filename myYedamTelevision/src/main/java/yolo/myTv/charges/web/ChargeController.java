@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import yolo.myTv.charges.service.ChargeService;
@@ -46,8 +47,6 @@ public class ChargeController {
 		vo.setMemberId(member.getMemberId());
 		vo.setRequestDate(new Date());
 		chargeService.subUpdateCharge(vo);
-		chargeService.mainUpdateCharge(vo);
-		chargeService.updatePoint(vo);
 		return "redirect:getHoldingPointList.do";
 	}
 	
@@ -58,5 +57,16 @@ public class ChargeController {
 			model.addAttribute("adminchargeList", chargeService.adminChargeList(vo));
 			return "admin/translates/charge";
 		}
+		
+	// 관리자 포인트 승인
+		@RequestMapping(value="/approveAdmin.do", method=RequestMethod.GET)
+		public String approveAdmin(ChargeVO vo, Model model) {
+			chargeService.mainUpdateCharge(vo);
+			chargeService.updatePoint(vo);
+			System.out.println(vo);
+			return "redirect:/adminCharge.do";
+		}
+	
+	
 
 }

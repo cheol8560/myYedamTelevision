@@ -3,7 +3,7 @@ package yolo.myTv.exchanges.service;
 import java.util.Date;
 
 public class ExchangeVO {
-	private String exchangeNo;
+	private int exchangeNo;
 	private Date requestDate;
 	private int requestPoint;
 	private int realReceipt;
@@ -12,10 +12,11 @@ public class ExchangeVO {
 	private String approveStatus;
 	private String memberId;
 	
-	public String getExchangeNo() {
+
+	public int getExchangeNo() {
 		return exchangeNo;
 	}
-	public void setExchangeNo(String exchangeNo) {
+	public void setExchangeNo(int exchangeNo) {
 		this.exchangeNo = exchangeNo;
 	}
 	public Date getRequestDate() {
@@ -68,6 +69,8 @@ public class ExchangeVO {
 				+ ", approveDate=" + approveDate + ", approveStatus="
 				+ approveStatus + ", memberId=" + memberId + "]";
 	}
+	
+	
 	
 	
 	

@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	
+	<script>
+	$(function(){
+		
+		$("#btn").click(function() {
+			var a = { "requestPoint": $("[name='requestPoint']").val()};
+			$.ajax({ url: "insertExchange.do", 
+				method: "post", 
+				type: "json", 
+				data: a, 
+				success: function(data) { 
+					$("#requestMoney").html(data.requestPoint*100);
+					$("#commission").html(data.commission);
+					$("#realReceipt").html(data.realReceipt);
+					$("#totalExchange").html(data.totalRequest);
+				} 
+			});
+		})
+		
+	});
+	</script>
 	    <!--========== PROMO BLOCK V11 ==========-->
 	    <section class="promo-block-v11 fullheight">
 	        <div class="container vertical-center-aligned">
@@ -8,20 +27,20 @@
 	                <h2 class="promo-block-v11-title wow fadeInUp" data-wow-duration=".2" data-wow-delay=".1s">기쁨 환전</h2>
 	                <p class="promo-block-v11-subtitle wow fadeInUp" data-wow-duration=".2" data-wow-delay=".2s">자신이 보유한 기쁨포인트를 환전해보세요. 환전포인트는 1000POINT 이상부터 가능합니다.</p><hr>
 	            </div>
-	
+			
 	            <div class="margin-b-30">
 	                <!-- Button White Toggle -->
 	                <div class="btn-group btn-white-toggle margin-r-10 margin-b-10">
 	                <input class="form-control" style="width:80px; display:inline;" type="text" autocomplete="on" placeholder="은행" name=""/>
 	                <input class="form-control " style="width:240px; display:inline;" type="text" autocomplete="on" placeholder="계좌 번호" name="">
 	                <i class="icon-box-item fa fa-check-circle-o" style="width:20px; display:inline; color:#4ed7e8; font-size: 24px;"></i></input><br><br>
-	                <input class="form-control" type="text" style="width:325px;" autocomplete="on" placeholder="환전할 기쁨" name="" /><br>
+	                <input class="form-control" type="text" style="width:325px;" autocomplete="on" placeholder="환전할 기쁨" name="requestPoint" /><br>
 	                   
 	                </div><br>
 	                <!-- End Button White Toggle -->
-	                <button type="button" class="btn-base-bg btn-base-md radius-3 margin-b-10"><i class="fa fa-search margin-r-5"></i> 확인</button>
+	                <button id="btn" class="btn-base-bg btn-base-md radius-3 margin-b-10"><i class="fa fa-search margin-r-5"></i> 확인</button>
 	            </div>
-	
+			
 	            <ul class="list-inline promo-block-v11-category">
 	                <li class="promo-block-v11-category-item wow zoomIn" data-wow-duration=".2" data-wow-delay=".4s">
 	                    <a class="promo-block-v11-category-link radius-3" href="#">
@@ -49,7 +68,7 @@
 	                    <!-- Counters v3 -->
 	                    <div class="counters-v3">
 	                        <i class="counters-v3-icon radius-circle icon-lightbulb"></i>
-	                        <figure class="counter counters-v3-number">85</figure>
+	                        <figure class="counter counters-v3-number" id="requestMoney"></figure>
 	                        <h4 class="counters-v3-title">환전될 금액</h4>
 	                    </div>
 	                    <!-- End Counters v3 -->
@@ -58,7 +77,7 @@
 	                    <!-- Counters v3 -->
 	                    <div class="counters-v3">
 	                        <i class="counters-v3-icon radius-circle icon-trophy"></i>
-	                        <figure class="counter counters-v3-number">23</figure>
+	                        <figure class="counter counters-v3-number" id="commission"></figure>
 	                        <h4 class="counters-v3-title">수수료</h4>
 	                    </div>
 	                    <!-- End Counters v3 -->
@@ -67,7 +86,7 @@
 	                    <!-- Counters v3 -->
 	                    <div class="counters-v3">
 	                        <i class="counters-v3-icon radius-circle icon-happy"></i>
-	                        <figure class="counter counters-v3-number">2396</figure>
+	                        <figure class="counter counters-v3-number" id="realReceipt"></figure>
 	                        <h4 class="counters-v3-title">실수령 금액</h4>
 	                    </div>
 	                    <!-- End Counters v3 -->
@@ -76,7 +95,7 @@
 	                    <!-- Counters v3 -->
 	                    <div class="counters-v3">
 	                        <i class="counters-v3-icon radius-circle icon-speedometer"></i>
-	                        <figure class="counter counters-v3-number">100</figure>
+	                        <figure class="counter counters-v3-number" id="totalExchange"></figure>
 	                        <h4 class="counters-v3-title">누적 환전수</h4>
 	                    </div>
 	                    <!-- End Counters v3 -->

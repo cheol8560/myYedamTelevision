@@ -19,7 +19,7 @@
         					, REQUEST_DATE
         					, MEMBER_ID)
         VALUES(#{chargeNo}
-        		, '0bb1'
+        		, 'b1'
         		, #{chargeMoney}
         		, #{chargePoint}
         		, #{paymentWay}
@@ -31,7 +31,7 @@
 	<update id="mainUpdateCharge">
         <![CDATA[
         UPDATE CHARGES SET
-        		APPROVE_STATUS = '0bb2'
+        		APPROVE_STATUS = 'b2'
         		, APPROVE_DATE = SYSDATE
         WHERE CHARGE_NO = #{chargeNo}
         ]]>
@@ -60,7 +60,32 @@
         WHERE MEMBER_ID = #{memberId}
         ]]>
 	</select>
+	
+	<select id="getChargeList" resultMap="chargeMap">
 
+		SELECT REQUEST_DATE
+				,CHARGE_POINT
+				,PAYMENT_WAY
+				,CHARGE_MONEY
+				CHARGE_NO
+		FROM CHARGES
+		WHERE MEMBER_ID = #{memberId}
+
+	</select>
+	
+	<select id="adminChargeList" resultMap="chargeMap">
+
+		SELECT CHARGE_NO
+				,APPROVE_DATE
+				,MEMBER_ID
+				,CHARGE_MONEY
+				,CHARGE_POINT
+				,PAYMENT_WAY
+				,APPROVE_STATUS
+		FROM CHARGES
+
+	</select>
+	
 	<resultMap type="charge" id="chargeMap">
 		<result property="memberId" column="MEMBER_ID" />
 		<result property="chargeNo" column="CHARGE_NO" />

@@ -33,8 +33,15 @@ public class TranslatePointController {
 												Model model, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
+		
+		//총포인트
 		List<Map<String, Object>> list = translatePointService.totalPoint(vo);
 		model.addAttribute("total", list);
+		//충전내역
+		ChargeVO chargevo = new ChargeVO();
+		chargevo.setMemberId(member.getMemberId());
+		model.addAttribute("chargeList", chargeService.getChargeList(chargevo));
+		
 		return "translatePoints/holdingPointList";
 	} 
 	
@@ -69,5 +76,6 @@ public class TranslatePointController {
 			model.addAttribute("translateList", translatePointService.getTranslatePointList(vo));
 			return "admin/translates/translate";
 		}
+		
 	
 }

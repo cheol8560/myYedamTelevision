@@ -60,7 +60,7 @@ public class TranslatePointController {
 		
 		return "translatePoints/translatePointResult";
 	}
-	
+	 
 	//거래발생 프로시져
 	@RequestMapping("/insertTrans.do")
 	public String getTranslatePointList(TransVO vo, Model model){

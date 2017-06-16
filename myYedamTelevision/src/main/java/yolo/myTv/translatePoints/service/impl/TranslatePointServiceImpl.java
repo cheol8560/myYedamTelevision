@@ -27,7 +27,7 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 	public List<TranslatePointVO> getTranslatePointList(TranslatePointVO vo) {
 		return translatePointDAO.getTranslatePointList(vo);
 	}
-
+ 
 	@Override
 	public void updateTranslatePoint(TranslatePointVO vo) {
 		translatePointDAO.updateTranslatePoint(vo);

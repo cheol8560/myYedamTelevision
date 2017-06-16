@@ -43,7 +43,7 @@
 		TRANSLATE_DATE			"translateDate"
 		FROM TRANSLATE_POINTS
 	</select>
-	
+	 
 	<select id="resultInsertTrans" resultType="map">
 		SELECT
 		TRANSLATE_ID			"translateId"   		

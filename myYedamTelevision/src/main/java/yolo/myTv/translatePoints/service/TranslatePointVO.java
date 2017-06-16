@@ -12,7 +12,7 @@ public class TranslatePointVO {
 	private int sendPoint;
 	private int receivePoint;
 	private int point;
-	private String memberId;
+	private String memberId; 
 	
 	
 	public int getPoint() {

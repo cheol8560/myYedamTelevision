@@ -16,5 +16,5 @@ public interface TranslatePointMapper {
 	public List<TranslatePointVO> getTranslatePointList (TranslatePointVO vo);
 	void insertTrans(TransVO vo);
 	public Map<String, Object> resultInsertTrans (TranslatePointVO vo);
-
+ 
 }

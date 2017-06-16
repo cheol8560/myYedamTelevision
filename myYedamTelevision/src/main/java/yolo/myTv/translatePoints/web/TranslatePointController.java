@@ -10,7 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import yolo.myTv.members.service.MemberService;
+import yolo.myTv.charges.service.ChargeService;
+import yolo.myTv.charges.service.ChargeVO;
 import yolo.myTv.members.service.MemberVO;
 import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointService;
@@ -23,7 +24,8 @@ public class TranslatePointController {
 
 	@Autowired
 	TranslatePointService translatePointService;
-	MemberService memberService;
+	@Autowired
+	ChargeService chargeService;
 	
 	// 보유중인 기쁨 페이지
 	@RequestMapping("/getHoldingPointList.do")

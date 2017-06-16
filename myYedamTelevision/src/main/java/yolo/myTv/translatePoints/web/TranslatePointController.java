@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import yolo.myTv.charges.service.ChargeService;
+import yolo.myTv.charges.service.ChargeVO;
 import yolo.myTv.members.service.MemberVO;
 import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointService;
@@ -22,6 +24,8 @@ public class TranslatePointController {
 
 	@Autowired
 	TranslatePointService translatePointService;
+	@Autowired
+	ChargeService chargeService;
 	
 	// 보유중인 기쁨 페이지
 	@RequestMapping("/getHoldingPointList.do")
@@ -29,8 +33,15 @@ public class TranslatePointController {
 												Model model, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
+		
+		//총포인트
 		List<Map<String, Object>> list = translatePointService.totalPoint(vo);
 		model.addAttribute("total", list);
+		//충전내역
+		ChargeVO chargevo = new ChargeVO();
+		chargevo.setMemberId(member.getMemberId());
+		model.addAttribute("chargeList", chargeService.getChargeList(chargevo));
+		
 		return "translatePoints/holdingPointList";
 	} 
 	
@@ -54,5 +65,6 @@ public class TranslatePointController {
 			model.addAttribute("translateList", translatePointService.getTranslatePointList(vo));
 			return "admin/translates/translate";
 		}
+		
 	
 }

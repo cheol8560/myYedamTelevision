@@ -50,5 +50,13 @@ public class ChargeController {
 		chargeService.updatePoint(vo);
 		return "redirect:getHoldingPointList.do";
 	}
+	
+	
+	// 관리자 포인트 관리
+		@RequestMapping("/adminCharge.do")
+		public String adminCharge(ChargeVO vo, Model model) {
+			model.addAttribute("adminchargeList", chargeService.adminChargeList(vo));
+			return "admin/translates/charge";
+		}
 
 }

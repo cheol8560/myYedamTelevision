@@ -1,6 +1,9 @@
 package yolo.myTv.charges.service.impl;
 
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +35,15 @@ public class ChargeServiceImpl implements ChargeService {
 	public void updatePoint(ChargeVO vo) {
 		ChargeDAO.updatePoint(vo);
 		
+	}
+
+	@Override
+	public List<Map<String, Object>> getChargeList(ChargeVO vo) {
+		return ChargeDAO.getChargeList(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> adminChargeList(ChargeVO vo) {
+		return ChargeDAO.adminChargeList(vo);
 	}
 }

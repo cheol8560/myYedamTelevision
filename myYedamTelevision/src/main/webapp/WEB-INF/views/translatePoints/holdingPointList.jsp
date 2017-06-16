@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 		<!--========== BREADCRUMBS V5 ==========-->
 		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
@@ -112,13 +113,13 @@
 								</tr>
 							</thead>
 							<tbody>
-			<!-- 여기 -->		<c:forEach items="${translateList}" var="translates">
+			<!-- 여기 -->		<c:forEach items="${chargeList}" var="chargeList">
 										<tr>
-											<td>${translates.translateId}</td>
-											<td>${translates.translatePoint}</td>
-											<td>${translates.sendMemberId}</td>
-											<td>${translates.receiveMemberId}</td>
-											<td>${translates.translateDate}</td>
+											<td>${chargeList.requestDate}</td>
+											<td>${chargeList.chargePoint}</td>
+											<td>${chargeList.paymentWay}</td>
+											<td>${chargeList.chargeMoney}</td>
+											<td>${chargeList.chargeNo}</td>
 										</tr>
 									</c:forEach>
 							</tbody>

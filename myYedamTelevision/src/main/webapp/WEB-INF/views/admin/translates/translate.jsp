@@ -50,14 +50,11 @@
 											<td>${list.translateId }</td>
 											<td>
 											<fmt:formatDate pattern = "yyyy년 MM월 dd일 HH:mm:ss" value = "${list.translateDate }" />
-											
-											
 											</td>
 											<td>${list.sendMemberId }</td>
 											<td>${list.receiveMemberId }</td>
 											<td>${list.translatePoint }</td>
-											
-											<td><button type="button" onclick="get(${con.contentCode});">수정</button></td>
+											<td>-</td>
 										</tr>
 								</c:forEach>
 									</tbody>

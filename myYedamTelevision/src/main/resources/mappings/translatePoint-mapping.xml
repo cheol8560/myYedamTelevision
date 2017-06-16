@@ -34,31 +34,43 @@
 	</resultMap>
 
 
-	<select id="getTranslatePointList" resultType="translate">
+	<select id="getTranslatePointList" resultType="map">
 		SELECT
-		TRANSLATE_ID,
-		TRANSLATE_POINT,
-		SEND_MEMBER_ID,
-		RECEIVE_MEMBER_ID,
-		TRANSLATE_DATE
+		TRANSLATE_ID      		"translateId",
+		TRANSLATE_POINT 		"translatePoint",
+		SEND_MEMBER_ID 			"sendMemberId",
+		RECEIVE_MEMBER_ID		"receiveMemberId",
+		TRANSLATE_DATE			"translateDate"
 		FROM TRANSLATE_POINTS
+	</select>
+	
+	<select id="resultInsertTrans" resultType="map">
+		SELECT
+		TRANSLATE_ID			"translateId"   		
+		,TRANSLATE_POINT 		"translatePoint"
+		,SEND_MEMBER_ID 		"sendMemberId"	
+		,RECEIVE_MEMBER_ID		"receiveMemberId"
+		,TRANSLATE_DATE			"translateDate"
+		,(SELECT POINT FROM MEMBERS WHERE MEMBER_ID = A.SEND_MEMBER_ID) "point"
+		FROM TRANSLATE_POINTS A
+		WHERE TRANSLATE_ID = #{translateId}
 	</select>
 
 	<update id="updateTranslatePoint" parameterType="translate">
 		UPDATE
 		TRANSLATE_POINTS
-		SET TRANSLATE_ID = ${translateId},
-		TRANSLATE_POINT = ${translatePoint},
-		SEND_MEMBER_ID = ${sendMemberId},
-		RECEIVE_MEMBER_ID = ${receiveMemberId},
-		TRANSLATE_DATE = ${translateDate}
-		WHERE TRANSLATE_ID = ${translateId}
+		SET TRANSLATE_ID = #{translateId},
+		TRANSLATE_POINT = #{translatePoint},
+		SEND_MEMBER_ID = #{sendMemberId},
+		RECEIVE_MEMBER_ID = #{receiveMemberId},
+		TRANSLATE_DATE = #{translateDate}
+		WHERE TRANSLATE_ID = #{translateId}
 	</update>
 
 	<delete id="deleteTranslatePoint" parameterType="int">
 		DELETE FROM
 		TRANSLATE_POINTS
-		WHERE TRANSLATE_ID= ${translateId}
+		WHERE TRANSLATE_ID= #{translateId}
 	</delete>
 
 	<insert id="insertTrans" statementType="CALLABLE"	parameterType="transVO">

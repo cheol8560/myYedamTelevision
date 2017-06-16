@@ -5,27 +5,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+
+// 
+
+
+
+</script>
 </head>
 보내기 성공
 <hr>
 <body>
-	<form action="" id="">
 	<table> 
 		<tr>
-			<td>상대방 아이디</td>
-			<td><input type="text"></td>
+			<td>상대방 아이디 :</td>
+			<td>${result.receiveMemberId }</td>
 
 		</tr>
 		<tr>
 			<td>보낸 포인트</td>
-			<td><input type="text"></td>
+			<td>${result.translatePoint }</td>
+		</tr>
+		<tr>
+			<td>거래일시</td>
+			<td>${result.translateDate }</td>
 		</tr>
 		<tr>
 			<td>남은 나의 보유포인트</td>
-			<td><input type="text"></td>
+			<td>${result.point }</td>
 		</tr>
 		<tr>
-			<td colspan="2"><button>확인</button></td>
+			<td colspan="2"><button onclick="close();">확인</button></td>
 		</tr>
 	</table>
 	</form>

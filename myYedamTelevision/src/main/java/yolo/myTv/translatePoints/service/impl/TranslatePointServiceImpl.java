@@ -22,6 +22,7 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 		return translatePointDAO.totalPoint(vo);
 	}
 
+	//거래 조회 
 	@Override
 	public List<TranslatePointVO> getTranslatePointList(TranslatePointVO vo) {
 		return translatePointDAO.getTranslatePointList(vo);
@@ -41,6 +42,11 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 	@Override
 	public void insertTrans(TransVO vo) {
 		translatePointDAO.insertTrans(vo);
+	}
+
+	@Override
+	public Map<String, Object> resultInsertTrans(TranslatePointVO vo) {
+		return translatePointDAO.resultInsertTrans(vo);
 	}
  
 	

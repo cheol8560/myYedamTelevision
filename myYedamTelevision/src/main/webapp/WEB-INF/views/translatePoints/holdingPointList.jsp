@@ -24,7 +24,7 @@
 						<!-- Counters v2 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
-							<figure class="counter color-base counters-v2-no">${login.point}</figure>
+							<figure class="counter color-base counters-v2-no">${total[0].point}</figure>
 							<h4 class="counters-v2-title">보유중인 기쁨</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>

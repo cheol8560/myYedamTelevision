@@ -11,9 +11,16 @@ public class TranslatePointVO {
 	private int totalPoint;
 	private int sendPoint;
 	private int receivePoint;
+	private int point;
 	private String memberId;
 	
 	
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	public String getTranslateId() {
 		return translateId;
 	}

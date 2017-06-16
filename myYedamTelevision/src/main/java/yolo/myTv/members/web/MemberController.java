@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -123,7 +124,27 @@ public class MemberController {
 	   out.print("1");
 	  }
 	 }
+	 
+	//관리자 회원 관리 페이지폼
+		@RequestMapping("/adminMemberForm.do")
+		public String adminMemberForm(MemberVO vo, Model model) throws Exception {
+			model.addAttribute("member", memberService.getMemberList(vo));
+			return "admin/members/member";
+		}
+		
+	//관리자 회원 수정 페이지
+		@RequestMapping("/getMemberForm.do")
+		public String getMemberForm(@ModelAttribute("member")MemberVO vo, Model model) {
+			model.addAttribute("member", memberService.getMember(vo));
+			return "admin/members/updateMember";
+		}
+	 
+	//관리자 회원 수정
+		@RequestMapping(value = "/updateMember.do", method=RequestMethod.POST)
+		public String updateNotice(@ModelAttribute("member") MemberVO vo){
+			memberService.updateAdmin(vo);
+			System.out.println(vo);
+			return "redirect:/adminMemberForm.do";
+		}
 
-
-	
 }

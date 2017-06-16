@@ -30,7 +30,6 @@ public class TranslatePointController {
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
 		List<Map<String, Object>> list = translatePointService.totalPoint(vo);
-		System.out.println(list != null);
 		model.addAttribute("total", list);
 		return "translatePoints/holdingPointList";
 	} 

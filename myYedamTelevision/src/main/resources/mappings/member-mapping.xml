@@ -69,7 +69,16 @@
 
 	<delete id="deleteMember">
         <![CDATA[
-        DELETE MEMBERS
+        UPDATE MEMBERS SET
+        			PASSWORD = null
+    	    		, NICK_NAME = null
+        			, MEMBER_NAME = null
+        			, BIRTH_DATE = null
+ 	       			, TEL = null
+    	    		, POINT = 0
+        			, MEMBER_IMAGE = null
+        			, BANK = null
+        			, ACCOUNT = null
         WHERE MEMBER_ID = #{memberId}
         ]]>
 	</delete>

@@ -47,7 +47,7 @@
 </head>
 <body>
 <div class="contact-us contact-us-equal-height bg-color-white">
-<form action="" > 
+<form action="${pageContext.request.contextPath}/deleteMember.do" method="post" > 
 <h2>&nbsp;&nbsp;탈퇴약관</h2>
 
 <div class="contact-us contact-us-equal-height bg-color-white" style="margin:20px;  width:1000px; ">

@@ -33,7 +33,7 @@
                             	지금의 감정에 충실하세요. <br>
                             	어짜피 카드요금 통지서는 다음달에.. </p>
                         </div>
-                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=b1"></a>
+                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=c1"></a>
                     </div>
                     <!-- End Icon Box v1 -->
                 </div>
@@ -50,7 +50,7 @@
                             	핵심은 어떤 대접을 받고 있는지 입니다. <br>
                             	여기서는 당신이 신이 될수도 있습니다.</p>
                         </div>
-                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=b2"></a>
+                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=c2"></a>
                     </div>
                     <!-- End Icon Box v1 -->
                 </div>
@@ -67,7 +67,7 @@
                             	 결제 시스템이 당신의 실시간 계좌 이체를<br>
                             	 도와줄겁니다. 걱정하지마세요.</p>
                         </div>
-                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=b3"></a>
+                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=c3"></a>
                     </div>
                     <!-- End Icon Box v1 -->
                 </div>

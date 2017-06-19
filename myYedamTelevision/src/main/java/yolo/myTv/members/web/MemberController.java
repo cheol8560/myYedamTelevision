@@ -38,6 +38,7 @@ public class MemberController {
 	@RequestMapping(value = "/memberInsert.do", method = RequestMethod.POST)
 	public String memberInsert(MemberVO memberVO, HttpServletRequest request) throws IllegalStateException, IOException  {
 		MultipartFile file = memberVO.getUploadFile();
+		
 		if(file != null) {
 			String pathSet = request.getSession().getServletContext().getRealPath("/img");
 			File savefile = new File( pathSet , file.getOriginalFilename());
@@ -55,6 +56,20 @@ public class MemberController {
 		return "members/memberLeave";
 	}
 	
+	//회원탈퇴
+	@RequestMapping(value = "/deleteMember.do", method=RequestMethod.POST)
+	public String deleteMember(MemberVO vo,HttpSession session){
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		vo.setMemberId(member.getMemberId());
+		session.getAttribute("login");
+		memberService.deleteMember(vo);
+		System.out.println(vo);
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	
+	
 	
 	// 로그인폼
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
@@ -66,13 +81,17 @@ public class MemberController {
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(MemberVO vo,
 			Model model,
-			HttpSession session) {
+			HttpSession session) throws Exception {
+		
 		MemberVO result = memberService.login(vo);
+		
 		if (result != null) {
 			session.setAttribute("login", result);
 			return "redirect:/";
-		} else {
-			return "members/login";
+		}
+		else {
+			System.out.println("1");
+			return "blank/members/login";
 		}
 	}
 

@@ -22,6 +22,11 @@ public interface BoardService {
 
 	// 글 목록 조회
 	List<Map<String, Object>> getBoardList(BoardVO vo);
+	
+	//일대일 문의 전체 조회
+	
+	//일대일 문의 (답변이 없는 것 조회)
+	List<Map<String, Object>> getQuestionList(BoardVO vo);
 
 	
 }

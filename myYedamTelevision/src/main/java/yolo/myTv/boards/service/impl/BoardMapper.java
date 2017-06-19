@@ -14,4 +14,5 @@ public interface BoardMapper {
 	public List<Map<String,Object>> getBoardList(BoardVO vo);
 	public List<BoardVO> getBoardListVO(BoardVO vo);
 	public void viewUpdate(BoardVO vo);
+	public List<Map<String, Object>> getQuestionList(BoardVO vo);
 }

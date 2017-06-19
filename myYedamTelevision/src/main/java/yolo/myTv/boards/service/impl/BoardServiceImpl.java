@@ -41,4 +41,9 @@ public class BoardServiceImpl implements BoardService{
     public List<Map<String, Object>> getBoardList(BoardVO vo) {
         return boardDAO.getBoardList(vo);
     }
+
+	@Override
+	public List<Map<String, Object>> getQuestionList(BoardVO vo) {
+		return boardDAO.getQuestionList(vo);
+	}
 }

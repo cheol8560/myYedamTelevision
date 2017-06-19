@@ -325,5 +325,14 @@ public class BoardController {
 		}
 		return "Firefox";
 	}
+	
+	
+	//일대일 문의 내역 조회(댓글 없는 것)
+	@RequestMapping("/getQuestionList.do")
+	public String getQuestionList(BoardVO vo, Model model){
+		model.addAttribute("list", boardService.getQuestionList(vo) );
+		
+		return "admin/questions/question";
+	}
 
 }

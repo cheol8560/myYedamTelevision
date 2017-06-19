@@ -18,5 +18,7 @@ public interface TranslatePointMapper {
 	public Map<String, Object> resultInsertTrans (TranslatePointVO vo);
 	public List<TranslatePointVO> PresentedPointList (TranslatePointVO vo);
 	public List<Map<String, Object>> accumulatePoint(TranslatePointVO vo);
-	
+	int accumulatePointCount(TranslatePointVO vo);
+	int PresentedPointListCount(TranslatePointVO vo);
+	int resultInsertTransCount(TranslatePointVO vo);
 }

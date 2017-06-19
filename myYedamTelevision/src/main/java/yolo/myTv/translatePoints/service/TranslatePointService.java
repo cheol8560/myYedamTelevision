@@ -25,6 +25,11 @@ public interface TranslatePointService {
 
 	public List<Map<String, Object>> accumulatePoint(TranslatePointVO vo);
 	
+	//페이징 카운트
+	int accumulatePointCount(TranslatePointVO vo);
+	int PresentedPointListCount(TranslatePointVO vo);
+	int resultInsertTransCount(TranslatePointVO vo);
+	
 	
 	
 }

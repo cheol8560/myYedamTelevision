@@ -18,6 +18,7 @@ import yolo.myTv.members.service.MemberVO;
 import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointService;
 import yolo.myTv.translatePoints.service.TranslatePointVO;
+import yolo.myTv.util.PaginationInfo;
 
 
 
@@ -54,14 +55,34 @@ public class TranslatePointController {
 	public String getPresentedPointList(TranslatePointVO vo, Model model, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
+					//페이징1
+					/** pageing setting */
+			PaginationInfo paginationInfo = new PaginationInfo();
+			paginationInfo.setCurrentPageNo(vo.getPageIndex());
+			paginationInfo.setRecordCountPerPage(vo.getPageUnit());
+			paginationInfo.setPageSize(vo.getPageSize());
+			vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+			vo.setLastIndex(paginationInfo.getLastRecordIndex());
+			paginationInfo.setTotalRecordCount(translatePointService.accumulatePointCount(vo));
+			model.addAttribute("paginationInfo", paginationInfo);
 		
 		//총포인트
 		List<Map<String, Object>> list = translatePointService.accumulatePoint(vo);
+		
+		
+	
+		
+		
 		model.addAttribute("accumulatePoint", list);
 		
 		//환전내역
 		ExchangeVO exchangevo = new ExchangeVO();
 		exchangevo.setMemberId(member.getMemberId());
+		
+		//페이징2
+		
+		
+		
 		model.addAttribute("exchangeList", exchangeService.ExchangeList(exchangevo));
 		
 		//선물받은내역

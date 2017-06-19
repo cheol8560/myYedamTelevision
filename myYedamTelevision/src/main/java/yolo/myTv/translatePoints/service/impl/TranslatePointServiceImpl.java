@@ -60,6 +60,23 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 		// TODO Auto-generated method stub
 		return translatePointDAO.accumulatePoint(vo);
 	}
+
+	@Override
+	public int accumulatePointCount(TranslatePointVO vo) {
+		return translatePointDAO.accumulatePointCount(vo);
+	}
+
+	@Override
+	public int PresentedPointListCount(TranslatePointVO vo) {
+		
+		return PresentedPointListCount(vo);
+	}
+
+	@Override
+	public int resultInsertTransCount(TranslatePointVO vo) {
+		// TODO Auto-generated method stub
+		return resultInsertTransCount(vo);
+	}
  
 	
 }

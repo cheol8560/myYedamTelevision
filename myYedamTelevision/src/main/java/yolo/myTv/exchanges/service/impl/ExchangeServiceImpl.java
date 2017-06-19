@@ -21,7 +21,7 @@ public class ExchangeServiceImpl implements ExchangeService{
 	}
 	
 	@Override
-	public List<Map<String, Object>> ExchangeList(ExchangeVO vo) {
+	public List<Map<String, Object>>ExchangeList(ExchangeVO vo) {
 		// TODO Auto-generated method stub
 		return exchangeDAO.ExchangeList(vo);
 	}

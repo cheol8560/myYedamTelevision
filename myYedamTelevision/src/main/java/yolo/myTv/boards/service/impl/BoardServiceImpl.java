@@ -41,4 +41,19 @@ public class BoardServiceImpl implements BoardService{
     public List<Map<String, Object>> getBoardList(BoardVO vo) {
         return boardDAO.getBoardList(vo);
     }
+
+	@Override
+	public List<Map<String, Object>> getQuestionList(BoardVO vo) {
+		return boardDAO.getQuestionList(vo);
+	}
+
+	@Override
+	public int getBoardListCount(BoardVO vo) {
+		return boardDAO.getBoardListCount(vo);
+	}
+
+	@Override
+	public int getQuestionListCount(BoardVO vo) {
+		return boardDAO.getQuestionListCount(vo);
+	}
 }

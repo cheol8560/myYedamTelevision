@@ -91,6 +91,8 @@
 	</update>
 
 	<select id="getBoardList" resultMap="boardsResult">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
 		SELECT BOARD_NO
         	  ,BOARD_TITLE
         	  ,MEMBER_ID
@@ -105,6 +107,54 @@
 		 AND MEMBER_ID = #{memberId}
 		 </if>
 		ORDER BY BOARD_NO DESC
+		<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
+	</select>
+	
+	
+	
+	<select id="getBoardListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM BOARDS
+		WHERE CATEGORY = #{category}
+		 <if test="memberId != null and memberId !='' ">
+		 AND MEMBER_ID = #{memberId}
+		 </if>
+	</select>
+	
+	<select id="getQuestionList" resultType="map">
+	
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+		SELECT 
+		B.BOARD_NO "boardNo"
+		, B.BOARD_TITLE "boardTitle"
+		, B.MEMBER_ID	"memberId"
+		, B.CATEGORY	"category"
+		, B.WRITE_DATE	"writeDate"
+		, B.BOARD_TEXT	"boardText"
+		, B.VIEW_COUNT	"viewCount"
+		, B.ATTACH_FILE	"attachFile"
+		FROM BOARDS B FULL OUTER JOIN COMMENTS C
+		ON B.BOARD_NO = C.BOARD_NO
+		WHERE B.CATEGORY = 'd2'
+		AND C.COMMENT_NO IS NULL
+		ORDER BY "boardNo"
+				<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
+	</select>
+	
+	<select id="getQuestionListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM BOARDS B FULL OUTER JOIN COMMENTS C
+		ON B.BOARD_NO = C.BOARD_NO
+		WHERE B.CATEGORY = 'd2'
+		AND C.COMMENT_NO IS NULL
+		
 	</select>
 
 </mapper>

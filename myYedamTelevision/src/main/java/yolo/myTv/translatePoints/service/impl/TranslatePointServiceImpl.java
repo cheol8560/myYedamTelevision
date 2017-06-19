@@ -48,6 +48,18 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 	public Map<String, Object> resultInsertTrans(TranslatePointVO vo) {
 		return translatePointDAO.resultInsertTrans(vo);
 	}
+
+	@Override
+	public List<TranslatePointVO> PresentedPointList(TranslatePointVO vo) {
+		// TODO Auto-generated method stub
+		return translatePointDAO.PresentedPointList(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> accumulatePoint(TranslatePointVO vo) {
+		// TODO Auto-generated method stub
+		return translatePointDAO.accumulatePoint(vo);
+	}
  
 	
 }

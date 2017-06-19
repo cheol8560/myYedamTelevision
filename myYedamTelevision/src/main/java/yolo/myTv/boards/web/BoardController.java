@@ -29,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 import yolo.myTv.boards.service.BoardService;
 import yolo.myTv.boards.service.BoardVO;
 import yolo.myTv.members.service.MemberVO;
+import yolo.myTv.util.PaginationInfo;
 
 @Controller
 public class BoardController {
@@ -56,9 +57,12 @@ public class BoardController {
 	public String insertNotice(BoardVO vo, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		MultipartFile file = vo.getUploadFile();
-		File savefile = new File("d:/upload/", file.getOriginalFilename());
-		file.transferTo(savefile); // 서버에 파일 저장
-		vo.setAttachFile(file.getOriginalFilename());
+		if(file != null && file.getSize() > 0 ){
+			File savefile = new File("d:/upload/", file.getOriginalFilename());
+			file.transferTo(savefile); // 서버에 파일 저장
+			vo.setAttachFile(file.getOriginalFilename());
+		}
+		
 		System.out.println(vo);
 		vo.setMemberId("admin");
 		boardService.insertBoard(vo);
@@ -72,11 +76,26 @@ public class BoardController {
 		model.addAttribute("notice", boardService.getBoard(vo, true));
 		return "boards/getNotice";
 	}
+	
 
 	// 공지사항 전체보기
 	@RequestMapping("/getNoticeList.do")
 	public String getNoticeList(BoardVO vo, Model model) throws Exception {
 		vo.setCategory("d1");
+		
+		
+		//페이징
+		/** pageing setting */
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(vo.getPageIndex());
+		paginationInfo.setRecordCountPerPage(vo.getPageUnit());
+		paginationInfo.setPageSize(vo.getPageSize());
+		vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		vo.setLastIndex(paginationInfo.getLastRecordIndex());
+		paginationInfo.setTotalRecordCount(boardService.getBoardListCount(vo));
+		model.addAttribute("paginationInfo", paginationInfo);
+		
+		
 		model.addAttribute("noticeList", boardService.getBoardList(vo));
 		return "boards/noticeList";
 	}
@@ -142,6 +161,18 @@ public class BoardController {
 		vo.setCategory("d2");
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
+		
+		//페이징
+				/** pageing setting */
+				PaginationInfo paginationInfo = new PaginationInfo();
+				paginationInfo.setCurrentPageNo(vo.getPageIndex());
+				paginationInfo.setRecordCountPerPage(vo.getPageUnit());
+				paginationInfo.setPageSize(vo.getPageSize());
+				vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+				vo.setLastIndex(paginationInfo.getLastRecordIndex());
+				paginationInfo.setTotalRecordCount(boardService.getBoardListCount(vo));
+				model.addAttribute("paginationInfo", paginationInfo);
+		
 		model.addAttribute("inquiryList", boardService.getBoardList(vo));
 		return "boards/inquiryList";
 	}
@@ -170,6 +201,7 @@ public class BoardController {
 			SessionStatus status, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		MultipartFile file = vo.getUploadFile();
+		
 		File savefile = new File("d:/upload/", file.getOriginalFilename());
 		file.transferTo(savefile); // 서버에 파일 저장
 		vo.setAttachFile(file.getOriginalFilename());
@@ -324,6 +356,27 @@ public class BoardController {
 			return "Opera";
 		}
 		return "Firefox";
+	}
+	
+	
+	//일대일 문의 내역 조회(댓글 없는 것)
+	@RequestMapping("/getQuestionList.do")
+	public String getQuestionList(BoardVO vo, Model model){
+		
+		//페이징
+				/** pageing setting */
+				PaginationInfo paginationInfo = new PaginationInfo();
+				paginationInfo.setCurrentPageNo(vo.getPageIndex());
+				paginationInfo.setRecordCountPerPage(vo.getPageUnit());
+				paginationInfo.setPageSize(vo.getPageSize());
+				vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+				vo.setLastIndex(paginationInfo.getLastRecordIndex());
+				paginationInfo.setTotalRecordCount(boardService.getQuestionListCount(vo));
+				model.addAttribute("paginationInfo", paginationInfo);
+		
+		model.addAttribute("list", boardService.getQuestionList(vo) );
+		
+		return "admin/questions/question";
 	}
 
 }

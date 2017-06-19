@@ -71,16 +71,16 @@
 	</select>
 
 	<select id="ExchangeList" resultMap="exchangeMap">
-        <![CDATA[
-        SELECT	REQUEST_POINT
-        		, REAL_RECEIPT
+        
+        SELECT	EXCHANGE_NO
+        		, REQUEST_DATE
+        		, REQUEST_POINT
         		, COMMISSION
-      			,(SELECT NVL(SUM(REQUEST_POINT),0)
-				  FROM EXCHANGES
-				  WHERE MEMBER_ID = #{memberId}) as "TOTALREQUEST"
-        FROM EXCHANGES 
-        WHERE EXCHANGE_NO = #{exchangeNo}
-        ]]>
+      			, REAL_RECEIPT
+        FROM EXCHANGES
+        WHERE MEMBER_ID = #{memberId}
+        order by EXCHANGE_NO desc
+      
 	</select>
 
 

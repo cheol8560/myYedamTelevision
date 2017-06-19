@@ -2,7 +2,9 @@ package yolo.myTv.translatePoints.service;
 
 import java.util.Date;
 
-public class TranslatePointVO {
+import yolo.myTv.util.SearchDefaultVO;
+
+public class TranslatePointVO  extends SearchDefaultVO{
 	private String translateId;
 	private int translatePoint;
 	private String sendMemberId; 

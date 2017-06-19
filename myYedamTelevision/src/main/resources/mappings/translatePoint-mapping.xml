@@ -22,16 +22,28 @@
 	</select>
 	
 	<select id="accumulatePoint" resultType="map">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
 	SELECT POINT as "point"
 		,(SELECT NVL(SUM(REQUEST_POINT),0)
 		FROM EXCHANGES
-		WHERE MEMBER_ID = #{memberId}) as " accumulatePoint",
+		WHERE MEMBER_ID = #{memberId}) as "accumulatePoint",
 		(SELECT NVL(SUM(TRANSLATE_POINT),0)
 		FROM TRANSLATE_POINTS
 		WHERE SEND_MEMBER_ID = #{memberId}) as "sendPoint",
 		(SELECT NVL(SUM(TRANSLATE_POINT),0)
 		FROM TRANSLATE_POINTS
 		WHERE RECEIVE_MEMBER_ID = #{memberId}) as "receivePoint"
+		FROM MEMBERS
+		WHERE MEMBER_ID = #{memberId}
+			<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
+	</select> 
+	
+	<select id="accumulatePointCount" resultType="int">
+	SELECT COUNT(*)
 		FROM MEMBERS
 		WHERE MEMBER_ID = #{memberId}
 	</select> 

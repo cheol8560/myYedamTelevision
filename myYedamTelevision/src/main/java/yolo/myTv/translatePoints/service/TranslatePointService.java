@@ -21,6 +21,7 @@ public interface TranslatePointService {
 	//거래발생 결과 페이지
 	public Map<String, Object> resultInsertTrans (TranslatePointVO vo);
 	
+	public List<TranslatePointVO> PresentedPointList (TranslatePointVO vo);
 	
 	
 }

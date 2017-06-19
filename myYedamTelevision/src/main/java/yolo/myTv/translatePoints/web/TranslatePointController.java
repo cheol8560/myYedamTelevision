@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import yolo.myTv.charges.service.ChargeService;
 import yolo.myTv.charges.service.ChargeVO;
+import yolo.myTv.exchanges.service.ExchangeService;
+import yolo.myTv.exchanges.service.ExchangeVO;
 import yolo.myTv.members.service.MemberVO;
 import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointService;
@@ -26,6 +28,8 @@ public class TranslatePointController {
 	TranslatePointService translatePointService;
 	@Autowired
 	ChargeService chargeService;
+	@Autowired
+	ExchangeService exchangeService;
 	
 	// 보유중인 기쁨 페이지
 	@RequestMapping("/getHoldingPointList.do")
@@ -47,7 +51,17 @@ public class TranslatePointController {
 	
 	// 선물받은 기쁨 페이지
 	@RequestMapping("/getPresentedPointList.do")
-	public String getPresentedPointList() {
+	public String getPresentedPointList(TranslatePointVO vo, Model model, HttpSession session) {
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		//환전내역
+		ExchangeVO exchangevo = new ExchangeVO();
+		exchangevo.setMemberId(member.getMemberId());
+		model.addAttribute("exchangeList", exchangeService.ExchangeList(exchangevo));
+		
+		//선물받은내역
+		vo.setMemberId(member.getMemberId());
+		model.addAttribute("PresentedPointList", translatePointService.PresentedPointList(vo));
+		
 		return "translatePoints/presentedPointList";
 	}
 	
@@ -60,7 +74,7 @@ public class TranslatePointController {
 		
 		return "translatePoints/translatePointResult";
 	}
-	 
+
 	//거래발생 프로시져
 	@RequestMapping("/insertTrans.do")
 	public String getTranslatePointList(TransVO vo, Model model){
@@ -72,7 +86,6 @@ public class TranslatePointController {
 	//교환내역 조회
 		@RequestMapping("/getTranslatePointList.do")
 		public String getTranslatePointList(TranslatePointVO vo, Model model){
-			
 			model.addAttribute("translateList", translatePointService.getTranslatePointList(vo));
 			return "admin/translates/translate";
 		}

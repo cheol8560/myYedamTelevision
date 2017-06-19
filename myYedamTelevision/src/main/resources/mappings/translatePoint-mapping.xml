@@ -82,4 +82,14 @@
 		#{outMessage, mode=OUT, jdbcType=VARCHAR, javaType=string})
 		}
 	</insert>
+	
+	<select id="PresentedPointList" resultType="map">
+		SELECT
+		TRANSLATE_DATE			"translateDate"
+		,SEND_MEMBER_ID 		"sendMemberId"	
+		,TRANSLATE_POINT 		"translatePoint"
+		FROM TRANSLATE_POINTS
+		WHERE RECEIVE_MEMBER_ID = #{memberId} 
+	</select>
+	
 </mapper>

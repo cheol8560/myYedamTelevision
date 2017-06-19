@@ -23,9 +23,9 @@
 				<!-- Counters v2 -->
 				<div class="counters-v2 bg-color-white">
 					<i class="counters-v2-icon icon-layers"></i>
-					<figure class="counter color-base counters-v2-no">${login.point}</figure>
+					<figure class="counter color-base counters-v2-no">${accumulatePoint[0].point}</figure>
 					<h4 class="counters-v2-title">보유중인 기쁨</h4>
-					<span class="counters-v2-subtitle">Great Performance</span>
+			
 				</div>
 				<!-- End Counters v2 -->
 			</div>
@@ -33,9 +33,9 @@
 				<!-- Counters v2 -->
 				<div class="counters-v2 bg-color-white">
 					<i class="counters-v2-icon icon-trophy"></i>
-					<figure class="counter color-base counters-v2-no">${total[0].receivePoint}</figure>
+					<figure class="counter color-base counters-v2-no">${accumulatePoint[0].receivePoint}</figure>
 					<h4 class="counters-v2-title">선물받은 기쁨</h4>
-					<span class="counters-v2-subtitle">Excellence</span>
+					
 				</div>
 				<!-- End Counters v2 -->
 			</div>
@@ -43,9 +43,9 @@
 				<!-- Counters v2 -->
 				<div class="counters-v2 bg-color-white">
 					<i class="counters-v2-icon icon-happy"></i>
-					<figure class="counter color-base counters-v2-no">${total[0].sendPoint}</figure>
+					<figure class="counter color-base counters-v2-no">${accumulatePoint[0].sendPoint}</figure>
 					<h4 class="counters-v2-title">선물한 기쁨</h4>
-					<span class="counters-v2-subtitle">More enthusiasm</span>
+				
 				</div>
 				<!-- End Counters v2 -->
 			</div>
@@ -53,9 +53,9 @@
 				<!-- Counters v2 -->
 				<div class="counters-v2 bg-color-white">
 					<i class="counters-v2-icon icon-tools"></i>
-					<figure class="counter color-base counters-v2-no">${total[0].totalPoint}</figure>
-					<h4 class="counters-v2-title">충전한 기쁨</h4>
-					<span class="counters-v2-subtitle">Customizability</span>
+					<figure class="counter color-base counters-v2-no">${accumulatePoint[0].accumulatePoint}</figure>
+					<h4 class="counters-v2-title">환전한 기쁨</h4>
+					
 				</div>
 				<!-- End Counters v2 -->
 			</div>
@@ -148,10 +148,10 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>▶ 이미 환전한 기쁨 : ${exchange.exchangePoint}</td>
+									<td>▶ 이미 환전한 기쁨 : ${accumulatePoint[0].accumulatePoint}</td>
 								</tr>
 								<tr>
-									<td>환전 가능한 기쁨이 개 이상이어야 환전이 가능합니다.</td>
+									<td>환전 가능한 기쁨이 100개 이상이어야 환전이 가능합니다.</td>
 								</tr>
 								<tr>
 									<td>계좌번호 인증후 환전이 가능합니다.</td>
@@ -206,8 +206,8 @@
 							<tr>
 								<td><fmt:formatDate pattern = "yyyy년 MM월 dd일 HH:mm:ss" value = "${exchange.requestDate}"/></td>
 								<td>${exchange.requestPoint}</td>
-								<td>${exchange.commission}</td>
-								<td>${exchange.realReceipt}</td>
+								<td>${exchange.commission}원</td>
+								<td>${exchange.realReceipt}원</td>
 							</tr>
 						</c:forEach>
 					</tbody>

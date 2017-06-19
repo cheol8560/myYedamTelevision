@@ -4,18 +4,25 @@
 	$(function(){
 		
 		$("#btn").click(function() {
-			var a = { "requestPoint": $("[name='requestPoint']").val()};
-			$.ajax({ url: "insertExchange.do", 
-				method: "post", 
-				type: "json", 
-				data: a, 
-				success: function(data) { 
-					$("#requestMoney").html(data.requestPoint*100);
-					$("#commission").html(data.commission);
-					$("#realReceipt").html(data.realReceipt);
-					$("#totalExchange").html(data.totalRequest);
-				} 
-			});
+			
+			if(${login.point} >= 100) {
+				var a = { "requestPoint": $("[name='requestPoint']").val()};
+				$.ajax({ url: "insertExchange.do", 
+					method: "post", 
+					type: "json", 
+					data: a, 
+					success: function(data) { 
+						$("#requestMoney").html(data.requestPoint*100);
+						$("#commission").html(data.commission);
+						$("#realReceipt").html(data.realReceipt);
+						$("#totalExchange").html(data.totalRequest);
+					} 
+				});
+			} else {
+				alert("보유하고 계신 포인트가 100포인트가 되지않아 환전을 이용하실수 없습니다.");
+			}
+			
+			
 		})
 		
 	});
@@ -45,6 +52,43 @@
 	                <li class="promo-block-v11-category-item wow zoomIn" data-wow-duration=".2" data-wow-delay=".4s">
 	                    <a class="promo-block-v11-category-link radius-3" href="#">
 	                        <i class="promo-block-v11-category-icon fa fa-html5"></i>
+	                   
+	                   <%-- <button type="button" class="btn btn-default" onclick="$('#contentAdd').modal({backdrop:false})" >컨텐츠 추가</button>
+
+					<!-- Modal -->
+					<form id="add-row-form" action="${pageContext.request.contextPath}/insertContent.do">
+						<div class="modal fade" id="contentAdd" role="dialog" tabindex="-1">
+							
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="myModalLabel">컨텐츠 관리</h4>
+									</div>
+									<div class="modal-body">
+										<div class="form-group">
+											<input type="text" id="name-input" class="form-control"
+												placeholder="컨텐츠 명" name="contentName" >
+										</div>
+										<div class="form-group">
+											<input type="text" id="position-input" class="form-control"
+												placeholder="컨텐츠 아이콘" name="contentIcon" >
+										</div>
+										<div class="form-group">
+											<input type="text" id="age-input" class="form-control"
+												placeholder="컨텐츠 소개" name="contentIntro" >
+										</div>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" onclick="win()">아이콘추가</button>
+										<button type="submit" class="btn btn-default" data-dismiss="modal" onclick="add();">저장</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form> --%>
+	                   
 	                        이용 약관
 	                    </a>
 	                </li>

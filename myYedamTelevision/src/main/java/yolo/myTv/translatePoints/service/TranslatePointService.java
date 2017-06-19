@@ -22,6 +22,9 @@ public interface TranslatePointService {
 	public Map<String, Object> resultInsertTrans (TranslatePointVO vo);
 	
 	public List<TranslatePointVO> PresentedPointList (TranslatePointVO vo);
+
+	public List<Map<String, Object>> accumulatePoint(TranslatePointVO vo);
+	
 	
 	
 }

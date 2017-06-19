@@ -53,13 +53,18 @@ public class TranslatePointController {
 	@RequestMapping("/getPresentedPointList.do")
 	public String getPresentedPointList(TranslatePointVO vo, Model model, HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("login");
+		vo.setMemberId(member.getMemberId());
+		
+		//총포인트
+		List<Map<String, Object>> list = translatePointService.accumulatePoint(vo);
+		model.addAttribute("accumulatePoint", list);
+		
 		//환전내역
 		ExchangeVO exchangevo = new ExchangeVO();
 		exchangevo.setMemberId(member.getMemberId());
 		model.addAttribute("exchangeList", exchangeService.ExchangeList(exchangevo));
 		
 		//선물받은내역
-		vo.setMemberId(member.getMemberId());
 		model.addAttribute("PresentedPointList", translatePointService.PresentedPointList(vo));
 		
 		return "translatePoints/presentedPointList";

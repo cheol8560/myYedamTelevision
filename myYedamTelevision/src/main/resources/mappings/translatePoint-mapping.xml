@@ -20,7 +20,22 @@
 		WHERE MEMBER_ID = #{memberId}
 
 	</select>
-
+	
+	<select id="accumulatePoint" resultType="map">
+	SELECT POINT as "point"
+		,(SELECT NVL(SUM(REQUEST_POINT),0)
+		FROM EXCHANGES
+		WHERE MEMBER_ID = #{memberId}) as " accumulatePoint",
+		(SELECT NVL(SUM(TRANSLATE_POINT),0)
+		FROM TRANSLATE_POINTS
+		WHERE SEND_MEMBER_ID = #{memberId}) as "sendPoint",
+		(SELECT NVL(SUM(TRANSLATE_POINT),0)
+		FROM TRANSLATE_POINTS
+		WHERE RECEIVE_MEMBER_ID = #{memberId}) as "receivePoint"
+		FROM MEMBERS
+		WHERE MEMBER_ID = #{memberId}
+	</select> 
+	
 	<resultMap type="translate" id="translateMap"> 
 		<result property="translateId" column="TRANSLATE_ID" />
 		<result property="translatePoint" column="TRANSLATE_POINT" />

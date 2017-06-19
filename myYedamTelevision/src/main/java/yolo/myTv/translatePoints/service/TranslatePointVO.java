@@ -12,8 +12,8 @@ public class TranslatePointVO {
 	private int sendPoint;
 	private int receivePoint;
 	private int point;
-	private String memberId; 
-	
+	private String memberId;
+	private int accumulatePoint;
 	
 	public int getPoint() {
 		return point;
@@ -77,6 +77,19 @@ public class TranslatePointVO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
+	
+	public int getReceivePoint() {
+		return receivePoint;
+	}
+	public void setReceivePoint(int receivePoint) {
+		this.receivePoint = receivePoint;
+	}
+	public int getAccumulatePoint() {
+		return accumulatePoint;
+	}
+	public void setAccumulatePoint(int accumulatePoint) {
+		this.accumulatePoint = accumulatePoint;
+	}
 	@Override
 	public String toString() {
 		return "TranslatePointVO [translateId=" + translateId
@@ -84,8 +97,9 @@ public class TranslatePointVO {
 				+ sendMemberId + ", receiveMemberId=" + receiveMemberId
 				+ ", translateDate=" + translateDate + ", totalPoint="
 				+ totalPoint + ", sendPoint=" + sendPoint + ", receivePoint="
-				+ receivePoint + ", memberId=" + memberId + "]";
+				+ receivePoint + ", point=" + point + ", memberId=" + memberId
+				+ ", accumulatePoint=" + accumulatePoint + "]";
 	}
-	
+
 
 }

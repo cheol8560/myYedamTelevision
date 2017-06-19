@@ -8,10 +8,12 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import yolo.myTv.util.SearchDefaultVO;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class BoardVO {
+public class BoardVO extends SearchDefaultVO {
 	private int boardNo;
 	private String boardTitle;
 	private String memberId;

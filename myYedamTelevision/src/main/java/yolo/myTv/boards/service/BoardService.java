@@ -27,6 +27,11 @@ public interface BoardService {
 	
 	//일대일 문의 (답변이 없는 것 조회)
 	List<Map<String, Object>> getQuestionList(BoardVO vo);
+	
+	//페이징
+	int getBoardListCount(BoardVO vo);
+	int getQuestionListCount(BoardVO vo);
+	
 
 	
 }

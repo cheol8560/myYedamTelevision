@@ -129,6 +129,15 @@
         ]]>
 	</select>
 	
+	<select id="chkDupMail" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*) AS CNT
+		FROM MEMBERS
+		WHERE 1 = 1
+		AND MEMBERS.EMAIL = #{email}
+        ]]>
+	</select>
+	
 	
 	<select id="chkDupNick" resultType="int">
         <![CDATA[

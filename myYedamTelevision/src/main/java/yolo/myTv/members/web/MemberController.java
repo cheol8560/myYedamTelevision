@@ -37,8 +37,8 @@ public class MemberController {
 	// 등록
 	@RequestMapping(value = "/memberInsert.do", method = RequestMethod.POST)
 	public String memberInsert(MemberVO memberVO, HttpServletRequest request) throws IllegalStateException, IOException  {
-		MultipartFile file = memberVO.getUploadFile();
 		
+		MultipartFile file = memberVO.getUploadFile();
 		if(file != null) {
 			String pathSet = request.getSession().getServletContext().getRealPath("/img");
 			File savefile = new File( pathSet , file.getOriginalFilename());
@@ -143,6 +143,33 @@ public class MemberController {
 	   out.print("1");
 	  }
 	 }
+	 
+	 
+	 
+	 @RequestMapping(value = "/chkDupMail.do")
+	 public void checkMail(HttpServletRequest req, HttpServletResponse res,
+	   ModelMap model) throws Exception {
+	  PrintWriter out = res.getWriter();
+	  try {
+
+	   // 넘어온 ID를 받는다.
+	   String paramMail = (req.getParameter("prmMail") == null) ? "" : String
+	     .valueOf(req.getParameter("prmMail"));
+
+	   MemberVO vo = new MemberVO();
+	   vo.setEmail(paramMail.trim());
+	   int chkPoint = memberService.chkDupMail(vo);
+
+	   out.print(chkPoint);
+	   out.flush();
+	   out.close();
+	  } catch (Exception e) {
+	   e.printStackTrace();
+	   out.print("1");
+	  }
+	 }
+	 
+	 
 	 
 	//관리자 회원 관리 페이지폼
 		@RequestMapping("/adminMemberForm.do")

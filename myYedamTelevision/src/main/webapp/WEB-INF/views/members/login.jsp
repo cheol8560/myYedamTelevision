@@ -36,11 +36,11 @@
 
 		var frm = document.companyForm;
 
-		if (!chkVal('insertId', '아이디'))
+		if ($("#idChk").val() == 'Y' && $("#NickChk").val() == 'Y' && $("#MailChk").val() == 'Y') {
+			return true;
+		} else{
+			alert('중복체크를 해주세요.');
 			return false;
-		if ($("#idChk").val() == 'N') {
-			alert('ID체크를 해주세요.');
-			return;
 		}
 	}
 	/* -------------------------------------------------------------------------------------- */
@@ -74,19 +74,36 @@
 		});
 	}
 
-	function insertChk2() {
+	/* ----------------------------------------------------------------------------------- */
+		function chkDupMail() {
+		var prmMail = $('#insertMail').val();
 
-		var frm = document.companyForm;
-
-		if (!chkVal('insertNick', '아이디'))
-			return false;
-		if ($("#NickChk").val() == 'N') {
-			alert('Nick체크를 해주세요.');
+		if ($("#insertMail").val() == '') {
+			alert('E-Mail을 입력해주세요.');
 			return;
 		}
+
+		$.ajax({
+			type : 'POST',
+			data : "prmMail=" + prmMail,
+			dataType : 'text',
+			url : './chkDupMail.do',
+			success : function(rData, textStatus, xhr) {
+				var chkRst = rData;
+				if (chkRst==0) {
+					alert("등록 가능 합니다.");
+					$("#MailChk").val('Y');
+				} else {
+					alert("중복 되어 있습니다.");
+					$("#MailChk").val('N');
+				}
+			},
+			error : function(xhr, status, e) {
+				alert(e);
+			}
+		});
 	}
-	
-	
+
 	
 </script>
 <!-- BODY -->
@@ -158,7 +175,7 @@
 
                 <!-- Registration Form -->
                 <form class="signup-form display-none" action="${pageContext.request.contextPath}/memberInsert.do" method="post"
-                			enctype="multipart/form-data">
+                			enctype="multipart/form-data" onsubmit="javascript:return insertChk();">
                     <div class="margin-b-30">
                         <h1 class="login-form-title">회원가입</h1>
                     </div>
@@ -181,7 +198,7 @@
                         <input class="form-control" type="text" autocomplete="on" id="memberName" placeholder="name" name="memberName"/>
                     </div>
                     <div class="form-group">
-                    <input type="hidden" id="nickChk" value="N" />
+                    <input type="hidden" id="NickChk" value="N" />
                     	<div class="col-md-9">
                         <input class="form-control" type="text" autocomplete="on" id="insertNick" placeholder="nickname" name="nickName"/>
                     	</div>
@@ -192,8 +209,15 @@
                     <div class="form-group">
                         <input class="form-control" type="date" autocomplete="on" id="birthDate" placeholder="birth" name="birthDate"/>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" id="email" placeholder="Email" name="email"/>
+                    
+                     <div class="form-group">
+                    <input type="hidden" id="MailChk" value="N" />
+                    	<div class="col-md-9">
+                        <input class="form-control" type="text" id="insertMail" placeholder="Email" name="email"/>
+                    	</div>
+                    	<div class="col-md-3">
+                    	<input class="btn-base-bg btn-base-xs btn-block radius-3 margin-b-5" type="button" value="Mail CHK" onclick="javascript:chkDupMail();" />
+                    	</div>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" autocomplete="on" id="tel" placeholder="phoneNum" name="tel"/>
@@ -209,7 +233,7 @@
                             <a href="javascript:;"> 개인 정보 정책</a>에 동의합니다.
                         </p>
                     </div>
-                    <button type="submit" id="signup-submit-btn" class="btn-base-bg btn-base-sm btn-block radius-3 margin-b-30">회원가입 완료</button>
+                    <button type="submit" id="signup-submit-btn" class="btn-base-bg btn-base-sm btn-block radius-3 margin-b-30" >회원가입 완료</button>
                     <p>
                         로그인 준비가 되었나요?
                         <a href="javascript:;" id="back-to-login-form-btn">로그인</a>

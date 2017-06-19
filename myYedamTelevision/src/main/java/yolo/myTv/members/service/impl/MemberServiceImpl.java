@@ -63,5 +63,9 @@ public class MemberServiceImpl implements MemberService {
 	public void updateAdmin(MemberVO vo) {
 		MemberDAO.updateAdmin(vo);
 	}
+	@Override
+	public int chkDupMail(MemberVO vo) {
+		return MemberDAO.chkDupMail(vo);
+	}
 
 }

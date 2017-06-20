@@ -38,8 +38,17 @@
 
 		if ($("#idChk").val() == 'Y' && $("#NickChk").val() == 'Y' && $("#MailChk").val() == 'Y') {
 			return true;
-		} else{
-			alert('중복체크를 해주세요.');
+		} else if($("#idChk").val() == 'N'){
+			alert('ID중복체크를 해주세요.');
+			return false;
+		} else if($("#NickChk").val() == 'N'){
+			alert('닉네임 중복체크를 해주세요.');
+			return false;
+		} else if($("#MailChk").val() == 'N'){
+			alert('E-Mail 중복체크를 해주세요.');
+			return false;
+		} else {
+			alert('중복체크 & 입력하지 않은 정보가 있습니다.');
 			return false;
 		}
 	}
@@ -155,15 +164,15 @@
                 <!-- End Login Form -->
 
                 <!-- Forgot Password Form -->
-                <form class="forgot-password-form display-none" action="index.html" method="post">
+                <form class="forgot-password-form display-none" action="${pageContext.request.contextPath}/sendMail.do" method="post">
                     <div class="margin-b-30">
                         <h1 class="login-form-title">아이디/비밀번호 찾기</h1>
                         <p>이메일을 통해 비밀번호를 찾을 수 있습니다.</p>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" placeholder="Email" name="email"/>
+                        <input class="form-control" type="text" autocomplete="on" placeholder="ID" name="memberId"/>
                     </div>
-                    <button type="submit" class="btn-base-bg btn-base-sm btn-block radius-3 margin-b-30">비밀번호 재설정</button>
+                    <button type="submit" class="btn-base-bg btn-base-sm btn-block radius-3 margin-b-30">이메일 발송</button>
                     <div class="create-account">
                         <p>
                             로그인 준비가 되었나요?
@@ -223,7 +232,7 @@
                         <input class="form-control" type="text" autocomplete="on" id="tel" placeholder="phoneNum" name="tel"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="file" autocomplete="on" placeholder="img" name="uploadFile"/>
+                        <input class="form-control" type="file" autocomplete="on" id="insertImg" placeholder="img" name="uploadFile"/>
                     </div>
                     <div class="margin-b-30">
                         <p class="font-size-13">

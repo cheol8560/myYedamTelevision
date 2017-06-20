@@ -10,6 +10,13 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
+	<!-- Binding bean 생성 -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="webBindingInitializer">
+			<beans:bean class="yolo.myTv.util.MyTvBindingInitializer" />
+		</beans:property>
+	</beans:bean>
+	<!-- End Binding bean 생성 -->
 		
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
@@ -44,14 +51,6 @@
 		<beans:property name="maxInMemorySize" value="10000000" />
 	</beans:bean>
 	<!-- End MultipartResolver 설정-->
-	
-	<!-- Binding bean 생성 -->
-	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<beans:property name="webBindingInitializer">
-			<beans:bean class="yolo.myTv.util.MyTvBindingInitializer" />
-		</beans:property>
-	</beans:bean>
-	<!-- End Binding bean 생성 -->
 
 	<!-- 로그인 체크 interceptors -->
 	<interceptors>
@@ -62,6 +61,7 @@
 			<exclude-mapping path="/getOnBroadcastList.do" />
 			<exclude-mapping path="/chk*.do" />
 			<exclude-mapping path="/memberInsert.do" />
+			<exclude-mapping path="/sendMail.do" />
 			<beans:bean class="yolo.myTv.util.AuthenticInterceptor" />
 		</interceptor>
 	</interceptors>

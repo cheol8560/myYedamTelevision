@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import yolo.myTv.members.service.MemberService;
 import yolo.myTv.members.service.MemberVO;
+import yolo.myTv.util.SendMail;
 
 
 @Controller
@@ -39,11 +42,13 @@ public class MemberController {
 	public String memberInsert(MemberVO memberVO, HttpServletRequest request) throws IllegalStateException, IOException  {
 		
 		MultipartFile file = memberVO.getUploadFile();
-		if(file != null) {
+		if(file != null && file.getSize() > 0) {
 			String pathSet = request.getSession().getServletContext().getRealPath("/img");
 			File savefile = new File( pathSet , file.getOriginalFilename());
 			file.transferTo(savefile); //서버에 파일 저장 
 			memberVO.setMemberImage(file.getOriginalFilename());
+		}else  {
+			memberVO.setMemberImage("basic.jpg");
 		}
 		memberService.insertMember(memberVO);
 		return "members/login";
@@ -78,15 +83,15 @@ public class MemberController {
 	public String login(MemberVO vo,
 			Model model,
 			HttpSession session) throws Exception {
+		int chkPoint = memberService.chkDupId(vo);
+
 		
-		MemberVO result = memberService.login(vo);
-		
-		if (result != null) {
+		if (chkPoint == 1) {
+			MemberVO result = memberService.login(vo);
 			session.setAttribute("login", result);
 			return "redirect:/";
-		}
+		} 
 		else {
-			System.out.println("1");
 			return "blank/members/login";
 		}
 	}
@@ -187,5 +192,18 @@ public class MemberController {
 	public String loginAlert() {
 		return "blank/members/loginAlert";
 	}
+	
+	
+	
+	//관리자 회원 수정
+		@RequestMapping(value = "/sendMail.do", method=RequestMethod.POST)
+		public String sendMail(MemberVO vo){
+			MemberVO mvo = memberService.getMember(vo);
+			String mail = mvo.getEmail();
+			String id = mvo.getMemberId();
+			String pass = mvo.getPassword();
+			SendMail.sendMail(mail, id, pass);
+			return "redirect:/";
+		}
 	
 }

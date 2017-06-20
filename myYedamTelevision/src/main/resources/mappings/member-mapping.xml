@@ -5,7 +5,6 @@
 <mapper namespace="yolo.myTv.members.service.impl.MemberMapper">
 
 	<insert id="insertMember" parameterType="member">
-        <![CDATA[  
         INSERT INTO MEMBERS(MEMBER_ID
         					, PASSWORD
         					, NICK_NAME
@@ -13,13 +12,9 @@
         					, BIRTH_DATE
         					, EMAIL
         					, TEL
-        					]]>
         					<if test="memberImage != null and memberImage !='' ">	<!--ATTATCH_FILENAME이 있으면   -->
-        					<![CDATA[
         					, MEMBER_IMAGE
-        					]]>
         					</if>
-        					<![CDATA[
         					) 
         VALUES(#{memberId}
         		, #{password}
@@ -28,16 +23,12 @@
 				, #{birthDate}
         		, #{email}
         		, #{tel}
-        		]]>
         		<if test="memberImage != null and memberImage !='' ">
-        		<![CDATA[
         		, #{memberImage})
-        		]]>
         		</if>
 	</insert>
 
 	<update id="updateMember">
-        <![CDATA[
         UPDATE MEMBERS SET
         		PASSWORD = #{password}
                 , NICK_NAME = #{memberName}
@@ -46,29 +37,23 @@
                 , MEMBER_IMAGE = #{memberImage}
                 , BANK = #{bank}
         WHERE MEMBER_ID = #{memberId}
-        ]]>
 	</update>
 	
 	<update id="updatePoint">
-        <![CDATA[
         UPDATE MEMBERS SET
         		POINT = POINT + #{chargePoint}
         WHERE MEMBER_ID = #{memberId}
-        ]]>
 	</update>
 	
 	<update id="updateAdmin">
-        <![CDATA[ 
         UPDATE MEMBERS SET
         		PASSWORD = #{password}
                 , EMAIL = #{email}
                 , POINT = #{point}
         WHERE MEMBER_ID = #{memberId}
-        ]]>
 	</update>
 
 	<delete id="deleteMember">
-        <![CDATA[
         UPDATE MEMBERS SET
         			PASSWORD = null
     	    		, NICK_NAME = null
@@ -80,11 +65,9 @@
         			, BANK = null
         			, ACCOUNT = null
         WHERE MEMBER_ID = #{memberId}
-        ]]>
 	</delete>
 
 	<select id="getMember" resultMap="memberMap">
-        <![CDATA[
         SELECT MEMBER_ID
         		, PASSWORD
         		, NICK_NAME
@@ -98,12 +81,10 @@
         		, ACCOUNT 
         FROM MEMBERS
         WHERE MEMBER_ID = #{memberId}
-        ]]>
 	</select>
 	
 	
 	<select id="getMemberList" resultMap="memberMap">
-        <![CDATA[
         SELECT MEMBER_ID
         		, NICK_NAME
         		, MEMBER_NAME
@@ -115,37 +96,30 @@
         		, BANK
         		, ACCOUNT 
         FROM MEMBERS
-        ]]>
 	</select>
 	
 	 
 	
 	<select id="chkDupId" resultType="int">
-        <![CDATA[
         SELECT COUNT(*) AS CNT
 		FROM MEMBERS
 		WHERE 1 = 1
 		AND MEMBERS.MEMBER_ID = #{memberId}
-        ]]>
 	</select>
 	
 	<select id="chkDupMail" resultType="int">
-        <![CDATA[
         SELECT COUNT(*) AS CNT
 		FROM MEMBERS
 		WHERE 1 = 1
 		AND MEMBERS.EMAIL = #{email}
-        ]]>
 	</select>
 	
 	
 	<select id="chkDupNick" resultType="int">
-        <![CDATA[
         SELECT COUNT(*) AS CNT
 		FROM MEMBERS
 		WHERE 1 = 1
 		AND MEMBERS.NICK_NAME = #{nickName}
-        ]]>
 	</select>
 	
 

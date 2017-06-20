@@ -48,7 +48,6 @@ public class MemberController {
 		memberService.insertMember(memberVO);
 		return "members/login";
 	}
-	
 
 	// 회원탈퇴 페이지
 	@RequestMapping("/deleteMemberForm.do")
@@ -67,9 +66,6 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-	
-	
 	
 	// 로그인폼
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
@@ -118,9 +114,6 @@ public class MemberController {
 	  }
 	 }
 	 
-	 
-	 
-	 
 	 @RequestMapping(value = "/chkDupNick.do")
 	 public void checkNick(HttpServletRequest req, HttpServletResponse res,
 	   ModelMap model) throws Exception {
@@ -143,8 +136,6 @@ public class MemberController {
 	   out.print("1");
 	  }
 	 }
-	 
-	 
 	 
 	 @RequestMapping(value = "/chkDupMail.do")
 	 public void checkMail(HttpServletRequest req, HttpServletResponse res,
@@ -169,28 +160,32 @@ public class MemberController {
 	  }
 	 }
 	 
-	 
-	 
 	//관리자 회원 관리 페이지폼
-		@RequestMapping("/adminMemberForm.do")
-		public String adminMemberForm(MemberVO vo, Model model) throws Exception {
-			model.addAttribute("member", memberService.getMemberList(vo));
-			return "admin/members/member";
-		}
+	@RequestMapping("/adminMemberForm.do")
+	public String adminMemberForm(MemberVO vo, Model model) throws Exception {
+		model.addAttribute("member", memberService.getMemberList(vo));
+		return "admin/members/member";
+	}
 		
 	//관리자 회원 수정 페이지
-		@RequestMapping("/getMemberForm.do")
-		public String getMemberForm(@ModelAttribute("member")MemberVO vo, Model model) {
-			model.addAttribute("member", memberService.getMember(vo));
-			return "admin/members/updateMember";
-		}
+	@RequestMapping("/getMemberForm.do")
+	public String getMemberForm(@ModelAttribute("member")MemberVO vo, Model model) {
+		model.addAttribute("member", memberService.getMember(vo));
+		return "admin/members/updateMember";
+	}
 	 
 	//관리자 회원 수정
-		@RequestMapping(value = "/updateMember.do", method=RequestMethod.POST)
-		public String updateNotice(@ModelAttribute("member") MemberVO vo){
-			memberService.updateAdmin(vo);
-			System.out.println(vo);
-			return "redirect:/adminMemberForm.do";
-		}
-
+	@RequestMapping(value = "/updateMember.do", method=RequestMethod.POST)
+	public String updateNotice(@ModelAttribute("member") MemberVO vo){
+		memberService.updateAdmin(vo);
+		System.out.println(vo);
+		return "redirect:/adminMemberForm.do";
+	}
+	
+	// 로그인 안된 상태로 페이지 접근 시 alert 창
+	@RequestMapping("/loginAlert.do")
+	public String loginAlert() {
+		return "blank/members/loginAlert";
+	}
+	
 }

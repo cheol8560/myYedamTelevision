@@ -52,6 +52,18 @@
 		</beans:property>
 	</beans:bean>
 	<!-- End Binding bean 생성 -->
+
+	<!-- 로그인 체크 interceptors -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/*.do" />
+			<mapping path="/admin/*.do" />
+			<exclude-mapping path="/login.do" />
+			<exclude-mapping path="/getOnBroadcastList.do" />
+			<beans:bean class="yolo.myTv.util.AuthenticInterceptor" />
+		</interceptor>
+	</interceptors>
+	<!-- End 로그인 체크 interceptors -->
 	
 	<context:component-scan base-package="yolo.myTv" />
 

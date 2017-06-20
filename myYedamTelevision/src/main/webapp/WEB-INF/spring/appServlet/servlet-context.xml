@@ -60,6 +60,7 @@
 			<mapping path="/admin/*.do" />
 			<exclude-mapping path="/login.do" />
 			<exclude-mapping path="/getOnBroadcastList.do" />
+			<exclude-mapping path="/chk*.do" />
 			<beans:bean class="yolo.myTv.util.AuthenticInterceptor" />
 		</interceptor>
 	</interceptors>

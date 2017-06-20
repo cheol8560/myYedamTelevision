@@ -96,74 +96,89 @@ public class MemberController {
 		}
 	}
 
-	 @RequestMapping(value = "/chkDupId.do")
-	 public void checkId(HttpServletRequest req, HttpServletResponse res,
-	   ModelMap model) throws Exception {
-	  PrintWriter out = res.getWriter();
-	  try {
+	@RequestMapping(value = "/chkDupId.do")
+	public void checkId(HttpServletRequest req, HttpServletResponse res,
+						ModelMap model) throws Exception {
+		PrintWriter out = res.getWriter();
+		try {
 
-	   // 넘어온 ID를 받는다.
-	   String paramId = (req.getParameter("prmId") == null) ? "" : String
-	     .valueOf(req.getParameter("prmId"));
+			// 넘어온 ID를 받는다.
+			String paramId = (req.getParameter("memberId") == null) ? "" : String.valueOf(req.getParameter("memberId"));
 
-	   MemberVO vo = new MemberVO();
-	   vo.setMemberId(paramId.trim());
-	   int chkPoint = memberService.chkDupId(vo);
+			MemberVO vo = new MemberVO();
+			vo.setMemberId(paramId.trim());
+			int chkPoint = memberService.chkDupId(vo);
 
-	   out.print(chkPoint);
-	   out.flush();
-	   out.close();
-	  } catch (Exception e) {
-	   e.printStackTrace();
-	   out.print("1");
-	  }
-	 }
+			// out.print(chkPoint);
+			if(chkPoint == 0) {
+				out.print("true");
+			} else {
+				out.print("false");
+			}
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			// out.print("1");
+			out.print("false");
+		}
+	}
 	 
-	 @RequestMapping(value = "/chkDupNick.do")
-	 public void checkNick(HttpServletRequest req, HttpServletResponse res,
-	   ModelMap model) throws Exception {
-	  PrintWriter out = res.getWriter();
-	  try {
+	@RequestMapping(value = "/chkDupNick.do")
+	public void checkNick(HttpServletRequest req, HttpServletResponse res,
+						  ModelMap model) throws Exception {
+		PrintWriter out = res.getWriter();
+		try {
 
-	   // 넘어온 ID를 받는다.
-	   String paramNick = (req.getParameter("prmNick") == null) ? "" : String
-	     .valueOf(req.getParameter("prmNick"));
+			// 넘어온 ID를 받는다.
+			String paramNick = (req.getParameter("nickName") == null) ? "" : String.valueOf(req.getParameter("nickName"));
 
-	   MemberVO vo = new MemberVO();
-	   vo.setNickName(paramNick.trim());
-	   int chkPoint = memberService.chkDupNick(vo);
-
-	   out.print(chkPoint);
-	   out.flush();
-	   out.close();
-	  } catch (Exception e) {
-	   e.printStackTrace();
-	   out.print("1");
-	  }
-	 }
+			MemberVO vo = new MemberVO();
+			vo.setNickName(paramNick.trim());
+			int chkPoint = memberService.chkDupNick(vo);
+			
+			//out.print(chkPoint);
+			if(chkPoint == 0) {
+				out.print("true");
+			} else {
+				out.print("false");
+			}
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			// out.print("1");
+			out.print("false");
+		}
+	}
 	 
-	 @RequestMapping(value = "/chkDupMail.do")
-	 public void checkMail(HttpServletRequest req, HttpServletResponse res,
-	   ModelMap model) throws Exception {
-	  PrintWriter out = res.getWriter();
-	  try {
+	@RequestMapping(value = "/chkDupMail.do")
+	public void checkMail(HttpServletRequest req, HttpServletResponse res,
+						  ModelMap model) throws Exception {
+		PrintWriter out = res.getWriter();
+		try {
 
-	   // 넘어온 ID를 받는다.
-	   String paramMail = (req.getParameter("prmMail") == null) ? "" : String
-	     .valueOf(req.getParameter("prmMail"));
+			// 넘어온 ID를 받는다.
+			String paramMail = (req.getParameter("email") == null) ? "" : String.valueOf(req.getParameter("email"));
 
-	   MemberVO vo = new MemberVO();
-	   vo.setEmail(paramMail.trim());
-	   int chkPoint = memberService.chkDupMail(vo);
+			MemberVO vo = new MemberVO();
+			vo.setEmail(paramMail.trim());
+			int chkPoint = memberService.chkDupMail(vo);
 
-	   out.print(chkPoint);
-	   out.flush();
-	   out.close();
-	  } catch (Exception e) {
-	   e.printStackTrace();
-	   out.print("1");
-	  }
-	 }
+			// out.print(chkPoint);
+			if(chkPoint == 0) {
+				out.print("true");
+			} else {
+				out.print("false");
+			}
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			// out.print("1");
+			out.print("false");
+		}
+	}
 	 
 	//관리자 회원 관리 페이지폼
 	@RequestMapping("/adminMemberForm.do")

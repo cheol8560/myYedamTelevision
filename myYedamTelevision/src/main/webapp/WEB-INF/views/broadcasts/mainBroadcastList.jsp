@@ -38,14 +38,16 @@
 							</div>
 							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
 								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="getOnBroadcast.do?broadcastNo=${broadcast.broadcastNo}">
+									<a href="getOnBroadcast.do?broadcastNo=${broadcast.broadcastNo}&memberId=${broadcast.memberId}">
 										${broadcast.broadcastTitle}
 									</a>
 								</h4>
 								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
 									<span style="float: left;">${broadcast.nickName}</span> 
 									<span style="float: right;">
-										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
+										<i class="bordered-icon-box-item fa fa-group"></i> 
+										<span class="view-count">0</span> 명 시청
+										<span class="channelId" style="display: none;">${broadcast.channelId}</span> 
 									</span>
 								</span>
 							</div>
@@ -100,3 +102,26 @@
 		
 		</div>
 		<!--========== END PAGE CONTENT ==========-->
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc.js"></script>
+<script>
+"use strict";
+
+	var app = new PlayRTC({
+		projectKey: "60ba608a-e228-4530-8711-fa38004719c1",
+		data: true,
+		video: false,
+		audio: false
+	});
+
+	window.addEventListener("load", function(event) {
+		$(".channelId").each(function() {
+			var channelId = $(this).text();
+			app.getPeerList(channelId, function(data) {
+				var view = data.peers.length-1;
+				$(".view-count").text(view);
+			});
+		});
+	});
+</script>
+		

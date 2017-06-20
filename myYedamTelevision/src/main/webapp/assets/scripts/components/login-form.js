@@ -6,7 +6,7 @@ var Login = function() {
     var handleLoginForm = function() {
         $(".login-form").validate({
             rules: {
-                username: {
+            	memberId: {
                     required: true
                 },
                 password: {
@@ -14,11 +14,11 @@ var Login = function() {
                 }
             },
             messages: {
-                username: {
-                    required: "Username is required."
+            	memberId: {
+                    required: "ID를 입력해주세요."
                 },
                 password: {
-                    required: "Password is required."
+                    required: "비밀번호를 입력해주세요."
                 }
             }
             }), $(".login-form input").keypress(function(e) {
@@ -38,7 +38,7 @@ var Login = function() {
             },
             messages: {
                 email: {
-                    required: "Email is required."
+                    required: "이메일을 입력해주세요."
                 }
             }
         }), $(".forgot-password-form input").keypress(function(e) {
@@ -55,17 +55,14 @@ var Login = function() {
         $(".signup-form").validate({
             ignore: "",
             rules: {
-                name: {
-                    required: true
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                username: {
-                    required: true
-                },
-                password: {
+            	memberId: {
+            		required: true,
+            		remote: {
+            			type: "post",
+            			url: "./chkDupId.do"
+            		}
+            	},
+            	password: {
                     required: true,
                     minlength: 6
                 },
@@ -73,22 +70,63 @@ var Login = function() {
                     required: true,
                     minlength: 6,
                     equalTo: "#signup_password"
+                },
+                memberName: {
+                    required: true
+                },
+                nickName: {
+                    required: true,
+                    remote: {
+            			type: "post",
+            			url: "./chkDupNick.do"
+            		}
+                },
+                birthDate: {
+                	required: true
+                },
+                email: {
+                    required: true,
+                    email: true,
+                    remote: {
+            			type: "post",
+            			url: "./chkDupMail.do"
+            		}
+                },
+                tel: {
+                	required: true
                 }
             },
             messages: {
-                name: "Please enter your name",
-                email: "Please enter a valid email address",
-                username: {
-                    required: "Please enter a username",
+            	memberId: {
+                	required: "아이디를 입력해주세요.",
+                	remote: "중복된 아이디입니다."
                 },
                 password: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 6 characters long"
+                    required: "비밀번호를 입력해주세요.",
+                    minlength: "비밀번호는 6글자 이상이 필수입니다."
                 },
                 confirm_password: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 6 characters long",
-                    equalTo: "Please enter the same password as above"
+                    required: "비밀번호를 다시 한번 입력해주세요.",
+                    minlength: "비밀번호는 6글자 이상이 필수입니다.",
+                    equalTo: "위의 비밀번호와 동일하게 입력해주세요."
+                },
+                memberName: {
+                	required: "이름을 입력해주세요."
+                },
+                nickName: {
+                	required: "닉네임을 입력해주세요.",
+                	remote: "중복된 닉네임입니다."
+                },
+                birthDate: {
+                	required: "생년월일을 입력해주세요."
+                },
+                email: {
+                	required: "이메일을 입력해주세요.",
+                	email: "이메일 형식에 맞춰 입력해주세요.",
+                	remote: "중복된 이메일입니다."
+                },
+                tel: {
+                	required: "연락처를 입력해주세요."
                 }
             }
         }), $(".signup-form input").keypress(function(e) {

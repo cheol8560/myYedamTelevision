@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%-- 
 <script type="text/javascript">
 
 	function chkDupId() {
@@ -13,7 +13,7 @@
 
 		$.ajax({
 			type : 'POST',
-			data : "prmId=" + prmId,
+			data : "memberId=" + prmId,
 			dataType : 'text',
 			url : './chkDupId.do',
 			success : function(rData, textStatus, xhr) {
@@ -115,6 +115,7 @@
 
 	
 </script>
+ --%>
 <!-- BODY -->
 <body data-vide-bg="${pageContext.request.contextPath}/include/video/sail-away/sail-away" data-vide-options="{posterType: 'detect'}">
 
@@ -141,18 +142,12 @@
                         <p>로그인 후에 이용하실 수 있습니다.</p>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" placeholder="Username" name="memberId"/>
+                        <input class="form-control" type="text" autocomplete="on" placeholder="Member ID" name="memberId" id="memberId"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" autocomplete="on" placeholder="Password" name="password"/>
+                        <input class="form-control" type="password" autocomplete="on" placeholder="Password" name="password" id="password"/>
                     </div>
                     <div class="login-form-actions">
-                        <div class="checkbox pull-left">
-                            <input id="checkbox" type="checkbox" name="remember" value="1" checked>
-                            <label for="checkbox">
-                                아이디 저장
-                            </label>
-                        </div>
                         <a href="javascript:;" id="forgot-password" class="login-form-forgot">아이디/비밀번호 찾기</a>
                     </div>
                     <button type="submit" class="btn-base-bg btn-base-sm btn-block radius-3 margin-b-30">로그인</button>
@@ -184,18 +179,12 @@
 
                 <!-- Registration Form -->
                 <form class="signup-form display-none" action="${pageContext.request.contextPath}/memberInsert.do" method="post"
-                			enctype="multipart/form-data" onsubmit="javascript:return insertChk();">
+                			enctype="multipart/form-data">
                     <div class="margin-b-30">
                         <h1 class="login-form-title">회원가입</h1>
                     </div>
                     <div class="form-group">
-                    	<input type="hidden" id="idChk" value="N" /><!-- ID체크 했는지, 안했는지. -->
-                    	<div class="col-md-9">
-                        <input class="form-control" type="text" id="insertId" placeholder="ID" name="memberId"/>
-                        </div>
-                        <div class="col-md-3">
-                    	<input class="btn-base-bg btn-base-xs btn-block radius-3 margin-b-5" type="button" value="ID CHK" onclick="javascript:chkDupId();" />
-                    	</div>
+                        <input class="form-control" type="text" id="memberId" placeholder="ID" name="memberId"/>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="password" autocomplete="on" id="signup_password" placeholder="Password" name="password"/>
@@ -207,26 +196,14 @@
                         <input class="form-control" type="text" autocomplete="on" id="memberName" placeholder="name" name="memberName"/>
                     </div>
                     <div class="form-group">
-                    <input type="hidden" id="NickChk" value="N" />
-                    	<div class="col-md-9">
-                        <input class="form-control" type="text" autocomplete="on" id="insertNick" placeholder="nickname" name="nickName"/>
-                    	</div>
-                    	<div class="col-md-3">
-                    	<input class="btn-base-bg btn-base-xs btn-block radius-3 margin-b-5" type="button" value="NICK CHK" onclick="javascript:chkDupNick();" />
-                    	</div>
+                        <input class="form-control" type="text" autocomplete="on" id="nickName" placeholder="nickname" name="nickName"/>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="date" autocomplete="on" id="birthDate" placeholder="birth" name="birthDate"/>
                     </div>
                     
-                     <div class="form-group">
-                    <input type="hidden" id="MailChk" value="N" />
-                    	<div class="col-md-9">
-                        <input class="form-control" type="text" id="insertMail" placeholder="Email" name="email"/>
-                    	</div>
-                    	<div class="col-md-3">
-                    	<input class="btn-base-bg btn-base-xs btn-block radius-3 margin-b-5" type="button" value="Mail CHK" onclick="javascript:chkDupMail();" />
-                    	</div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="email" placeholder="Email" name="email"/>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" autocomplete="on" id="tel" placeholder="phoneNum" name="tel"/>

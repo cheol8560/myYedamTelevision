@@ -6,7 +6,7 @@
 <body>
 
 <!-- WRAPPER -->
-<div class="wrapper animsition fullheight" >
+<div class="wrapper animsition fullheight">
 	<!-- Logo -->
 	<div class="bg-color-white" style="border-bottom: 2px solid #00bcd4;">
 		<div class="container-sm" style="margin-left: 30px;">
@@ -24,61 +24,16 @@
 	
     <!--========== PAGE CONTENT ==========-->
     <!-- BJ Page -->
-    <div class="full-width-container">
+    <div class="full-width-container" style="border-bottom:1px solid #00bcd4;">
         <div class="row no-space-row">
             <!-- Left Area -->
             <div class="col-md-8" id="leftArea">
 								
 				<!-- Video Player -->
-                <div class="full-width-container" id="videoArea"></div>
+                <div class="full-width-container" id="videoArea">
+                </div>
                 <!-- End Video Player -->
 				
-				<!-- Divider v1 -->
-        		<div class="divider-v1" style="margin:10px auto;">
-        			<div class="divider-v1-element">
-        				<i class="divider-v1-icon fa fa-skyatlas"></i>
-        			</div>
-        		</div>
-        		<!-- End Divider v1 -->
-
-				<!-- Air Info -->
-                <div class="full-width-container margin-l-30 margin-b-30">
-					<div class="col-sm-6">
-						<!-- Icon Box v4 -->
-						<div class="icon-box-v4">
-							<!-- 
-							<div class="theme-icons-wrap icon-box-v4-element">
-								<i class="theme-icons theme-icons-dark-bg theme-icons-lg radius-circle icon-genius"></i>
-							</div>
-							 -->
-							<div class="icon-box-v4-body">
-								<h3 class="icon-box-v4-body-title" id="applyBroadcastTitle"></h3>
-							</div>
-						</div>
-						<!-- End Icon Box v4 -->
-					</div>
-					<div class="col-sm-6 text-right">
-						<!-- Theme Icons Base On Hover -->
-		                <ul class="list-inline" style="margin:0;">
-		                    <li class="theme-icons-wrap">
-			                    <i class="theme-icons theme-icons-sm radius-circle fa fa-twitter margin-0"></i>
-			                    <span class="view-count">2</span> 명 시청
-							</li>
-							<li class="theme-icons-wrap">
-		                    	<a href="#" style="text-decoration: none;">
-		                    		<i class="theme-icons theme-icons-sm radius-circle fa fa-facebook margin-0"></i>
-		                    		기쁨선물
-		                    	</a>
-		                    </li>
-		                    <li class="theme-icons-wrap">
-			                    <button type="button" id="broadcastStartBtn" class="btn-base-bg btn-base-xs radius-3">방송시작</button>
-			                    <button type="button" id="broadcastEndBtn" class="btn-grey-brd btn-base-xs radius-3" disabled="disabled">방송종료</button>
-							</li>
-		                </ul>
-		                <!-- End Theme Icons Base On Hover -->
-					</div>
-				</div>
-                <!-- End Air Info -->
             </div>
             <!--  End Left Area -->
             
@@ -92,36 +47,21 @@
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
                         
-                        <div class="blog-sidebar-content scrollbar" id="chattingArea">
-							<!-- 
-							<article class="latest-tuts">
-								<div class="latest-tuts-media">
-									<img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/06.jpg" alt="">
-								</div>
-								<div class="latest-tuts-content">
-									<h5 class="latest-tuts-content-title">
-										<a href="#">Visual brand designing</a>
-									</h5>
-									<small class="latest-tuts-content-time">35 minutes ago</small>
-								</div>
-							</article>
-							 -->
+                        <div class="overflow-a" id="chattingArea" style="padding: 10px 0 10px 0;">
+							
 						</div>
 						
-                        <div class="margin-b-10" style="border-top: 1px solid #00bcd4; height:145px;">
+                        <div class="" style="border-top: 1px solid #00bcd4;">
 		                    <!-- Comment Form v1 -->
 		                    <div class="bg-color-white">
 		                        <!-- Comment Form v1 -->
-		                        <form id="chattingForm" class="comment-form-v1" action="#" method="get">
-		                            <div class="padding-10">
-		                                <textarea class="form-control comment-form-v1-input" style="resize:none;" rows="4" 
-		                                		  placeholder="Your message" name="textarea"></textarea>
+		                            <div class="full-width-container">
+		                                <textarea class="form-control" rows="4" placeholder="Your message" name="textarea" 
+		                                		  id="sendTextArea" style="resize:none; padding:6px 6px; width:75%; border:none;"
+		                                		  ></textarea>
+										<button class="btn-base-bg btn-base-xs radius-3" id="sendTextBtn"
+												style="padding:8px 8px; position: absolute; top:25px; right:5px;">보내기</button>
 		                            </div>
-		                            <div class="row text-right margin-l-10 margin-r-10">
-			                            <button type="reset" class="btn-base-brd btn-base-xs radius-3">지우기</button>
-			                            <button type="submit" class="btn-base-bg btn-base-xs radius-3">보내기</button>
-		                            </div>
-		                        </form>
 		                        <!-- Comment Form v1 -->
 		                    </div>
 		                    <!-- End Comment Form v1 -->
@@ -130,17 +70,17 @@
 				</div>
                 <!-- End Chatting Area -->
                 
-                <!-- Broadcast list -->
+                <!-- 방송정보 설정 및 방송현황 -->
                 <div class="col-md-6 padding-0">
-                    <div class="blog-sidebar margin-b-30">
+                    <div class="blog-sidebar margin-b-10">
                         <div class="blog-sidebar-heading">
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
-                            <h4 class="blog-sidebar-heading-title">방송정보</h4>
+                            <h4 class="blog-sidebar-heading-title">방송 설정</h4>
                         </div>
-                        <div class="blog-sidebar-content">
+                        <div class="blog-sidebar-content" id="broadcastFormWrap">
 							<!-- Comment Form v1 -->
 							<form id="broadcastForm" class="comment-form-v1">
-								<%-- <input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}"> --%>
+								<input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}">
 								<input type="hidden" name="channelId" id="channelId" value="">
 								<div class="row">
 									<div class="col-md-12 margin-b-30">
@@ -155,8 +95,7 @@
 										<label for="contentCode">방송주제</label>
 										<select id="contentCode" name="contentCode" class="form-control comment-form-v1-input" required>
 										<c:forEach items="${contentList}" var="content">
-											<option class="form-control comment-form-v1-input"
-													value="${content.contentCode}">${content.contentName}</option>	
+											<option value="${content.contentCode}">${content.contentName}</option>	
 										</c:forEach>
 										</select>
 										<script>
@@ -164,14 +103,44 @@
 										</script>
 									</div>
 								</div>
-								<button type="submit" id="broadcastInfoUpdBtn" class="btn-grey-brd btn-base-xs radius-3" 
-										disabled="disabled">방송적용</button>
+								<div id="broadcastBtnArea" class="text-center">
+									<button id="broadcastStartBtn" class="btn-base-bg btn-base-xs radius-3">방송시작</button>
+									<button id="broadcastInfoUpdBtn" style="display:none; margin-right:15px;" 
+											class="btn-base-brd btn-base-xs radius-3">방송적용</button>
+									<button id="broadcastEndBtn" style="display:none;" 
+											class="btn-grey-brd btn-base-xs radius-3">방송종료</button>
+								</div>
 							</form>
 							<!-- Comment Form v1 -->
 						</div>
                     </div>
+					<!-- End 방송정보 설정 -->
+
+					<!-- 시청자 목록 -->
+                    <div class="blog-sidebar">
+                        <div class="blog-sidebar-heading">
+                            <i class="blog-sidebar-heading-icon bordered-icon-box-item fa fa-group"></i>
+                            <h4 class="blog-sidebar-heading-title">시청자</h4>
+                            <span style="float:right; margin-right:10px;"><span class="view-count">0</span>명</span>
+                        </div>
+                        <div class="blog-sidebar-content scrollbar" id="viewerList">
+                            <!-- Latest Tutorials -->
+                            <article class="latest-tuts viewerInfo" style="padding-bottom:0; margin-bottom:5px; border-bottom:0px;">
+                                <div class="latest-tuts-content">
+                                    <h5 class="latest-tuts-content-title"> 
+                                    	<span>${login.nickName} (${login.memberId})</span>
+                                    	<i class="bordered-icon-box-item fa fa-star" style="margin-left:5px;"></i>
+                                    </h5>
+                                </div>
+                            </article>
+                
+							<!-- End Latest Tutorials -->
+                        </div>
+                    </div>
+                    <!-- End 시청자 목록 -->
+                    
                 </div>
-                <!-- End Broadcast list -->
+                <!-- End 방송정보설정 및 방송현황 -->
             </div>
             <!-- End Right Area -->
         </div>
@@ -233,16 +202,23 @@
 	var broadcastInfoUpdBtn = document.querySelector("#broadcastInfoUpdBtn");
 	var inputChannelId = document.querySelector("#channelId");
 	var inputBroadcastNo = document.querySelector("#broadcastNo");
+	var chattingArea = document.querySelector("#chattingArea");
+	var sendTextBtn = document.querySelector("#sendTextBtn");
+	var broadcastStatusCheck = false;
 	var appBj;
 	var options;
 	
 	// BJ 객체 및 변수 설정
 	appBj = new PlayRTC({
 		projectKey: "60ba608a-e228-4530-8711-fa38004719c1",
-		localMediaTarget: "bjVideo",
+		// localMediaTarget: "bjVideo",
 		video: {
 			"minWidth": 800,
-			"minHeight": 600
+			"maxWidth": 1920,
+			"minHeight": 600,
+			"maxHeight": 1080,
+			"minFrameRate": 30,
+			"maxFrameRate": 60
 		}
 	});
 	 
@@ -266,17 +242,21 @@
 				$("#applyBroadcastTitle").text(data.broadcastTitle);
 				
 				// 방송시작 버튼
-				broadcastStartBtn.setAttribute("disabled", "disabled");
-				broadcastStartBtn.classList.remove("btn-base-bg");
-				broadcastStartBtn.classList.add("btn-grey-bg");
+				broadcastStartBtn.style.display = "none";
 				// 방송종료 버튼
-				broadcastEndBtn.removeAttribute("disabled");
-				broadcastEndBtn.classList.remove("btn-grey-bg");
-				broadcastEndBtn.classList.add("btn-base-bg");
+				broadcastEndBtn.style.display = "inline-block";
 				// 방송적용 버튼
-				broadcastInfoUpdBtn.removeAttribute("disabled");
-				broadcastInfoUpdBtn.classList.remove("btn-grey-bg");
-				broadcastInfoUpdBtn.classList.add("btn-base-bg");
+				broadcastInfoUpdBtn.style.display = "inline-block";
+				
+				
+				var chatP = document.createElement("p");
+				chatP.style.paddingLeft = "8px";
+				chatP.classList.add("font-size-12");
+				chatP.textContent = "▷ 대화방이 개설되었습니다.";
+				chattingArea.appendChild(chatP);
+				
+				// 방송상태 변경
+				broadcastStatusCheck = true;
 				
 			})
 			.fail(function(jqxhr, textStatus, error) {
@@ -285,6 +265,67 @@
 			});
 		
 	});
+	
+	// 방송 상태 변경 이벤트
+	appBj.on("stateChange", function(state, peerid, userid) {
+		// 시청자 수 count
+		// viewCount(inputChannelId.value);
+		
+		if(state === "CONNECTED" || state === "CLOSED") {
+			
+			// 시청자 목록 출력
+			appBj.getPeerList(inputChannelId.value, function(data) {
+				
+				var peerList = data.peers;
+				$("#viewerArea").html("");
+				$(".view-count").text("0");
+				
+				if(peerList.length > 1) {
+					var view = peerList.length-1;
+					$(".view-count").text(view);
+					
+					var i = 1;
+					
+					while(true) {
+						
+						var viewArticle = document.createElement("article");
+						viewArticle.classList.add("latest-tuts");
+						viewArticle.classList.add("viewerInfo");
+						viewArticle.style.paddingBottom = "0px";
+						viewArticle.style.marginBottom = "5px";
+						viewArticle.style.borderBottom = "0px";
+						
+						var viewDiv = document.createElement("div");
+						viewDiv.classList.add("latest-tuts-content");
+						
+						var viewH5 = document.createElement("h5");
+						viewH5.classList.add("latest-tuts-content-title");
+						
+						var viewSpan = document.createElement("span");
+						viewSpan.textContent = peerList[i].userName + " (" + peerList[i].uid + ")";
+						
+						viewH5.appendChild(viewSpan);
+						viewDiv.appendChild(viewH5);
+						viewArticle.appendChild(viewDiv);
+						$("#viewerArea").append(viewArticle);
+						
+						i++;
+						 
+						if (i >= peerList.length) { break; }
+					}
+				}
+				
+			});
+		}
+	});
+	
+	// 시청자수 출력 함수
+	function viewCount(channelId) {
+		appBj.getPeerList(channelId, function(data) {
+			var view = data.peers.length-1;
+			$(".view-count").text(view);
+		});
+	}
 	
 	// 방송 시작 후 video Tag 생성
 	appBj.on("addLocalStream", function(localStream) {
@@ -298,9 +339,89 @@
 		document.getElementById("videoArea").appendChild(video);
 	});
 	
-	// BJ error 이벤트 핸들러
-	appBj.on("error", function(code, desc, playload) {
-		alert("Error! \n" + code + " : " + desc);
+	// 방송 시작 후 수신 이벤트 처리
+	appBj.on("addDataStream", function(peerid, uid, dataChannel) {
+		dataChannel.on("message", function(message) {
+			
+			if(message.type === "text") {
+				var msg = message.data;
+				
+				var category = msg.substring(0, msg.indexOf("/"));
+				var member = msg.substring(msg.indexOf("/")+1, msg.indexOf("/", 3));
+				var acceptedMessage = msg.substring(msg.indexOf("/", 3)+1);
+				
+				if(category == "1") {
+					
+					var chatP = document.createElement("p");
+					chatP.style.paddingLeft = "5px";
+					chatP.classList.add("font-size-11");
+					chatP.textContent = "＃ " + member + acceptedMessage;
+					chattingArea.appendChild(chatP);
+					
+				} else {
+					
+					var chatDiv1;
+					var chatDiv2;
+					var chatH3;
+					var chatP;
+					
+					chatDiv1 = document.createElement("div");
+					chatDiv1.classList.add("services-v5");
+					chatDiv1.style.padding = "0px 15px 0px 15px";
+					
+					chatDiv2 = document.createElement("div");
+					chatDiv2.classList.add("services-v5-wrap");
+					chatDiv2.style.marginBottom = "0px";
+					
+					chatH3 = document.createElement("h3");
+					chatH3.classList.add("services-v5-body-title");
+					chatH3.classList.add("font-size-13");
+					chatH3.textContent = member;
+					
+					chatP = document.createElement("p");
+					chatP.classList.add("services-v5-text");
+					chatP.classList.add("font-size-12");
+					chatP.textContent = acceptedMessage;
+					
+					chatDiv2.appendChild(chatH3);
+					chatDiv1.appendChild(chatDiv2);
+					chatDiv1.appendChild(chatP);
+					chattingArea.appendChild(chatDiv1);
+					
+				}
+				
+			}
+			
+		});
+	});
+	
+	// 강제 방송종료시 이벤트
+	appBj.on("disconnectChannel", function() {
+		
+		// 방송종료 AJAX 처리 
+		$.getJSON("insUpdBroadcast.do", "broadcastStatus=e3")
+			.done(function(data) {
+				appBj.deleteChannel();
+				
+				// 방송종료 버튼
+				broadcastEndBtn.style.display = "none";
+				// 방송적용 버튼
+				broadcastInfoUpdBtn.style.display = "none";
+				// 방송시작 버튼
+				broadcastStartBtn.style.display = "inline-block";
+				
+				// 방송상태 변경
+				broadcastStatusCheck = false;
+				
+				$("video").remove();	// 비디오 태그 삭제
+				$("#applyBroadcastTitle").html("&nbsp;");
+				$(".view-count").text("0");
+			})
+			.fail(function(jqxhr, textStatus, error) {
+				var err = textStatus + " : " + error;
+				alert(err);
+			});
+		
 	});
 	
 	// 방송 시작 버튼 이벤트
@@ -314,45 +435,22 @@
 		
 	}, false);
 	
-	// 방송 종료 이벤트(방송종료 버튼)
+	// 방송 종료 버튼 이벤트
 	broadcastEndBtn.addEventListener("click", function(event) {
 		event.preventDefault();
+		
 		if(confirm("방송을 종료하시겠습니까?")) {
-			// 방송종료 AJAX 처리
-			$.getJSON("insUpdBroadcast.do", "broadcastStatus=e3")
-				.done(function(data) {
-					// self.close();
-					appBj.deleteChannel();
-					$("#applyBroadcastTitle").text("");
-					
-					// 방송시작 버튼
-					broadcastStartBtn.removeAttribute("disabled");
-					broadcastStartBtn.classList.remove("btn-grey-bg");
-					broadcastStartBtn.classList.add("btn-base-bg");
-					// 방송종료 버튼
-					broadcastEndBtn.setAttribute("disabled", "disabled");
-					broadcastEndBtn.classList.remove("btn-base-bg");
-					broadcastEndBtn.classList.add("btn-grey-bg");
-					// 방송적용 버튼
-					broadcastInfoUpdBtn.setAttribute("disabled", "disabled");
-					broadcastInfoUpdBtn.classList.remove("btn-base-bg");
-					broadcastInfoUpdBtn.classList.add("btn-grey-bg");
-					
-					$("video").remove();
-				})
-				.fail(function(jqxhr, textStatus, error) {
-					var err = textStatus + " : " + error;
-					alert(err);
-				});
+			appBj.deleteChannel();
 		}
+		
 	}, false);
 	
-	// 방송 종료 이벤트(브라우저 X 버튼)
-	window.onunload = function() {
-		if(confirm("방송을 종료하시겠습니까?")) {
-			self.close();
+	/* 방송 종료 이벤트(브라우저 X 버튼) */
+	window.onbeforeunload = function(event) {
+		if(broadcastStatusCheck == true) {
+			return "";
 		}
-	};
+	}
 	
 	// 방송 중 정보수정
 	broadcastInfoUpdBtn.addEventListener("click", function() {
@@ -369,15 +467,67 @@
 			});
 	});
 	
+	// 방송 중 채팅
+	sendTextBtn.addEventListener("click", function(event) {
+		if(!broadcastStatusCheck) {
+			$("#sendTextArea").val("");
+			return;
+		}
+		var chatDiv1;
+		var chatDiv2;
+		var chatH3;
+		var chatP;
+		var member = "${login.nickName} " + "(${login.memberId})";
+		var message = $("#sendTextArea").val();
+		var sendMessage = "2/" + member + "/" + message;
+		
+		event.preventDefault();
+		
+		if(message) {
+			appBj.sendText(sendMessage);
+			
+			chatDiv1 = document.createElement("div");
+			chatDiv1.classList.add("services-v5");
+			chatDiv1.style.padding = "0px 15px 0px 15px";
+			
+			chatDiv2 = document.createElement("div");
+			chatDiv2.classList.add("services-v5-wrap");
+			chatDiv2.style.marginBottom = "0px";
+			
+			chatH3 = document.createElement("h3");
+			chatH3.classList.add("services-v5-body-title");
+			chatH3.classList.add("font-size-13");
+			chatH3.textContent = member;
+			
+			chatP = document.createElement("p");
+			chatP.classList.add("services-v5-text");
+			chatP.classList.add("font-size-12");
+			chatP.style.workBreak = "break-all";
+			chatP.textContent = message;
+			
+			chatDiv2.appendChild(chatH3);
+			chatDiv1.appendChild(chatDiv2);
+			chatDiv1.appendChild(chatP);
+			chattingArea.appendChild(chatDiv1);
+			
+			// 채팅 등록 후 스크롤 가장 마지막으로
+			chattingArea.scrollTop = chattingArea.scrollHeight;
+		}
+		
+		$("#sendTextArea").val("").focus();
+	}, false);
+	
 	/* End BJ 방송 관련 Javascript */
 	
 	// 동적 크기 조절
 	$(function() {
-		$("#videoArea").css( "height", $("#leftArea").width()/2 );
-		$("#chattingArea").css( "height", $("#videoArea").height()-27 );
+		$("#videoArea").css( "height", $("#leftArea").width()/1.35 );
+		$("#chattingArea").css( "height", $("#videoArea").height()-130 );
+		$("#viewerList").css( "height", $("#chattingArea").height()/1.75 );
 		$(window).resize(function() {
-			$("#videoArea").css( "height", $("#leftArea").width()/2 );
-			$("#chattingArea").css( "height", $("#videoArea").height()-27 );
+			$("#videoArea").css( "height", $("#leftArea").width()/1.35 );
+			$("#chattingArea").css( "height", $("#videoArea").height()-130 );
+			$("#viewerList").css( "height", $("#chattingArea").height()/1.75 );
 		});
 	});
 	

@@ -28,7 +28,9 @@
             <!-- Left Area -->
             <div class="col-md-8" id="leftArea">
                 <!-- Video Player -->
-                <div class="full-width-container" id="videoArea"></div>
+                <div class="full-width-container" id="videoArea">
+                	<!-- <video id="viewerVideo" width="100%" height="100%"></video> -->
+                </div>
                 <!-- End Video Player -->
 				
 				<!-- Divider v1 -->
@@ -65,7 +67,7 @@
 		                    </li>
 		                    <li class="theme-icons-wrap">
 			                    <i class="theme-icons theme-icons-sm radius-circle fa fa-twitter margin-0"></i>
-			                    <span class="view-count">2</span> 명 시청중
+			                    <span class="view-count"></span> 명 시청중
 							</li>
 		                </ul>
 		                <!-- End Theme Icons Base On Hover -->
@@ -84,23 +86,24 @@
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
-                        <div class="blog-sidebar-content scrollbar" id="chattingArea">
+                        
+                        <div class="" id="chattingArea" style="padding: 10px 0 10px 0;">
                            
                         </div>
+                        
                         <div class="margin-b-20" style="border-top: 1px solid #00bcd4;">
 		                    <!-- Comment Form v1 -->
 		                    <div class="bg-color-white">
 		                        <!-- Comment Form v1 -->
-		                        <form id="comment-form" class="comment-form-v1" action="#" method="get">
+		                        <!-- <form id="comment-form" class="comment-form-v1" action="#" method="get"> -->
 		                            <div class="padding-10">
 		                                <textarea class="form-control comment-form-v1-input" style="resize:none;" rows="4" 
-		                                		  placeholder="Your message" name="textarea"></textarea>
+		                                		  placeholder="Your message" name="textarea" id="sendTextArea"></textarea>
 		                            </div>
 		                            <div class="row text-right margin-l-10 margin-r-10">
-			                            <button type="reset" class="btn-base-brd btn-base-xs radius-3">지우기</button>
-			                            <button type="submit" class="btn-base-bg btn-base-xs radius-3">보내기</button>
+			                            <button type="submit" class="btn-base-bg btn-base-xs radius-3" id="sendTextBtn">보내기</button>
 		                            </div>
-		                        </form>
+		                        <!-- </form> -->
 		                        <!-- Comment Form v1 -->
 		                    </div>
 		                    <!-- End Comment Form v1 -->
@@ -232,17 +235,17 @@
 	/* 시청자 방송 관련 Javascript */
 	
 	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
+	var chattingArea = document.querySelector("#chattingArea");
 	var channelId = "${broadcastResult.channelId}";
 	var appViewer;
 	var options;
 	
 	// 시청자 객체 및 변수 설정
 	appViewer = new PlayRTC({
-	      projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
-	      // remoteMediaTarget: 'viewerVideo',
-	      data: true,
-	      video: false,
-	      audio: false
+		projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
+		data: true,
+		video: false,
+		audio: false
 	});
 	
 	// 시청자 입장 후 방송 시작
@@ -254,29 +257,167 @@
 				userName: "${login.nickName}"
 			}
 		}
+		
 		appViewer.connectChannel(channelId, options);
+		
+		// appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
 	}, false);
+	
+	appViewer.on("stateChange", function(state, peerid, userid) {
+		viewCount(channelId);
+	});
+	
+	// 시청자수 출력 함수
+	function viewCount(channelId) {
+		appViewer.getPeerList(channelId, function(data) {
+			var view = data.peers.length-1;
+			$(".view-count").text(view);
+		});
+	}
+	
+	// 방송 시작 후 수신 이벤트 처리
+	appViewer.on("addDataStream", function(pid, uid, dataChannel) {
+		dataChannel.on("message", function(message) {
+			
+			var chatDiv1;
+			var chatDiv2;
+			var chatH3;
+			var chatP;
+			
+			if(message.type === "text") {
+				var msg = message.data;
+				
+				var category = msg.substring(0, msg.indexOf("/"));
+				var member = msg.substring(msg.indexOf("/")+1, msg.indexOf("/", 3));
+				var acceptedMessage = msg.substring(msg.indexOf("/", 3)+1);
+				
+				if(category == "1") {
+					
+					var chatP = document.createElement("p");
+					chatP.style.paddingLeft = "5px";
+					chatP.classList.add("font-size-11");
+					chatP.textContent = "＃ " + member + acceptedMessage;
+					chattingArea.appendChild(chatP);
+					
+				} else {
+					
+					var chatDiv1;
+					var chatDiv2;
+					var chatH3;
+					var chatP;
+					
+					chatDiv1 = document.createElement("div");
+					chatDiv1.classList.add("services-v5");
+					chatDiv1.style.padding = "0px 15px 0px 15px";
+					
+					chatDiv2 = document.createElement("div");
+					chatDiv2.classList.add("services-v5-wrap");
+					chatDiv2.style.marginBottom = "0px";
+					
+					chatH3 = document.createElement("h3");
+					chatH3.classList.add("services-v5-body-title");
+					chatH3.classList.add("font-size-13");
+					chatH3.textContent = member;
+					
+					chatP = document.createElement("p");
+					chatP.classList.add("services-v5-text");
+					chatP.classList.add("font-size-12");
+					chatP.textContent = acceptedMessage;
+					
+					chatDiv2.appendChild(chatH3);
+					chatDiv1.appendChild(chatDiv2);
+					chatDiv1.appendChild(chatP);
+					chattingArea.appendChild(chatDiv1);
+					
+				}
+				
+			}
+			
+		});
+		
+		dataChannel.on("error", function(err) {
+			console.log(err);
+		});
+	});
 	
 	// 방송 시작 후 video Tag 생성
 	appViewer.on("addRemoteStream", function(pid, uid, stream) {
 		var video = PlayRTC.utils.createVideo(stream, {
 			autoPlay: true,
-			controls: false,
+			controls: true,
 			width: "100%",
 			height: "100%"
 		});
+		
 		document.getElementById("videoArea").appendChild(video);
+		
+	});
+	
+	// 방송 연결
+	appViewer.on("connectChannel", function(channelId) {
+		appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
+	});
+	
+	// 방송 종료 시 이벤트 처리
+	appViewer.on("disconnectChannel", function() {
+		$("video").remove();
+		
 	});
 	
 	// 시청자 입장 후 방송 종료
 	broadcastEndBtn.addEventListener("click", function(event) {
 		event.preventDefault();
-		var peerId = appViewer.getPeerId(); 
 		if(confirm("방송을 종료하시겠습니까?")) {
 			appViewer.disconnectChannel();
-			$("video").remove();
 		}
 	});
+	
+	// 방송 중 채팅
+	sendTextBtn.addEventListener("click", function(event) {
+		if(!appViewer) {
+			return;
+		}
+		var chatDiv1;
+		var chatDiv2;
+		var chatH3;
+		var chatP;
+		var member = "${login.nickName} " + "(${login.memberId})";
+		var message = $("#sendTextArea").val();
+		var sendMessage = "2/" + member + "/" + message;
+		
+		event.preventDefault();
+		
+		if(message) {
+			appViewer.sendText(sendMessage);
+			
+			chatDiv1 = document.createElement("div");
+			chatDiv1.classList.add("services-v5");
+			chatDiv1.style.padding = "0px 15px 0px 15px";
+			
+			chatDiv2 = document.createElement("div");
+			chatDiv2.classList.add("services-v5-wrap");
+			chatDiv2.style.marginBottom = "0px";
+			
+			chatH3 = document.createElement("h3");
+			chatH3.classList.add("services-v5-body-title");
+			chatH3.classList.add("font-size-13");
+			chatH3.textContent = member;
+			
+			chatP = document.createElement("p");
+			chatP.classList.add("services-v5-text");
+			chatP.classList.add("font-size-12");
+			chatP.textContent = message;
+			
+			chatDiv2.appendChild(chatH3);
+			chatDiv1.appendChild(chatDiv2);
+			chatDiv1.appendChild(chatP);
+			chattingArea.appendChild(chatDiv1);
+		}
+		
+		$("#sendTextArea").val("").focus();
+	}, false);
+	
+	
 	
 	/* End 시청자 방송 관련 Javascript */
 

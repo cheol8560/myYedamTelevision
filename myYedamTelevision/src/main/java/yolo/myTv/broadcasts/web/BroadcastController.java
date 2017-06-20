@@ -20,7 +20,7 @@ import yolo.myTv.contents.service.ContentVO;
 import yolo.myTv.members.service.MemberVO;
 
 @Controller
-@SessionAttributes("broadcast")
+// @SessionAttributes("broadcast")
 public class BroadcastController {
 
 	@Autowired BroadcastService broadcastService;
@@ -41,8 +41,8 @@ public class BroadcastController {
 	// BJ 방송 페이지
 	@RequestMapping("/insUpdBroadcastForm.do")
 	public String insUpdBroadcastForm(@ModelAttribute("broadcast") BroadcastVO vo, HttpSession session, Model model) {
-		// MemberVO bj = (MemberVO) session.getAttribute("login");
-		// vo.setMemberId(bj.getMemberId());
+		MemberVO bj = (MemberVO) session.getAttribute("login");
+		vo.setMemberId(bj.getMemberId());
 		BroadcastVO result = broadcastService.getBroadcast(vo);
 		if(result != null) {
 			model.addAttribute("broadcastResult", result);
@@ -54,8 +54,8 @@ public class BroadcastController {
 	@RequestMapping("/insUpdBroadcast.do")
 	public @ResponseBody BroadcastVO insUpdBroadcast(@ModelAttribute("broadcast") BroadcastVO vo, 
 													 HttpSession session, SessionStatus status) {
-		// MemberVO bj = (MemberVO) session.getAttribute("login");
-		// vo.setMemberId(bj.getMemberId());
+		MemberVO bj = (MemberVO) session.getAttribute("login");
+		vo.setMemberId(bj.getMemberId());
 		BroadcastVO check = broadcastService.getBroadcast(vo);
 		// ID 생성 후 첫 방송의 경우
 		if(check == null) {		
@@ -99,6 +99,7 @@ public class BroadcastController {
 	// 방송 입장
 	@RequestMapping("/getOnBroadcast.do")
 	public String getOnBroadcast(@ModelAttribute("broadcast") BroadcastVO vo, Model model) {
+		System.out.println(vo);
 		BroadcastVO result = broadcastService.getBroadcast(vo);
 		model.addAttribute("broadcastResult", result);
 		return "blank/broadcasts/viewerPage";

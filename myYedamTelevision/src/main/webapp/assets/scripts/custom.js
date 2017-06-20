@@ -6,7 +6,7 @@
 
 	function bjOpen(url, name) {
 		var userWidth = $( document ).width() * 0.7;
-		var userHeight = $( document ).height() * 0.74;
+		var userHeight = $( document ).height() * 0.75;
 		window.open(url, name,'scrollbars=yes, toolbar=no, location=no, status=yes, ' + 
 				' menubar=no, resizable=yes, width='+userWidth+', height='+userHeight+', left=0, top=0');
 	}

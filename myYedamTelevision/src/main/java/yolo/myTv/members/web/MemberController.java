@@ -89,6 +89,9 @@ public class MemberController {
 		if (chkPoint == 1) {
 			MemberVO result = memberService.login(vo);
 			session.setAttribute("login", result);
+			if(result == null) {
+				return "blank/members/login";
+			}
 			return "redirect:/";
 		} 
 		else {

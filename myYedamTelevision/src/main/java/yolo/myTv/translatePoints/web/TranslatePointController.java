@@ -142,6 +142,47 @@ public class TranslatePointController {
 		model.addAttribute("translateList", translatePointService.getTranslatePointList(vo));
 		return "admin/translates/translate";
 		}
-		
 	
+	//222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+	//충전리스트
+	@RequestMapping("/getChargeList.do")
+	public String getChargeList(ChargeVO chargevo
+								, Model model
+								, HttpSession session){
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		chargevo.setMemberId(member.getMemberId());
+		model.addAttribute("chargeList", translatePointService.listCharge(chargevo));
+		return "pointList/getChargeList";
+	}
+		
+	//선물받은리스트
+	@RequestMapping("/getReceivePointList.do")
+	public String getReceivePointList(TranslatePointVO translatepointvo
+										, Model model
+										, HttpSession session){
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		translatepointvo.setMemberId(member.getMemberId());
+		model.addAttribute("presentedPoint", translatePointService.getReceivePointList(translatepointvo));
+		return "pointList/getReceivePointList";
+	}
+	//선물보낸리스트
+	@RequestMapping("/getSendPointList.do")
+	public String getSendPointList(TranslatePointVO translatepointvo
+									, Model model
+									, HttpSession session){
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		translatepointvo.setMemberId(member.getMemberId());
+		model.addAttribute("presentList", translatePointService.getSendPointList(translatepointvo));
+		return "pointList/getSendPointList";
+	}
+	//환전한리스트
+	@RequestMapping("/getExchangeList.do")	
+	public String getExchangeList(ExchangeVO exchangevo
+									, Model model
+									, HttpSession session){
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		exchangevo.setMemberId(member.getMemberId());
+		model.addAttribute("exchangeList", translatePointService.getExchangeList(exchangevo));
+		return "pointList/getExchangeList";
+	}
 }

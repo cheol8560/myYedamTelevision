@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.mybatis.spring.annotation.MapperScan;
 
+import yolo.myTv.charges.service.ChargeVO;
+import yolo.myTv.exchanges.service.ExchangeVO;
 import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointVO;
 
@@ -22,5 +24,14 @@ public interface TranslatePointMapper {
 	//페이징처리를 위한 COUNT
 		int receivePresentedPointListCount(TranslatePointVO vo);
 		int sendPresentListCount(TranslatePointVO vo);
+	//리스트 
+		//충전리스트
+		public List<Map<String, Object>> listCharge(ChargeVO chargevo);
+		//선물받은리스트
+		public List<Map<String, Object>> getReceivePointList(TranslatePointVO translatepointvo);
+		//선물한리스트
+		public List<Map<String, Object>>	getSendPointList(TranslatePointVO translatepointvo);
+		//환전한리스트
+		public List<Map<String, Object>>	getExchangeList(ExchangeVO exchangevo);
 
 }

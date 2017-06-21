@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import yolo.myTv.charges.service.ChargeVO;
+import yolo.myTv.exchanges.service.ExchangeVO;
 import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointService;
 import yolo.myTv.translatePoints.service.TranslatePointVO;
@@ -74,6 +76,29 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 	@Override
 	public int sendPresentListCount(TranslatePointVO vo) {
 		return translatePointDAO.sendPresentListCount(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> listCharge(ChargeVO chargevo) {
+		
+		return translatePointDAO.listCharge(chargevo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getReceivePointList(
+			TranslatePointVO translatepointvo) {
+		return translatePointDAO.getReceivePointList(translatepointvo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getSendPointList(
+			TranslatePointVO translatepointvo) {
+		return translatePointDAO.getSendPointList(translatepointvo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getExchangeList(ExchangeVO exchangevo) {
+		return translatePointDAO.getExchangeList(exchangevo);
 	}
 
 

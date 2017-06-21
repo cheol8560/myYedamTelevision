@@ -3,6 +3,9 @@ package yolo.myTv.translatePoints.service;
 import java.util.List;
 import java.util.Map;
 
+import yolo.myTv.charges.service.ChargeVO;
+import yolo.myTv.exchanges.service.ExchangeVO;
+
 public interface TranslatePointService {
 	//총 포인트 합산 조회
 	public List<Map<String, Object>> totalPoint(TranslatePointVO vo);
@@ -35,4 +38,15 @@ public interface TranslatePointService {
 	int receivePresentedPointListCount(TranslatePointVO vo);
 	int sendPresentListCount(TranslatePointVO vo);
 	
+	//2222222222
+	//목록처리
+	
+	//충전리스트
+	public List<Map<String, Object>> listCharge(ChargeVO chargevo);
+	//선물받은리스트
+	public List<Map<String, Object>> getReceivePointList(TranslatePointVO translatepointvo);
+	//선물한리스트
+	public List<Map<String, Object>>	getSendPointList(TranslatePointVO translatepointvo);
+	//환전한리스트
+	public List<Map<String, Object>>	getExchangeList(ExchangeVO exchangevo);
 }

@@ -23,7 +23,8 @@
 		INSERT INTO EXCHANGES(EXCHANGE_NO
 		, REQUEST_DATE
 		, REQUEST_POINT
-		, COMMISSION
+		,
+		COMMISSION
 		, REAL_RECEIPT
 		, APPROVE_STATUS
 		, MEMBER_ID)
@@ -40,7 +41,9 @@
 	<update id="updateExchange"> 
         <![CDATA[
         UPDATE MEMBERS SET
-        		POINT = POINT - #{requestPoint}
+        		BANK = #{bank}
+        		, ACCOUNT = #{account}
+        		, POINT = POINT - #{requestPoint}
         WHERE MEMBER_ID = #{memberId}
         
         ]]>
@@ -55,33 +58,53 @@
 	</update>
 
 	<select id="getExchange" resultType="map">
-		SELECT EXCHANGE_NO 			"exchangeNo"
-				, REQUEST_DATE		"requestDate"
-				, REQUEST_POINT		"requestPoint"
-				, COMMISSION		"commission"
-				, REAL_RECEIPT		"realReceipt"
-				, APPROVE_STATUS	"approveStatus"
-				, APPROVE_DATE		"approveDate"
-				, MEMBER_ID			"memberId"
-				,(SELECT NVL(SUM(REQUEST_POINT),0)
-				  FROM EXCHANGES
-				  WHERE MEMBER_ID = #{memberId}) as "totalRequest"
+		SELECT EXCHANGE_NO
+		"exchangeNo"
+		, REQUEST_DATE "requestDate"
+		, REQUEST_POINT "requestPoint"
+		, COMMISSION "commission"
+		, REAL_RECEIPT "realReceipt"
+		, APPROVE_STATUS "approveStatus"
+		, APPROVE_DATE "approveDate"
+		, MEMBER_ID "memberId"
+		,(SELECT NVL(SUM(REQUEST_POINT),0)
 		FROM EXCHANGES
-		WHERE EXCHANGE_NO = #{exchangeNo}
+		WHERE MEMBER_ID = #{memberId}) as "totalRequest"
+		FROM EXCHANGES
+		WHERE
+		EXCHANGE_NO = #{exchangeNo}
 	</select>
 
 	<select id="ExchangeList" resultMap="exchangeMap">
-        
-        SELECT	EXCHANGE_NO
-        		, REQUEST_DATE
-        		, REQUEST_POINT
-        		, COMMISSION
-      			, REAL_RECEIPT
-        FROM EXCHANGES
-        WHERE MEMBER_ID = #{memberId}
-        order by EXCHANGE_NO desc
-      
+
+		SELECT EXCHANGE_NO
+		, REQUEST_DATE
+		, REQUEST_POINT
+		, COMMISSION
+		, REAL_RECEIPT
+		FROM EXCHANGES
+		WHERE MEMBER_ID = #{memberId}
+		order by EXCHANGE_NO desc
+
 	</select>
+
+
+	<!-- 환전 프로시져 -->
+	<insert id="insertEx" statementType="CALLABLE" 
+		parameterType="yolo.myTv.exchanges.service.ExVO">
+		<selectKey keyProperty="exchangeNo" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(EXCHANGE_NO), 0) + 1 FROM EXCHANGES
+		</selectKey>
+		{ call EX(
+		#{exchangeNo, mode=IN, jdbcType=NUMERIC, javaType=int},
+		#{inRequestPoint, mode=IN, jdbcType=NUMERIC, javaType=int},
+		#{inMemberId, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{inBank, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{inAccount, mode=IN, jdbcType=VARCHAR, javaType=string}
+		)}
+	</insert>
+
+
 
 
 

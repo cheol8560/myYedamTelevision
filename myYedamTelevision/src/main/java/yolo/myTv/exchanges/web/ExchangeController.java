@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import yolo.myTv.exchanges.service.ExVO;
 import yolo.myTv.exchanges.service.ExchangeService;
 import yolo.myTv.exchanges.service.ExchangeVO;
 import yolo.myTv.members.service.MemberService;
@@ -32,10 +33,13 @@ public class ExchangeController {
 	// 환전 신청 등록
 	@RequestMapping(value ="/insertExchange.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> insertExchange(ExchangeVO vo, HttpSession session) {
+	public Map<String, Object> insertExchange(ExchangeVO vo, ExVO exvo,HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("login");
+		exvo.setInMemberId(member.getMemberId());
 		vo.setMemberId(member.getMemberId());
-		exchangeService.insertExchange(vo);		
+		System.out.println(exvo);
+		exchangeService.insertEx(exvo);		
+		vo.setExchangeNo(exvo.getExchangeNo());
 		return exchangeService.getExchange(vo);
 	
 	}

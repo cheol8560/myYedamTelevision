@@ -3,9 +3,12 @@ package yolo.myTv.exchanges.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import yolo.myTv.boards.service.BoardVO;
+import org.mybatis.spring.annotation.MapperScan;
+
+import yolo.myTv.exchanges.service.ExVO;
 import yolo.myTv.exchanges.service.ExchangeVO;
 
+@MapperScan
 public interface ExchangeMapper {
 	//포인트 환전 등록
 	public void insertExchange(ExchangeVO vo);
@@ -17,4 +20,7 @@ public interface ExchangeMapper {
 	public List<Map<String, Object>> ExchangeList(ExchangeVO vo);
 	
 	public Map<String, Object> getExchange(ExchangeVO vo);
+	
+	void insertEx(ExVO exvo);
+	
 }

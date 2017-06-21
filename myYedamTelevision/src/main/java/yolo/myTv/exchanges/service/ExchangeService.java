@@ -15,5 +15,8 @@ public interface ExchangeService {
 
 
 	Map<String, Object> getExchange(ExchangeVO vo);
-
+	
+	//환전 프로시져
+	void insertEx(ExVO exvo);
+	
 }

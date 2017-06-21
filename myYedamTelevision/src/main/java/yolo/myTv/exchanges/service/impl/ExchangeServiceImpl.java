@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import yolo.myTv.exchanges.service.ExVO;
 import yolo.myTv.exchanges.service.ExchangeService;
 import yolo.myTv.exchanges.service.ExchangeVO;
 
@@ -30,6 +31,11 @@ public class ExchangeServiceImpl implements ExchangeService{
 	public Map<String, Object> getExchange(ExchangeVO vo) {
 		// TODO Auto-generated method stub
 		return exchangeDAO.getExchange(vo);
+	}
+
+	@Override
+	public void insertEx(ExVO exvo) {
+		exchangeDAO.insertEx(exvo);
 	}
 	
 	

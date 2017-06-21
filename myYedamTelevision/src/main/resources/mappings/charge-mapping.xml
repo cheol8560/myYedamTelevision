@@ -9,8 +9,7 @@
 	<insert id="subUpdateCharge" parameterType="charge">
 	<selectKey keyProperty="chargeNo" resultType="int" order="BEFORE">
 	SELECT NVL(MAX(CHARGE_NO), 0) + 1 FROM CHARGES
-	</selectKey>
-        <![CDATA[  
+	</selectKey> 
         INSERT INTO CHARGES(CHARGE_NO
         					, APPROVE_STATUS
         					, CHARGE_MONEY
@@ -25,7 +24,6 @@
         		, #{paymentWay}
         		, #{requestDate}
         		, #{memberId})
-        ]]>
 	</insert>
 	
 	<update id="mainUpdateCharge">

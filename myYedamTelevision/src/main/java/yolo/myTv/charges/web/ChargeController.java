@@ -46,7 +46,13 @@ public class ChargeController {
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
 		vo.setRequestDate(new Date());
+		if(vo.getPaymentWay().equals("c1")) {
+			chargeService.subUpdateCharge(vo);
+			chargeService.mainUpdateCharge(vo);
+			chargeService.updatePoint(vo);
+		} else {
 		chargeService.subUpdateCharge(vo);
+		}
 		return "redirect:getHoldingPointList.do";
 	}
 	

@@ -101,6 +101,26 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 		return translatePointDAO.getExchangeList(exchangevo);
 	}
 
+	@Override
+	public int listChargeCount(ChargeVO chargevo) {
+		return translatePointDAO.listChargeCount(chargevo);
+	}
+
+	@Override
+	public int getReceivePointListCount(TranslatePointVO translatepointvo) {
+		return translatePointDAO.getReceivePointListCount(translatepointvo);
+	}
+
+	@Override
+	public int getSendPointListCount(TranslatePointVO translatepointvo) {
+		return translatePointDAO.getSendPointListCount(translatepointvo);
+	}
+
+	@Override
+	public int getExchangeListCount(ExchangeVO exchangevo) {
+		return translatePointDAO.getExchangeListCount(exchangevo);
+	}
+
 
 
  

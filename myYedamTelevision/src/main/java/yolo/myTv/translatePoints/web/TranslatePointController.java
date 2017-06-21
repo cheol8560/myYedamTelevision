@@ -149,8 +149,21 @@ public class TranslatePointController {
 	public String getChargeList(ChargeVO chargevo
 								, Model model
 								, HttpSession session){
+		//로그인 세션의 id가져오기
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		chargevo.setMemberId(member.getMemberId());
+		
+		//페이징
+				/** pageing setting */
+				PaginationInfo paginationInfo = new PaginationInfo();
+				paginationInfo.setCurrentPageNo(chargevo.getPageIndex());
+				paginationInfo.setRecordCountPerPage(chargevo.getPageUnit());
+				paginationInfo.setPageSize(chargevo.getPageSize());
+				chargevo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+				chargevo.setLastIndex(paginationInfo.getLastRecordIndex());
+				paginationInfo.setTotalRecordCount(chargeService.getChargeListCount(chargevo));
+				model.addAttribute("paginationInfo", paginationInfo);
+		
 		model.addAttribute("chargeList", translatePointService.listCharge(chargevo));
 		return "pointList/getChargeList";
 	}
@@ -160,8 +173,21 @@ public class TranslatePointController {
 	public String getReceivePointList(TranslatePointVO translatepointvo
 										, Model model
 										, HttpSession session){
+		//로그인 세션의 id가져오기
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		translatepointvo.setMemberId(member.getMemberId());
+		
+		//페이징
+		/** pageing setting */
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(translatepointvo.getPageIndex());
+		paginationInfo.setRecordCountPerPage(translatepointvo.getPageUnit());
+		paginationInfo.setPageSize(translatepointvo.getPageSize());
+		translatepointvo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		translatepointvo.setLastIndex(paginationInfo.getLastRecordIndex());
+		paginationInfo.setTotalRecordCount(translatePointService.getReceivePointListCount(translatepointvo));
+		model.addAttribute("paginationInfo", paginationInfo);
+		
 		model.addAttribute("presentedPoint", translatePointService.getReceivePointList(translatepointvo));
 		return "pointList/getReceivePointList";
 	}
@@ -170,8 +196,21 @@ public class TranslatePointController {
 	public String getSendPointList(TranslatePointVO translatepointvo
 									, Model model
 									, HttpSession session){
+		//로그인 세션의 id가져오기
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		translatepointvo.setMemberId(member.getMemberId());
+		
+		//페이징
+		/** pageing setting */
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(translatepointvo.getPageIndex());
+		paginationInfo.setRecordCountPerPage(translatepointvo.getPageUnit());
+		paginationInfo.setPageSize(translatepointvo.getPageSize());
+		translatepointvo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		translatepointvo.setLastIndex(paginationInfo.getLastRecordIndex());
+		paginationInfo.setTotalRecordCount(translatePointService.getSendPointListCount(translatepointvo));
+		model.addAttribute("paginationInfo", paginationInfo);
+		
 		model.addAttribute("presentList", translatePointService.getSendPointList(translatepointvo));
 		return "pointList/getSendPointList";
 	}
@@ -180,8 +219,21 @@ public class TranslatePointController {
 	public String getExchangeList(ExchangeVO exchangevo
 									, Model model
 									, HttpSession session){
+		//로그인 세션의 id가져오기
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		exchangevo.setMemberId(member.getMemberId());
+		
+		//페이징
+		/** pageing setting */
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(exchangevo.getPageIndex());
+		paginationInfo.setRecordCountPerPage(exchangevo.getPageUnit());
+		paginationInfo.setPageSize(exchangevo.getPageSize());
+		exchangevo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		exchangevo.setLastIndex(paginationInfo.getLastRecordIndex());
+		paginationInfo.setTotalRecordCount(translatePointService.getExchangeListCount(exchangevo) );
+		model.addAttribute("paginationInfo", paginationInfo);
+		
 		model.addAttribute("exchangeList", translatePointService.getExchangeList(exchangevo));
 		return "pointList/getExchangeList";
 	}

@@ -5,7 +5,7 @@
 <script>
 function fn_egov_link_page(pageNo){
 document.listForm.pageIndex.value = pageNo;
-document.listForm.action = "<c:url value='/getHoldingPointList.do'/>";
+document.listForm.action = "<c:url value='/getChargeList.do'/>";
 document.listForm.submit();
 }
 </script>
@@ -74,7 +74,7 @@ document.listForm.submit();
 		</div>
 		<!-- End Counters v2 -->
 <section class="full-width-container" style="width: 1100px; margin: auto;" id="charge"> <!-- Heading v1 -->
-	<form name="listForm" action="getHoldingPointList.do">
+	<form name="listForm" action="getChargeList.do">
 		<input type="hidden" name="pageIndex"	value="${(empty chargeVO.pageIndex)? 1 : chargeVO.pageIndex }" /> 
 		<div class="heading-v1 text-center margin-t-60 margin-b-60">
 			<h2 class="heading-v1-title">기쁨 충전 내역</h2>
@@ -98,6 +98,10 @@ document.listForm.submit();
 					<option value="12">12
 				</select>월
 				<button type="submit">검색</button>
+				<script>
+				$("[name='year']").val('${chargeVO.year}');
+				$("[name='month']").val('${chargeVO.month}');
+				</script>
 			</p>
 		</div>
 		<!-- 충전리스트 시작 -->

@@ -49,4 +49,10 @@ public interface TranslatePointService {
 	public List<Map<String, Object>>	getSendPointList(TranslatePointVO translatepointvo);
 	//환전한리스트
 	public List<Map<String, Object>>	getExchangeList(ExchangeVO exchangevo);
+	
+	//목록처리의 count
+	int listChargeCount(ChargeVO chargevo);
+	int getReceivePointListCount(TranslatePointVO translatepointvo);
+	int getSendPointListCount(TranslatePointVO translatepointvo);
+	int getExchangeListCount(ExchangeVO exchangevo);
 }

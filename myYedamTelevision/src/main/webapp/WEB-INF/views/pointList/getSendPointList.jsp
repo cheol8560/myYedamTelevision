@@ -5,7 +5,7 @@
 <script>
 function fn_egov_link_page(pageNo){
 document.listForm.pageIndex.value = pageNo;
-document.listForm.action = "<c:url value='/getHoldingPointList.do'/>";
+document.listForm.action = "<c:url value='/getSendPointList.do'/>";
 document.listForm.submit();
 }
 </script>
@@ -76,10 +76,8 @@ document.listForm.submit();
 		</div>
 		<!-- End Counters v2 -->
 
-<form name ="listForm2" action="getHoldingPointList.do">
-			<input type="hidden" name="pageIndex" value="${(empty chargeVO.pageIndex)? 1 : chargeVO.pageIndex }" />
-						<input type="hidden" name="pageIndex2" value="${ (empty vo.pageIndex)? 1 : vo.pageIndex}"/>
-			<input type="hidden" name="mode" value="send">
+<form name ="listForm" action="getSendPointList.do">
+			<input type="hidden" name="pageIndex" />
 		<div class="bg-color-sky-light" id="send">
 			<div class="content-md container-sm">
 				<!-- Heading v1 -->
@@ -106,6 +104,10 @@ document.listForm.submit();
 							<option value="12">12
 						</select>월
 						<button type="submit">검색</button>
+						<script>
+						$("[name='year']").val('${chargeVO.year}');
+						$("[name='month']").val('${chargeVO.month}');
+						</script>
 					</p>
 				</div>
 				<!-- End Heading v1 -->
@@ -138,7 +140,7 @@ document.listForm.submit();
 									</tbody>
 								</table>
 								</div>
-								<my:paging paginationInfo="${paginationInfo2 }" jsFunc="fn_egov_link_page2"/>
+								<my:paging paginationInfo="${paginationInfo }"/>
 								</div>
 								<!-- End Table Striped -->
 					</div>

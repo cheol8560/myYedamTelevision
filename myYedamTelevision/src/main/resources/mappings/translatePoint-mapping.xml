@@ -152,29 +152,55 @@
 	
 	
 	
-	<!-- 리스트 목록 sql -->
+<!-- 리스트 목록 sql 아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ -->
 	
 	<!-- 충전리스트 -->
 	<select id="listCharge" resultType="map">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
 	SELECT 	REQUEST_DATE "requestDate"
 			,CHARGE_POINT "chargePoint"
 			,PAYMENT_WAY	"paymentWay"
 			,CHARGE_MONEY	"chargeMoney"
 	FROM CHARGES
 	WHERE MEMBER_ID = #{memberId}
+	<if test="year != null and year !='' ">
+		AND TO_CHAR(REQUEST_DATE, 'yyyy') = #{year}
+	</if>
+	<if test="month != null and month !='' ">
+		AND TO_CHAR(REQUEST_DATE, 'mm') = #{month}
+	</if>
+	<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
 	</select> 
 	
 	<!-- 선물받은리스트 -->
 	<select id="getReceivePointList" resultType="map">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
 	SELECT
 		TRANSLATE_DATE			"translateDate"
 		,SEND_MEMBER_ID 		"sendMemberId"	
 		,TRANSLATE_POINT 		"translatePoint"
 		FROM TRANSLATE_POINTS
 		WHERE RECEIVE_MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+			AND TO_CHAR(TRANSLATE_DATE, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+			AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
+		</if>
+		<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
 	</select>
 	<!-- 선물한리스트 -->
 	<select id="getSendPointList" resultType="map">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
 	SELECT 
 		TRANSLATE_ID 		"translateId"
 		, TRANSLATE_POINT 	"translatePoint"
@@ -183,14 +209,87 @@
 		, SEND_MEMBER_ID 	"sendMemberId"
 		FROM TRANSLATE_POINTS
 	WHERE SEND_MEMBER_ID = #{memberId}
+	<if test="year != null and year !='' ">
+		AND TO_CHAR(TRANSLATE_DATE, 'yyyy') = #{year}
+	</if>
+	<if test="month != null and month !='' ">
+		AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
+	</if>
+	<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
 	</select>
 	<!-- 환전한리스트 -->
 	<select id="getExchangeList" resultType="map">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
 	SELECT 	REQUEST_DATE		"requestDate"
 			,REQUEST_POINT		"requestPoint"
 			,COMMISSION			"commission"
 			,REAL_RECEIPT		"realReceipt"
 	FROM EXCHANGES
 	WHERE MEMBER_ID = #{memberId}
+	<if test="year != null and year !='' ">
+		AND TO_CHAR(REQUEST_DATE, 'yyyy') = #{year}
+	</if>
+	<if test="month != null and month !='' ">
+		AND TO_CHAR(REQUEST_DATE, 'mm') = #{month}
+	</if>
+	<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
 	</select>
+	
+	<!-- count 목록 sqlㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ -->
+	
+	<select id="listChargeCount" resultType="int">
+		SELECT COUNT(*)
+		FROM CHARGES
+		WHERE MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+		 AND TO_CHAR(REQUEST_DATE, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+			AND TO_CHAR(REQUEST_DATE, 'mm') = #{month}
+		</if>
+	</select>
+	
+	<select id="getReceivePointListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM TRANSLATE_POINTS
+		WHERE RECEIVE_MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+		 AND TO_CHAR(TRANSLATE_DATE, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+		AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
+		</if>
+	</select>
+	
+	<select id="getSendPointListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM TRANSLATE_POINTS
+		WHERE SEND_MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+		 AND TO_CHAR(TRANSLATE_DATE, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+			 AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
+		</if>
+	</select>
+	
+	<select id="getExchangeListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM EXCHANGES
+		WHERE MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+		AND TO_CHAR(REQUEST_DATE, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+		AND TO_CHAR(REQUEST_DATE, 'mm') = #{month}
+		</if>
+	</select>
+	
 </mapper>

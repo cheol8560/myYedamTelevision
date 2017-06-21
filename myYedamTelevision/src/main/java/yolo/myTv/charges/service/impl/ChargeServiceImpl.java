@@ -47,4 +47,9 @@ public class ChargeServiceImpl implements ChargeService {
 		return ChargeDAO.adminChargeList(vo);
 	}
 
+	@Override
+	public int getChargeListCount(ChargeVO vo) {
+		return ChargeDAO.getChargeListCount(vo);
+	}
+
 }

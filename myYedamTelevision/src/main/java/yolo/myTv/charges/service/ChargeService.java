@@ -11,4 +11,7 @@ public interface ChargeService {
 	public void updatePoint(ChargeVO vo);
 	public List<Map<String, Object>> getChargeList(ChargeVO vo);
 	public List<Map<String, Object>> adminChargeList(ChargeVO vo);
+	
+	//페이징 카운트
+	int getChargeListCount(ChargeVO vo);
 }

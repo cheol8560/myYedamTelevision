@@ -16,9 +16,11 @@ public interface TranslatePointMapper {
 	public List<TranslatePointVO> getTranslatePointList (TranslatePointVO vo);
 	void insertTrans(TransVO vo);
 	public Map<String, Object> resultInsertTrans (TranslatePointVO vo);
-	public List<TranslatePointVO> PresentedPointList (TranslatePointVO vo);
+	public List<TranslatePointVO> receivePresentedPointList (TranslatePointVO vo);
 	public List<Map<String, Object>> accumulatePoint(TranslatePointVO vo);
-	int accumulatePointCount(TranslatePointVO vo);
-	int PresentedPointListCount(TranslatePointVO vo);
-	int resultInsertTransCount(TranslatePointVO vo);
+	public List<Map<String, Object>> sendPresentList(TranslatePointVO vo);
+	//페이징처리를 위한 COUNT
+		int receivePresentedPointListCount(TranslatePointVO vo);
+		int sendPresentListCount(TranslatePointVO vo);
+
 }

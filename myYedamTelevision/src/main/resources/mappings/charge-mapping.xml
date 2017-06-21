@@ -61,15 +61,41 @@
         ]]>
 	</select>
 	
-	<select id="getChargeList" resultMap="chargeMap">
+	<select id="getChargeList" resultType="map">
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+	SELECT 
+	REQUEST_DATE 	"requestDate"
+	,CHARGE_POINT 	"chargePoint"
+	,PAYMENT_WAY	"paymentWay"
+	,CHARGE_MONEY	"chargeMoney"
+	,CHARGE_NO		"chargeNo"
+	FROM CHARGES
+	WHERE MEMBER_ID = #{memberId}
+	<if test="year != null and year !='' ">
+		 AND TO_CHAR(request_Date, 'yyyy') = #{year}
+	</if>
+	<if test="month != null and month !='' ">
+		 AND TO_CHAR(request_Date, 'mm') = #{month}
+	</if>
+	ORDER BY "requestDate"
+		<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
+	</select>
+	
+	<select id="getChargeListCount" resultType="int">
 
-		SELECT REQUEST_DATE
-				,CHARGE_POINT
-				,PAYMENT_WAY
-				,CHARGE_MONEY
-				CHARGE_NO
+		SELECT COUNT(*)
 		FROM CHARGES
 		WHERE MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+		 AND TO_CHAR(request_Date, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+		 AND TO_CHAR(request_Date, 'mm') = #{month}
+	</if>
 
 	</select>
 	

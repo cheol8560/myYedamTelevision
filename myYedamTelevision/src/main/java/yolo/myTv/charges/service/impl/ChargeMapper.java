@@ -15,4 +15,5 @@ public interface ChargeMapper {
 	public void updatePoint(ChargeVO vo);
 	public List<Map<String, Object>> getChargeList(ChargeVO vo);
 	public List<Map<String, Object>> adminChargeList(ChargeVO vo);
+	int getChargeListCount(ChargeVO vo);
 }

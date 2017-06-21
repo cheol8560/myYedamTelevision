@@ -1,6 +1,11 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ attribute name="paginationInfo" required="true" type="yolo.myTv.util.PaginationInfo"%>
+<%@ attribute name="jsFunc" required="false" type="java.lang.String" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:if test="${empty jsFunc}">
+	<c:set var="jsFunc" value="fn_egov_link_page"></c:set>
+</c:if>
+
 
 
 <div class="row">
@@ -14,9 +19,13 @@
 						</a></li>
 						
 						<c:forEach begin="${paginationInfo.firstPageNoOnPageList}" end="${paginationInfo.lastPageNoOnPageList}" var="p">
+							<c:if test="${paginationInfo.currentPageNo == p }">
+								<li class="active">${p}</li>
+							</c:if>
+							<c:if test="${paginationInfo.currentPageNo != p }">
 							<li><a href="#" onclick="fn_egov_link_page(${p})">${p}</a></li>
+							</c:if>
 						</c:forEach>
-						<!-- class="active" -->						
 						
 						<li class="next"><a href="#" aria-label="Next"> <span
 								aria-hidden="true">Next</span>

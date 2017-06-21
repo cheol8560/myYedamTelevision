@@ -70,6 +70,40 @@ public class SearchDefaultVO implements Serializable {
 
 	/** recordCountPerPage */
 	private int recordCountPerPage = 10;
+	
+	/** 현재페이지2 */
+	private int pageIndex2 = 1;
+	
+	private String year;
+	private String month;
+	
+	
+	
+	
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public int getPageIndex2() {
+		return pageIndex2;
+	}
+
+	public void setPageIndex2(int pageIndex2) {
+		this.pageIndex2 = pageIndex2;
+	}
 
 	public int getFirstIndex() {
 		return firstIndex;

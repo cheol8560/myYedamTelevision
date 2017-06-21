@@ -16,7 +16,14 @@ public class TranslatePointVO  extends SearchDefaultVO{
 	private int point;
 	private String memberId;
 	private int accumulatePoint;
+	private String mode;
 	
+	public String getMode() {
+		return mode;
+	}
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
 	public int getPoint() {
 		return point;
 	}

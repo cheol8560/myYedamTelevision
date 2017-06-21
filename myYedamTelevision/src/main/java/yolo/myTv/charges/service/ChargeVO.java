@@ -2,7 +2,9 @@ package yolo.myTv.charges.service;
 
 import java.util.Date;
 
-public class ChargeVO {
+import yolo.myTv.util.SearchDefaultVO;
+
+public class ChargeVO extends  SearchDefaultVO{
 	private int chargeNo;
 	private Date requestDate;
 	private String paymentWay;
@@ -11,6 +13,9 @@ public class ChargeVO {
 	private Date approveDate;
 	private String approveStatus;
 	private String memberId;
+	
+	
+	
 	public int getChargeNo() {
 		return chargeNo;
 	}

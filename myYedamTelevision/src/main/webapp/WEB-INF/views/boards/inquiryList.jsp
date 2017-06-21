@@ -3,6 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 
+<script>
+/* pagination 페이지 링크 function */
+function fn_egov_link_page(pageNo){
+document.listForm.pageIndex.value = pageNo;
+document.listForm.action = "<c:url value='/getInquiryList.do'/>";
+document.listForm.submit();
+}
+</script>
+
 <!--========== BREADCRUMBS V5 ==========-->
 <section
 	class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-3 bg-position-fixed">

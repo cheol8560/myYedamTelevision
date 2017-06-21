@@ -4,6 +4,15 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 
+<script>
+/* pagination 페이지 링크 function */
+function fn_egov_link_page(pageNo){
+document.listForm.pageIndex.value = pageNo;
+document.listForm.action = "<c:url value='/getPresentedPointList.do'/>";
+document.listForm.submit();
+}
+</script>
+
 <!--========== BREADCRUMBS V5 ==========-->
 <section
 	class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
@@ -90,11 +99,11 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${PresentedPointList}" var="PresentedPointList">
+					<c:forEach items="${presentedPoint}" var="presentedPoint">
 							<tr>
 								<td><fmt:formatDate pattern = "yyyy년 MM월 dd일 HH:mm:ss" value = "${PresentedPointList.translateDate}"/></td>
-								<td>${PresentedPointList.sendMemberId}</td>
-								<td>${PresentedPointList.translatePoint}</td>
+								<td>${presentedPoint.sendMemberId}</td>
+								<td>${presentedPoint.translatePoint}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

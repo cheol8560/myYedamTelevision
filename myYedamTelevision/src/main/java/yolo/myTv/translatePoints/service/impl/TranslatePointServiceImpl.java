@@ -50,9 +50,9 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 	}
 
 	@Override
-	public List<TranslatePointVO> PresentedPointList(TranslatePointVO vo) {
+	public List<TranslatePointVO> receivePresentedPointList(TranslatePointVO vo) {
 		// TODO Auto-generated method stub
-		return translatePointDAO.PresentedPointList(vo);
+		return translatePointDAO.receivePresentedPointList(vo);
 	}
 
 	@Override
@@ -62,21 +62,22 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 	}
 
 	@Override
-	public int accumulatePointCount(TranslatePointVO vo) {
-		return translatePointDAO.accumulatePointCount(vo);
+	public List<Map<String, Object>> sendPresentList(TranslatePointVO vo) {
+		return translatePointDAO.sendPresentList(vo);
 	}
 
 	@Override
-	public int PresentedPointListCount(TranslatePointVO vo) {
-		
-		return PresentedPointListCount(vo);
+	public int receivePresentedPointListCount(TranslatePointVO vo) {
+		return translatePointDAO.receivePresentedPointListCount(vo);
 	}
 
 	@Override
-	public int resultInsertTransCount(TranslatePointVO vo) {
-		// TODO Auto-generated method stub
-		return resultInsertTransCount(vo);
+	public int sendPresentListCount(TranslatePointVO vo) {
+		return translatePointDAO.sendPresentListCount(vo);
 	}
+
+
+
  
 	
 }

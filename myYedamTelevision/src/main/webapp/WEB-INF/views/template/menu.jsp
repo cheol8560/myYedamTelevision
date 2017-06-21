@@ -81,7 +81,8 @@
                                 <ul class="nav-dropdown-menu">
                                     <!-- 회원정보수정 -->
                                     <li class="nav-dropdown-menu-item">
-                                    	<a class="nav-dropdown-menu-link font-size-14" href="#">회원정보수정</a>
+                                    	<a class="nav-dropdown-menu-link font-size-14" 
+                                    		href="${pageContext.request.contextPath}/correctMemberForm.do">회원정보수정</a>
                                     </li>
                                     <!-- End 회원정보수정 -->
                                     <!-- 회원탈퇴 -->

@@ -7304,12 +7304,12 @@ fieldset[disabled] .btn-ig-bg {
 }
 
 .btn-group.btn-white-toggle .btn-white-bg {
-  width: 300px;
+  width: 150px;
   font-size: 15px;
   font-weight: 300;
   color: #34343c;
   background: #fff;
-  padding: 12px 100px 12px 15px;
+  padding: 9px 20px 9px 15px;
 }
 
 .btn-group.btn-white-toggle .btn-white-bg:after {

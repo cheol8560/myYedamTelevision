@@ -18,12 +18,11 @@
 		WHERE RECEIVE_MEMBER_ID = #{memberId}) as "receivePoint"
 		FROM MEMBERS
 		WHERE MEMBER_ID = #{memberId}
-
 	</select>
 	
+
+	
 	<select id="accumulatePoint" resultType="map">
-	SELECT * FROM (
-	SELECT A.*, ROWNUM RNUM FROM (
 	SELECT POINT as "point"
 		,(SELECT NVL(SUM(REQUEST_POINT),0)
 		FROM EXCHANGES
@@ -34,16 +33,6 @@
 		(SELECT NVL(SUM(TRANSLATE_POINT),0)
 		FROM TRANSLATE_POINTS
 		WHERE RECEIVE_MEMBER_ID = #{memberId}) as "receivePoint"
-		FROM MEMBERS
-		WHERE MEMBER_ID = #{memberId}
-			<![CDATA[					
-	) A WHERE ROWNUM <= #{lastIndex}
-)WHERE RNUM > #{firstIndex}
-]]>
-	</select> 
-	
-	<select id="accumulatePointCount" resultType="int">
-	SELECT COUNT(*)
 		FROM MEMBERS
 		WHERE MEMBER_ID = #{memberId}
 	</select> 
@@ -110,13 +99,54 @@
 		}
 	</insert>
 	
-	<select id="PresentedPointList" resultType="map">
+	<select id="receivePresentedPointList" resultType="map">
 		SELECT
 		TRANSLATE_DATE			"translateDate"
 		,SEND_MEMBER_ID 		"sendMemberId"	
 		,TRANSLATE_POINT 		"translatePoint"
 		FROM TRANSLATE_POINTS
+		WHERE RECEIVE_MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="receivePresentedPointListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM TRANSLATE_POINTS
 		WHERE RECEIVE_MEMBER_ID = #{memberId} 
 	</select>
 	
+	<!-- 선물 준 기쁨 리스트 -->
+	<select id="sendPresentList" resultType="map">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+		SELECT 
+		TRANSLATE_ID 		"translateId"
+		, TRANSLATE_POINT 	"translatePoint"
+		, TRANSLATE_DATE 	"translateDate"
+		, RECEIVE_MEMBER_ID	"receiveMemberId"
+		, SEND_MEMBER_ID 	"sendMemberId"
+		FROM TRANSLATE_POINTS
+		WHERE SEND_MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+		 AND TO_CHAR(TRANSLATE_DATE, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+			 AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
+		</if>
+		<![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
+	</select>
+	
+	<select id="sendPresentListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM TRANSLATE_POINTS
+		WHERE SEND_MEMBER_ID = #{memberId}
+		<if test="year != null and year !='' ">
+		 AND TO_CHAR(TRANSLATE_DATE, 'yyyy') = #{year}
+		</if>
+		<if test="month != null and month !='' ">
+			 AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
+		</if>
+	</select>
 </mapper>

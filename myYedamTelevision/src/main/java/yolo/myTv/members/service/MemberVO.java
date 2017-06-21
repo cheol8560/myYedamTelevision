@@ -1,7 +1,5 @@
 package yolo.myTv.members.service;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlTransient;
@@ -16,13 +14,10 @@ public class MemberVO {
 	private String password;
 	private String nickName;
 	private String memberName;
-	private Date birthDate;
 	private String email;
 	private String tel;
 	private int point;
-	
 	private int cnt;
-	
 	
 	@XmlTransient
 	private MultipartFile uploadFile;
@@ -53,12 +48,6 @@ public class MemberVO {
 	}
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
-	}
-	public Date getBirthDate() {
-		return birthDate;
-	}
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
 	}
 	public String getEmail() {
 		return email;
@@ -117,7 +106,7 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [memberId=" + memberId + ", password=" + password
 				+ ", nickName=" + nickName + ", memberName=" + memberName
-				+ ", birthDate=" + birthDate + ", email=" + email + ", tel="
+				+ ", email=" + email + ", tel="
 				+ tel + ", point=" + point + ", cnt=" + cnt + ", uploadFile="
 				+ uploadFile + ", bank=" + bank + ", account=" + account
 				+ ", memberImage=" + memberImage + "]";

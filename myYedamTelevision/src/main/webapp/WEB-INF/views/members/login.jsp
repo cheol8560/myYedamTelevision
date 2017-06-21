@@ -136,16 +136,22 @@
 
             <div class="login-content radius-3 margin-b-30">
                 <!-- Login Form -->
-                <form class="login-form" action="${pageContext.request.contextPath}/login.do" method="post">
+                <form class="login-form form-horizontal" action="${pageContext.request.contextPath}/login.do" method="post">
                     <div class="margin-b-30">
                         <h1 class="login-form-title">Login</h1>
                         <p>로그인 후에 이용하실 수 있습니다.</p>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" placeholder="Member ID" name="memberId" id="memberId"/>
+                    	<label for="memberId" class="col-md-3 control-label">아이디</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="text" autocomplete="on" placeholder="Member ID" name="memberId" id="memberId"/>
+                    	</div>
                     </div>
                     <div class="form-group">
+                    	<label for="password" class="col-md-3 control-label">비밀번호</label>
+                    	<div class="col-md-9">
                         <input class="form-control" type="password" autocomplete="on" placeholder="Password" name="password" id="password"/>
+                    	</div>
                     </div>
                     <div class="login-form-actions">
                         <a href="javascript:;" id="forgot-password" class="login-form-forgot">아이디/비밀번호 찾기</a>
@@ -159,13 +165,16 @@
                 <!-- End Login Form -->
 
                 <!-- Forgot Password Form -->
-                <form class="forgot-password-form display-none" action="${pageContext.request.contextPath}/sendMail.do" method="post">
+                <form class="forgot-password-form display-none form-horizontal" action="${pageContext.request.contextPath}/sendMail.do" method="post">
                     <div class="margin-b-30">
                         <h1 class="login-form-title">아이디/비밀번호 찾기</h1>
                         <p>이메일을 통해 비밀번호를 찾을 수 있습니다.</p>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" placeholder="ID" name="memberId"/>
+                    	<label for="memberId" class="col-md-3 control-label">아이디</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="text" autocomplete="on" id="memberId" placeholder="ID" name="memberId"/>
+                    	</div>
                     </div>
                     <button type="submit" class="btn-base-bg btn-base-sm btn-block radius-3 margin-b-30">이메일 발송</button>
                     <div class="create-account">
@@ -178,39 +187,67 @@
                 <!-- End Forgot Password Form -->
 
                 <!-- Registration Form -->
-                <form class="signup-form display-none" action="${pageContext.request.contextPath}/memberInsert.do" method="post"
+                <form class="signup-form display-none form-horizontal" action="${pageContext.request.contextPath}/memberInsert.do" method="post"
                 			enctype="multipart/form-data">
                     <div class="margin-b-30">
                         <h1 class="login-form-title">회원가입</h1>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" id="memberId" placeholder="ID" name="memberId"/>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="password" autocomplete="on" id="signup_password" placeholder="Password" name="password"/>
-                    </div>
-                    <div class="form-group">
-                       	<input class="form-control" type="password" autocomplete="on" id="confirm_password" placeholder="Confirm Password" name="confirm_password"/>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" id="memberName" placeholder="name" name="memberName"/>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" id="nickName" placeholder="nickname" name="nickName"/>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="date" autocomplete="on" id="birthDate" placeholder="birth" name="birthDate"/>
+	                   	 <label for="memberId" class="col-md-3 control-label">아이디</label>
+	                   	 <div class="col-md-9">
+                         	<input class="form-control" type="text" id="memberId" placeholder="ID" name="memberId"/>
+                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <input class="form-control" type="text" id="email" placeholder="Email" name="email"/>
+                    	<label for="signup_password" class="col-md-3 control-label">비밀번호</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="password" autocomplete="on" id="signup_password" placeholder="PASSWORD" name="password"/>
+                    	</div>
                     </div>
+                    
                     <div class="form-group">
-                        <input class="form-control" type="text" autocomplete="on" id="tel" placeholder="phoneNum" name="tel"/>
+                    	<label for="confirm_password" class="col-md-3 control-label">비밀번호</label>
+                       	<div class="col-md-9">
+                       		<input class="form-control" type="password" autocomplete="on" id="confirm_password" placeholder="CONFIRM PASSWORD" name="confirm_password"/>
+                    	</div>
                     </div>
+                    
                     <div class="form-group">
-                        <input class="form-control" type="file" autocomplete="on" id="insertImg" placeholder="img" name="uploadFile"/>
+                    	<label for="memberName" class="col-md-3 control-label">회원이름</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="text" autocomplete="on" id="memberName" placeholder="NAME" name="memberName"/>
+                    	</div>
                     </div>
+                    
+                    <div class="form-group">
+                    	<label for="nickName" class="col-md-3 control-label">닉네임</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="text" autocomplete="on" id="nickName" placeholder="NICK NAME" name="nickName"/>
+                    	</div>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="email" class="col-md-3 control-label">이메일</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="text" id="email" placeholder="E-MAIL" name="email"/>
+                    	</div>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="tel" class="col-md-3 control-label">폰번호</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="text" autocomplete="on" id="tel" placeholder="PHONE NUMBER" name="tel"/>
+                    	</div>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="insertImg" class="col-md-3 control-label">대표사진</label>
+                    	<div class="col-md-9">
+                        	<input class="form-control" type="file" autocomplete="on" id="insertImg" placeholder="대표이미지" name="uploadFile"/>
+                    	</div>
+                    </div>
+                    
                     <div class="margin-b-30">
                         <p class="font-size-13">
                            가입시 

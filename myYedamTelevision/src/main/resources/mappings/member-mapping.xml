@@ -9,7 +9,6 @@
         					, PASSWORD
         					, NICK_NAME
         					, MEMBER_NAME
-        					, BIRTH_DATE
         					, EMAIL
         					, TEL
         					<if test="memberImage != null and memberImage !='' ">	<!--ATTATCH_FILENAME이 있으면   -->
@@ -20,7 +19,6 @@
         		, #{password}
         		, #{nickName}
         		, #{memberName}
-				, #{birthDate}
         		, #{email}
         		, #{tel}
         		<if test="memberImage != null and memberImage !='' ">
@@ -58,9 +56,7 @@
         			PASSWORD = null
     	    		, NICK_NAME = null
         			, MEMBER_NAME = null
-        			, BIRTH_DATE = null
  	       			, TEL = null
-    	    		, POINT = 0
         			, MEMBER_IMAGE = null
         			, BANK = null
         			, ACCOUNT = null
@@ -72,7 +68,6 @@
         		, PASSWORD
         		, NICK_NAME
         		, MEMBER_NAME
-        		, BIRTH_DATE
         		, EMAIL
         		, TEL
         		, POINT
@@ -88,7 +83,6 @@
         SELECT MEMBER_ID
         		, NICK_NAME
         		, MEMBER_NAME
-        		, BIRTH_DATE
         		, EMAIL
         		, TEL
         		, POINT
@@ -128,7 +122,6 @@
 		<result property="password" column="PASSWORD" />
 		<result property="nickName" column="NICK_NAME" />
 		<result property="memberName" column="MEMBER_NAME" />
-		<result property="birthDate" column="BIRTH_DATE" />
 		<result property="email" column="EMAIL" />
 		<result property="tel" column="TEL" />
 		<result property="point" column="POINT" />

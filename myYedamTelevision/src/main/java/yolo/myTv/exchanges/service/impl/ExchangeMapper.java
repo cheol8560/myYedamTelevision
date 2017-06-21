@@ -23,4 +23,7 @@ public interface ExchangeMapper {
 	
 	void insertEx(ExVO exvo);
 	
+	//count
+	int getExchangeListCount(ExchangeVO exchangevo);
+	
 }

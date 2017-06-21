@@ -2,7 +2,9 @@ package yolo.myTv.exchanges.service;
 
 import java.util.Date;
 
-public class ExchangeVO {
+import yolo.myTv.util.SearchDefaultVO;
+
+public class ExchangeVO extends SearchDefaultVO{
 	private int exchangeNo;
 	private Date requestDate;
 	private int requestPoint;

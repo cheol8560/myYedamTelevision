@@ -18,5 +18,7 @@ public interface ExchangeService {
 	
 	//환전 프로시져
 	void insertEx(ExVO exvo);
+	//count
+	int getExchangeListCount (ExchangeVO exchangevo);
 	
 }

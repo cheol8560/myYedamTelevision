@@ -37,6 +37,11 @@ public class ExchangeServiceImpl implements ExchangeService{
 	public void insertEx(ExVO exvo) {
 		exchangeDAO.insertEx(exvo);
 	}
+
+	@Override
+	public int getExchangeListCount(ExchangeVO exchangevo) {
+		return exchangeDAO.getExchangeListCount(exchangevo);
+	}
 	
 	
 }

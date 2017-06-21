@@ -108,6 +108,8 @@ SELECT * FROM (
 				,CHARGE_POINT
 				,PAYMENT_WAY
 				,APPROVE_STATUS
+				,find_code_name(APPROVE_STATUS) as APPROVE_STATUS_NAME
+				,find_code_name(PAYMENT_WAY) as PAYMENT_WAY_NAME
 		FROM CHARGES
 
 	</select>
@@ -121,5 +123,7 @@ SELECT * FROM (
 		<result property="chargePoint" column="CHARGE_POINT" />
 		<result property="approveDate" column="APPROVE_DATE" />
 		<result property="approveStatus" column="APPROVE_STATUS" />
+		<result property="approveStatusName" column="APPROVE_STATUS_NAME" />
+		<result property="paymentWayName" column="PAYMENT_WAY_NAME" />
 	</resultMap>
 </mapper>

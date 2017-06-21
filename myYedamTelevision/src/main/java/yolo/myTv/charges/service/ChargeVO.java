@@ -13,9 +13,23 @@ public class ChargeVO extends  SearchDefaultVO{
 	private Date approveDate;
 	private String approveStatus;
 	private String memberId;
+	private String approveStatusName;
+	private String paymentWayName;
 	
 	
 	
+	public String getPaymentWayName() {
+		return paymentWayName;
+	}
+	public void setPaymentWayName(String paymentWayName) {
+		this.paymentWayName = paymentWayName;
+	}
+	public String getApproveStatusName() {
+		return approveStatusName;
+	}
+	public void setApproveStatusName(String approveStatusName) {
+		this.approveStatusName = approveStatusName;
+	}
 	public int getChargeNo() {
 		return chargeNo;
 	}

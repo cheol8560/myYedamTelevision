@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script type="text/javascript">
 $(function() {
 	//페이지 로딩후에 목록 조회
@@ -8,12 +9,12 @@ $(function() {
 		
 	})
 
-	$("#btnInsert").click(function(){
+	/* $("#btnInsert").click(function(){
 		var param = $("#frm").serialize();
 		$.getJSON("./approveAdmin.do" ,param , function(data){
-			
+			$("#btnInsert").hide();
 		})
-	});
+	}); */
 });
 </script>
 	<div class="page-title">
@@ -68,15 +69,20 @@ $(function() {
 								
 								<c:forEach items="${adminchargeList}" var="adminchargeList">
 									<tr>
-										<td><input type="checkbox">${adminchargeList.chargeNo}</td>
-										<td>${adminchargeList.approveDate}</td>
+										<td>${adminchargeList.chargeNo}</td>
+										<td><fmt:formatDate value="${adminchargeList.approveDate}" pattern="yyyy-MM-dd"/></td>
 										<td>${adminchargeList.memberId}</td>
-										<td>${adminchargeList.chargeMoney}</td>
-										<td>${adminchargeList.chargePoint}</td>
-										<td>${adminchargeList.paymentWay}</td>
-										<td>${adminchargeList.approveStatus}</td>
-										<td><a href="./approveAdmin.do?chargeNo=${adminchargeList.chargeNo}&memberId=${adminchargeList.memberId}&chargePoint=${adminchargeList.chargePoint}">
-										<input type="button" id="btnInsert" value="승인"></a></td>
+										<td><fmt:formatNumber value="${adminchargeList.chargeMoney}" groupingUsed="true"/></td>
+										<td><fmt:formatNumber value="${adminchargeList.chargePoint}" groupingUsed="true"/></td>
+										<td>${adminchargeList.paymentWayName}</td>
+										<td>${adminchargeList.approveStatusName}</td>
+										<td>
+										<c:if test="${adminchargeList.approveStatus== 'b1'}">
+											<a href="./approveAdmin.do?chargeNo=${adminchargeList.chargeNo}&memberId=${adminchargeList.memberId}&chargePoint=${adminchargeList.chargePoint}">
+												<input type="button" id="btnInsert" value="승인">
+											</a>
+										</c:if>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>

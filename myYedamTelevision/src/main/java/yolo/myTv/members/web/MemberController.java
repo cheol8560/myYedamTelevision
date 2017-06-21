@@ -34,7 +34,7 @@ public class MemberController {
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return "blank/members/login";
 	}
 	
 	// 등록
@@ -51,7 +51,7 @@ public class MemberController {
 			memberVO.setMemberImage("basic.jpg");
 		}
 		memberService.insertMember(memberVO);
-		return "members/login";
+		return "blank/members/login";
 	}
 
 	// 회원탈퇴 페이지
@@ -131,12 +131,11 @@ public class MemberController {
 		try {
 
 			// 넘어온 ID를 받는다.
-			String paramNick = (req.getParameter("nickName") == null) ? "" : String.valueOf(req.getParameter("nickName"));
+			String paramNick = (req.getParameter("prmNick") == null) ? "" : String.valueOf(req.getParameter("prmNick"));
 
 			MemberVO vo = new MemberVO();
 			vo.setNickName(paramNick.trim());
 			int chkPoint = memberService.chkDupNick(vo);
-			
 			//out.print(chkPoint);
 			if(chkPoint == 0) {
 				out.print("true");
@@ -210,7 +209,7 @@ public class MemberController {
 	
 	
 	
-	//관리자 회원 수정
+	//ID/PASS EMAIL 발송
 		@RequestMapping(value = "/sendMail.do", method=RequestMethod.POST)
 		public String sendMail(MemberVO vo){
 			MemberVO mvo = memberService.getMember(vo);
@@ -218,6 +217,38 @@ public class MemberController {
 			String id = mvo.getMemberId();
 			String pass = mvo.getPassword();
 			SendMail.sendMail(mail, id, pass);
+			return "redirect:/";
+		}
+		
+		
+		// 회원수정 페이지
+		@RequestMapping("/correctMemberForm.do")
+		public String correctMemberForm(@ModelAttribute("member")MemberVO vo, Model model, HttpSession session) {
+			MemberVO member = (MemberVO) session.getAttribute("login");
+			vo.setMemberId(member.getMemberId());
+			model.addAttribute("member", memberService.getMember(vo));
+			return "members/correctMember";
+		}
+		
+		
+		// 회원수정
+		@RequestMapping(value = "/correctMember.do", method = RequestMethod.POST)
+		public String correctMember(@ModelAttribute("member") MemberVO vo, HttpServletRequest request, HttpSession session) throws IllegalStateException, IOException  {
+			
+			MemberVO member = (MemberVO) session.getAttribute("login");
+			vo.setMemberId(member.getMemberId());
+			
+			MultipartFile file = vo.getUploadFile();
+			if(file != null && file.getSize() > 0) {
+				String pathSet = request.getSession().getServletContext().getRealPath("/img");
+				File savefile = new File( pathSet , file.getOriginalFilename());
+				file.transferTo(savefile); //서버에 파일 저장 
+				vo.setMemberImage(file.getOriginalFilename());
+			}else  {
+				vo.setMemberImage("basic.jpg");
+			}
+			memberService.updateMember(vo);
+			System.out.println(vo);
 			return "redirect:/";
 		}
 	

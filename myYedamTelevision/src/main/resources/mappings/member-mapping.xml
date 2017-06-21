@@ -29,11 +29,10 @@
 	<update id="updateMember">
         UPDATE MEMBERS SET
         		PASSWORD = #{password}
-                , NICK_NAME = #{memberName}
+                , NICK_NAME = #{nickName}
                 , EMAIL = #{email}
                 , TEL = #{tel}
                 , MEMBER_IMAGE = #{memberImage}
-                , BANK = #{bank}
         WHERE MEMBER_ID = #{memberId}
 	</update>
 	

@@ -125,15 +125,43 @@
                         </div>
                         <div class="blog-sidebar-content scrollbar" id="viewerList">
                             <!-- Latest Tutorials -->
-                            <article class="latest-tuts viewerInfo" style="padding-bottom:0; margin-bottom:5px; border-bottom:0px;">
-                                <div class="latest-tuts-content">
-                                    <h5 class="latest-tuts-content-title"> 
-                                    	<span>${login.nickName} (${login.memberId})</span>
-                                    	<i class="bordered-icon-box-item fa fa-star" style="margin-left:5px;"></i>
-                                    </h5>
-                                </div>
-                            </article>
-                
+							
+							<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+								<button type="button" class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									${login.nickName } (${login.memberId })
+									<i class="bordered-icon-box-item fa fa-star" style="margin-left:5px;"></i>
+								</button>
+							</div>
+							
+							<div id="viewerArea">
+
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 text-left"
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										블랙리스트 (black)
+									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+							
 							<!-- End Latest Tutorials -->
                         </div>
                     </div>
@@ -172,10 +200,13 @@
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.back-to-top.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.smooth-scroll.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.animsition.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.appear.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.back-to-top.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.smooth-scroll.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.wow.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/counter/waypoints.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/counter/jquery.counterup.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
@@ -185,10 +216,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/custom.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/playrtc.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/animsition.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/scrollbar.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/form-modal.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/counters.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/magnific-popup.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/progress-bar.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/scrollbar.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/wow.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 
 <!-- Page Javascript Code -->
@@ -203,6 +235,7 @@
 	var inputChannelId = document.querySelector("#channelId");
 	var inputBroadcastNo = document.querySelector("#broadcastNo");
 	var chattingArea = document.querySelector("#chattingArea");
+	var viewerArea = document.querySelector("#viewerArea");
 	var sendTextBtn = document.querySelector("#sendTextBtn");
 	var broadcastStatusCheck = false;
 	var appBj;
@@ -248,7 +281,6 @@
 				// 방송적용 버튼
 				broadcastInfoUpdBtn.style.display = "inline-block";
 				
-				
 				var chatP = document.createElement("p");
 				chatP.style.paddingLeft = "8px";
 				chatP.classList.add("font-size-12");
@@ -288,30 +320,85 @@
 					
 					while(true) {
 						
-						var viewArticle = document.createElement("article");
-						viewArticle.classList.add("latest-tuts");
-						viewArticle.classList.add("viewerInfo");
-						viewArticle.style.paddingBottom = "0px";
-						viewArticle.style.marginBottom = "5px";
-						viewArticle.style.borderBottom = "0px";
+						// div tag
+						var tDiv = document.createElement("div");
+						tDiv.classList.add("btn-group");
+						tDiv.classList.add("btn-custom-toggle");
+						tDiv.classList.add("margin-b-10");
 						
-						var viewDiv = document.createElement("div");
-						viewDiv.classList.add("latest-tuts-content");
+						// button tag
+						var tBtn = document.createElement("button");
+						tBtn.setAttribute("type", "button");
+						tBtn.classList.add("btn-custom-bg");
+						tBtn.classList.add("dropdown-toggle");
+						tBtn.classList.add("radius-3");
+						tBtn.setAttribute("data-toggle", "dropdown");
+						tBtn.setAttribute("aria-haspopup", "true");
+						tBtn.setAttribute("aria-expanded", "false");
+						tBtn.textContent = peerList[i].userName + " (" + peerList[i].uid + ")";
 						
-						var viewH5 = document.createElement("h5");
-						viewH5.classList.add("latest-tuts-content-title");
+						// ul tag
+						var tUl = document.createElement("ul");
+						tUl.classList.add("dropdown-menu");
 						
-						var viewSpan = document.createElement("span");
-						viewSpan.textContent = peerList[i].userName + " (" + peerList[i].uid + ")";
+						// 첫번째 li tag 
+						var tLi_1 = document.createElement("li");
+								
+						var tLi_1_tA = document.createElement("a");
+						tLi_1_tA.setAttribute("href", "#");
 						
-						viewH5.appendChild(viewSpan);
-						viewDiv.appendChild(viewH5);
-						viewArticle.appendChild(viewDiv);
-						$("#viewerArea").append(viewArticle);
+						var tLi_1_tI = document.createElement("i");
+						tLi_1_tI.classList.add("dropdown-menu-icon");
+						tLi_1_tI.classList.add("icon-lightbulb");
+						
+						tLi_1_tA.appendChild(tLi_1_tI);
+						tLi_1_tA.textContent = "기쁨 선물";
+						
+						tLi_1.appendChild(tLi_1_tA);
+						
+						// 두번째 li tag 
+						var tLi_2 = document.createElement("li");
+								
+						var tLi_2_tA = document.createElement("a");
+						tLi_2_tA.setAttribute("href", "#");
+						
+						var tLi_2_tI = document.createElement("i");
+						tLi_2_tI.classList.add("dropdown-menu-icon");
+						tLi_2_tI.classList.add("icon-mobile");
+						
+						tLi_2_tA.appendChild(tLi_2_tI);
+						tLi_2_tA.textContent = "강퇴";
+						
+						tLi_2.appendChild(tLi_2_tA);
+						
+						// 세번째 li tag 
+						var tLi_3 = document.createElement("li");
+								
+						var tLi_3_tA = document.createElement("a");
+						tLi_3_tA.setAttribute("href", "#");
+						
+						var tLi_3_tI = document.createElement("i");
+						tLi_3_tI.classList.add("dropdown-menu-icon");
+						tLi_3_tI.classList.add("icon-mobile");
+						
+						tLi_3_tA.appendChild(tLi_3_tI);
+						tLi_3_tA.textContent = "블랙리스트 등록";
+						
+						tLi_3.appendChild(tLi_3_tA);
+						
+						// 태그 구조 생성
+						tUl.appendChild(tLi_1);
+						tUl.appendChild(tLi_2);
+						tUl.appendChild(tLi_3);
+						
+						tDiv.appendChild(tBtn);
+						tDiv.appendChild(tUl);
+						viewerArea.appendChild(tDiv);
 						
 						i++;
 						 
 						if (i >= peerList.length) { break; }
+						
 					}
 				}
 				
@@ -416,6 +503,7 @@
 				$("video").remove();	// 비디오 태그 삭제
 				$("#applyBroadcastTitle").html("&nbsp;");
 				$(".view-count").text("0");
+				$("#viewerArea").text(" ");
 			})
 			.fail(function(jqxhr, textStatus, error) {
 				var err = textStatus + " : " + error;
@@ -529,6 +617,7 @@
 			$("#chattingArea").css( "height", $("#videoArea").height()-130 );
 			$("#viewerList").css( "height", $("#chattingArea").height()/1.75 );
 		});
+		
 	});
 	
 </script>

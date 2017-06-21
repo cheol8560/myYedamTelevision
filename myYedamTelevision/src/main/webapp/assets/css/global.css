@@ -15229,7 +15229,7 @@ fieldset[disabled] .btn-ig-bg {
 ----------------------------------------------------*/
 .services-v8 {
   display: block;
-  background: #f7f8fa;
+  background: #ffffff;
   overflow: hidden;
   padding: 20px;
   margin-bottom: 10px;
@@ -15250,7 +15250,7 @@ fieldset[disabled] .btn-ig-bg {
 
 .services-v8 .services-v8-no {
   width: 40px;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
   color: #606060;
   text-align: center;
@@ -15258,7 +15258,7 @@ fieldset[disabled] .btn-ig-bg {
 }
 
 .services-v8 .services-v8-text {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
   color: #34343c;
 }
@@ -15271,14 +15271,14 @@ fieldset[disabled] .btn-ig-bg {
 }
 
 .services-v8 .services-v8-like .services-v8-like-amount {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
   color: #fff;
   margin-right: 3px;
 }
 
 .services-v8 .services-v8-like .services-v8-like-icon {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .services-v8:focus, .services-v8:hover {

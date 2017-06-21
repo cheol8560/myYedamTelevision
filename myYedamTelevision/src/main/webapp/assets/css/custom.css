@@ -13,12 +13,174 @@
   background-position: 50% 100%;
 }
 
-/* Viewer.jsp 비디오 재생 영역 */
-.video-player {
-	/* overflow: hidden; */
-	/* min-width: 460px; */
-	background: #000;
-	/* max-height: 760px !important; */
-	/* margin: 0 !important; */
-	border-bottom: 2px solid #00bcd4;
+/*--------------------------------------------------
+    [Buttons Toggle Custom]
+----------------------------------------------------*/
+/* Button Custom Toggle */
+.btn-group.btn-custom-toggle.open .btn-custom-bg {
+  box-shadow: none;
+}
+
+.btn-group.btn-custom-toggle.open .btn-custom-bg:after {
+  /* 
+  color: #00bcd4;
+  content: "\f0d8";
+   */
+}
+
+.btn-group.btn-custom-toggle .btn-custom-bg {
+  width: 150px;
+  font-size: 13px;
+  font-weight: 300;
+  color: #34343c;
+  background: #fff;
+  /* padding: 9px 20px 9px 15px; */
+}
+
+.btn-group.btn-custom-toggle .btn-custom-bg:after {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 13px;
+  font-family: FontAwesome;
+  /* 
+  color: #34343c;
+  content: "\f0d7";
+  */ 
+}
+
+.btn-group.btn-custom-toggle .btn-custom-bg:hover, .btn-group.btn-custom-toggle .btn-custom-bg:focus, .btn-group.btn-custom-toggle .btn-custom-bg.focus {
+  color: #34343c;
+  background: #fff;
+  border-color: #fff;
+  box-shadow: inset none;
+}
+
+.btn-group.btn-custom-toggle .dropdown-menu {
+  width: 100px;
+  border: 1px solid #444;
+  border-radius: 3px;
+  box-shadow: none;
+  padding: 0;
+  margin: 1px 0 0;
+}
+
+.btn-group.btn-custom-toggle .dropdown-menu > li > a {
+  font-size: 11px;
+  font-weight: 300;
+  color: #34343c;
+  border-bottom: 1px solid #f7f8fa;
+  padding: 10px 15px;
+}
+
+.btn-group.btn-custom-toggle .dropdown-menu > li > a .dropdown-menu-icon {
+  min-width: 25px;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.btn-group.btn-custom-toggle .dropdown-menu > li > a:hover, .btn-group.btn-custom-toggle .dropdown-menu > li > a:focus {
+  background: #00bcd4;
+  color: #fff;
+}
+
+.btn-group.btn-custom-toggle .dropdown-menu > li:first-child > a {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.btn-group.btn-custom-toggle .dropdown-menu > li:last-child > a {
+  border-bottom: none;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+/* Button Background White Color */
+.btn-custom-bg {
+  position: relative;
+  display: inline-block;
+  line-height: 1.4;
+  color: #34343c;
+  text-align: left;
+  background: #fff;
+  background-image: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn-custom-bg:focus, .btn-custom-bg:active:focus, .btn-custom-bg.active:focus, .btn-custom-bg.focus, .btn-custom-bg:active.focus, .btn-custom-bg.active.focus {
+  outline: none;
+}
+
+.btn-custom-bg:hover {
+  transition-duration: 200ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+}
+
+.btn-custom-bg:hover, .btn-custom-bg:focus, .btn-custom-bg.focus {
+  color: #fff;
+  background: #00bcd4;
+  border-color: #00bcd4;
+  text-decoration: none;
+}
+
+.btn-custom-bg:active, .btn-custom-bg.active {
+  background-image: none;
+  outline: 0;
+}
+
+.btn-custom-bg.disabled, .btn-custom-bg[disabled],
+fieldset[disabled] .btn-custom-bg {
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: .65;
+  pointer-events: none;
+}
+
+.btn-custom-bg .btn-base-element-xs {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border-left: 1px solid #f0f0f0;
+  padding: 6px 9px;
+}
+
+.btn-custom-bg .btn-base-element-sm {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border-left: 1px solid #f0f0f0;
+  padding: 9px 11px;
+}
+
+.btn-custom-bg .btn-base-element-md {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border-left: 1px solid #f0f0f0;
+  padding: 12px 13px;
+}
+
+.btn-custom-bg .btn-base-element-lg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border-left: 1px solid #f0f0f0;
+  padding: 15px 15px;
 }

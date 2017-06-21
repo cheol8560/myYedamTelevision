@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- <% pageContext.setAttribute("newLineChar", "\n"); %> --%>
 
 <!-- BEGIN BODY -->
 <body>
@@ -123,7 +125,7 @@
                             <h4 class="blog-sidebar-heading-title">시청자</h4>
                             <span style="float:right; margin-right:10px;"><span class="view-count">0</span>명</span>
                         </div>
-                        <div class="blog-sidebar-content scrollbar" id="viewerList">
+                        <div class="blog-sidebar-content scrollbar padding-10" id="viewerList">
                             <!-- Latest Tutorials -->
 							
 							<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
@@ -137,13 +139,13 @@
 							<div id="viewerArea">
 
 								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 text-left"
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3" class="target"
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										블랙리스트 (black)
+										<span class="targetNickName">블랙리스트</span> (<span class="targetId">black</span>)
 									</button>
 									<ul class="dropdown-menu">
 										<li>
-											<a href="#">
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
 												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
 											</a>
 										</li>
@@ -159,7 +161,31 @@
 										</li>
 									</ul>
 								</div>
-
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3" class="target"
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
+									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
+								</div>
+								
 							</div>
 							
 							<!-- End Latest Tutorials -->
@@ -177,6 +203,52 @@
     <!-- BJ page -->
 	<!--========== END PAGE CONTENT ==========-->
 	
+	<!-- 기쁨 선물 Modal -->
+	<div class="modal fade" id="presentPointModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width:400px;">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">기쁨 선물</h4>
+				</div>
+				<div class="modal-body">
+			
+					<form class="form-horizontal">
+						<input type="hidden" name="inSendMemberId" value="${login.memberId}">
+						<div class="form-group">
+							<label class="col-sm-5 control-label" style="padding-right:0;">기쁨을 선물할 회원 : </label>
+							<div class="col-sm-7" style="padding-top: 7px; padding-left:10px;">
+								<span id="inReceiveMemberId"></span>
+								<input type="text" name="inReceiveMemberId" value="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-5 control-label" style="padding-right:0;">내가 보유한 기쁨 : </label>
+							<div class="col-sm-7" style="padding-top: 7px; padding-left:10px;">
+								<span id="myPoint">${login.point}</span> 개
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-5 control-label" style="padding-right:0;">선물할 기쁨 : </label>
+							<div class="col-sm-7" style="padding-left:10px;">
+								<input type="text" class="form-control" id="inTranslatePoint" name="inTranslatePoint"
+										style="height:30px; width:50%; display:inline; margin-right:5px;"> 개
+							</div>
+						</div>
+					</form>
+				
+				</div>
+				<div class="modal-footer text-center">
+					<button type="button" class="btn-base-bg btn-base-xs">선물하기</button>
+					<button type="button" class="btn-grey-brd btn-base-xs" data-dismiss="modal" aria-label="Close">취소</button>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 기쁨 선물 Modal -->
+
 </div>
 <!-- END WRAPPER -->
 
@@ -203,6 +275,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.animsition.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.appear.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.back-to-top.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.number.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.smooth-scroll.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.wow.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/counter/waypoints.min.js"></script>
@@ -567,6 +640,7 @@
 		var chatP;
 		var member = "${login.nickName} " + "(${login.memberId})";
 		var message = $("#sendTextArea").val();
+		// var message = ${fn:replace( $("#sendTextArea").val(), newLineChar, '<br/>')}
 		var sendMessage = "2/" + member + "/" + message;
 		
 		event.preventDefault();
@@ -605,18 +679,66 @@
 		$("#sendTextArea").val("").focus();
 	}, false);
 	
+	var isCtrl = false;
+	var ctrlKey = 17, enterKey = 13;
+	// 채팅 입력창 엔터 이벤트
+	$("#sendTextArea").keyup(function(e) {
+		if((e.keyCode ? e.keyCode : e.which) == ctrlKey)
+			isCtrl = false;
+	}).keydown(function(e) {
+		var keyCode = (e.keyCode ? e.keyCode : e.which);
+		
+		if(keyCode == ctrlKey) {
+			isCtrl = true;
+		}
+		
+		// ctrl + enter 입력시
+		if(keyCode == enterKey && isCtrl == true) {
+			var text = $("#sendTextArea").val();
+			$("#sendTextArea").val(text + "\n");
+			return false;
+		}
+		
+		//  enter 입력시
+		else if(keyCode == enterKey) {
+			$("#sendTextBtn").click();
+			return false;
+		}
+	});
+	
 	/* End BJ 방송 관련 Javascript */
 	
-	// 동적 크기 조절
 	$(function() {
+		
+		// 동적 크기 조절
 		$("#videoArea").css( "height", $("#leftArea").width()/1.35 );
 		$("#chattingArea").css( "height", $("#videoArea").height()-130 );
 		$("#viewerList").css( "height", $("#chattingArea").height()/1.75 );
+		$("#viewerArea").css( "height", $("#viewerList").height()*0.85 );
 		$(window).resize(function() {
 			$("#videoArea").css( "height", $("#leftArea").width()/1.35 );
 			$("#chattingArea").css( "height", $("#videoArea").height()-130 );
 			$("#viewerList").css( "height", $("#chattingArea").height()/1.75 );
+			$("#viewerArea").css( "height", $("#viewerList").height()*0.85 );
 		});
+		
+		// number formatting
+		$(".view-count").number(true);
+		$("#myPoint").number(true);
+		
+		// 모달로 값 넘기기
+		var nickName = null;
+		var memberId = null;
+		
+		$(".target").on("click", function(e) {
+			// console.log($(this).find(".targetNickName").text());
+			
+		})
+		
+		// 모달 show 이벤트
+		$('#presentPointModal').on('shown.bs.modal', function () {
+			$('#inTranslatePoint').focus();
+		})
 		
 	});
 	

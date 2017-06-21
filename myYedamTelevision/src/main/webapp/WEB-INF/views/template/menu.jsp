@@ -117,6 +117,30 @@
                                     		href="${pageContext.request.contextPath}/getPresentedPointList.do">선물받은 기쁨</a>
                                     </li>
                                     <!-- End 선물받은기쁨 -->
+                                    <!--  -->
+                                    <li class="nav-dropdown-menu-item">
+                                    	<a class="nav-dropdown-menu-link font-size-14" 
+                                    		href="${pageContext.request.contextPath}/getChargeList.do">충전 목록</a>
+                                    </li>
+                                    <!-- End -->
+                                    <!--  -->
+                                    <li class="nav-dropdown-menu-item">
+                                    	<a class="nav-dropdown-menu-link font-size-14" 
+                                    		href="${pageContext.request.contextPath}/getExchangeList.do">환전 목록</a>
+                                    </li>
+                                    <!-- End -->
+                                    <!--  -->
+                                    <li class="nav-dropdown-menu-item">
+                                    	<a class="nav-dropdown-menu-link font-size-14" 
+                                    		href="${pageContext.request.contextPath}/getReceivePointList.do">받은 기쁨내역</a>
+                                    </li>
+                                    <!-- End -->
+                                    <!--  -->
+                                    <li class="nav-dropdown-menu-item">
+                                    	<a class="nav-dropdown-menu-link font-size-14" 
+                                    		href="${pageContext.request.contextPath}/getSendPointList.do">선물한 기쁨내역</a>
+                                    </li>
+                                    <!-- End -->
                                 </ul>
                             </li>
                             <!-- End My 기쁨 -->

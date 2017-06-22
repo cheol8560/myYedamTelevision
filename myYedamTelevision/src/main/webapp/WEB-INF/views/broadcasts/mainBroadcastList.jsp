@@ -10,10 +10,13 @@
 					<!-- Portfolio 5 Columns Grid Filter -->
 					<div id="portfolio-5-col-grid-filter" class="cbp-l-filters-alignCenter">
 						<div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+							<i class="theme-icons theme-icons-base-hover theme-icons-xs radius-circle fa fa-facebook"></i>
 							All	<div class="cbp-filter-counter"></div>
 						</div>
 					<c:forEach items="${contentList}" var="content">	
+						
 						<div data-filter=".${content.contentCode}" class="cbp-filter-item">
+							<i class="theme-icons theme-icons-base-hover theme-icons-xs radius-circle fa fa-facebook"></i>
 							${content.contentName} <div class="cbp-filter-counter"></div>
 						</div>
 					</c:forEach>	

@@ -260,7 +260,7 @@
 		
 		appViewer.connectChannel(channelId, options);
 		
-		// appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
+		//appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
 	}, false);
 	
 	appViewer.on("stateChange", function(state, peerid, userid) {
@@ -355,7 +355,7 @@
 	
 	// 방송 연결
 	appViewer.on("connectChannel", function(channelId) {
-		appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
+		// appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
 	});
 	
 	// 방송 종료 시 이벤트 처리

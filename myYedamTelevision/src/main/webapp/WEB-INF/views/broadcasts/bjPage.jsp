@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%-- <% pageContext.setAttribute("newLineChar", "\n"); %> --%>
 
 <!-- BEGIN BODY -->
 <body>
@@ -49,8 +47,8 @@
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
                         
-                        <div class="overflow-a" id="chattingArea" style="padding: 10px 0 10px 0;">
-							
+	                    <div class="overflow-a" id="chattingArea" style="padding: 10px 0;">
+						
 						</div>
 						
                         <div class="" style="border-top: 1px solid #00bcd4;">
@@ -129,17 +127,16 @@
                             <!-- Latest Tutorials -->
 							
 							<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-								<button type="button" class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button class="btn-custom-bg radius-3">
 									${login.nickName } (${login.memberId })
 									<i class="bordered-icon-box-item fa fa-star" style="margin-left:5px;"></i>
 								</button>
 							</div>
 							
 							<div id="viewerArea">
-
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3" class="target"
+								<%--
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="targetNickName">블랙리스트</span> (<span class="targetId">black</span>)
 									</button>
@@ -163,7 +160,7 @@
 								</div>
 								
 								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3" class="target"
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 target"
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
@@ -185,7 +182,139 @@
 										</li>
 									</ul>
 								</div>
+
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
 								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
+									<button type="button"
+										class="btn-custom-bg dropdown-toggle radius-3"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										${login.nickName } (${login.memberId }) <i
+											class="bordered-icon-box-item fa fa-star"
+											style="margin-left: 5px;"></i>
+									</button>
+								</div>
+								 --%>
 							</div>
 							
 							<!-- End Latest Tutorials -->
@@ -209,18 +338,20 @@
 			<div class="modal-content">
 				
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close pointModalClose" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 					<h4 class="modal-title" id="myModalLabel">기쁨 선물</h4>
 				</div>
 				<div class="modal-body">
 			
-					<form class="form-horizontal">
+					<form class="form-horizontal" id="pointFrm">
 						<input type="hidden" name="inSendMemberId" value="${login.memberId}">
 						<div class="form-group">
 							<label class="col-sm-5 control-label" style="padding-right:0;">기쁨을 선물할 회원 : </label>
 							<div class="col-sm-7" style="padding-top: 7px; padding-left:10px;">
-								<span id="inReceiveMemberId"></span>
-								<input type="text" name="inReceiveMemberId" value="">
+								<span id="receiveMember"></span>
+								<input type="hidden" name="inReceiveMemberId" id="inReceiveMemberId" value="">
 							</div>
 						</div>
 						<div class="form-group">
@@ -237,18 +368,78 @@
 							</div>
 						</div>
 					</form>
-				
+
+					<div class="alert alert-warning collapse font-size-13 text-center" id="pointAlert" role="alert">
+						<button type="button" class="close" onclick="$('#pointAlert').hide();">
+							<span>&times;</span>
+						</button>
+						<strong>주의!</strong> 선물할 기쁨을 입력해주세요.
+					</div>
+
+					<div class="alert alert-info collapse font-size-13 text-center" id="pointConfirm" role="alert">
+						<strong id="confirmMember"></strong> 님에게 <strong id="confirmPoint"></strong> 기쁨을 선물하시겠습니까?
+					</div>
+
+					<div class="alert alert-danger collapse font-size-13 text-center" id="pointFail" role="alert">
+						<button type="button" class="close" onclick="$('#pointFail').hide();">
+							<span>&times;</span>
+						</button>
+						<strong>경고!</strong> 보유하신 기쁨이 부족합니다.
+					</div>
+
+					<div class="alert alert-danger collapse font-size-13 text-center" id="pointFail2" role="alert">
+						<button type="button" class="close" onclick="$('#pointFail2').hide();">
+							<span>&times;</span>
+						</button>
+						<strong>경고!</strong> 기쁨 선물에 실패했습니다.
+					</div>
+
 				</div>
 				<div class="modal-footer text-center">
-					<button type="button" class="btn-base-bg btn-base-xs">선물하기</button>
-					<button type="button" class="btn-grey-brd btn-base-xs" data-dismiss="modal" aria-label="Close">취소</button>
+					<div id="pointEvent1">
+						<button type="button" class="btn-base-bg btn-base-xs" id="presentPointBtn">선물하기</button>
+						<button type="button" class="btn-grey-brd btn-base-xs pointModalClose" data-dismiss="modal" aria-label="Close">취소</button>
+					</div>
+					<div id="pointEvent2" style="display: none;">
+						<button class="btn-base-bg btn-base-xs" id="pointYes">예</button>
+						<button class="btn-grey-brd btn-base-xs" id="pointNo">아니오</button>
+					</div>
 				</div>
 							
 			</div>
 		</div>
 	</div>
 	<!-- End 기쁨 선물 Modal -->
+	
+	<!-- 강퇴 확인 Modal -->
+	<div class="modal fade" id="leaveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">강제 퇴장</h4>
+				</div>
+				<div class="modal-body">
+			
+					<div class="alert alert-warning font-size-13 text-center" id="leaveAlert" role="alert">
+						<strong>주의!</strong> <span id="leaveMember" class="fweight-700"></span> 님을 <br>
+						강제 퇴장시키시겠습니까?
+					</div>
 
+				</div>
+				<div class="modal-footer text-center">
+					<button type="button" class="btn-base-bg btn-base-xs" id="leaveYesBtn">예</button>
+					<button type="button" class="btn-grey-brd btn-base-xs" data-dismiss="modal" aria-label="Close">아니오</button>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 강퇴 확인 Modal -->
+	
 </div>
 <!-- END WRAPPER -->
 
@@ -310,6 +501,7 @@
 	var chattingArea = document.querySelector("#chattingArea");
 	var viewerArea = document.querySelector("#viewerArea");
 	var sendTextBtn = document.querySelector("#sendTextBtn");
+	var presentPointBtn = document.querySelector("#presentPointBtn");
 	var broadcastStatusCheck = false;
 	var appBj;
 	var options;
@@ -373,8 +565,6 @@
 	
 	// 방송 상태 변경 이벤트
 	appBj.on("stateChange", function(state, peerid, userid) {
-		// 시청자 수 count
-		// viewCount(inputChannelId.value);
 		
 		if(state === "CONNECTED" || state === "CLOSED") {
 			
@@ -388,93 +578,104 @@
 				if(peerList.length > 1) {
 					var view = peerList.length-1;
 					$(".view-count").text(view);
+					console.log(peerList);
 					
-					var i = 1;
+					var i = 0;
 					
 					while(true) {
-						
-						// div tag
-						var tDiv = document.createElement("div");
-						tDiv.classList.add("btn-group");
-						tDiv.classList.add("btn-custom-toggle");
-						tDiv.classList.add("margin-b-10");
-						
-						// button tag
-						var tBtn = document.createElement("button");
-						tBtn.setAttribute("type", "button");
-						tBtn.classList.add("btn-custom-bg");
-						tBtn.classList.add("dropdown-toggle");
-						tBtn.classList.add("radius-3");
-						tBtn.setAttribute("data-toggle", "dropdown");
-						tBtn.setAttribute("aria-haspopup", "true");
-						tBtn.setAttribute("aria-expanded", "false");
-						tBtn.textContent = peerList[i].userName + " (" + peerList[i].uid + ")";
-						
-						// ul tag
-						var tUl = document.createElement("ul");
-						tUl.classList.add("dropdown-menu");
-						
-						// 첫번째 li tag 
-						var tLi_1 = document.createElement("li");
-								
-						var tLi_1_tA = document.createElement("a");
-						tLi_1_tA.setAttribute("href", "#");
-						
-						var tLi_1_tI = document.createElement("i");
-						tLi_1_tI.classList.add("dropdown-menu-icon");
-						tLi_1_tI.classList.add("icon-lightbulb");
-						
-						tLi_1_tA.appendChild(tLi_1_tI);
-						tLi_1_tA.textContent = "기쁨 선물";
-						
-						tLi_1.appendChild(tLi_1_tA);
-						
-						// 두번째 li tag 
-						var tLi_2 = document.createElement("li");
-								
-						var tLi_2_tA = document.createElement("a");
-						tLi_2_tA.setAttribute("href", "#");
-						
-						var tLi_2_tI = document.createElement("i");
-						tLi_2_tI.classList.add("dropdown-menu-icon");
-						tLi_2_tI.classList.add("icon-mobile");
-						
-						tLi_2_tA.appendChild(tLi_2_tI);
-						tLi_2_tA.textContent = "강퇴";
-						
-						tLi_2.appendChild(tLi_2_tA);
-						
-						// 세번째 li tag 
-						var tLi_3 = document.createElement("li");
-								
-						var tLi_3_tA = document.createElement("a");
-						tLi_3_tA.setAttribute("href", "#");
-						
-						var tLi_3_tI = document.createElement("i");
-						tLi_3_tI.classList.add("dropdown-menu-icon");
-						tLi_3_tI.classList.add("icon-mobile");
-						
-						tLi_3_tA.appendChild(tLi_3_tI);
-						tLi_3_tA.textContent = "블랙리스트 등록";
-						
-						tLi_3.appendChild(tLi_3_tA);
-						
-						// 태그 구조 생성
-						tUl.appendChild(tLi_1);
-						tUl.appendChild(tLi_2);
-						tUl.appendChild(tLi_3);
-						
-						tDiv.appendChild(tBtn);
-						tDiv.appendChild(tUl);
-						viewerArea.appendChild(tDiv);
+						console.log("peerList[i].uid : " + peerList[i].uid);
+						if(peerList[i].uid) {
+							console.log("in if peerList[i].uid : " + peerList[i].uid);
+							// div tag
+							var tDiv = document.createElement("div");
+							tDiv.classList.add("btn-group");
+							tDiv.classList.add("btn-custom-toggle");
+							tDiv.classList.add("margin-b-10");
+							tDiv.classList.add("target");
+							
+							// button tag
+							var tBtn = document.createElement("button");
+							tBtn.setAttribute("type", "button");
+							tBtn.classList.add("btn-custom-bg");
+							tBtn.classList.add("dropdown-toggle");
+							tBtn.classList.add("radius-3");
+							tBtn.setAttribute("data-toggle", "dropdown");
+							tBtn.setAttribute("aria-haspopup", "true");
+							tBtn.setAttribute("aria-expanded", "false");
+
+							// spanTag
+							var tSpan = "<span class='targetNickName'>" + peerList[i].userName + "</span> (<span class='targetId'>" + peerList[i].uid +"</span>)";
+							tBtn.innerHTML = tSpan;
+							
+							// ul tag
+							var tUl = document.createElement("ul");
+							tUl.classList.add("dropdown-menu");
+							
+							// 첫번째 li tag 
+							var tLi_1 = document.createElement("li");
+									
+							var tLi_1_tA = document.createElement("a");
+							tLi_1_tA.setAttribute("href", "#");
+							tLi_1_tA.setAttribute("data-toggle", "modal");
+							tLi_1_tA.setAttribute("data-target", "#presentPointModal");
+							
+							var tLi_1_tI = document.createElement("i");
+							tLi_1_tI.classList.add("dropdown-menu-icon");
+							tLi_1_tI.classList.add("icon-lightbulb");
+							
+							tLi_1_tA.appendChild(tLi_1_tI);
+							tLi_1_tA.textContent = "기쁨 선물";
+							
+							tLi_1.appendChild(tLi_1_tA);
+							
+							// 두번째 li tag 
+							var tLi_2 = document.createElement("li");
+									
+							var tLi_2_tA = document.createElement("a");
+							tLi_2_tA.setAttribute("href", "#");
+							tLi_2_tA.setAttribute("data-toggle", "modal");
+							tLi_2_tA.setAttribute("data-target", "#leaveModal");
+							
+							var tLi_2_tI = document.createElement("i");
+							tLi_2_tI.classList.add("dropdown-menu-icon");
+							tLi_2_tI.classList.add("icon-mobile");
+							
+							tLi_2_tA.appendChild(tLi_2_tI);
+							tLi_2_tA.textContent = "강퇴";
+							
+							tLi_2.appendChild(tLi_2_tA);
+							
+							// 세번째 li tag 
+							var tLi_3 = document.createElement("li");
+									
+							var tLi_3_tA = document.createElement("a");
+							tLi_3_tA.setAttribute("href", "#");
+							
+							var tLi_3_tI = document.createElement("i");
+							tLi_3_tI.classList.add("dropdown-menu-icon");
+							tLi_3_tI.classList.add("icon-mobile");
+							
+							tLi_3_tA.appendChild(tLi_3_tI);
+							tLi_3_tA.textContent = "블랙리스트 등록";
+							
+							tLi_3.appendChild(tLi_3_tA);
+							
+							// 태그 구조 생성
+							tUl.appendChild(tLi_1);
+							tUl.appendChild(tLi_2);
+							tUl.appendChild(tLi_3);
+							
+							tDiv.appendChild(tBtn);
+							tDiv.appendChild(tUl);
+							viewerArea.appendChild(tDiv);
+							
+						}
 						
 						i++;
-						 
-						if (i >= peerList.length) { break; }
 						
+						if (i >= peerList.length) { break; }
 					}
 				}
-				
 			});
 		}
 	});
@@ -640,7 +841,6 @@
 		var chatP;
 		var member = "${login.nickName} " + "(${login.memberId})";
 		var message = $("#sendTextArea").val();
-		// var message = ${fn:replace( $("#sendTextArea").val(), newLineChar, '<br/>')}
 		var sendMessage = "2/" + member + "/" + message;
 		
 		event.preventDefault();
@@ -674,14 +874,115 @@
 			
 			// 채팅 등록 후 스크롤 가장 마지막으로
 			chattingArea.scrollTop = chattingArea.scrollHeight;
+			
 		}
 		
 		$("#sendTextArea").val("").focus();
 	}, false);
 	
+	// 모달로 값 넘기기
+	var targetNickName = null;
+	var targetMemberId = null;
+	
+	$("#viewerArea").on("click", ".target" ,function(e) {
+		var nodeName = e.target.nodeName;
+		
+		if(nodeName == "SPAN" || nodeName == "BUTTON") {
+			targetNickName = $(e.target).parent().find(".targetNickName").text();
+			targetMemberId = $(e.target).parent().find(".targetId").text();
+			
+			// 기쁨 선물 모달
+			$("#receiveMember").text(targetNickName + " (" + targetMemberId + ")");
+			$("#inReceiveMemberId").val(targetMemberId);
+			// 강퇴 모달
+			$("#leaveMember").text(targetNickName + " (" + targetMemberId + ")");
+		}
+		
+	});
+	
+	/* 방송 중 포인트 선물 */
+	
+	// 선물하기 버튼 클릭 이벤트
+	presentPointBtn.addEventListener("click", function(event) {
+		var inTranslatePoint = $("#inTranslatePoint").val();
+		// var memberId = $("#receiveMember").text();
+		
+		// 포인트 미입력시
+		if(inTranslatePoint == "" || inTranslatePoint == null || inTranslatePoint == 0) {
+			$("#pointAlert").fadeIn();
+			return;
+		} 
+		// 포인트 부족할 경우
+		else if( inTranslatePoint > $("#myPoint").text() ) {
+			$("#pointFail").fadeIn();
+		} 
+		else {
+			$("#confirmMember").text(targetMemberId);
+			$("#confirmPoint").text(inTranslatePoint);
+			$("#pointConfirm").fadeIn();
+			$("#pointEvent1").css("display", "none");
+			$("#pointEvent2").css("display", "block");
+		}
+	});
+	
+	// 선물하기 버튼 클릭 후 예 버튼 이벤트
+	$("#pointYes").click(function() {
+		var param = $("#pointFrm").serialize();
+		$.getJSON( "insertTrans.do", param, function(data) {
+			console.log(data);
+			if(data.trans.outErrorcode == -1) {
+				$("#pointFail2").fadeIn();
+			} else if (data.trans.outErrorcode > 0) {
+				$(".pointModalClose").click();
+				var tP = document.createElement("p");
+				tP.textContent = "성공";
+				chattingArea.appendChild(tP);
+				$("#myPoint").text(data.member.point);
+			}
+		});
+	});
+	
+	// 선물하기 버튼 클릭 후 아니오 버튼 이벤트 
+	$("#pointNo").click(function() {
+		$("#pointConfirm").hide();
+		$("#pointEvent1").css("display", "block");
+		$("#pointEvent2").css("display", "none");
+	});
+	
+	// 포인트 입력 중 알림창 숨기기
+	$("#inTranslatePoint").keydown(function() {
+		$("#pointAlert").hide();
+		$("#pointFail").hide();
+		$("#pointFail2").hide();
+		$("#pointNo").click();
+	});
+	
+	// 모달 닫기 / 취소 버튼 클릭 시
+	$(".pointModalClose").click(function() {
+		$("#pointAlert").hide();
+		$("#pointConfirm").hide();
+		$("#pointFail").hide();
+		$("#pointFail2").hide();
+		$("#inTranslatePoint").val(" ");
+		$("#pointEvent1").css("display", "block");
+		$("#pointEvent2").css("display", "none");
+	});
+	
+	/* End 방송 중 포인트 선물 */
+	
+	/* 강퇴 이벤트 */ 
+	$("#leaveYesBtn").click(function(e) {
+		var targetPeerId = appBj.getPeerByUserId(targetMemberId).id;
+		appBj.disconnectChannel(targetPeerId);
+		$("#leaveModal").modal("hide");
+	});
+	
+	/* End 강퇴 이벤트 */
+	
+	// 채팅 입력창 엔터 이벤트
 	var isCtrl = false;
 	var ctrlKey = 17, enterKey = 13;
-	// 채팅 입력창 엔터 이벤트
+	
 	$("#sendTextArea").keyup(function(e) {
 		if((e.keyCode ? e.keyCode : e.which) == ctrlKey)
 			isCtrl = false;
@@ -726,19 +1027,10 @@
 		$(".view-count").number(true);
 		$("#myPoint").number(true);
 		
-		// 모달로 값 넘기기
-		var nickName = null;
-		var memberId = null;
-		
-		$(".target").on("click", function(e) {
-			// console.log($(this).find(".targetNickName").text());
-			
-		})
-		
 		// 모달 show 이벤트
 		$('#presentPointModal').on('shown.bs.modal', function () {
 			$('#inTranslatePoint').focus();
-		})
+		});
 		
 	});
 	

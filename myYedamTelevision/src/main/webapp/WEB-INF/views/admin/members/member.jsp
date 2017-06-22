@@ -24,7 +24,6 @@
                                                 <th style="width:100px">ID</th>
                                                 <th style="width:100px">닉네임</th>
                                                 <th style="width:100px">이름</th>
-                                                <th style="width:100px">생년월일</th>
                                                 <th style="width:150px">E-mail</th>
                                                 <th style="width:100px">Tel</th>
                                                 <th style="width:100px">Point</th>
@@ -38,7 +37,6 @@
                                               	<th>ID</th>
                                                 <th>닉네임</th>
                                                 <th>이름</th>
-                                                <th>생년월일</th>
                                                 <th>E-mail</th>
                                                 <th>Tel</th>
                                                 <th>Point</th>
@@ -53,7 +51,6 @@
 											<td><a href="getMemberForm.do?memberId=${member.memberId}">${member.memberId}</a></td>
 											<td>${member.nickName}</td>
 											<td>${member.memberName}</td>
-											<td>${member.birthDate}</td>
 											<td>${member.email}</td>
 											<td>${member.tel}</td>
 											<td>${member.point}</td>

@@ -37,7 +37,6 @@
         <link href="${pageContext.request.contextPath}/assetsAdmin/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>	
         <link href="${pageContext.request.contextPath}/assetsAdmin/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/assetsAdmin/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css"/>
-        
         	
         <!-- Theme Styles -->
         <link href="${pageContext.request.contextPath}/assetsAdmin/css/modern.css" rel="stylesheet" type="text/css"/>
@@ -116,6 +115,5 @@
         <script src="${pageContext.request.contextPath}/assetsAdmin/plugins/moment/moment.js"></script>
         <script src="${pageContext.request.contextPath}/assetsAdmin/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
         <script src="${pageContext.request.contextPath}/assetsAdmin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-        
 </body>
 </html>

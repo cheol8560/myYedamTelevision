@@ -18,10 +18,13 @@ public interface BoardService {
 	// 글 상세 조회
 	BoardVO getBoard(BoardVO vo, boolean cnt);
 	
+	// 관리자 글 상세조회
+	BoardVO adminBoard(BoardVO vo, boolean cnt);
 	
 
 	// 글 목록 조회
 	List<Map<String, Object>> getBoardList(BoardVO vo);
+	
 	
 	//일대일 문의 전체 조회
 	
@@ -31,6 +34,10 @@ public interface BoardService {
 	//페이징
 	int getBoardListCount(BoardVO vo);
 	int getQuestionListCount(BoardVO vo);
+
+	List<Map<String, Object>> adminNoticeList(BoardVO vo);
+
+	
 	
 
 	

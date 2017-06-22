@@ -84,8 +84,19 @@
 		, REAL_RECEIPT
 		FROM EXCHANGES
 		WHERE MEMBER_ID = #{memberId}
-		order by EXCHANGE_NO desc
+		order by EXCHANGE_NO DESC
 
+	</select>
+	
+	<select id="adminExchangeList" resultMap="exchangeMap">
+		SELECT EXCHANGE_NO
+		, REQUEST_DATE
+		, REQUEST_POINT
+		, COMMISSION
+		, REAL_RECEIPT
+		, MEMBER_ID
+		FROM EXCHANGES
+		order by EXCHANGE_NO DESC
 	</select>
 
 

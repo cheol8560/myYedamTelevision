@@ -16,34 +16,34 @@
 	</resultMap>
 
 	<insert id="insertBoard" parameterType="boards">
-        <selectKey keyProperty="boardNo" resultType="int" order="BEFORE">
-        	SELECT NVL(MAX(BOARD_NO), 0) + 1 FROM BOARDS
-        </selectKey>
-        INSERT INTO BOARDS(
-         BOARD_NO
-        , BOARD_TITLE
-        , MEMBER_ID
-        , CATEGORY
-        , WRITE_DATE
-        , BOARD_TEXT
-        , VIEW_COUNT
-       	 <if test="attachFile != null and attachFile !='' ">	<!--ATTATCH_FILENAME이 있으면   -->
-        , ATTACH_FILE
-        </if>
-        ) 
-        VALUES(
-        #{boardNo}
-        , #{boardTitle}
-        , #{memberId}
-        , #{category}
-        , sysdate
-        , #{boardText}
-        , '0'
-        <if test="attachFile != null and attachFile !='' ">
-        , #{attachFile}
-       </if>
-        )
-       
+		<selectKey keyProperty="boardNo" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(BOARD_NO), 0) + 1 FROM BOARDS
+		</selectKey>
+		INSERT INTO BOARDS(
+		BOARD_NO
+		, BOARD_TITLE
+		, MEMBER_ID
+		, CATEGORY
+		, WRITE_DATE
+		, BOARD_TEXT
+		, VIEW_COUNT
+		<if test="attachFile != null and attachFile !='' ">	<!--ATTATCH_FILENAME이 있으면 -->
+			, ATTACH_FILE
+		</if>
+		)
+		VALUES(
+		#{boardNo}
+		, #{boardTitle}
+		, #{memberId}
+		, #{category}
+		, sysdate
+		, #{boardText}
+		, '0'
+		<if test="attachFile != null and attachFile !='' ">
+			, #{attachFile}
+		</if>
+		)
+
 	</insert>
 
 	<update id="updateBoard">
@@ -52,11 +52,11 @@
             BOARD_TITLE = #{boardTitle}, 
             BOARD_TEXT = #{boardText} ,
              ]]>
-            <if test="attachFile != null and attachFile !='' ">
+		<if test="attachFile != null and attachFile !='' ">
         	 <![CDATA[
         	ATTACH_FILE = #{attachFile}
         	]]>
-        	</if>
+		</if>
         	 <![CDATA[
         WHERE BOARD_NO = #{boardNo}
         ]]>
@@ -84,16 +84,9 @@
         ]]>
 	</select>
 	
-	<update id="viewUpdate">
-		UPDATE BOARDS SET
-			VIEW_COUNT = VIEW_COUNT + 1
-		WHERE BOARD_NO = #{boardNo}
-	</update>
-
-	<select id="getBoardList" resultMap="boardsResult">
-	SELECT * FROM (
-	SELECT A.*, ROWNUM RNUM FROM (
-		SELECT BOARD_NO
+	<select id="adminBoard" resultMap="boardsResult">
+        <![CDATA[
+        SELECT BOARD_NO
         	  ,BOARD_TITLE
         	  ,MEMBER_ID
         	  ,CATEGORY
@@ -101,45 +94,71 @@
         	  ,BOARD_TEXT
         	  ,VIEW_COUNT
         	  ,ATTACH_FILE 
+        FROM BOARDS
+        WHERE BOARD_NO = #{boardNo}
+        ]]>
+	</select>
+
+	<update id="viewUpdate">
+		UPDATE BOARDS SET
+		VIEW_COUNT = VIEW_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+
+	<select id="getBoardList" resultMap="boardsResult">
+		SELECT * FROM (
+		SELECT A.*, ROWNUM RNUM FROM (
+		SELECT BOARD_NO
+		,BOARD_TITLE
+		,MEMBER_ID
+		,CATEGORY
+		,WRITE_DATE
+		,BOARD_TEXT
+		,VIEW_COUNT
+		,ATTACH_FILE
 		FROM BOARDS
 		WHERE CATEGORY = #{category}
-		 <if test="memberId != null and memberId !='' ">
-		 AND MEMBER_ID = #{memberId}
-		 </if>
+		<if test="memberId != null and memberId !='' ">
+			AND MEMBER_ID = #{memberId}
+		</if>
 		ORDER BY BOARD_NO DESC
 		<![CDATA[					
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}
 ]]>
 	</select>
-	
-	
-	
+
+
+
 	<select id="getBoardListCount" resultType="int">
 		SELECT COUNT(*)
 		FROM BOARDS
 		WHERE CATEGORY = #{category}
-		 <if test="memberId != null and memberId !='' ">
-		 AND MEMBER_ID = #{memberId}
-		 </if>
+		<if test="memberId != null and memberId !='' ">
+			AND MEMBER_ID = #{memberId}
+		</if>
 	</select>
-	
+
 	<select id="getQuestionList" resultType="map">
-	
-	SELECT * FROM (
-	SELECT A.*, ROWNUM RNUM FROM (
-		SELECT 
+
+		SELECT * FROM (
+		SELECT A.*, ROWNUM RNUM FROM (
+		SELECT
 		B.BOARD_NO "boardNo"
 		, B.BOARD_TITLE "boardTitle"
-		, B.MEMBER_ID	"memberId"
-		, B.CATEGORY	"category"
-		, B.WRITE_DATE	"writeDate"
-		, B.BOARD_TEXT	"boardText"
-		, B.VIEW_COUNT	"viewCount"
-		, B.ATTACH_FILE	"attachFile"
-		FROM BOARDS B FULL OUTER JOIN COMMENTS C
+		, B.MEMBER_ID "memberId"
+		,
+		B.CATEGORY "category"
+		, B.WRITE_DATE "writeDate"
+		, B.BOARD_TEXT
+		"boardText"
+		, B.VIEW_COUNT "viewCount"
+		, B.ATTACH_FILE "attachFile"
+		FROM
+		BOARDS B FULL OUTER JOIN COMMENTS C
 		ON B.BOARD_NO = C.BOARD_NO
-		WHERE B.CATEGORY = 'd2'
+		WHERE
+		B.CATEGORY = 'd2'
 		AND C.COMMENT_NO IS NULL
 		ORDER BY "boardNo"
 				<![CDATA[					
@@ -147,14 +166,31 @@
 )WHERE RNUM > #{firstIndex}
 ]]>
 	</select>
-	
+
 	<select id="getQuestionListCount" resultType="int">
 		SELECT COUNT(*)
 		FROM BOARDS B FULL OUTER JOIN COMMENTS C
 		ON B.BOARD_NO = C.BOARD_NO
 		WHERE B.CATEGORY = 'd2'
 		AND C.COMMENT_NO IS NULL
-		
+
+	</select>
+
+	<select id="adminNoticeList" resultMap="boardsResult">
+		SELECT BOARD_NO
+		,BOARD_TITLE
+		,MEMBER_ID
+		,CATEGORY
+		,WRITE_DATE
+		,BOARD_TEXT
+		,VIEW_COUNT
+		,ATTACH_FILE
+		FROM BOARDS
+		WHERE CATEGORY = #{category}
+		<if test="memberId != null and memberId !='' ">
+			AND MEMBER_ID = #{memberId}
+		</if>
+		ORDER BY BOARD_NO DESC
 	</select>
 
 </mapper>

@@ -51,7 +51,13 @@ public class ExchangeController {
 		return "exchanges/exchangeList";
 	}
 	
+	//관리자 환전 조회 목록
 	
+	@RequestMapping("/adminExchangeList.do")
+	public String adminExchangeList(ExchangeVO vo, Model model) throws Exception{
+		model.addAttribute("adminExchangeList", exchangeService.adminExchangeList(vo));
+		return "admin/translates/exchange";
+	}
 	
 	
 }

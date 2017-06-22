@@ -42,6 +42,12 @@ public class ExchangeServiceImpl implements ExchangeService{
 	public int getExchangeListCount(ExchangeVO exchangevo) {
 		return exchangeDAO.getExchangeListCount(exchangevo);
 	}
+
+	@Override
+	public List<Map<String, Object>> adminExchangeList(ExchangeVO vo) {
+		// TODO Auto-generated method stub
+		return exchangeDAO.adminExchangeList(vo);
+	}
 	
 	
 }

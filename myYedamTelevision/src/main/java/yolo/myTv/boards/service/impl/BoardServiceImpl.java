@@ -56,4 +56,14 @@ public class BoardServiceImpl implements BoardService{
 	public int getQuestionListCount(BoardVO vo) {
 		return boardDAO.getQuestionListCount(vo);
 	}
+
+	@Override
+	public List<Map<String, Object>> adminNoticeList(BoardVO vo) {
+		return boardDAO.adminNoticeList(vo);
+	}
+
+	@Override
+	public BoardVO adminBoard(BoardVO vo, boolean cnt) {
+		return boardDAO.adminBoard(vo);
+	}
 }

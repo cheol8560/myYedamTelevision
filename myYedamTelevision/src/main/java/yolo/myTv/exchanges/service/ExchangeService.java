@@ -12,8 +12,10 @@ public interface ExchangeService {
 	
 	//포인트 내역조회
 	List<Map<String, Object>> ExchangeList(ExchangeVO vo);
-
-
+	
+	//관리자 환전 조회
+	List<Map<String, Object>> adminExchangeList(ExchangeVO vo);
+	
 	Map<String, Object> getExchange(ExchangeVO vo);
 	
 	//환전 프로시져

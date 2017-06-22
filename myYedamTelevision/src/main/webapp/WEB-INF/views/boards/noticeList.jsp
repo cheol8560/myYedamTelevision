@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <script>
 /* pagination 페이지 링크 function */
@@ -58,7 +59,8 @@ document.listForm.submit();
 										<tr>
 											<td>${boards.boardNo}</td>
 											<td><a href="getNotice.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
-											<td>${boards.writeDate}</td>
+											<td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+												value="${boards.writeDate}"/></td>
 											<td>${boards.viewCount}</td>
 										</tr>
 									</c:forEach>

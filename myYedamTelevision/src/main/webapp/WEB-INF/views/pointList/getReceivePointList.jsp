@@ -12,55 +12,57 @@ document.listForm.action = "<c:url value='/getReceivePointList.do'/>";
 document.listForm.submit();
 }
 </script>
-<div class="bg-color-sky-light" >
+<!--========== 대문 ==========-->
+		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
+			<div class="container">
+				<div class="margin-b-30">
+					<h2 class="breadcrumbs-v5-title margin-b-10">받은 기쁨</h2>
+					<span class="breadcrumbs-v5-subtitle">
+						받았던 기쁨들을 확인 할 수 있습니다.
+					</span>
+				</div>
+			</div>
+		</section>
+<!--========== 대문 끝 ==========-->
+<!-- 현재 받은 기쁨 조회 -->
+		<div class="bg-color-sky-light" >
 			<div class="content-md container">
 				<div class="row">
 					<div class="col-md-3 col-sm-6 md-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 총 받은 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].point}</figure>
-							<h4 class="counters-v2-title">보유중인 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.totalReceivePoint}</figure>
+							<h4 class="counters-v2-title">총 받은 포인트</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
-						<!-- End Counters v2 -->
+						<!-- 총 받은 포인트 끝 -->
 					</div>
 					<div class="col-md-3 col-sm-6 md-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 이번달 받은 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-trophy"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].receivePoint}</figure>
-							<h4 class="counters-v2-title">선물받은 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.monthReceivePoint}</figure>
+							<h4 class="counters-v2-title">이번달 받은 포인트</h4>
 							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
-						<!-- End Counters v2 -->
+						<!-- 이번달 받은 포인트 끝 -->
 					</div>
 					<div class="col-md-3 col-sm-6 sm-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 현재 보유 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-happy"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].sendPoint}</figure>
-							<h4 class="counters-v2-title">선물한 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.nowPoint}</figure>
+							<h4 class="counters-v2-title">현재 보유 포인트</h4>
 							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
-						<!-- End Counters v2 -->
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<!-- Counters v2 -->
-						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-tools"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].totalPoint}</figure>
-							<h4 class="counters-v2-title">충전한 기쁨</h4>
-							<span class="counters-v2-subtitle">Customizability</span>
-						</div>
-						<!-- End Counters v2 -->
+						<!-- 현재 보유 포인트 끝 -->
 					</div>
 				</div>
-				<!--// end row -->
 			</div>
 		</div>
-		<!-- End Counters v2 -->
-
+		<!-- 현재 나눠준 기쁨 조회 끝 -->
+<!-- 받은 기쁨 리스트 -->
 <section class="full-width-container"
 	style="width: 1100px; margin: auto;">
 	<!-- Heading v1 -->
@@ -68,7 +70,7 @@ document.listForm.submit();
 		<h2 class="heading-v1-title">선물받은 기쁨 내역</h2>
 	</div>
 	<form name ="listForm">
-				<input type="hidden" name="pageIndex" />
+				<input type="hidden" name="pageIndex" value="${(empty translatePointVO.pageIndex)? 1 : translatePointVO.pageIndex }"/>
 	<div class="heading-v1 text-center margin-b-80">
 					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
 					<p class="heading-v1-text">
@@ -93,8 +95,8 @@ document.listForm.submit();
 						</select>월
 						<button type="submit">검색</button>
 						<script>
-						$("[name='year']").val('${chargeVO.year}');
-						$("[name='month']").val('${chargeVO.month}');
+						$("[name='year']").val('${translatePointVO.year}');
+						$("[name='month']").val('${translatePointVO.month}');
 						</script>
 					</p>
 				</div>
@@ -129,3 +131,4 @@ document.listForm.submit();
 	</div>
 	<my:paging paginationInfo="${paginationInfo }" />
 </section>
+<!-- 받은 기쁨 리스트 끝 -->

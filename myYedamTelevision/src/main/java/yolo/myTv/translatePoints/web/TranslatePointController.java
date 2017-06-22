@@ -176,6 +176,8 @@ public class TranslatePointController {
 				model.addAttribute("paginationInfo", paginationInfo);
 		
 		model.addAttribute("chargeList", translatePointService.listCharge(chargevo));
+		chargevo.setMemberId(member.getMemberId());
+		model.addAttribute("point", translatePointService.chargeListPoint(chargevo));
 		return "pointList/getChargeList";
 	}
 		
@@ -200,6 +202,8 @@ public class TranslatePointController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		
 		model.addAttribute("presentedPoint", translatePointService.getReceivePointList(translatepointvo));
+		translatepointvo.setMemberId(member.getMemberId());
+		model.addAttribute("point", translatePointService.receivePoint(translatepointvo));
 		return "pointList/getReceivePointList";
 	}
 	//선물보낸리스트
@@ -223,6 +227,8 @@ public class TranslatePointController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		
 		model.addAttribute("presentList", translatePointService.getSendPointList(translatepointvo));
+		translatepointvo.setMemberId(member.getMemberId());
+		model.addAttribute("point", translatePointService.sendPoint(translatepointvo));
 		return "pointList/getSendPointList";
 	}
 	//환전한리스트
@@ -246,6 +252,8 @@ public class TranslatePointController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		
 		model.addAttribute("exchangeList", translatePointService.getExchangeList(exchangevo));
+		exchangevo.setMemberId(member.getMemberId());
+		model.addAttribute("point", translatePointService.exchangeListPoint(exchangevo));
 		return "pointList/getExchangeList";
 	}
 }

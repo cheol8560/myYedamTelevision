@@ -121,6 +121,26 @@ public class TranslatePointServiceImpl implements TranslatePointService {
 		return translatePointDAO.getExchangeListCount(exchangevo);
 	}
 
+	@Override
+	public Map<String, Object> chargeListPoint(ChargeVO chargevo) {
+		return translatePointDAO.chargeListPoint(chargevo);
+	}
+
+	@Override
+	public Map<String, Object> exchangeListPoint(ExchangeVO exchangevo) {
+		return translatePointDAO.exchangeListPoint(exchangevo);
+	}
+
+	@Override
+	public Map<String, Object> sendPoint(TranslatePointVO translatepointvo) {
+		return translatePointDAO.sendPoint(translatepointvo);
+	}
+
+	@Override
+	public Map<String, Object> receivePoint(TranslatePointVO translatepointvo) {
+		return translatePointDAO.receivePoint(translatepointvo);
+	}
+
 
 
  

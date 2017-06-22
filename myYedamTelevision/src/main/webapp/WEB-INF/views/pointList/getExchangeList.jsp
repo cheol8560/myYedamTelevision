@@ -10,61 +10,110 @@ document.listForm.action = "<c:url value='/getExchangeList.do'/>";
 document.listForm.submit();
 }
 </script>
-<div class="bg-color-sky-light" >
+<!--========== 대문 ==========-->
+		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
+			<div class="container">
+				<div class="margin-b-30">
+					<h2 class="breadcrumbs-v5-title margin-b-10">환전</h2>
+					<span class="breadcrumbs-v5-subtitle">
+						환전을 신청하고, 환전한 포인트를 확인 할 수 있습니다.
+					</span>
+				</div>
+			</div>
+		</section>
+		<!--========== 대문 끝 ==========-->
+<!-- 현재 환전 조회 -->
+		<div class="bg-color-sky-light" >
 			<div class="content-md container">
 				<div class="row">
 					<div class="col-md-3 col-sm-6 md-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 총 환전 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].point}</figure>
-							<h4 class="counters-v2-title">보유중인 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.totalExchangePoint}</figure>
+							<h4 class="counters-v2-title">총 충전 포인트</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
-						<!-- End Counters v2 -->
+						<!-- 총 환전 포인트 끝 -->
 					</div>
 					<div class="col-md-3 col-sm-6 md-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 이번달 환전 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-trophy"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].receivePoint}</figure>
-							<h4 class="counters-v2-title">선물받은 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.monthExchangePoint}</figure>
+							<h4 class="counters-v2-title">이번달 환전 포인트</h4>
 							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
-						<!-- End Counters v2 -->
+						<!-- 이번달 환전 포인트 끝 -->
 					</div>
 					<div class="col-md-3 col-sm-6 sm-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 현재 보유 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-happy"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].sendPoint}</figure>
-							<h4 class="counters-v2-title">선물한 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.nowPoint}</figure>
+							<h4 class="counters-v2-title">현재 보유 포인트</h4>
 							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
-						<!-- End Counters v2 -->
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<!-- Counters v2 -->
-						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-tools"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].totalPoint}</figure>
-							<h4 class="counters-v2-title">충전한 기쁨</h4>
-							<span class="counters-v2-subtitle">Customizability</span>
-						</div>
-						<!-- End Counters v2 -->
+						<!-- 현재 보유 포인트 끝 -->
 					</div>
 				</div>
-				<!--// end row -->
 			</div>
 		</div>
-		<!-- End Counters v2 -->
+		<!-- 현재 환전 조회 끝 -->
+		
+		
+		<!-- 환전신청 버튼 시작-->
+		
+		<div class="bg-color-sky-light">
+	<div class="content-md container-sm" style="text-align: center;">
+		<!-- Heading v1 -->
+		<div class="heading-v1 text-center margin-b-80">
+			<h2 class="heading-v1-title">기쁨 환전</h2>
+		</div>
+		<!-- End Heading v1 -->
+
+		<div class="row margin-b-60">
+			<div class="table-wrap">
+				<div class="table-wrap-body">
+					<div class="table-responsive">
+						<!-- Table Striped -->
+						<table class="table">
+								<tr>
+									<td>환전 가능한 기쁨이 100개 이상이어야 환전이 가능합니다.</td>
+								</tr>
+								<tr>
+									<td>계좌번호 인증후 환전이 가능합니다.</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- End Table Striped -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--// end row -->
+
+		<!-- Button -->
+		<div class="overflow-h">
+			<div class="center-block wow fadeInUp" data-wow-duration=".2"
+				data-wow-delay=".3s">
+				<a class="btn-white-bg btn-base-md radius-3"
+					href="insertExchange.do?exchange=${exchangeNo}">기쁨 환전</a>
+			</div>
+		</div>
+		<!-- Button -->
+	</div>
+</div>
+		<!-- 환전신청 끝 -->
+		
+		<!-- 환전 리스트 -->
 <section class="full-width-container"
 	style="width: 1100px; margin: auto;">
 	<!-- Heading v1 -->
 <form name ="listForm" action="getSendPointList.do">
-			<input type="hidden" name="pageIndex" />	
+			<input type="hidden" name="pageIndex" value="${(empty exchangeVO.pageIndex)? 1 : exchangeVO.pageIndex }"/>	
 	<div class="heading-v1 text-center margin-t-60 margin-b-60">
-		<h2 class="heading-v1-title">기쁨 환전 처리 결과</h2>
+		<h2 class="heading-v1-title">환전리스트</h2>
 		<div class="heading-v1 text-center margin-b-80">
 					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
 					<p class="heading-v1-text">
@@ -95,9 +144,6 @@ document.listForm.submit();
 					</p>
 				</div>
 	</div>
-	<!-- End Heading v1 -->
-
-
 	<div class="table-wrap">
 		<div class="table-wrap-body">
 			<div class="table-responsive">
@@ -128,4 +174,5 @@ document.listForm.submit();
 	</div>
 	</form>
 	<my:paging paginationInfo="${paginationInfo }" />
+	<!-- 환전리스트 끝 -->
 </section>

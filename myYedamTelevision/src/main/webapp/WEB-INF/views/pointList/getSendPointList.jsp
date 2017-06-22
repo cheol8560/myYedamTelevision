@@ -9,75 +9,61 @@ document.listForm.action = "<c:url value='/getSendPointList.do'/>";
 document.listForm.submit();
 }
 </script>
-
-
-		<!--========== BREADCRUMBS V5 ==========-->
+<!--========== 대문 ==========-->
 		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
 			<div class="container">
 				<div class="margin-b-30">
-					<h2 class="breadcrumbs-v5-title margin-b-10">보유중인 기쁨</h2>
+					<h2 class="breadcrumbs-v5-title margin-b-10">나누는 기쁨</h2>
 					<span class="breadcrumbs-v5-subtitle">
-						선물 받은 기쁨 내역 확인 및 환전 신청은 [선물받은 기쁨]에 확인 하실 수 있습니다.
+						나누었던 기쁨들을 확인 할 수 있습니다.
 					</span>
 				</div>
 			</div>
 		</section>
-		<!--========== END BREADCRUMBS V5 ==========-->
-
-		<!--========== PAGE CONTENT ==========-->
-
-		<!-- Counters v2 -->
+<!--========== 대문 끝 ==========-->
+<!-- 현재 나눠준 기쁨 조회 -->
 		<div class="bg-color-sky-light" >
 			<div class="content-md container">
 				<div class="row">
 					<div class="col-md-3 col-sm-6 md-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 총 나눠준 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].point}</figure>
-							<h4 class="counters-v2-title">보유중인 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.totalSendPoint}</figure>
+							<h4 class="counters-v2-title">총 나눠준 포인트</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
-						<!-- End Counters v2 -->
+						<!-- 총 나눠준 포인트 끝 -->
 					</div>
 					<div class="col-md-3 col-sm-6 md-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 이번달 나눠준 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-trophy"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].receivePoint}</figure>
-							<h4 class="counters-v2-title">선물받은 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.monthSendPoint}</figure>
+							<h4 class="counters-v2-title">이번달 나눠준 포인트</h4>
 							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
-						<!-- End Counters v2 -->
+						<!-- 이번달 나눠준 포인트 끝 -->
 					</div>
 					<div class="col-md-3 col-sm-6 sm-margin-b-30">
-						<!-- Counters v2 -->
+						<!-- 현재 보유 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-happy"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].sendPoint}</figure>
-							<h4 class="counters-v2-title">선물한 기쁨</h4>
+							<figure class="counter color-base counters-v2-no">${point.nowPoint}</figure>
+							<h4 class="counters-v2-title">현재 보유 포인트</h4>
 							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
-						<!-- End Counters v2 -->
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<!-- Counters v2 -->
-						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-tools"></i>
-							<figure class="counter color-base counters-v2-no">${total[0].totalPoint}</figure>
-							<h4 class="counters-v2-title">충전한 기쁨</h4>
-							<span class="counters-v2-subtitle">Customizability</span>
-						</div>
-						<!-- End Counters v2 -->
+						<!-- 현재 보유 포인트 끝 -->
 					</div>
 				</div>
-				<!--// end row -->
 			</div>
 		</div>
-		<!-- End Counters v2 -->
+		<!-- 현재 나눠준 기쁨 조회 끝 -->
+		
+		<!--========== PAGE CONTENT ==========-->
 
 <form name ="listForm" action="getSendPointList.do">
-			<input type="hidden" name="pageIndex" />
+			<input type="hidden" name="pageIndex" value="${(empty translatePointVO.pageIndex)? 1 : translatePointVO.pageIndex }" />
 		<div class="bg-color-sky-light" id="send">
 			<div class="content-md container-sm">
 				<!-- Heading v1 -->
@@ -105,8 +91,8 @@ document.listForm.submit();
 						</select>월
 						<button type="submit">검색</button>
 						<script>
-						$("[name='year']").val('${chargeVO.year}');
-						$("[name='month']").val('${chargeVO.month}');
+						$("[name='year']").val('${translatePointVO.year}');
+						$("[name='month']").val('${translatePointVO.month}');
 						</script>
 					</p>
 				</div>

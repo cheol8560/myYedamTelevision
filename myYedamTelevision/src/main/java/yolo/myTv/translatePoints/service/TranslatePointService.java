@@ -3,6 +3,8 @@ package yolo.myTv.translatePoints.service;
 import java.util.List;
 import java.util.Map;
 
+import com.sun.mail.handlers.message_rfc822;
+
 import yolo.myTv.charges.service.ChargeVO;
 import yolo.myTv.exchanges.service.ExchangeVO;
 
@@ -55,4 +57,11 @@ public interface TranslatePointService {
 	int getReceivePointListCount(TranslatePointVO translatepointvo);
 	int getSendPointListCount(TranslatePointVO translatepointvo);
 	int getExchangeListCount(ExchangeVO exchangevo);
+	
+	//총 포인트 조회
+	//총 충전포인트, 현재 달 충전포인트, 현재 보유 포인트
+	public Map<String, Object> chargeListPoint (ChargeVO chargevo);
+	public Map<String, Object> exchangeListPoint (ExchangeVO exchangevo);
+	public Map<String, Object> sendPoint	(TranslatePointVO translatepointvo);
+	public Map<String, Object> receivePoint	(TranslatePointVO translatepointvo);
 }

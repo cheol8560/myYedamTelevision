@@ -292,4 +292,59 @@
 		</if>
 	</select>
 	
+	
+	<!-- 11111111111111111111111111111111111총포인트 단건 조회 서브 쿼리111111111111111111111111111 --> 
+	<select id="chargeListPoint" resultType="map">
+	SELECT POINT AS "nowPoint",
+	(SELECT SUM(CHARGE_POINT)
+	FROM CHARGES
+	WHERE MEMBER_ID = #{memberId}) AS "totalChargePoint",
+	(SELECT SUM(CHARGE_POINT)
+	FROM CHARGES
+	WHERE MEMBER_ID = #{memberId}
+	AND TO_CHAR(REQUEST_DATE, 'mm') = TO_CHAR(sysdate, 'mm') ) AS "monthChargePoint"
+	FROM MEMBERS
+	WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="exchangeListPoint" resultType="map">
+	SELECT POINT AS "nowPoint",
+	(SELECT SUM(REQUEST_POINT)
+	FROM EXCHANGES
+	WHERE MEMBER_ID = #{memberId}) AS "totalExchangePoint",
+	(SELECT SUM(REQUEST_POINT)
+	FROM EXCHANGES
+	WHERE MEMBER_ID = #{memberId}
+	AND TO_CHAR(REQUEST_DATE, 'mm') = TO_CHAR(sysdate, 'mm') ) AS "monthExchangePoint"
+	FROM MEMBERS
+	WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="sendPoint" resultType="map">
+	SELECT POINT AS "nowPoint",
+	(SELECT SUM(TRANSLATE_POINT)
+	FROM TRANSLATE_POINTS
+	WHERE SEND_MEMBER_ID = #{memberId}) AS "totalSendPoint",
+	(SELECT SUM(TRANSLATE_POINT)
+	FROM TRANSLATE_POINTS
+	WHERE SEND_MEMBER_ID = #{memberId}
+	AND TO_CHAR(TRANSLATE_DATE, 'mm') = TO_CHAR(sysdate, 'mm') ) AS "monthSendPoint"
+	FROM MEMBERS
+	WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="receivePoint" resultType="map">
+	SELECT POINT as "nowPoint",
+	(SELECT SUM(TRANSLATE_POINT)
+	FROM TRANSLATE_POINTS
+	WHERE RECEIVE_MEMBER_ID = #{memberId}) AS "totalReceivePoint",
+	(SELECT SUM(TRANSLATE_POINT)
+	FROM TRANSLATE_POINTS
+	WHERE RECEIVE_MEMBER_ID = #{memberId}
+	AND TO_CHAR(translate_date, 'mm') = TO_CHAR(sysdate, 'mm') ) AS "monthReceivePoint"
+	FROM MEMBERS
+	WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	
 </mapper>

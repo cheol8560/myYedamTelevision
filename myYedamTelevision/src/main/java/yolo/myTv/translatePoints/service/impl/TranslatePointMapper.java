@@ -38,5 +38,10 @@ public interface TranslatePointMapper {
 		int getReceivePointListCount(TranslatePointVO translatepointvo);
 		int getSendPointListCount(TranslatePointVO translatepointvo);
 		int getExchangeListCount(ExchangeVO exchangevo);
+	//총 조회
+		public Map<String, Object> chargeListPoint (ChargeVO chargevo);
+		public Map<String, Object> exchangeListPoint (ExchangeVO exchangevo);
+		public Map<String, Object> sendPoint	(TranslatePointVO translatepointvo);
+		public Map<String, Object> receivePoint	(TranslatePointVO translatepointvo);
 
 }

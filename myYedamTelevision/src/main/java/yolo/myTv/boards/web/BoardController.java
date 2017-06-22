@@ -49,7 +49,7 @@ public class BoardController {
 	// 공지사항 등록 폼
 	@RequestMapping(value = "/insertNotice.do", method = RequestMethod.GET)
 	public String insertNoticeForm() {
-		return "boards/noticeRegistForm";
+		return "admin/questions/noticeForm";
 	}
 
 	// 공지사항 등록
@@ -66,7 +66,7 @@ public class BoardController {
 		System.out.println(vo);
 		vo.setMemberId("admin");
 		boardService.insertBoard(vo);
-		return "redirect:/getNoticeList.do";
+		return "redirect:/adminNoticeList.do";
 	}
 
 	// 공지사항 단건조회
@@ -243,6 +243,37 @@ public class BoardController {
 		model.addAttribute("adminNotice", boardService.adminBoard(vo, true));
 		return "admin/questions/adminNotice";
 	}
+	
+	//관리자 공지사항 수정 폼
+	@RequestMapping("/UpdateAdminNoticeForm.do")
+	// get
+	public String UpdateAdminNoticeForm(@ModelAttribute("adminNotice") BoardVO vo, Model model) {
+		System.out.println(vo);
+		model.addAttribute("adminNotice", boardService.adminBoard(vo, false));
+		return "admin/questions/NoticeUpdate";
+	}
+
+	// 관리자 공지사항 수정
+	@RequestMapping(value = "/updateAdminNotice.do", method = RequestMethod.POST)
+	public String updateAdminNotice(@ModelAttribute("adminNotice") BoardVO vo,
+			SessionStatus status, HttpServletRequest request)
+			throws IllegalStateException, IOException {
+		MultipartFile file = vo.getUploadFile();
+		if(file !=null && file.getSize()>0){
+			File savefile = new File("d:/upload/", file.getOriginalFilename());
+			file.transferTo(savefile); // 서버에 파일 저장
+			vo.setAttachFile(file.getOriginalFilename());
+		}
+		System.out.println(vo);
+		boardService.updateAdminBoard(vo);
+		status.setComplete(); // 세션에 저장된 vo를 삭제
+		return "redirect:/adminNotice.do?boardNo=" + vo.getBoardNo();
+	}
+	
+	
+	
+	
+	
 	
 	/**
 	 * 첨부파일로 등록된 파일에 대하여 다운로드를 제공한다.

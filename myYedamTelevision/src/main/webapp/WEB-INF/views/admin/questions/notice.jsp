@@ -69,6 +69,7 @@
 
 		</div>
 	</div>
+	<a href="${pageContext.request.contextPath}/insertNotice.do"><button type="button" class="btn btn-success col-md-offset-10 col-md-2">공지사항 등록</button></a>
 	<!-- Row -->
 </div>
 <!-- Main Wrapper -->

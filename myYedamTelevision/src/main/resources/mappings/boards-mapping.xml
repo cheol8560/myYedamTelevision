@@ -61,6 +61,22 @@
         WHERE BOARD_NO = #{boardNo}
         ]]>
 	</update>
+	
+	<update id="updateAdminBoard">
+        <![CDATA[
+        UPDATE BOARDS SET
+            BOARD_TITLE = #{boardTitle}, 
+            BOARD_TEXT = #{boardText} ,
+             ]]>
+		<if test="attachFile != null and attachFile !='' ">
+        	 <![CDATA[
+        	ATTACH_FILE = #{attachFile}
+        	]]>
+		</if>
+        	 <![CDATA[
+        WHERE BOARD_NO = #{boardNo}
+        ]]>
+	</update>
 
 	<delete id="deleteBoard">
         <![CDATA[

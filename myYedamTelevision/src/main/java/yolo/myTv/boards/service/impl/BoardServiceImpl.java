@@ -66,4 +66,10 @@ public class BoardServiceImpl implements BoardService{
 	public BoardVO adminBoard(BoardVO vo, boolean cnt) {
 		return boardDAO.adminBoard(vo);
 	}
+
+	@Override
+	public void updateAdminBoard(BoardVO vo) {
+		 boardDAO.updateAdminBoard(vo);
+		
+	}
 }

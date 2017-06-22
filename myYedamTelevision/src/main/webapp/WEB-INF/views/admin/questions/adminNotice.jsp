@@ -47,7 +47,7 @@
 							<label for="input-Default" class="col-sm-1 control-label">조회수</label>
 							<div class="col-sm-2">
 								<div class="form-control" id="input-Default">
-									${adminNotice.memberId}</div>
+									${adminNotice.viewCount}</div>
 							</div>
 
 							<label for="input-Default" class="col-sm-1 control-label">작성일자</label>
@@ -79,24 +79,26 @@
 							<div class="col-md-3 col-md-offset-10">
 								<a href="UpdateAdminNoticeForm.do?boardNo=${adminNotice.boardNo}"><button
 										type="button" class="btn btn-default">수정</button></a> <a
-									href="deleteNotice.do?boardNo=${adminNotice.boardNo}"><button
+									href="deleteAdminNotice.do?boardNo=${adminNotice.boardNo}"><button
 										type="button" class="btn btn-default">삭제</button></a>
 							</div>
 							<br> <br> <input type="hidden" name="category"
 								value="d1" /> <br>
 							<div class="col-md-1 col-md-offset-10">
-								<button class="btn btn-success">목록으로</button>
+								<a href="${pageContext.request.contextPath}/adminNoticeList.do"><button type="button" class="btn btn-success">목록으로</button></a>
 
 							</div>
 						</div>
 						<br>
+						</form>
 						<div class="row">
 							<div class="col-md-offset-2 col-md-9">
 								<c:import
 									url="../comments/commentList.jsp?boardNo=${adminNotice.boardNo}"></c:import>
 							</div>
 						</div>
-					</form>
+					
+					
 				</div>
 			</div>
 		</div>

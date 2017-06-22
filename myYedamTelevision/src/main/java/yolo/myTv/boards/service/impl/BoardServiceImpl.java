@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import yolo.myTv.boards.service.BoardService;
 import yolo.myTv.boards.service.BoardVO;
+import yolo.myTv.comments.service.CommentsDAO;
 
 
 @Service("boardService")
@@ -70,6 +71,13 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void updateAdminBoard(BoardVO vo) {
 		 boardDAO.updateAdminBoard(vo);
+		
+	}
+
+	@Override
+	public void deleteAdminBoard(BoardVO vo) {
+		CommentsDAO.getInstance().deletes(Integer.toString(vo.getBoardNo()));
+		boardDAO.deleteAdminBoard(vo);
 		
 	}
 }

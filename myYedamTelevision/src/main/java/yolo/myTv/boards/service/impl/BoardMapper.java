@@ -20,4 +20,6 @@ public interface BoardMapper {
 	public List<Map<String,Object>> adminNoticeList(BoardVO vo);
 	public BoardVO adminBoard(BoardVO vo);
 	public void updateAdminBoard(BoardVO vo);
+	public void deleteAdminBoard(BoardVO vo);
+	
 }

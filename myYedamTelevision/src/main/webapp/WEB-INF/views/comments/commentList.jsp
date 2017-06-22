@@ -35,10 +35,9 @@ function loadCommentResult(req) {
 			                 .firstChild.nodeValue;
 			if (code == 'success') {
 				// data 태그의 태그바디값(string)을  json 객체로 변환 
+				console.log(xmlDoc.getElementsByTagName('data').item(0).firstChild.nodeValue);
 				var commentList = eval( "(" +
-						 xmlDoc.getElementsByTagName('data').item(0)
-							   .firstChild.nodeValue +
-									    ")" );
+						 xmlDoc.getElementsByTagName('data').item(0).firstChild.nodeValue +")" );
 				var listDiv = document.getElementById('commentList');
 				for (var i = 0 ; i < commentList.length ; i++) {
 					var commentDiv = makeCommentView(commentList[i]);//댓글div 태그생성
@@ -94,13 +93,10 @@ function addResult(req) {
 		if (req.status == 200) {
 			
 				var xmlDoc = req.responseXML;
-				var code = xmlDoc.getElementsByTagName('code').item(0)
-				                 .firstChild.nodeValue;
+				var code = xmlDoc.getElementsByTagName('code').item(0).firstChild.nodeValue;
 				if (code == 'success') {
-					var comment = eval( "(" +
-					    xmlDoc.getElementsByTagName('data').item(0)
-					          .firstChild.nodeValue +
-					                     ")" );
+					console.log(xmlDoc.getElementsByTagName('data').item(0).firstChild.nodeValue);
+					var comment = eval( "(" + xmlDoc.getElementsByTagName('data').item(0).firstChild.nodeValue + ")" );
 					var listDiv = document.getElementById('commentList');
 					var commentDiv = makeCommentView(comment);
 					listDiv.appendChild(commentDiv);
@@ -222,7 +218,7 @@ function deleteResult(req) {
 <div id="commentAdd">
 	<form action="" name="addForm">
 	<input type="hidden" name="memberId" size="10"><br/>
-	댓글: <input name="commentText" size="105">
+	댓글: <input name="commentText" size="100">
 	<input type="button" value="등록" onclick="addComment()"/>
 	</form>
 </div>

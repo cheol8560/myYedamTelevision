@@ -49,12 +49,12 @@
 	<update id="updateBoard">
         <![CDATA[
         UPDATE BOARDS SET
-            BOARD_TITLE = #{boardTitle}, 
-            BOARD_TEXT = #{boardText} ,
+            BOARD_TITLE = #{boardTitle}
+            , BOARD_TEXT = #{boardText} 
              ]]>
 		<if test="attachFile != null and attachFile !='' ">
         	 <![CDATA[
-        	ATTACH_FILE = #{attachFile}
+        	, ATTACH_FILE = #{attachFile}
         	]]>
 		</if>
         	 <![CDATA[
@@ -65,12 +65,13 @@
 	<update id="updateAdminBoard">
         <![CDATA[
         UPDATE BOARDS SET
-            BOARD_TITLE = #{boardTitle}, 
-            BOARD_TEXT = #{boardText} ,
+        	BOARD_NO = #{boardNo}
+            , BOARD_TITLE = #{boardTitle}
+            , BOARD_TEXT = #{boardText}
              ]]>
 		<if test="attachFile != null and attachFile !='' ">
         	 <![CDATA[
-        	ATTACH_FILE = #{attachFile}
+        	, ATTACH_FILE = #{attachFile}
         	]]>
 		</if>
         	 <![CDATA[
@@ -79,6 +80,13 @@
 	</update>
 
 	<delete id="deleteBoard">
+        <![CDATA[
+        DELETE BOARDS
+        WHERE BOARD_NO = #{boardNo}
+        ]]>
+	</delete>
+	
+	<delete id="deleteAdminBoard">
         <![CDATA[
         DELETE BOARDS
         WHERE BOARD_NO = #{boardNo}

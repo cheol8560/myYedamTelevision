@@ -37,7 +37,10 @@ public interface BoardService {
 
 	List<Map<String, Object>> adminNoticeList(BoardVO vo);
 
+	//관리자 수정
 	void updateAdminBoard(BoardVO vo);
+	//관리자 삭제
+	void deleteAdminBoard(BoardVO vo);
 
 	
 	

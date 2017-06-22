@@ -201,10 +201,11 @@ public class BoardController {
 			SessionStatus status, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		MultipartFile file = vo.getUploadFile();
-		
-		File savefile = new File("d:/upload/", file.getOriginalFilename());
-		file.transferTo(savefile); // 서버에 파일 저장
-		vo.setAttachFile(file.getOriginalFilename());
+		if(file !=null && file.getSize()>0){
+			File savefile = new File("d:/upload/", file.getOriginalFilename());
+			file.transferTo(savefile); // 서버에 파일 저장
+			vo.setAttachFile(file.getOriginalFilename());
+		}
 		System.out.println(vo);
 		boardService.updateBoard(vo);
 		status.setComplete(); // 세션에 저장된 vo를 삭제
@@ -270,7 +271,14 @@ public class BoardController {
 		return "redirect:/adminNotice.do?boardNo=" + vo.getBoardNo();
 	}
 	
-	
+	// 공지사항 삭제
+		@RequestMapping("/deleteAdminNotice.do")
+		public String deleteAdminNotice(@ModelAttribute("adminNotice") BoardVO vo,
+				SessionStatus status) throws Exception {
+			boardService.deleteAdminBoard(vo);
+			status.setComplete();
+			return "forward:/adminNoticeList.do";
+		}
 	
 	
 	

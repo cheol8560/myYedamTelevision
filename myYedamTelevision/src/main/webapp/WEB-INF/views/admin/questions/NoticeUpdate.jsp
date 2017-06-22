@@ -23,45 +23,24 @@
 				<div class="panel-body">
 					<form class="form-horizontal" action="updateAdminNotice.do" method="post"
 						enctype="multipart/form-data">
+						
 						<div class="form-group">
-							<label for="input-readonly" class="col-sm-2 control-label">게시글
-								번호</label>
-							<div class="col-sm-2">
-								<div class="form-control" id="input-Default">
-									${adminNotice.boardNo}</div>
+							<label for="input-Default" class="col-sm-2 control-label">게시글 번호</label>
+							<div class="col-sm-9">
+								<input name="boardNo" class="form-control" id="input-Default" value="${adminNotice.boardNo}" readonly="readonly">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="input-Default" class="col-sm-2 control-label">제목</label>
 							<div class="col-sm-9">
-								<input class="form-control" id="input-Default" value="${adminNotice.boardTitle}">
+								<input name="boardTitle" class="form-control" id="input-Default" value="${adminNotice.boardTitle}">
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="input-Default" class="col-sm-2 control-label">작성자</label>
-							<div class="col-sm-2">
-								<div class="form-control" id="input-Default">
-									${adminNotice.memberId}</div>
-							</div>
 
-							<label for="input-Default" class="col-sm-1 control-label">조회수</label>
-							<div class="col-sm-2">
-								<div class="form-control" id="input-Default">
-									${adminNotice.memberId}</div>
-							</div>
-
-							<label for="input-Default" class="col-sm-1 control-label">작성일자</label>
-							<div class="col-sm-3">
-								<div class="form-control" id="input-Default">
-									<fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
-										value="${adminNotice.writeDate}" />
-								</div>
-							</div>
-						</div>
 						<div class="form-group">
 							<label for="input-Default" class="col-sm-2 control-label">작성내용</label>
 							<div class="col-md-9">
-								<textarea class="input-large form-control" id="message"
+								<textarea name="boardText" class="input-large form-control" id="message"
 									rows="15">${adminNotice.boardText}</textarea>
 							</div>
 						</div>
@@ -70,16 +49,18 @@
 							<div class="form-group">
 								<label for="input-readonly" class="col-sm-2 control-label">첨부파일</label>
 								<div class="col-sm-10">
-									<a href="FileDown.do?boardNo=${adminNotice.boardNo}">${adminNotice.attachFile}</a>
+									<input type="file" class="form-control"
+											name="uploadFile" ><br> 
+								<a href="FileDown.do?boardNo=${adminNotice.boardNo}">${adminNotice.attachFile}</a>
 								</div>
 							</div>
 						</div>
-
+						<input type="hidden" name="category" value="d1" />
+						
 						<div class="row">
-							
 							<button type="submit"
 								class="btn btn-success col-md-offset-10">확인</button>
-							<button class="btn btn-default radius-3 ">취소</button>
+							<a href="${pageContext.request.contextPath}/adminNoticeList.do"><button type="button" class="btn btn-default radius-3 ">취소</button></a>
 					
 						</div>
 						<br>

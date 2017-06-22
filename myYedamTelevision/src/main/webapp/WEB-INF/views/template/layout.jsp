@@ -149,7 +149,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/counters.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/form-modal.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/header-vertical-dropdown-toggle.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/login-form.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/login-form.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/magnific-popup.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/owl-carousel.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/scripts/components/piecharts.js"></script>

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import yolo.myTv.charges.service.ChargeService;
 import yolo.myTv.charges.service.ChargeVO;
@@ -130,10 +132,9 @@ public class TranslatePointController {
 
 	//거래발생 프로시져
 	@RequestMapping("/insertTrans.do")
-	public String getTranslatePointList(TransVO vo, Model model){
+	public @ResponseBody TransVO insertTrans(@ModelAttribute("trans") TransVO vo, Model model){
 		translatePointService.insertTrans(vo);
-		int translateId = vo.getOutErrorcode();
-		return "redirect:/resultInsertTrans.do?translateId="+translateId;
+		return vo;
 	}
 	
 	//교환내역 조회

@@ -86,7 +86,7 @@
         		, TEL
         		, POINT
         		, MEMBER_IMAGE
-        		, BANK
+        		, find_code_name(BANK) as BANK_NAME
         		, ACCOUNT 
         FROM MEMBERS
 	</select>
@@ -127,6 +127,7 @@
 		<result property="memberImage" column="MEMBER_IMAGE" />
 		<result property="bank" column="BANK" />
 		<result property="account" column="ACCOUNT" />
-		<result property="cnt" column="CNT" /> 
+		<result property="cnt" column="CNT" />
+		<result property="bankName" column="BANK_NAME" />  
 	</resultMap>
 </mapper>

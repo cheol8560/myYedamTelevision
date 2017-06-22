@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
                 <div class="page-title">
                     <h3>회원관리</h3>
@@ -53,9 +54,9 @@
 											<td>${member.memberName}</td>
 											<td>${member.email}</td>
 											<td>${member.tel}</td>
-											<td>${member.point}</td>
+											<td><fmt:formatNumber value="${member.point}" groupingUsed="true"/>기쁨</td>
 											<td>${member.memberImage}</td>
-											<td>${member.bank}</td>
+											<td>${member.bankName}</td>
 											<td>${member.account}</td>
 										</tr>
 										</c:forEach>

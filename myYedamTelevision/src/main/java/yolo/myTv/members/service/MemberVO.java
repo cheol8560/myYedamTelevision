@@ -18,6 +18,7 @@ public class MemberVO {
 	private String tel;
 	private int point;
 	private int cnt;
+	private String bankName;
 	
 	@XmlTransient
 	private MultipartFile uploadFile;
@@ -76,6 +77,13 @@ public class MemberVO {
 	}
 	public String getBank() {
 		return bank;
+	}
+	
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
 	}
 	public void setBank(String bank) {
 		this.bank = bank;

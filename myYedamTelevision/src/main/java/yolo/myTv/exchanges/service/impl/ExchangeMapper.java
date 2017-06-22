@@ -25,5 +25,8 @@ public interface ExchangeMapper {
 	
 	//count
 	int getExchangeListCount(ExchangeVO exchangevo);
+
+	//관리자 환전 조회 목록
+	public List<Map<String, Object>> adminExchangeList(ExchangeVO vo);
 	
 }

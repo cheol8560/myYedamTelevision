@@ -211,7 +211,7 @@ public class BoardController {
 		return "redirect:/getInquiry.do?boardNo=" + vo.getBoardNo();
 	}
 
-	// 공지사항 삭제
+	// 문의내역 삭제
 	@RequestMapping("/deleteInquiry.do")
 	public String deleteInquiry(@ModelAttribute("inquiry") BoardVO vo,
 			SessionStatus status) throws Exception {
@@ -219,14 +219,31 @@ public class BoardController {
 		status.setComplete();
 		return "forward:/getInquiryList.do";
 	}
-
+	
+	//댓글 조회
 	@RequestMapping("/CommentList.do")
 	public ModelAndView CommentList() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/comments/commentList");
 		return mav;
 	}
-
+	
+	//관리자 공지사항 조회
+	@RequestMapping("/adminNoticeList.do")
+	public String adminNoticeList(BoardVO vo, Model model) throws Exception{
+		vo.setCategory("d1");
+		model.addAttribute("adminNoticeList", boardService.adminNoticeList(vo));
+		return "admin/questions/notice";
+	}
+	
+	//관리자 공지사항 상세조회
+	@RequestMapping("/adminNotice.do")
+	public String adminNotice(BoardVO vo, Model model) {
+		System.out.println(vo);
+		model.addAttribute("adminNotice", boardService.adminBoard(vo, true));
+		return "admin/questions/adminNotice";
+	}
+	
 	/**
 	 * 첨부파일로 등록된 파일에 대하여 다운로드를 제공한다.
 	 *

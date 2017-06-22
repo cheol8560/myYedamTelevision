@@ -103,12 +103,13 @@
 <!-- END CORE PLUGINS -->
 
 <!-- PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.back-to-top.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.smooth-scroll.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.animsition.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.wow.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.html5.video.vide.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.appear.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.back-to-top.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.html5.video.vide.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.number.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.smooth-scroll.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.wow.min.js"></script>
 	<!-- circles-master -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/circles-master/circles.min.js"></script>
 	<!-- End circles-master -->

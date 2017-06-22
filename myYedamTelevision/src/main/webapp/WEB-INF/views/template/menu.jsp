@@ -68,10 +68,6 @@
 						</div>
 			            <!-- End 방송하기 버튼 -->                    
 
-
-
-
-
 						<!-- 사용자 메뉴 -->
                         <ul class="header-vertical-menu margin-b-30">
                             
@@ -149,12 +145,6 @@
                             <li class="nav-item nav-main-item">
                                 <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" href="javascript:void(0);">고객센터</a>
                                 <ul class="nav-dropdown-menu">
-                                    <!-- 공지사항 등록 -관리자만 -->
-                                    <li class="nav-dropdown-menu-item">
-                                    	<a class="nav-dropdown-menu-link font-size-14" 
-                                    		href="${pageContext.request.contextPath}/insertNotice.do">공지사항 등록</a>
-                                    </li>
-                                    <!-- End 공지사항 등록 -->
                                     <!-- 공지사항 -->
                                     <li class="nav-dropdown-menu-item">
                                     	<a class="nav-dropdown-menu-link font-size-14" 

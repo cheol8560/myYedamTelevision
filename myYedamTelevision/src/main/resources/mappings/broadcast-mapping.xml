@@ -17,7 +17,7 @@
 
 	<insert id="insertBroadcast" parameterType="broadcast">
 		<selectKey keyProperty="broadcastNo" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(BROADCAST_NO), 1)+1 FROM BROADCASTS
+			SELECT NVL(MAX(BROADCAST_NO), 0)+1 FROM BROADCASTS
 		</selectKey>
 		INSERT INTO BROADCASTS(BROADCAST_NO, BROADCAST_TITLE, START_DATE, BROADCAST_STATUS, CONTENT_CODE, MEMBER_ID, CHANNEL_ID)
 		VALUES(#{broadcastNo}, #{broadcastTitle}, SYSDATE, 'e1', #{contentCode}, #{memberId}, #{channelId})

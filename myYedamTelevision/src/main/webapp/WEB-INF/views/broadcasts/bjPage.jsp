@@ -48,7 +48,7 @@
                         </div>
                         
 	                    <div class="overflow-a" id="chattingArea" style="padding: 10px 0;">
-						
+				
 						</div>
 						
                         <div class="" style="border-top: 1px solid #00bcd4;">
@@ -77,23 +77,23 @@
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
                             <h4 class="blog-sidebar-heading-title">방송 설정</h4>
                         </div>
-                        <div class="blog-sidebar-content" id="broadcastFormWrap">
+                        <div class="blog-sidebar-content" id="broadcastFormWrap" style="padding:15px 15px 0 15px;">
 							<!-- Comment Form v1 -->
 							<form id="broadcastForm" class="comment-form-v1">
-								<input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}">
+								<%-- <input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}"> --%>
 								<input type="hidden" name="channelId" id="channelId" value="">
 								<div class="row">
-									<div class="col-md-12 margin-b-30">
+									<div class="col-md-12 margin-b-10">
 										<label for="broadcastTitle">방송제목</label>
-										<input type="text" class="form-control comment-form-v1-input"
+										<input type="text" class="form-control"
 											name="broadcastTitle" id="broadcastTitle" value="${broadcastResult.broadcastTitle}"
 											required>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-12 margin-b-30">
+									<div class="col-md-12 margin-b-10">
 										<label for="contentCode">방송주제</label>
-										<select id="contentCode" name="contentCode" class="form-control comment-form-v1-input" required>
+										<select id="contentCode" name="contentCode" class="form-control" required>
 										<c:forEach items="${contentList}" var="content">
 											<option value="${content.contentCode}">${content.contentName}</option>	
 										</c:forEach>
@@ -101,6 +101,29 @@
 										<script>
 											$("#contentCode").val("${broadcastResult.contentCode}");
 										</script>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12" style="margin-bottom:5px;">
+										<label for="contentCode">비디오 &amp; 오디오 Mute</label>
+										<div class="col-md-6 padding-0"> 
+											<div class="col-md-6 text-center font-size-13" style="padding:3px 0;">비디오</div>
+											<div class="col-md-6" style="padding: 0 3px 0 3px;">
+												<label class="switch"> 
+													<input type="checkbox" id="videoMute" disabled="disabled">
+													<div class="slider round"></div>
+												</label>
+											</div>
+										</div>
+										<div class="col-md-6 padding-0">
+											<div class="col-md-6 text-center font-size-13" style="padding:3px 0;">오디오</div>
+											<div class="col-md-6" style="padding: 0 3px 0 3px;">
+												<label class="switch">
+													<input type="checkbox" id="audioMute" disabled="disabled">
+													<div class="slider round"></div>
+												</label>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div id="broadcastBtnArea" class="text-center">
@@ -123,7 +146,7 @@
                             <h4 class="blog-sidebar-heading-title">시청자</h4>
                             <span style="float:right; margin-right:10px;"><span class="view-count">0</span>명</span>
                         </div>
-                        <div class="blog-sidebar-content scrollbar padding-10" id="viewerList">
+                        <div class="blog-sidebar-content overflow-a padding-10" id="viewerList">
                             <!-- Latest Tutorials -->
 							
 							<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
@@ -134,7 +157,7 @@
 							</div>
 							
 							<div id="viewerArea">
-								<%--
+								<!-- 
 								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
 									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -159,8 +182,8 @@
 									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 target"
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
 											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
@@ -182,139 +205,248 @@
 										</li>
 									</ul>
 								</div>
-
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
-								</div>
-
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
-									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
+								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
+									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
 									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#" data-toggle="modal" data-target="#presentPointModal">
+												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
+											</a>
+										</li>
+									</ul>
 								</div>
+								 -->
 								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
-									<button type="button"
-										class="btn-custom-bg dropdown-toggle radius-3"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										${login.nickName } (${login.memberId }) <i
-											class="bordered-icon-box-item fa fa-star"
-											style="margin-left: 5px;"></i>
-									</button>
-								</div>
-								 --%>
 							</div>
 							
 							<!-- End Latest Tutorials -->
@@ -364,7 +496,7 @@
 							<label class="col-sm-5 control-label" style="padding-right:0;">선물할 기쁨 : </label>
 							<div class="col-sm-7" style="padding-left:10px;">
 								<input type="text" class="form-control" id="inTranslatePoint" name="inTranslatePoint"
-										style="height:30px; width:50%; display:inline; margin-right:5px;"> 개
+										style="height:30px; width:60%; display:inline; margin-right:5px;"> 개
 							</div>
 						</div>
 					</form>
@@ -391,7 +523,7 @@
 						<button type="button" class="close" onclick="$('#pointFail2').hide();">
 							<span>&times;</span>
 						</button>
-						<strong>경고!</strong> 기쁨 선물에 실패했습니다.
+						<strong>경고!</strong> <span id="pointErrorMsg"></span>
 					</div>
 
 				</div>
@@ -505,6 +637,11 @@
 	var broadcastStatusCheck = false;
 	var appBj;
 	var options;
+	var targetNickName;
+	var targetMemberId;
+	var targetPeerId;
+	var targetMember;
+	var mine = "${login.nickName} (${login.memberId})";
 	
 	// BJ 객체 및 변수 설정
 	appBj = new PlayRTC({
@@ -519,7 +656,7 @@
 			"maxFrameRate": 60
 		}
 	});
-	 
+	
 	/* BJ 이벤트 핸들러 처리 */ 
 	
 	// BJ connectChannel 이벤트 핸들러
@@ -545,12 +682,15 @@
 				broadcastEndBtn.style.display = "inline-block";
 				// 방송적용 버튼
 				broadcastInfoUpdBtn.style.display = "inline-block";
+				// Mute 버튼
+				$("#videoMute").removeAttr("disabled");
+				$("#audioMute").removeAttr("disabled");
 				
-				var chatP = document.createElement("p");
-				chatP.style.paddingLeft = "8px";
-				chatP.classList.add("font-size-12");
-				chatP.textContent = "▷ 대화방이 개설되었습니다.";
-				chattingArea.appendChild(chatP);
+				var tP = document.createElement("p");
+				tP.style.paddingLeft = "8px";
+				tP.classList.add("font-size-12");
+				tP.textContent = "▷ 대화방이 개설되었습니다.";
+				chattingArea.appendChild(tP);
 				
 				// 방송상태 변경
 				broadcastStatusCheck = true;
@@ -565,7 +705,7 @@
 	
 	// 방송 상태 변경 이벤트
 	appBj.on("stateChange", function(state, peerid, userid) {
-		
+		console.log(state);
 		if(state === "CONNECTED" || state === "CLOSED") {
 			
 			// 시청자 목록 출력
@@ -578,14 +718,12 @@
 				if(peerList.length > 1) {
 					var view = peerList.length-1;
 					$(".view-count").text(view);
-					console.log(peerList);
 					
 					var i = 0;
 					
 					while(true) {
-						console.log("peerList[i].uid : " + peerList[i].uid);
 						if(peerList[i].uid) {
-							console.log("in if peerList[i].uid : " + peerList[i].uid);
+							
 							// div tag
 							var tDiv = document.createElement("div");
 							tDiv.classList.add("btn-group");
@@ -680,14 +818,6 @@
 		}
 	});
 	
-	// 시청자수 출력 함수
-	function viewCount(channelId) {
-		appBj.getPeerList(channelId, function(data) {
-			var view = data.peers.length-1;
-			$(".view-count").text(view);
-		});
-	}
-	
 	// 방송 시작 후 video Tag 생성
 	appBj.on("addLocalStream", function(localStream) {
 		var video = PlayRTC.utils.createVideo(localStream, {
@@ -706,48 +836,54 @@
 			
 			if(message.type === "text") {
 				var msg = message.data;
+				var msgArr = msg.split("/");
 				
-				var category = msg.substring(0, msg.indexOf("/"));
-				var member = msg.substring(msg.indexOf("/")+1, msg.indexOf("/", 3));
-				var acceptedMessage = msg.substring(msg.indexOf("/", 3)+1);
+				var category = msgArr[0];
+				var sendMember = msgArr[1];
+				var targetMember = msgArr[2];
+				var acceptedMessage = msgArr[3];
+				var targetPeerId = msgArr[4];
 				
-				if(category == "1") {
+				// 방송 입장
+				if(category == "#1") {
 					
-					var chatP = document.createElement("p");
-					chatP.style.paddingLeft = "5px";
-					chatP.classList.add("font-size-11");
-					chatP.textContent = "＃ " + member + acceptedMessage;
-					chattingArea.appendChild(chatP);
+					var tP = document.createElement("p");
+					tP.style.paddingLeft = "5px";
+					tP.classList.add("font-size-11");
+					tP.textContent = "＃ " + sendMember + acceptedMessage;
+					chattingArea.appendChild(tP);
 					
-				} else {
+				} 
+				// 방송 중 채팅
+				else if(category == "#2") {
 					
-					var chatDiv1;
-					var chatDiv2;
-					var chatH3;
-					var chatP;
+					var tDiv1;
+					var tDiv2;
+					var tH3;
+					var tP;
 					
-					chatDiv1 = document.createElement("div");
-					chatDiv1.classList.add("services-v5");
-					chatDiv1.style.padding = "0px 15px 0px 15px";
+					tDiv1 = document.createElement("div");
+					tDiv1.classList.add("services-v5");
+					tDiv1.style.padding = "0px 15px 0px 15px";
 					
-					chatDiv2 = document.createElement("div");
-					chatDiv2.classList.add("services-v5-wrap");
-					chatDiv2.style.marginBottom = "0px";
+					tDiv2 = document.createElement("div");
+					tDiv2.classList.add("services-v5-wrap");
+					tDiv2.style.marginBottom = "0px";
 					
-					chatH3 = document.createElement("h3");
-					chatH3.classList.add("services-v5-body-title");
-					chatH3.classList.add("font-size-13");
-					chatH3.textContent = member;
+					tH3 = document.createElement("h3");
+					tH3.classList.add("services-v5-body-title");
+					tH3.classList.add("font-size-13");
+					tH3.textContent = sendMember;
 					
-					chatP = document.createElement("p");
-					chatP.classList.add("services-v5-text");
-					chatP.classList.add("font-size-12");
-					chatP.textContent = acceptedMessage;
+					tP = document.createElement("p");
+					tP.classList.add("services-v5-text");
+					tP.classList.add("font-size-12");
+					tP.textContent = acceptedMessage;
 					
-					chatDiv2.appendChild(chatH3);
-					chatDiv1.appendChild(chatDiv2);
-					chatDiv1.appendChild(chatP);
-					chattingArea.appendChild(chatDiv1);
+					tDiv2.appendChild(tH3);
+					tDiv1.appendChild(tDiv2);
+					tDiv1.appendChild(tP);
+					chattingArea.appendChild(tDiv1);
 					
 				}
 				
@@ -770,6 +906,9 @@
 				broadcastInfoUpdBtn.style.display = "none";
 				// 방송시작 버튼
 				broadcastStartBtn.style.display = "inline-block";
+				// Mute 버튼
+				$("#videoMute").attr("disabled", "disabled");
+				$("#audioMute").attr("disabled", "disabled");
 				
 				// 방송상태 변경
 				broadcastStatusCheck = false;
@@ -817,7 +956,7 @@
 	// 방송 중 정보수정
 	broadcastInfoUpdBtn.addEventListener("click", function() {
 		event.preventDefault();
-		var param = $("#broadcastForm").serialize();
+		var param = $("#broadcastForm").serialize() + "&broadcastNo=${broadcastResult.broadcastNo}&broadcastStatus=e1";
 		$.getJSON( "updateBroadcast.do", param )
 			.done(function(data) {
 				$("#applyBroadcastTitle").text(data.broadcastTitle);
@@ -835,42 +974,41 @@
 			$("#sendTextArea").val("");
 			return;
 		}
-		var chatDiv1;
-		var chatDiv2;
-		var chatH3;
-		var chatP;
-		var member = "${login.nickName} " + "(${login.memberId})";
+		var tDiv1;
+		var tDiv2;
+		var tH3;
+		var tP;
 		var message = $("#sendTextArea").val();
-		var sendMessage = "2/" + member + "/" + message;
+		var sendMessage = "#2/" + mine + "/ " + "/" + message +"/" + appBj.getPeerId();
 		
 		event.preventDefault();
 		
 		if(message) {
 			appBj.sendText(sendMessage);
 			
-			chatDiv1 = document.createElement("div");
-			chatDiv1.classList.add("services-v5");
-			chatDiv1.style.padding = "0px 15px 0px 15px";
+			tDiv1 = document.createElement("div");
+			tDiv1.classList.add("services-v5");
+			tDiv1.style.padding = "0px 15px 0px 15px";
 			
-			chatDiv2 = document.createElement("div");
-			chatDiv2.classList.add("services-v5-wrap");
-			chatDiv2.style.marginBottom = "0px";
+			tDiv2 = document.createElement("div");
+			tDiv2.classList.add("services-v5-wrap");
+			tDiv2.style.marginBottom = "0px";
 			
-			chatH3 = document.createElement("h3");
-			chatH3.classList.add("services-v5-body-title");
-			chatH3.classList.add("font-size-13");
-			chatH3.textContent = member;
+			tH3 = document.createElement("h3");
+			tH3.classList.add("services-v5-body-title");
+			tH3.classList.add("font-size-13");
+			tH3.textContent = mine;
 			
-			chatP = document.createElement("p");
-			chatP.classList.add("services-v5-text");
-			chatP.classList.add("font-size-12");
-			chatP.style.workBreak = "break-all";
-			chatP.textContent = message;
+			tP = document.createElement("p");
+			tP.classList.add("services-v5-text");
+			tP.classList.add("font-size-12");
+			tP.style.workBreak = "break-all";
+			tP.textContent = message;
 			
-			chatDiv2.appendChild(chatH3);
-			chatDiv1.appendChild(chatDiv2);
-			chatDiv1.appendChild(chatP);
-			chattingArea.appendChild(chatDiv1);
+			tDiv2.appendChild(tH3);
+			tDiv1.appendChild(tDiv2);
+			tDiv1.appendChild(tP);
+			chattingArea.appendChild(tDiv1);
 			
 			// 채팅 등록 후 스크롤 가장 마지막으로
 			chattingArea.scrollTop = chattingArea.scrollHeight;
@@ -881,31 +1019,32 @@
 	}, false);
 	
 	// 모달로 값 넘기기
-	var targetNickName = null;
-	var targetMemberId = null;
-	
 	$("#viewerArea").on("click", ".target" ,function(e) {
 		var nodeName = e.target.nodeName;
 		
 		if(nodeName == "SPAN" || nodeName == "BUTTON") {
+			//console.log(e.target);
 			targetNickName = $(e.target).parent().find(".targetNickName").text();
 			targetMemberId = $(e.target).parent().find(".targetId").text();
+			targetPeerId = appBj.getPeerByUserId(targetMemberId).id;
+			targetMember = targetNickName + " (" + targetMemberId + ")";
+			//console.log(targetNickName + "/" + targetMemberId + "/" + targetPeerId + "/" + targetMember);
 			
 			// 기쁨 선물 모달
-			$("#receiveMember").text(targetNickName + " (" + targetMemberId + ")");
+			$("#receiveMember").text(targetMember);
 			$("#inReceiveMemberId").val(targetMemberId);
 			// 강퇴 모달
-			$("#leaveMember").text(targetNickName + " (" + targetMemberId + ")");
+			$("#leaveMember").text(targetMember);
 		}
 		
 	});
 	
 	/* 방송 중 포인트 선물 */
 	
+	var inTranslatePoint;
 	// 선물하기 버튼 클릭 이벤트
 	presentPointBtn.addEventListener("click", function(event) {
-		var inTranslatePoint = $("#inTranslatePoint").val();
-		// var memberId = $("#receiveMember").text();
+		inTranslatePoint = $("#inTranslatePoint").val();
 		
 		// 포인트 미입력시
 		if(inTranslatePoint == "" || inTranslatePoint == null || inTranslatePoint == 0) {
@@ -913,11 +1052,11 @@
 			return;
 		} 
 		// 포인트 부족할 경우
-		else if( inTranslatePoint > $("#myPoint").text() ) {
+		else if( inTranslatePoint > parseInt($("#myPoint").text().replace(",", "")) ) {
 			$("#pointFail").fadeIn();
 		} 
 		else {
-			$("#confirmMember").text(targetMemberId);
+			$("#confirmMember").text(targetMember);
 			$("#confirmPoint").text(inTranslatePoint);
 			$("#pointConfirm").fadeIn();
 			$("#pointEvent1").css("display", "none");
@@ -929,15 +1068,44 @@
 	$("#pointYes").click(function() {
 		var param = $("#pointFrm").serialize();
 		$.getJSON( "insertTrans.do", param, function(data) {
-			console.log(data);
+			//console.log(data);
 			if(data.trans.outErrorcode == -1) {
+				$("#pointErrorMsg").text(data.trans.outMessage);
 				$("#pointFail2").fadeIn();
 			} else if (data.trans.outErrorcode > 0) {
 				$(".pointModalClose").click();
-				var tP = document.createElement("p");
-				tP.textContent = "성공";
-				chattingArea.appendChild(tP);
-				$("#myPoint").text(data.member.point);
+				$("#myPoint").text($.number(data.member.point));
+				
+				var pointMsg = "#4/" + mine + "/" + targetMember + "/" + $.number(inTranslatePoint) + "/" + appBj.getPeerId();
+				appBj.sendText(pointMsg);
+				
+				var tDiv1 = document.createElement("div");
+				tDiv1.classList.add("chat-point-wrap");
+				
+				var tDiv2 = document.createElement("div");
+				tDiv2.classList.add("chat-point");
+				tDiv2.innerHTML = 
+					"<div class='chat-point-img-gradient'>" + 
+						"<img class='img-responsive' src='assets/img/round.jpg'>" + 
+					"</div>" + 
+					"<div class='chat-point-content'>" + 
+						"<div class='chat-point-center-align'>" + 
+							"<h4 class='chat-point-member'>" + $.number(inTranslatePoint) + "</h4>" + 
+							"<span class='chat-point chat-point-member-position'>기쁨!</span>" + 
+						"</div>" + 
+					"</div>";
+				
+				tDiv1.appendChild(tDiv2);	
+				tDiv1.innerHTML += 
+					"<div class='alert alert-success text-center font-size-13 padding-10 margin-b-0 margin-t-5' role='alert'>" +
+						"<strong>" + mine + "</strong> 님이 <br>" + 
+						"<strong>" + targetMember + "</strong> 님에게 선물!" + 
+					"</div>";
+				
+				chattingArea.appendChild(tDiv1);
+				
+				// 채팅 등록 후 스크롤 가장 마지막으로
+				chattingArea.scrollTop = chattingArea.scrollHeight;
 			}
 		});
 	});
@@ -972,8 +1140,16 @@
 	
 	/* 강퇴 이벤트 */ 
 	$("#leaveYesBtn").click(function(e) {
-		var targetPeerId = appBj.getPeerByUserId(targetMemberId).id;
-		appBj.disconnectChannel(targetPeerId);
+		
+		var message = "#5/" + mine + "/" + targetMember + "/ 님이 강제퇴장되셨습니다." + "/" + targetPeerId;
+		appBj.sendText(message);
+		
+		var tP = document.createElement("p");
+		tP.style.paddingLeft = "5px";
+		tP.classList.add("font-size-11");
+		tP.innerHTML = "＃ " + targetMember + " 님이 강제퇴장되셨습니다.";
+		chattingArea.appendChild(tP);
+		
 		$("#leaveModal").modal("hide");
 	});
 	
@@ -1007,33 +1183,68 @@
 		}
 	});
 	
-	/* End BJ 방송 관련 Javascript */
+	// 비디오 & 오디오 mute 이벤트
+	function getRemoteMedia(appBj) {
+		var val, property;
+		var peers = appBj.calling.peers;
+		if (peers) {
+			for (property in peers) {
+				if (peers.hasOwnProperty(property)) {
+					if (property.indexOf('TKS') >= 0) {
+						val = peers[property];
+						return val.peer.getMedia();
+					}
+				}
+			}
+		} else {
+			return null;
+		}
+	}
 	
+	videoMute.addEventListener('click', function() {
+		var checked = $(this).is(":checked");
+		console.log(checked);
+		var local = appBj.getMedia();
+		if (local) {
+			local.videoMute(!checked);
+		}
+	}, false);
+	
+	audioMute.addEventListener('click', function() {
+		var checked = $(this).is(":checked");
+		console.log(checked);
+		var local = appBj.getMedia();
+		if (local) {
+			local.audioMute(!checked);
+		}
+	}, false);
+	
+	/* End BJ 방송 관련 Javascript */
+
 	$(function() {
-		
+
 		// 동적 크기 조절
-		$("#videoArea").css( "height", $("#leftArea").width()/1.35 );
-		$("#chattingArea").css( "height", $("#videoArea").height()-130 );
-		$("#viewerList").css( "height", $("#chattingArea").height()/1.75 );
-		$("#viewerArea").css( "height", $("#viewerList").height()*0.85 );
+		$("#videoArea").css("height", $("#leftArea").width() / 1.33);
+		$("#chattingArea").css("height", $("#videoArea").height() - 130);
+		$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
+		$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		$(window).resize(function() {
-			$("#videoArea").css( "height", $("#leftArea").width()/1.35 );
-			$("#chattingArea").css( "height", $("#videoArea").height()-130 );
-			$("#viewerList").css( "height", $("#chattingArea").height()/1.75 );
-			$("#viewerArea").css( "height", $("#viewerList").height()*0.85 );
+			$("#videoArea").css("height", $("#leftArea").width() / 1.35);
+			$("#chattingArea").css("height", $("#videoArea").height() - 130);
+			$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
+			$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		});
-		
+
 		// number formatting
 		$(".view-count").number(true);
 		$("#myPoint").number(true);
-		
+
 		// 모달 show 이벤트
-		$('#presentPointModal').on('shown.bs.modal', function () {
+		$('#presentPointModal').on('shown.bs.modal', function() {
 			$('#inTranslatePoint').focus();
 		});
-		
+
 	});
-	
 </script>
 <!-- End Page Javascript Code -->
 

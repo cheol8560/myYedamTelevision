@@ -87,31 +87,29 @@
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
                         
-                        <div class="" id="chattingArea" style="padding: 10px 0 10px 0;">
-                           
-                        </div>
-                        
-                        <div class="margin-b-20" style="border-top: 1px solid #00bcd4;">
+	                    <div class="overflow-a" id="chattingArea" style="padding: 10px 0;">
+						
+						</div>
+						
+                        <div class="" style="border-top: 1px solid #00bcd4;">
 		                    <!-- Comment Form v1 -->
 		                    <div class="bg-color-white">
 		                        <!-- Comment Form v1 -->
-		                        <!-- <form id="comment-form" class="comment-form-v1" action="#" method="get"> -->
-		                            <div class="padding-10">
-		                                <textarea class="form-control comment-form-v1-input" style="resize:none;" rows="4" 
-		                                		  placeholder="Your message" name="textarea" id="sendTextArea"></textarea>
+		                            <div class="full-width-container">
+		                                <textarea class="form-control" rows="4" placeholder="Your message" name="textarea" 
+		                                		  id="sendTextArea" style="resize:none; padding:10px 10px; width:75%; border:none;"
+		                                		  ></textarea>
+										<button class="btn-base-bg btn-base-xs radius-3" id="sendTextBtn"
+												style="position: absolute; top:25px; right:10px;">보내기</button>
 		                            </div>
-		                            <div class="row text-right margin-l-10 margin-r-10">
-			                            <button type="submit" class="btn-base-bg btn-base-xs radius-3" id="sendTextBtn">보내기</button>
-		                            </div>
-		                        <!-- </form> -->
 		                        <!-- Comment Form v1 -->
 		                    </div>
 		                    <!-- End Comment Form v1 -->
                         </div>
                     </div>
-					
 				</div>
                 <!-- End Chatting Area -->
+                
                 <!-- Broadcast list -->
                 <div class="col-md-6 padding-0">
                     <div class="blog-sidebar margin-b-30">
@@ -189,6 +187,33 @@
     <!-- End Interactive Banner v1 -->
 	<!--========== END PAGE CONTENT ==========-->
 	
+	<!-- 강퇴 확인 Modal -->
+	<div class="modal fade" id="leavedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">강제 퇴장</h4>
+				</div>
+				<div class="modal-body">
+			
+					<div class="alert alert-warning font-size-13 text-center" id="leaveAlert" role="alert">
+						<strong>주의!</strong> 현재 방송에서 <strong>강퇴</strong>당하셨습니다.
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<button type="button" class="btn-base-bg btn-base-xs" data-dismiss="modal" aria-label="Close">확인</button>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 강퇴 확인 Modal -->
+	
 </div>
 <!-- END WRAPPER -->
 
@@ -239,6 +264,11 @@
 	var channelId = "${broadcastResult.channelId}";
 	var appViewer;
 	var options;
+	var targetNickName;
+	var targetMemberId;
+	var targetPeerId;
+	var targetMember;
+	var mine = "${login.nickName} (${login.memberId})";
 	
 	// 시청자 객체 및 변수 설정
 	appViewer = new PlayRTC({
@@ -260,11 +290,11 @@
 		
 		appViewer.connectChannel(channelId, options);
 		
-		//appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
 	}, false);
 	
 	appViewer.on("stateChange", function(state, peerid, userid) {
 		viewCount(channelId);
+		console.log(state);
 	});
 	
 	// 시청자수 출력 함수
@@ -279,55 +309,82 @@
 	appViewer.on("addDataStream", function(pid, uid, dataChannel) {
 		dataChannel.on("message", function(message) {
 			
-			var chatDiv1;
-			var chatDiv2;
-			var chatH3;
-			var chatP;
-			
 			if(message.type === "text") {
 				var msg = message.data;
+				var msgArr = msg.split("/");
 				
-				var category = msg.substring(0, msg.indexOf("/"));
-				var member = msg.substring(msg.indexOf("/")+1, msg.indexOf("/", 3));
-				var acceptedMessage = msg.substring(msg.indexOf("/", 3)+1);
+				var category = msgArr[0];
+				var sendMember = msgArr[1];
+				var targetMember = msgArr[2];
+				var acceptedMessage = msgArr[3];
+				var targetPeerId = msgArr[4];
 				
-				if(category == "1") {
+				// 방송 입장
+				if(category == "#1") {
 					
-					var chatP = document.createElement("p");
-					chatP.style.paddingLeft = "5px";
-					chatP.classList.add("font-size-11");
-					chatP.textContent = "＃ " + member + acceptedMessage;
-					chattingArea.appendChild(chatP);
+					var tP = document.createElement("p");
+					tP.style.paddingLeft = "5px";
+					tP.classList.add("font-size-12");
+					tP.textContent = "＃ " + sendMember + acceptedMessage;
+					chattingArea.appendChild(tP);
 					
-				} else {
+				} 
+				// 방송 중 채팅
+				else if(category == "#2") {
 					
-					var chatDiv1;
-					var chatDiv2;
-					var chatH3;
-					var chatP;
+					var tDiv1;
+					var tDiv2;
+					var tH3;
+					var tP;
 					
-					chatDiv1 = document.createElement("div");
-					chatDiv1.classList.add("services-v5");
-					chatDiv1.style.padding = "0px 15px 0px 15px";
+					tDiv1 = document.createElement("div");
+					tDiv1.classList.add("services-v5");
+					tDiv1.style.padding = "0px 15px 0px 15px";
 					
-					chatDiv2 = document.createElement("div");
-					chatDiv2.classList.add("services-v5-wrap");
-					chatDiv2.style.marginBottom = "0px";
+					tDiv2 = document.createElement("div");
+					tDiv2.classList.add("services-v5-wrap");
+					tDiv2.style.marginBottom = "0px";
 					
-					chatH3 = document.createElement("h3");
-					chatH3.classList.add("services-v5-body-title");
-					chatH3.classList.add("font-size-13");
-					chatH3.textContent = member;
+					tH3 = document.createElement("h3");
+					tH3.classList.add("services-v5-body-title");
+					tH3.classList.add("font-size-14");
+					tH3.textContent = sendMember;
 					
-					chatP = document.createElement("p");
-					chatP.classList.add("services-v5-text");
-					chatP.classList.add("font-size-12");
-					chatP.textContent = acceptedMessage;
+					tP = document.createElement("p");
+					tP.classList.add("services-v5-text");
+					tP.classList.add("font-size-13");
+					tP.textContent = acceptedMessage;
 					
-					chatDiv2.appendChild(chatH3);
-					chatDiv1.appendChild(chatDiv2);
-					chatDiv1.appendChild(chatP);
-					chattingArea.appendChild(chatDiv1);
+					tDiv2.appendChild(tH3);
+					tDiv1.appendChild(tDiv2);
+					tDiv1.appendChild(tP);
+					chattingArea.appendChild(tDiv1);
+					
+				}
+				// 방송종료
+				else if (category == "#3") {
+					
+				}
+				// 별풍선 선물
+				else if (category == "#4") {
+					
+				}
+				// 강퇴
+				else if (category == "#5") {
+					
+					if( appViewer.getPeerId() == targetPeerId ) {
+						$("#leavedModal").modal();
+					}
+					
+					var tP = document.createElement("p");
+					tP.style.paddingLeft = "5px";
+					tP.classList.add("font-size-12");
+					tP.textContent = "＃ " + targetMember + acceptedMessage;
+					chattingArea.appendChild(tP);
+					
+				}
+				// 블랙리스트 등록
+				else if (category == "#6") {
 					
 				}
 				
@@ -355,13 +412,12 @@
 	
 	// 방송 연결
 	appViewer.on("connectChannel", function(channelId) {
-		// appViewer.sendText("1/${login.nickName} (${login.memberId})/님 입장");
+		
 	});
 	
 	// 방송 종료 시 이벤트 처리
 	appViewer.on("disconnectChannel", function() {
 		$("video").remove();
-		
 	});
 	
 	// 시청자 입장 후 방송 종료
@@ -377,47 +433,81 @@
 		if(!appViewer) {
 			return;
 		}
-		var chatDiv1;
-		var chatDiv2;
-		var chatH3;
-		var chatP;
-		var member = "${login.nickName} " + "(${login.memberId})";
+		var tDiv1;
+		var tDiv2;
+		var tH3;
+		var tP;
 		var message = $("#sendTextArea").val();
-		var sendMessage = "2/" + member + "/" + message;
+		var sendMessage = "#2/" + mine + "/ " + "/" + message + "/" + appViewer.getPeerId();
 		
 		event.preventDefault();
 		
 		if(message) {
 			appViewer.sendText(sendMessage);
 			
-			chatDiv1 = document.createElement("div");
-			chatDiv1.classList.add("services-v5");
-			chatDiv1.style.padding = "0px 15px 0px 15px";
+			tDiv1 = document.createElement("div");
+			tDiv1.classList.add("services-v5");
+			tDiv1.style.padding = "0px 15px 0px 15px";
 			
-			chatDiv2 = document.createElement("div");
-			chatDiv2.classList.add("services-v5-wrap");
-			chatDiv2.style.marginBottom = "0px";
+			tDiv2 = document.createElement("div");
+			tDiv2.classList.add("services-v5-wrap");
+			tDiv2.style.marginBottom = "0px";
 			
-			chatH3 = document.createElement("h3");
-			chatH3.classList.add("services-v5-body-title");
-			chatH3.classList.add("font-size-13");
-			chatH3.textContent = member;
+			tH3 = document.createElement("h3");
+			tH3.classList.add("services-v5-body-title");
+			tH3.classList.add("font-size-14");
+			tH3.textContent = mine;
 			
-			chatP = document.createElement("p");
-			chatP.classList.add("services-v5-text");
-			chatP.classList.add("font-size-12");
-			chatP.textContent = message;
+			tP = document.createElement("p");
+			tP.classList.add("services-v5-text");
+			tP.classList.add("font-size-13");
+			tP.textContent = message;
 			
-			chatDiv2.appendChild(chatH3);
-			chatDiv1.appendChild(chatDiv2);
-			chatDiv1.appendChild(chatP);
-			chattingArea.appendChild(chatDiv1);
+			tDiv2.appendChild(tH3);
+			tDiv1.appendChild(tDiv2);
+			tDiv1.appendChild(tP);
+			chattingArea.appendChild(tDiv1);
+			
+			// 채팅 등록 후 스크롤 가장 마지막으로
+			chattingArea.scrollTop = chattingArea.scrollHeight;
 		}
 		
 		$("#sendTextArea").val("").focus();
 	}, false);
 	
+	// 강퇴알림 모달 hide 시 disconnect 및 메인페이지로 이동
+	$("#leavedModal").on("hidden.bs.modal", function(e) {
+		appViewer.disconnectChannel(appViewer.getPeerId());
+		location.href = "getOnBroadcastList.do";
+	});
 	
+	// 채팅 입력창 엔터 이벤트
+	var isCtrl = false;
+	var ctrlKey = 17, enterKey = 13;
+	
+	$("#sendTextArea").keyup(function(e) {
+		if((e.keyCode ? e.keyCode : e.which) == ctrlKey)
+			isCtrl = false;
+	}).keydown(function(e) {
+		var keyCode = (e.keyCode ? e.keyCode : e.which);
+		
+		if(keyCode == ctrlKey) {
+			isCtrl = true;
+		}
+		
+		// ctrl + enter 입력시
+		if(keyCode == enterKey && isCtrl == true) {
+			var text = $("#sendTextArea").val();
+			$("#sendTextArea").val(text + "\n");
+			return false;
+		}
+		
+		//  enter 입력시
+		else if(keyCode == enterKey) {
+			$("#sendTextBtn").click();
+			return false;
+		}
+	});
 	
 	/* End 시청자 방송 관련 Javascript */
 

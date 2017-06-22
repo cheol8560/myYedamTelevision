@@ -1,5 +1,6 @@
 package yolo.myTv.translatePoints.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import yolo.myTv.charges.service.ChargeService;
 import yolo.myTv.charges.service.ChargeVO;
 import yolo.myTv.exchanges.service.ExchangeService;
 import yolo.myTv.exchanges.service.ExchangeVO;
+import yolo.myTv.members.service.MemberService;
 import yolo.myTv.members.service.MemberVO;
 import yolo.myTv.translatePoints.service.TransVO;
 import yolo.myTv.translatePoints.service.TranslatePointService;
@@ -33,6 +35,8 @@ public class TranslatePointController {
 	ChargeService chargeService;
 	@Autowired
 	ExchangeService exchangeService;
+	@Autowired
+	MemberService memberService;
 	
 	// 보유중인 기쁨 페이지
 	@RequestMapping("/getHoldingPointList.do")
@@ -132,9 +136,15 @@ public class TranslatePointController {
 
 	//거래발생 프로시져
 	@RequestMapping("/insertTrans.do")
-	public @ResponseBody TransVO insertTrans(@ModelAttribute("trans") TransVO vo, Model model){
+	public @ResponseBody Map<String, Object> insertTrans(@ModelAttribute("trans") TransVO vo, Model model, HttpSession session){
+		Map<String, Object> map = new HashMap<String, Object>();
 		translatePointService.insertTrans(vo);
-		return vo;
+		MemberVO user = (MemberVO) session.getAttribute("login");
+		MemberVO result = memberService.getMember(user);
+		map.put("trans", vo);
+		map.put("member", result);
+		session.setAttribute("login", result);
+		return map;
 	}
 	
 	//교환내역 조회

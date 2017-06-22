@@ -18,10 +18,11 @@
 		<div class="col-md-12">
 			<div class="panel panel-white">
 				<div class="panel-heading clearfix">
-					<h4 class="panel-title">공지사항</h4>
+					<h4 class="panel-title">공지사항 수정</h4>
 				</div>
 				<div class="panel-body">
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="updateAdminNotice.do" method="post"
+						enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="input-readonly" class="col-sm-2 control-label">게시글
 								번호</label>
@@ -33,8 +34,7 @@
 						<div class="form-group">
 							<label for="input-Default" class="col-sm-2 control-label">제목</label>
 							<div class="col-sm-9">
-								<div class="form-control" id="input-Default">
-									${adminNotice.boardTitle}</div>
+								<input class="form-control" id="input-Default" value="${adminNotice.boardTitle}">
 							</div>
 						</div>
 						<div class="form-group">
@@ -62,7 +62,7 @@
 							<label for="input-Default" class="col-sm-2 control-label">작성내용</label>
 							<div class="col-md-9">
 								<textarea class="input-large form-control" id="message"
-									rows="15" readonly="readonly">${adminNotice.boardText}</textarea>
+									rows="15">${adminNotice.boardText}</textarea>
 							</div>
 						</div>
 						<br>
@@ -76,26 +76,14 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-3 col-md-offset-10">
-								<a href="UpdateAdminNoticeForm.do?boardNo=${adminNotice.boardNo}"><button
-										type="button" class="btn btn-default">수정</button></a> <a
-									href="deleteNotice.do?boardNo=${adminNotice.boardNo}"><button
-										type="button" class="btn btn-default">삭제</button></a>
-							</div>
-							<br> <br> <input type="hidden" name="category"
-								value="d1" /> <br>
-							<div class="col-md-1 col-md-offset-10">
-								<button class="btn btn-success">목록으로</button>
-
-							</div>
+							
+							<button type="submit"
+								class="btn btn-success col-md-offset-10">확인</button>
+							<button class="btn btn-default radius-3 ">취소</button>
+					
 						</div>
 						<br>
-						<div class="row">
-							<div class="col-md-offset-2 col-md-9">
-								<c:import
-									url="../comments/commentList.jsp?boardNo=${adminNotice.boardNo}"></c:import>
-							</div>
-						</div>
+						
 					</form>
 				</div>
 			</div>

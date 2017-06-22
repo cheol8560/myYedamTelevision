@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!--========== PAGE CONTENT ==========-->
 <!-- FAQ -->
 <div class="faq">
@@ -45,7 +47,8 @@
 							</div>
 							<div class="col-md-7 margin-b-30">
 								<div class="form-control comment-form-v1-input">
-									<h5>작성일자 : ${inquiry.writeDate}</h5>
+									<h5>작성일자 : <fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+												value="${inquiry.writeDate}"/></h5>
 								</div>
 							</div>
 

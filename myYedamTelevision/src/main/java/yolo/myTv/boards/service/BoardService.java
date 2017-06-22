@@ -37,6 +37,8 @@ public interface BoardService {
 
 	List<Map<String, Object>> adminNoticeList(BoardVO vo);
 
+	void updateAdminBoard(BoardVO vo);
+
 	
 	
 

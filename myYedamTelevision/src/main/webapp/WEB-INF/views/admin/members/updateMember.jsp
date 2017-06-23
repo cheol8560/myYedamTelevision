@@ -48,6 +48,8 @@
 									<button type="submit"
 										class="btn-base-bg btn-base-sm radius-3 col-md-offset-10">확인</button>
 									<button class="btn-base-bg btn-base-sm radius-3 ">취소</button>
+									<a href="./adminDeleteMember.do?memberId=${member.memberId}">
+									<input type="button" value="삭제"></a>
 								</div>
 							</form>
 

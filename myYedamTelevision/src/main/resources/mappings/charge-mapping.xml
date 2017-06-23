@@ -109,6 +109,7 @@ SELECT * FROM (
 				,find_code_name(APPROVE_STATUS) as APPROVE_STATUS_NAME
 				,find_code_name(PAYMENT_WAY) as PAYMENT_WAY_NAME
 		FROM CHARGES
+		ORDER BY CHARGE_NO DESC
 
 	</select>
 	

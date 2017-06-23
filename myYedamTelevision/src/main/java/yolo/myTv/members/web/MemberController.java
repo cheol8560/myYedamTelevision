@@ -107,10 +107,11 @@ public class MemberController {
 
 			// 넘어온 ID를 받는다.
 			String paramId = (req.getParameter("memberId") == null) ? "" : String.valueOf(req.getParameter("memberId"));
-
+			
 			MemberVO vo = new MemberVO();
 			vo.setMemberId(paramId.trim());
 			int chkPoint = memberService.chkDupId(vo);
+			
 
 			// out.print(chkPoint);
 			if(chkPoint == 0) {
@@ -282,6 +283,14 @@ public class MemberController {
 			memberService.updateMember(vo);
 			System.out.println(vo);
 			return "redirect:/";
+		}
+		
+		//회원탈퇴
+		@RequestMapping(value = "/adminDeleteMember.do", method=RequestMethod.GET)
+		public String adminDeleteMember(MemberVO vo,HttpSession session){
+			memberService.deleteMember(vo);
+			System.out.println(vo);
+			return "admin/members/member";
 		}
 	
 }

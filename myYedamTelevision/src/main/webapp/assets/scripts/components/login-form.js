@@ -1,13 +1,17 @@
 // Login
 var Login = function() {
     "use strict";
-
+    
     // Login Form
     var handleLoginForm = function() {
         $(".login-form").validate({
             rules: {
             	memberId: {
-                    required: true
+                    required: true,
+                    remote: {
+            			type: "post",
+            			url: "./chkLoginId.do"
+            		}
                 },
                 password: {
                     required: true
@@ -15,7 +19,8 @@ var Login = function() {
             },
             messages: {
             	memberId: {
-                    required: "ID를 입력해주세요."
+                    required: "ID를 입력해주세요.",
+                    remote:"존재하지 않는 ID입니다."
                 },
                 password: {
                     required: "비밀번호를 입력해주세요."

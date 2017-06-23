@@ -161,19 +161,19 @@ $(function(){
 				<table class="table">
 					<thead>
 						<tr>
-							<th>환전 신청 일자</th>
-							<th>환전 신청 기쁨 개수</th>
-							<th>수수료</th>
-							<th>실수령 금액</th>
+							<th class="text-center">환전 신청 일자</th>
+							<th class="text-center">환전 신청 기쁨 개수</th>
+							<th class="text-center">수수료</th>
+							<th class="text-center">실수령 금액</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${exchangeList}" var="exchangeList">
 							<tr>
-								<td><fmt:formatDate pattern = "yyyy년 MM월 dd일 HH:mm:ss" value = "${exchangeList.requestDate}"/></td>
-								<td>${exchangeList.requestPoint}</td>
-								<td><fmt:formatNumber value="${exchangeList.commission}" groupingUsed="true"/>원</td>
-								<td><fmt:formatNumber value="${exchangeList.realReceipt}" groupingUsed="true"/>원</td>
+								<td class="text-center"><fmt:formatDate pattern = "yyyy년 MM월 dd일 HH:mm:ss" value = "${exchangeList.requestDate}"/></td>
+								<td class="text-center">${exchangeList.requestPoint}</td>
+								<td class="text-right"><fmt:formatNumber value="${exchangeList.commission}" groupingUsed="true"/>원</td>
+								<td class="text-right"><fmt:formatNumber value="${exchangeList.realReceipt}" groupingUsed="true"/>원</td>
 							</tr>
 						</c:forEach>
 					</tbody>

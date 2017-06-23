@@ -201,7 +201,7 @@
 				<div class="modal-body">
 			
 					<div class="alert alert-warning font-size-13 text-center" id="leaveAlert" role="alert">
-						<strong>주의!</strong> 현재 방송에서 <strong>강퇴</strong>당하셨습니다.
+						<strong>주의!</strong> 현재 방송에서 <br> <strong>강제퇴장</strong>당하셨습니다.
 					</div>
 
 				</div>
@@ -213,6 +213,62 @@
 		</div>
 	</div>
 	<!-- End 강퇴 확인 Modal -->
+	
+	<!-- 블랙리스트 확인 Modal -->
+	<div class="modal fade" id="blacklistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">블랙리스트 지정</h4>
+				</div>
+				<div class="modal-body">
+			
+					<div class="alert alert-danger font-size-13 text-center" id="blacklistAlert" role="alert">
+						<strong>경고!</strong> 현재 방송에서 <strong>블랙리스트</strong>로 등록되어 <br>
+						강제퇴장당하셨습니다.
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<button type="button" class="btn-base-bg btn-base-xs" data-dismiss="modal" aria-label="Close">확인</button>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 블랙리스트 확인 Modal -->
+	
+	<!-- 블랙리스트 입장 불가 Modal -->
+	<div class="modal fade" id="blacklistRejectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">블랙리스트 지정</h4>
+				</div>
+				<div class="modal-body">
+			
+					<div class="alert alert-danger font-size-13 text-center" id="blacklistAlert" role="alert">
+						<strong>경고!</strong> 현재 방송에서 <strong>블랙리스트</strong>로 <br> 
+						등록되어 입장할 수 없습니다.
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<button type="button" class="btn-base-bg btn-base-xs" data-dismiss="modal" aria-label="Close">확인</button>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 블랙리스트 확인 Modal -->
 	
 </div>
 <!-- END WRAPPER -->
@@ -288,7 +344,17 @@
 			}
 		}
 		
-		appViewer.connectChannel(channelId, options);
+		// 방송 입장 후 블랙리스트 체크
+		var param = "broadcastNo=${broadcastResult.broadcastNo}&memberId=${login.memberId}";
+		
+		$.getJSON("getBlacklistCheck.do", param, function(data) {
+			console.log(data);
+			if(data == 0) {
+				appViewer.connectChannel(channelId, options);
+			} else {
+				$("#blacklistRejectModal").modal();
+			}
+		});
 		
 	}, false);
 	
@@ -386,6 +452,16 @@
 				// 블랙리스트 등록
 				else if (category == "#6") {
 					
+					if( appViewer.getPeerId() == targetPeerId ) {
+						$("#blacklistModal").modal();
+					}
+					
+					var tP = document.createElement("p");
+					tP.style.paddingLeft = "5px";
+					tP.classList.add("font-size-12");
+					tP.textContent = "＃ " + targetMember + acceptedMessage;
+					chattingArea.appendChild(tP);
+					
 				}
 				
 			}
@@ -478,6 +554,18 @@
 	// 강퇴알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#leavedModal").on("hidden.bs.modal", function(e) {
 		appViewer.disconnectChannel(appViewer.getPeerId());
+		location.href = "getOnBroadcastList.do";
+	});
+	
+	// 블랙리스트 등록알림 모달 hide 시 disconnect 및 메인페이지로 이동
+	$("#blacklistModal").on("hidden.bs.modal", function(e) {
+		appViewer.disconnectChannel(appViewer.getPeerId());
+		location.href = "getOnBroadcastList.do";
+	});
+	
+	// 블랙리스트 입장알림 모달 hide 시 disconnect 및 메인페이지로 이동
+	$("#blacklistRejectModal").on("hidden.bs.modal", function(e) {
+		// appViewer.disconnectChannel(appViewer.getPeerId());
 		location.href = "getOnBroadcastList.do";
 	});
 	

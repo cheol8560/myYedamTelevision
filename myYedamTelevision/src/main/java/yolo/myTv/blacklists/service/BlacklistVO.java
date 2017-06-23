@@ -1,13 +1,11 @@
 package yolo.myTv.blacklists.service;
 
-import java.util.Date;
-
 public class BlacklistVO {
 
 	private int broadcastNo;
 	private String memberId;
 	private String nickName;
-	private Date registDate;
+	private String registDate;
 	
 	public int getBroadcastNo() {
 		return broadcastNo;
@@ -27,10 +25,10 @@ public class BlacklistVO {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public Date getRegistDate() {
+	public String getRegistDate() {
 		return registDate;
 	}
-	public void setRegistDate(Date registDate) {
+	public void setRegistDate(String registDate) {
 		this.registDate = registDate;
 	}
 	

@@ -43,7 +43,7 @@
 				<div class="col-md-6 padding-0" style="border-right:1px solid #00bcd4; border-left:1px solid #00bcd4;">
                     <div class="blog-sidebar">
                         <div class="blog-sidebar-heading">
-                            <i class="blog-sidebar-heading-icon icon-book-open"></i>
+                            <i class="blog-sidebar-heading-icon fa fa-comments font-size-18"></i>
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
                         
@@ -74,7 +74,7 @@
                 <div class="col-md-6 padding-0">
                     <div class="blog-sidebar margin-b-10">
                         <div class="blog-sidebar-heading">
-                            <i class="blog-sidebar-heading-icon icon-book-open"></i>
+                            <i class="blog-sidebar-heading-icon fa fa-gears font-size-18"></i>
                             <h4 class="blog-sidebar-heading-title">방송 설정</h4>
                         </div>
                         <div class="blog-sidebar-content" id="broadcastFormWrap" style="padding:15px 15px 0 15px;">
@@ -87,13 +87,13 @@
 										<label for="broadcastTitle">방송제목</label>
 										<input type="text" class="form-control"
 											name="broadcastTitle" id="broadcastTitle" value="${broadcastResult.broadcastTitle}"
-											required>
+											maxlength="100">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12 margin-b-10">
 										<label for="contentCode">방송주제</label>
-										<select id="contentCode" name="contentCode" class="form-control" required>
+										<select id="contentCode" name="contentCode" class="form-control">
 										<c:forEach items="${contentList}" var="content">
 											<option value="${content.contentCode}">${content.contentName}</option>	
 										</c:forEach>
@@ -141,10 +141,15 @@
 
 					<!-- 시청자 목록 -->
                     <div class="blog-sidebar">
-                        <div class="blog-sidebar-heading">
-                            <i class="blog-sidebar-heading-icon bordered-icon-box-item fa fa-group"></i>
+                        <div class="blog-sidebar-heading" style="padding: 10px 15px;">
+                            <i class="blog-sidebar-heading-icon bordered-icon-box-item fa fa-group font-size-18"></i>
                             <h4 class="blog-sidebar-heading-title">시청자</h4>
-                            <span style="float:right; margin-right:10px;"><span class="view-count">0</span>명</span>
+                            <span style="float:right; margin-right:10px; margin-top: 7px;"><span class="view-count">0</span>명</span>
+                            <span class="theme-icons-wrap" style="margin-left: 5px;">
+                            	<a href="#" title="블랙리스트 관리" data-toggle="modal" data-target="#blacklistModal" id="blacklistListBtn">
+                            		<i class="theme-icons theme-icons-dark-light-brd theme-icons-xs radius-6 fa fa-user-times"></i>
+                            	</a>
+                            </span>
                         </div>
                         <div class="blog-sidebar-content overflow-a padding-10" id="viewerList">
                             <!-- Latest Tutorials -->
@@ -157,295 +162,6 @@
 							</div>
 							
 							<div id="viewerArea">
-								<!-- 
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">블랙리스트</span> (<span class="targetId">black</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								
-								<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo target">
-									<button type="button" class="btn-custom-bg dropdown-toggle radius-3 "
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<span class="targetNickName">송</span> (<span class="targetId">song</span>)
-									</button>
-									<ul class="dropdown-menu">
-										<li>
-											<a href="#" data-toggle="modal" data-target="#presentPointModal">
-												<i class="dropdown-menu-icon icon-lightbulb"></i> 기쁨선물
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-mobile"></i> 강퇴
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="dropdown-menu-icon icon-basket"></i> 블랙리스트 등록
-											</a>
-										</li>
-									</ul>
-								</div>
-								 -->
 								
 							</div>
 							
@@ -571,6 +287,90 @@
 		</div>
 	</div>
 	<!-- End 강퇴 확인 Modal -->
+	
+	<!-- 블랙리스트 목록 Modal -->
+	<div class="modal fade" id="blacklistModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width:400px;">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">블랙리스트 관리</h4>
+				</div>
+				<div class="modal-body overflow-a" style="height:350px;">
+			
+					<div class="table-wrap-body">
+                            <div class="table-responsive">
+                                <!-- Table Striped -->
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>닉네임</th>
+                                            <th>ID</th>
+                                            <th>등록일</th>
+                                            <th>해제</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="blacklistList">
+
+                                    </tbody>
+                                </table>
+                                <!-- End Table Striped -->
+                            </div>
+                        </div>					
+
+				</div>
+				<div class="modal-footer text-center">
+					<button type="button" class="btn-grey-brd btn-base-xs" data-dismiss="modal" aria-label="Close">닫기</button>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 블랙리스트 목록 Modal -->
+	
+	<!-- 블랙리스트 등록 Modal -->
+	<div class="modal fade" id="blacklistInsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">블랙리스트 등록</h4>
+				</div>
+				<div class="modal-body">
+			
+					<div class="alert alert-danger font-size-13 text-center" id="blacklistInsAlert" role="alert">
+						<strong>주의!</strong> <span id="blacklistInsMember" class="fweight-700"></span> 님을 <br>
+						블랙리스트로 등록하시겠습니까? 
+						<div class="font-size-11">* 블랙리스트로 등록하면 해당 회원은 <br> 강제퇴장되고 방송 입장이 불가능합니다.</div> 
+					</div>
+					
+					<div class="alert alert-success collapse font-size-13 text-center" id="blacklistInsEndAlert" role="alert">
+						<strong><span id="blacklistInsEndMember" class="fweight-700"></span></strong> 님이 <br>
+						블랙리스트로 등록되었습니다.
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<div id="blacklistBtn1">
+						<button type="button" class="btn-base-bg btn-base-xs" id="blacklistInsYesBtn">예</button>
+						<button type="button" class="btn-grey-brd btn-base-xs" data-dismiss="modal" aria-label="Close">아니오</button>
+					</div>
+					<div id="blacklistBtn2" style="display: none;">
+						<button type="button" class="btn-grey-brd btn-base-xs" data-dismiss="modal" aria-label="Close">확인</button>
+					</div>
+					
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 블랙리스트 등록 Modal -->
 	
 </div>
 <!-- END WRAPPER -->
@@ -759,10 +559,14 @@
 							
 							var tLi_1_tI = document.createElement("i");
 							tLi_1_tI.classList.add("dropdown-menu-icon");
-							tLi_1_tI.classList.add("icon-lightbulb");
+							tLi_1_tI.classList.add("fa");
+							tLi_1_tI.classList.add("fa-gift");
+							tLi_1_tI.classList.add("font-size-16");
+							var tLi_1_tSpan = document.createElement("span");
+							tLi_1_tSpan.textContent = "기쁨 선물";
 							
 							tLi_1_tA.appendChild(tLi_1_tI);
-							tLi_1_tA.textContent = "기쁨 선물";
+							tLi_1_tA.appendChild(tLi_1_tSpan);
 							
 							tLi_1.appendChild(tLi_1_tA);
 							
@@ -776,10 +580,14 @@
 							
 							var tLi_2_tI = document.createElement("i");
 							tLi_2_tI.classList.add("dropdown-menu-icon");
-							tLi_2_tI.classList.add("icon-mobile");
+							tLi_2_tI.classList.add("fa");
+							tLi_2_tI.classList.add("fa-sign-out");
+							tLi_2_tI.classList.add("font-size-16");
+							var tLi_2_tSpan = document.createElement("span");
+							tLi_2_tSpan.textContent = "강퇴";
 							
 							tLi_2_tA.appendChild(tLi_2_tI);
-							tLi_2_tA.textContent = "강퇴";
+							tLi_2_tA.appendChild(tLi_2_tSpan);
 							
 							tLi_2.appendChild(tLi_2_tA);
 							
@@ -788,13 +596,19 @@
 									
 							var tLi_3_tA = document.createElement("a");
 							tLi_3_tA.setAttribute("href", "#");
+							tLi_3_tA.setAttribute("data-toggle", "modal");
+							tLi_3_tA.setAttribute("data-target", "#blacklistInsModal");
 							
 							var tLi_3_tI = document.createElement("i");
 							tLi_3_tI.classList.add("dropdown-menu-icon");
-							tLi_3_tI.classList.add("icon-mobile");
+							tLi_3_tI.classList.add("fa");
+							tLi_3_tI.classList.add("fa-thumb-tack");
+							tLi_3_tI.classList.add("font-size-16");
+							var tLi_3_tSpan = document.createElement("span");
+							tLi_3_tSpan.textContent = "블랙리스트 등록";
 							
 							tLi_3_tA.appendChild(tLi_3_tI);
-							tLi_3_tA.textContent = "블랙리스트 등록";
+							tLi_3_tA.appendChild(tLi_3_tSpan);
 							
 							tLi_3.appendChild(tLi_3_tA);
 							
@@ -928,6 +742,15 @@
 	// 방송 시작 버튼 이벤트
 	broadcastStartBtn.addEventListener("click", function(event) {
 		event.preventDefault();
+		
+		var title = $("#broadcastTitle").val();
+		var code = $("#contentCode").val();
+		
+		if(title == null || title == "" || code == null || code == "") {
+			alert("방송정보를 모두 입력해주세요.");
+			return false;
+		}
+		
 		if(PlayRTC.utils.userMediaSupport) {
 			appBj.createChannel();
 		} else {
@@ -1035,6 +858,8 @@
 			$("#inReceiveMemberId").val(targetMemberId);
 			// 강퇴 모달
 			$("#leaveMember").text(targetMember);
+			// 블랙리스트 모달
+			$("#blacklistInsMember").text(targetMember);
 		}
 		
 	});
@@ -1086,7 +911,7 @@
 				tDiv2.classList.add("chat-point");
 				tDiv2.innerHTML = 
 					"<div class='chat-point-img-gradient'>" + 
-						"<img class='img-responsive' src='assets/img/round.jpg'>" + 
+						"<img class='img-responsive' src='assets/img/round.png'>" + 
 					"</div>" + 
 					"<div class='chat-point-content'>" + 
 						"<div class='chat-point-center-align'>" + 
@@ -1125,7 +950,7 @@
 		$("#pointNo").click();
 	});
 	
-	// 모달 닫기 / 취소 버튼 클릭 시
+	// 포인트 모달 닫기 / 취소 버튼 클릭 시
 	$(".pointModalClose").click(function() {
 		$("#pointAlert").hide();
 		$("#pointConfirm").hide();
@@ -1154,6 +979,82 @@
 	});
 	
 	/* End 강퇴 이벤트 */
+	
+	/* 블랙리스트 이벤트 */
+	
+	// 블랙리스트 목록 조회
+	$("#blacklistListBtn").click(function(e) {
+		e.preventDefault();
+		$("#blacklistList").text("");
+		
+		var param = "broadcastNo=${broadcastResult.broadcastNo}";
+		$.getJSON("getBlacklistInBroadcast.do", param, function(data) {
+			for(var i = 0; i < data.length; i++) {
+				var tTr = $("<tr></tr>");
+				
+				$(tTr)
+				.append($("<td></td>", {
+					text: data[i].nickName
+				}))
+				.append($("<td></td>", {
+					text: data[i].memberId,
+					class: "removeMemberId"
+				}))
+				.append($("<td></td>", {
+					text: data[i].registDate
+				}));
+				
+				var tBtn = $("<button></button>", {
+					class: "close blacklistDelBtn",
+					css: {
+						float: "left"
+					}
+				}).append("<i class='theme-icons theme-icons-sm radius-circle fa fa-remove'></i>");
+				
+				$(tTr).append($("<td></td>").append(tBtn));
+				
+				$("#blacklistList").append(tTr);
+			}
+		});
+		
+	});
+	
+	// 블랙리스트 등록
+	$("#blacklistInsYesBtn").click(function(e) {
+		e.preventDefault();
+		
+		var param = "broadcastNo=${broadcastResult.broadcastNo}&memberId=" + targetMemberId +
+					"&nickName=" + targetNickName;
+		 
+		$.getJSON("insertBlacklist.do", param, function(data) {
+			var msg = "#6/" + mine + "/" + targetMember + "/" + " 님이 블랙리스트로 등록되어 강제퇴장되셨습니다." + "/" + targetPeerId;
+			appBj.sendText(msg);
+			
+			$("#blacklistBtn1").css("display", "none");
+			$("#blacklistBtn2").css("display", "block");
+			$("#blacklistInsEndMember").text(targetMember);
+			$("#blacklistInsAlert").hide();
+			$("#blacklistInsEndAlert").fadeIn();
+		});
+		
+	});
+	
+	// 블랙리스트 해제
+	$("#blacklistList").on("click", ".blacklistDelBtn", function(e) {
+		
+		var broadcastNo = "${broadcastResult.broadcastNo}";
+		var removeMemberId = $(e.target).parentsUntil("tr").parent().find(".removeMemberId").text();
+		var tTr = $(e.target).parentsUntil("tr").parent();
+		var param = "broadcastNo=" + broadcastNo + "&memberId=" + removeMemberId;
+		 
+		$.getJSON("deleteBlacklist.do", param, function(data) {
+			alert("해제되었습니다.");
+			tTr.remove();
+		});
+		
+	});
+	
+	/* End 블랙리스트 이벤트 */
 	
 	// 채팅 입력창 엔터 이벤트
 	var isCtrl = false;

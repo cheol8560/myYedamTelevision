@@ -2,26 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
                         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="yolo.myTv.broadcasts.service.impl.BlacklistMapper">
+<mapper namespace="yolo.myTv.blacklists.service.impl.BlacklistMapper">
 
 	<resultMap id="blacklistResult" type="blacklist" >
 		<id property="broadcastNo" column="BROADCAST_NO"/>
 		<id property="memberId" column="MEMBER_ID"/>
 		<result property="nickName" column="NICK_NAME"/>
-		<result property="registDate" column="REGIST_DATE"/>
+		<result property="registDate" column="TO_REGIST_DATE"/>
 	</resultMap>
 
 	<insert id="insertBlacklist" parameterType="blacklist">
-		INSERT INTO BLACKLISTS(BROADCAST_NO, MEMBER_ID)
-		VALUES(#{broadcastNo}, #{memberId})
+		INSERT INTO BLACKLISTS (BROADCAST_NO, MEMBER_ID, NICK_NAME)
+		VALUES (#{broadcastNo}, #{memberId}, #{nickName})
 	</insert>
 
 	<delete id="deleteBlacklist">
         DELETE FROM BLACKLISTS
-        WHERE #{broadcastNo} AND #{memberId}
+        WHERE BROADCAST_NO = #{broadcastNo} 
+        AND MEMBER_ID = #{memberId}
 	</delete>
 
-	<select id="getBlacklistList" resultMap="blacklistResult">
+	<select id="getBlacklistInBroadcast" resultMap="blacklistResult">
+		SELECT BROADCAST_NO
+			 , MEMBER_ID
+			 , NICK_NAME
+			 , TO_CHAR(REGIST_DATE, 'YYYY-MM-DD HH24:MI') TO_REGIST_DATE
+		FROM BLACKLISTS
+		WHERE BROADCAST_NO = #{broadcastNo}
+		ORDER BY REGIST_DATE DESC
+	</select>
+	
+	<select id="getBlacklistCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM BLACKLISTS
+		WHERE BROADCAST_NO = #{broadcastNo}
+		AND MEMBER_ID = #{memberId}
+	</select>
+	
+	<select id="getBlacklistAllList" resultMap="blacklistResult">
 		SELECT BROADCAST_NO
 			 , MEMBER_ID
 			 , NICK_NAME

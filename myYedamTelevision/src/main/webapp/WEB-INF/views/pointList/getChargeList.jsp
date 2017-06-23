@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script>
 
 function fn_egov_link_page(pageNo){
@@ -52,7 +53,7 @@ $(function(){
 						<!-- 총 충전 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
-							<figure class="counter color-base counters-v2-no">${point.totalChargePoint}</figure>
+							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.totalChargePoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">총 충전 포인트</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
@@ -62,7 +63,7 @@ $(function(){
 						<!-- 이번달 충전 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-trophy"></i>
-							<figure class="counter color-base counters-v2-no">${point.monthChargePoint}</figure>
+							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.monthChargePoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">이번달 충전 포인트</h4>
 							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
@@ -72,7 +73,7 @@ $(function(){
 						<!-- 현재 보유 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-happy"></i>
-							<figure class="counter color-base counters-v2-no">${point.nowPoint}</figure>
+							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.nowPoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">현재 보유 포인트</h4>
 							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
@@ -249,21 +250,21 @@ $(function(){
 						<table class="table">
 							<thead>
 								<tr>
-									<th>구매일</th>
-									<th>충전개수</th>
-									<th>결제수단</th>
-									<th>결제금액</th>
-									<th>비고</th>
+									<th class="text-center">구매일</th>
+									<th class="text-center">충전개수</th>
+									<th class="text-center">결제수단</th>
+									<th class="text-center">결제금액</th>
+									<th class="text-center">비고</th>
 								</tr>
 							</thead>
 						<tbody>
-							<c:forEach items="${chargeList}" var="chargeList">
+							<c:forEach items="${chargeList}" var="charge">
 								<tr>
-									<td>${chargeList.requestDate}</td>
-									<td>${chargeList.chargePoint}</td>
-									<td>${chargeList.paymentWay}</td>
-									<td>${chargeList.chargeMoney}</td>
-									<td>${chargeList.chargeNo}</td>
+									<td class="text-center">${charge.requestDate}</td>
+									<td class="text-center"><fmt:formatNumber value="${charge.chargePoint}" groupingUsed="true"/>기쁨</td>
+									<td class="text-center">${charge.paymentWay}</td>
+									<td class="text-right"><fmt:formatNumber value="${charge.chargeMoney}" groupingUsed="true"/>원</td>
+									<td class="text-center">${charge.chargeNo}</td>
 								</tr>
 							</c:forEach>
 						</tbody>

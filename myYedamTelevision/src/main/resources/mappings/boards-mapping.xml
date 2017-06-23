@@ -216,5 +216,32 @@
 		</if>
 		ORDER BY BOARD_NO DESC
 	</select>
+	
+	<select id="getQuestionListAll" resultType="map">
+		SELECT
+      	B.BOARD_NO "boardNo"
+		, B.BOARD_TITLE "boardTitle"
+		, B.MEMBER_ID "memberId"
+		, B.CATEGORY "category"
+		, B.WRITE_DATE "writeDate"
+		, B.BOARD_TEXT	"boardText"
+		, B.VIEW_COUNT "viewCount"
+		, B.ATTACH_FILE "attachFile"
+		, case C.MEMBER_ID
+      	WHEN 'admin' THEN '답변함'
+      	ELSE '답변안됨'
+     	END AS "answer"
+		FROM	BOARDS B FULL OUTER JOIN COMMENTS C
+		ON B.BOARD_NO = C.BOARD_NO
+		ORDER BY "boardNo"
+		
+	</select>
+	
+	
+	<select id="getQuestionListAllCount" resultType="int">
+	SELECT COUNT(*)
+	FROM	BOARDS B FULL OUTER JOIN COMMENTS C
+	ON B.BOARD_NO = C.BOARD_NO
+	</select>
 
 </mapper>

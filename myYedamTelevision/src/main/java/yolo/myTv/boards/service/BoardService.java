@@ -27,14 +27,14 @@ public interface BoardService {
 	
 	
 	//일대일 문의 전체 조회
-	
+	List<Map<String, Object>> getQuestionListAll(BoardVO vo);
 	//일대일 문의 (답변이 없는 것 조회)
 	List<Map<String, Object>> getQuestionList(BoardVO vo);
 	
 	//페이징
 	int getBoardListCount(BoardVO vo);
 	int getQuestionListCount(BoardVO vo);
-
+	int getQuestionListAllCount(BoardVO vo);
 	List<Map<String, Object>> adminNoticeList(BoardVO vo);
 
 	//관리자 수정

@@ -18,7 +18,7 @@
 				<div class="col-md-12">
 					<div class="panel panel-white">
 						<div class="panel-heading clearfix">
-							<h4 class="panel-title">미답변 문의내역 관리</h4>
+							<h4 class="panel-title">전체문의내역 관리</h4>
 						</div>
 						<div class="panel-body">
 							<div class="table-responsive">

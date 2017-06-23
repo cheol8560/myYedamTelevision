@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 	//등록
@@ -42,7 +41,7 @@
 	
 	//아이콘 추가
 	function icon(){
-		window.open("${pageContext.request.contextPath}/getContentIcon.do", window);
+		window.open("${pageContext.request.contextPath}/getContentIcon.do");
 	}
  
 </script>
@@ -60,7 +59,7 @@
 					<button type="button" class="btn btn-default" onclick="$('#contentAdd').modal({backdrop:false})" >컨텐츠 추가</button>
 
 					<!-- Modal -->
-					<form id="add-row-form" action="${pageContext.request.contextPath}/insertContent.do">
+					<form id="add-row-form" action="${pageContext.request.contextPath}/insertContent.do" method="post">
 						<div class="modal fade" id="contentAdd" role="dialog" tabindex="-1">
 							
 							<div class="modal-dialog">
@@ -94,7 +93,7 @@
 					</form>
 					<!-- 모달창 끝 -->
 					<!-- Modal2 update delete -->
-					<form id="update-row-form" action="${pageContext.request.contextPath}/updateContent.do?">
+					<form id="update-row-form" action="${pageContext.request.contextPath}/updateContent.do?" method="post">
 						<div class="modal fade" id="contentUpdate" role="dialog" tabindex="-1">
 							
 							<div class="modal-dialog">

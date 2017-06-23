@@ -14,8 +14,10 @@ public interface BoardMapper {
 	public List<Map<String,Object>> getBoardList(BoardVO vo);
 	public List<BoardVO> getBoardListVO(BoardVO vo);
 	public void viewUpdate(BoardVO vo);
+	public List<Map<String, Object>> getQuestionListAll(BoardVO vo);
 	public List<Map<String, Object>> getQuestionList(BoardVO vo);
 	int getBoardListCount(BoardVO vo);
+	int getQuestionListAllCount(BoardVO vo);
 	int getQuestionListCount(BoardVO vo);
 	public List<Map<String,Object>> adminNoticeList(BoardVO vo);
 	public BoardVO adminBoard(BoardVO vo);

@@ -164,7 +164,7 @@ public class MemberController {
 		try {
 
 			// 넘어온 ID를 받는다.
-			String paramNick = (req.getParameter("prmNick") == null) ? "" : String.valueOf(req.getParameter("prmNick"));
+			String paramNick = (req.getParameter("nickName") == null) ? "" : String.valueOf(req.getParameter("nickName"));
 
 			MemberVO vo = new MemberVO();
 			vo.setNickName(paramNick.trim());
@@ -290,7 +290,16 @@ public class MemberController {
 		public String adminDeleteMember(MemberVO vo,HttpSession session){
 			memberService.deleteMember(vo);
 			System.out.println(vo);
-			return "admin/members/member";
+			return "redirect:/adminMemberForm.do";
 		}
-	
+		
+		
+		//회원비밀번호 초기화
+		@RequestMapping(value = "/adminChangePw.do", method=RequestMethod.GET)
+		public String adminChangePw(MemberVO vo,HttpSession session){
+			memberService.adminChangePw(vo);
+			System.out.println(vo);
+			return "redirect:/adminMemberForm.do";
+		}
+
 }

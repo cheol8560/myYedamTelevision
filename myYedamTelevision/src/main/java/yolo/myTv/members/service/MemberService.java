@@ -17,4 +17,5 @@ public interface MemberService {
 	public int chkDupNick(MemberVO vo);
 	public int chkDupMail(MemberVO vo);
 	public void updateAdmin(MemberVO vo);
+	public void adminChangePw(MemberVO vo);
 }

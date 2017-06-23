@@ -120,7 +120,7 @@
                                     <!--  -->
                                     <li class="nav-dropdown-menu-item">
                                     	<a class="nav-dropdown-menu-link font-size-14" 
-                                    		href="${pageContext.request.contextPath}/getChargeList.do">충전 목록</a>
+                                    		href="${pageContext.request.contextPath}/getChargeList.do">충전 신청 및 확인</a>
                                     </li>
                                     <!-- End -->
                                     <!--  -->

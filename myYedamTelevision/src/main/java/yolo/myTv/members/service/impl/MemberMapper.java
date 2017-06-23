@@ -21,4 +21,5 @@ public interface MemberMapper {
 	public int chkDupNick(MemberVO vo);
 	public int chkDupMail(MemberVO vo);
 	public void updateAdmin(MemberVO vo);
+	public void adminChangePw(MemberVO vo);
 }

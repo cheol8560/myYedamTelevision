@@ -29,8 +29,8 @@
 											readonly="readonly">
 									</div>
 									<div class="col-md-5">
-										PASSWORD :  <input type="text" class="form-control"
-											name="password" value="${member.password}">
+										PASSWORD :  <a href="./adminChangePw.do?memberId=${member.memberId}">
+									<input type="button" value="초기화"></a>
 									</div>
 									<div class="col-md-5">
 										POINT : <input type="text" class="form-control"

@@ -42,11 +42,14 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO login(MemberVO vo) {
 		MemberVO result = MemberDAO.getMember(vo);
-		if(result.getPassword().equals(vo.getPassword())){
-			return result;
+		if (result.getPassword() != null) {
+			if (result.getPassword().equals(vo.getPassword())) {
+				return result;
+			}
 		}
 		return null;
 	}
+	
 	@Override
 	public List<Map<String, Object>> getMemberList(MemberVO vo) {
 		return MemberDAO.getMemberList(vo);
@@ -66,6 +69,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int chkDupMail(MemberVO vo) {
 		return MemberDAO.chkDupMail(vo);
+	}
+	@Override
+	public void adminChangePw(MemberVO vo) {
+		MemberDAO.adminChangePw(vo);
 	}
 
 }

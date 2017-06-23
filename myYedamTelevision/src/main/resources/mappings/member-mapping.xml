@@ -115,6 +115,13 @@
 		AND MEMBERS.NICK_NAME = #{nickName}
 	</select>
 	
+	
+	<delete id="adminChangePw">
+        UPDATE MEMBERS SET
+        			PASSWORD = '123456789'
+        WHERE MEMBER_ID = #{memberId}
+	</delete>
+	
 
 	<resultMap type="member" id="memberMap">
 		<result property="memberId" column="MEMBER_ID" />

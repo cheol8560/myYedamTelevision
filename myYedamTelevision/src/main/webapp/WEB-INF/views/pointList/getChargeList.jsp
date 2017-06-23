@@ -20,23 +20,35 @@ $(function(){
 })
 
 </script>
-		<!--========== 대문 ==========-->
-		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
-			<div class="container">
-				<div class="margin-b-30">
-					<h2 class="breadcrumbs-v5-title margin-b-10">충전</h2>
-					<span class="breadcrumbs-v5-subtitle">
-						충전한 포인트를 확인 할 수 있습니다.
-					</span>
-				</div>
-			</div>
-		</section>
-		<!--========== 대문 끝 ==========-->
+		<!--========== BREADCRUMBS V5 ==========-->
+    <section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v7">
+        <div class="container">
+            <!-- Animated Headline v1 -->
+            <div class="animated-headline-v1 color-white">
+                <p class="animated-headline-v1-subtitle color-white">포인트 확인 & 충전 신청 & 충전 내역</p>
+                <h2 class="animated-headline-title letters type color-white margin-b-40">
+                    <span class="animated-headline-wrap waiting">
+                        <b class="is-visible">포인트 관리</b>
+                        <b>기쁨을 나누면 행복이 배가 됩니다.</b>
+                        <b>모두에게 기쁨을 선물해보세요.</b>
+                        <b>당신의 기쁨을 예담TV가 함께 합니다.</b>
+                        <b>누구나 기쁨을 받을 수 있는 예담TV. 지금 시작하세요.</b>
+                    </span>
+                </h2>
+                <p class="breadcrumbs-v5-subtitle">
+                	참신하고 재미있는 방송을 진행하는 BJ에게 기쁨을 선물하세요.<br>
+                	기쁨을 많이 선물 받는 BJ는 예담TV의 빛나는 스타가 됩니다. 기쁨을 모두와 나누어 보세요. 행복이 배가 됩니다.
+                </p>
+            </div>
+            <!-- End Animated Headline v1 -->
+        </div>
+    </section>
+    <!--========== END BREADCRUMBS V5 ==========-->
 		<!-- 현재 충전 조회 -->
 		<div class="bg-color-sky-light" >
 			<div class="content-md container">
 				<div class="row">
-					<div class="col-md-3 col-sm-6 md-margin-b-30">
+					<div class="col-md-offset-1 col-md-3 col-sm-6 md-margin-b-30">
 						<!-- 총 충전 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
@@ -75,8 +87,8 @@ $(function(){
 		<div class="banner-img-v6">
         <div class="content-md container">
             <!-- Heading v1 -->
-            <div class="heading-v1 heading-v1-white text-center margin-b-80">
-                <h2 class="heading-v1-title">기쁨 ( HAPPY POINT ) 충전</h2>
+            <div class="heading-v1 heading-v1-black text-center margin-b-80">
+                <h1 class="heading-v1-title">포인트 충전 신청</h1>
                 <p class="heading-v1-text">원하는 금액의 기쁨(POINT)을 선택하여 충전하세요. 아무리 충전해도 과하지 않습니다.  <br/>
                 기쁨 선물하기를 통하여 당신의 배포를 증명하세요. 당신의 능력을 절대 과소평가 하지 마세요.</p>
             </div>

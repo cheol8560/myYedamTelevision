@@ -170,6 +170,7 @@
 	<if test="month != null and month !='' ">
 		AND TO_CHAR(REQUEST_DATE, 'mm') = #{month}
 	</if>
+	ORDER BY REQUEST_DATE DESC
 	<![CDATA[					
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}
@@ -192,6 +193,7 @@
 		<if test="month != null and month !='' ">
 			AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
 		</if>
+		ORDER BY REQUEST_DATE DESC
 		<![CDATA[					
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}
@@ -215,6 +217,7 @@
 	<if test="month != null and month !='' ">
 		AND TO_CHAR(TRANSLATE_DATE, 'mm') = #{month}
 	</if>
+	ORDER BY REQUEST_DATE DESC
 	<![CDATA[					
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}
@@ -236,6 +239,7 @@
 	<if test="month != null and month !='' ">
 		AND TO_CHAR(REQUEST_DATE, 'mm') = #{month}
 	</if>
+	ORDER BY REQUEST_DATE DESC
 	<![CDATA[					
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}

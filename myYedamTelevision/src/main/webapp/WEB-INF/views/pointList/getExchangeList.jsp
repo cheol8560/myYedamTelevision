@@ -35,17 +35,17 @@ $(function(){
 		<div class="bg-color-sky-light" >
 			<div class="content-md container">
 				<div class="row">
-					<div class="col-md-3 col-sm-6 md-margin-b-30">
+					<div class="col-md-offset-1 col-md-3 col-sm-6 md-margin-b-40">
 						<!-- 총 환전 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-layers"></i>
 							<figure class="counter color-base counters-v2-no">${point.totalExchangePoint}</figure>
-							<h4 class="counters-v2-title">총 충전 포인트</h4>
+							<h4 class="counters-v2-title">총 환전 포인트</h4>
 							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
 						<!-- 총 환전 포인트 끝 -->
 					</div>
-					<div class="col-md-3 col-sm-6 md-margin-b-30">
+					<div class="col-md-3 col-sm-6 md-margin-b-40">
 						<!-- 이번달 환전 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-trophy"></i>
@@ -55,7 +55,7 @@ $(function(){
 						</div>
 						<!-- 이번달 환전 포인트 끝 -->
 					</div>
-					<div class="col-md-3 col-sm-6 sm-margin-b-30">
+					<div class="col-md-3 col-sm-6 sm-margin-b-40">
 						<!-- 현재 보유 포인트 -->
 						<div class="counters-v2 bg-color-white">
 							<i class="counters-v2-icon icon-happy"></i>
@@ -106,8 +106,8 @@ $(function(){
 		<div class="overflow-h">
 			<div class="center-block wow fadeInUp" data-wow-duration=".2"
 				data-wow-delay=".3s">
-				<a class="btn-white-bg btn-base-md radius-3"
-					href="insertExchange.do?exchange=${exchangeNo}">기쁨 환전</a>
+				<a class="btn-base-bg btn-base-md radius-3 margin-b-10"
+					href="insertExchange.do?exchange=${exchangeNo}">환전 신청</a>
 			</div>
 		</div>
 		<!-- Button -->

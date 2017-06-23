@@ -29,7 +29,8 @@ public class BoardServiceImpl implements BoardService{
 
 
     public void deleteBoard(BoardVO vo) {
-        boardDAO.deleteBoard(vo);
+    	CommentsDAO.getInstance().deletes(Integer.toString(vo.getBoardNo()));
+    	boardDAO.deleteBoard(vo);
     }
 
     public BoardVO getBoard(BoardVO vo, boolean cnt) {  	

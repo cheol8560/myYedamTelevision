@@ -111,7 +111,9 @@
 		#{inRequestPoint, mode=IN, jdbcType=NUMERIC, javaType=int},
 		#{inMemberId, mode=IN, jdbcType=VARCHAR, javaType=string},
 		#{inBank, mode=IN, jdbcType=VARCHAR, javaType=string},
-		#{inAccount, mode=IN, jdbcType=VARCHAR, javaType=string}
+		#{inAccount, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{code, mode=OUT, jdbcType=VARCHAR, javaType=string},
+		#{message, mode=OUT, jdbcType=VARCHAR, javaType=string}
 		)}
 	</insert>
 

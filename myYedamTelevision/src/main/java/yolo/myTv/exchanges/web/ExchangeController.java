@@ -1,5 +1,6 @@
 package yolo.myTv.exchanges.web;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -33,14 +34,28 @@ public class ExchangeController {
 	// 환전 신청 등록
 	@RequestMapping(value ="/insertExchange.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> insertExchange(ExchangeVO vo, ExVO exvo,HttpSession session) {
+	public Map<String, Object> insertExchange(ExchangeVO  vo, ExVO exvo,HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		exvo.setInMemberId(member.getMemberId());
 		vo.setMemberId(member.getMemberId());
 		System.out.println(exvo);
-		exchangeService.insertEx(exvo);		
-		vo.setExchangeNo(exvo.getExchangeNo());
-		return exchangeService.getExchange(vo);
+
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 
+		exchangeService.insertEx(exvo);	
+		
+		if(exvo.getCode().equals("1")){
+			//등록된 환전내역 조회
+			vo.setExchangeNo(exvo.getExchangeNo());
+			map.put("code", "true");
+			map.put("result", exchangeService.getExchange(vo));
+		}else{
+			 map.put("code", "false");
+			 map.put("error", exvo.getMessage());
+		}
+		
+		return map;
+		
 	
 	}
 	

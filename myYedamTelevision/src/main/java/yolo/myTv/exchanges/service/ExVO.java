@@ -6,8 +6,23 @@ public class ExVO {
 	private String inMemberId;
 	private String inBank;
 	private int exchangeNo;
+	private String code;
+	private String message;
+	
 	
 
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public int getExchangeNo() {
 		return exchangeNo;
 	}
@@ -42,7 +57,8 @@ public class ExVO {
 	public String toString() {
 		return "ExVO [inAccount=" + inAccount + ", inRequestPoint="
 				+ inRequestPoint + ", inMemberId=" + inMemberId + ", inBank="
-				+ inBank + ", exchangeNo=" + exchangeNo + "]";
+				+ inBank + ", exchangeNo=" + exchangeNo + ", code=" + code
+				+ ", message=" + message + "]";
 	}
 	
 	

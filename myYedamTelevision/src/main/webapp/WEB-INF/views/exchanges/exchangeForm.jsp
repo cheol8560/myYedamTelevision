@@ -1,35 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <script>
-	$(function(){
-		
+	$(function() {
+
 		$("#btn").click(function() {
 			var a = $("#insertEx").serialize();
-			var b = $("inRequestPoint").serialize();
-			 if("${login.point}" >= 100 && "${login.point}">= b) {//{ "requestPoint": $("[name='requestPoint']").val()};
-				$.ajax({ url: "insertExchange.do", 
-					method: "post", 
-					type: "json", 
-					data: a, 
-					success: function(data) { 
-						$("#requestMoney").html(data.requestPoint*100);
-						$("#commission").html(data.commission);
-						$("#realReceipt").html(data.realReceipt);
-						$("#totalExchange").html(data.totalRequest);
-					} 
-				});
-				alert("환전되었습니다.!");
-			 } else {
-				alert("보유하고 계신 포인트가 100포인트가 되지않거나"
-						+"입력한 포인트가 보유한 포인트 보다 많아 환전을 이용하실수 없습니다.");
-			} 
+			$.ajax({
+				url : "insertExchange.do",
+				method : "post",
+				type : "json",
+				data : a,
+				success : function(data) {
+
+					if (data.code == "true") {
+
+						$("#requestMoney").html(data.result.requestPoint * 100);
+						$("#commission").html(data.result.commission);
+						$("#realReceipt").html(data.result.realReceipt);
+						$("#totalExchange").html(data.result.totalRequest);
+
+					} else {
+						alert(data.error);
+					}
+				}
+			});
 			
-			
+
 		})
-	
-		
+
 	});
-	</script>
+</script>
 <!--========== PROMO BLOCK V11 ==========-->
 <section class="promo-block-v11 fullheight">
 	<div class="container vertical-center-aligned">
@@ -42,38 +42,39 @@
 			<hr>
 		</div>
 
-	<form id="insertEx">
-		<div class="margin-b-30">
-			<!-- Button White Toggle -->
-			<div class="btn-group btn-white-toggle margin-r-10 margin-b-10">
+		<form id="insertEx">
+			<div class="margin-b-30">
+				<!-- Button White Toggle -->
 				<div class="btn-group btn-white-toggle margin-r-10 margin-b-10">
-                    <select class="btn-white-bg dropdown-toggle radius-3" name="inBank">
-                    	<option selected="selected" value="">은행선택</option>
-                    	<option value="a1">대구은행</option>
-                    	<option value="a2">농협</option>
-                    	<option value="a3">신한은행</option>
-                    	<option value="a4">국민은행</option>
-                    	<option value="a5">하나은행</option>
-                    	<option value="a6">기업은행</option>
-                    </select>
-                   <input
-					class="form-control" style="width: 240px; display: inline;"
-					type="text" autocomplete="on" placeholder="계좌 번호" name="inAccount">
-				<i class="icon-box-item fa fa-check-circle-o"
-					style="width: 20px; display: inline; color: #4ed7e8; font-size: 24px;"></i></input><br>
-				<br> <input class="form-control" type="text"
-					style="width: 325px;" autocomplete="on" placeholder="환전할 기쁨"
-					name="inRequestPoint" /><br>
+					<div class="btn-group btn-white-toggle margin-r-10 margin-b-10">
+						<select class="btn-white-bg dropdown-toggle radius-3"
+							name="inBank">
+							<option selected="selected" value="">은행선택</option>
+							<option value="a1">대구은행</option>
+							<option value="a2">농협</option>
+							<option value="a3">신한은행</option>
+							<option value="a4">국민은행</option>
+							<option value="a5">하나은행</option>
+							<option value="a6">기업은행</option>
+						</select> <input class="form-control"
+							style="width: 240px; display: inline;" type="text"
+							autocomplete="on" placeholder="계좌 번호" name="inAccount"> <i
+							class="icon-box-item fa fa-check-circle-o"
+							style="width: 20px; display: inline; color: #4ed7e8; font-size: 24px;"></i></input><br>
+						<br> <input class="form-control" type="text"
+							style="width: 325px;" autocomplete="on" placeholder="환전할 기쁨"
+							name="inRequestPoint" /><br>
 
+					</div>
+					<br>
+					<!-- End Button White Toggle -->
+					<button type="button" id="btn"
+						class="btn-base-bg btn-base-md radius-3 margin-b-10">
+						<i class="fa fa-search margin-r-5"></i> 확인
+					</button>
+				</div>
 			</div>
-			<br>
-			<!-- End Button White Toggle -->
-			<button type="button" id="btn" class="btn-base-bg btn-base-md radius-3 margin-b-10">
-				<i class="fa fa-search margin-r-5"></i> 확인
-			</button>
-		</div>
-	</div>
-	</form>
+		</form>
 </section>
 <!--========== END PROMO BLOCK V11 ==========-->
 

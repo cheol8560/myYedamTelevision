@@ -5,7 +5,8 @@
 		
 		$("#btn").click(function() {
 			var a = $("#insertEx").serialize();
-			 if(${login.point} >= 100 && ${login.point}>a) {//{ "requestPoint": $("[name='requestPoint']").val()};
+			var b = $("inRequestPoint").serialize();
+			 if("${login.point}" >= 100 && "${login.point}">= b) {//{ "requestPoint": $("[name='requestPoint']").val()};
 				$.ajax({ url: "insertExchange.do", 
 					method: "post", 
 					type: "json", 
@@ -17,6 +18,7 @@
 						$("#totalExchange").html(data.totalRequest);
 					} 
 				});
+				alert("환전되었습니다.!");
 			 } else {
 				alert("보유하고 계신 포인트가 100포인트가 되지않거나"
 						+"입력한 포인트가 보유한 포인트 보다 많아 환전을 이용하실수 없습니다.");

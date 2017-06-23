@@ -22,8 +22,8 @@
 						enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="input-Default" class="col-sm-2 control-label">제목</label>
-							<div class="col-sm-10">
-								<input type="text" name="boardTitle" class="form-control" id="input-Default" placeholder="제목을 입력하세요." required>
+							<div class="col-sm-9">
+								<input type="text" name="boardTitle" class="form-control" id="input-Default" placeholder="제목을 입력하세요. (50자까지 적으실수있습니다.)" maxlength="50" required>
 							</div>
 						</div>
 						<div class="form-group">

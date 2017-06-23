@@ -38,7 +38,7 @@
 									</div> 
 									<div class="col-md-12 margin-b-30">
 										<input type="text" class="form-control comment-form-v1-input"
-											placeholder="제목" name="boardTitle">
+											placeholder="제목을 입력하세요. (50자까지 적으실수있습니다.)" name="boardTitle" maxlength="50">
 									</div>
 
 								</div>

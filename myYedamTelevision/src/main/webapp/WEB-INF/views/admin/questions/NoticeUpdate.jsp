@@ -33,7 +33,7 @@
 						<div class="form-group">
 							<label for="input-Default" class="col-sm-2 control-label">제목</label>
 							<div class="col-sm-9">
-								<input name="boardTitle" class="form-control" id="input-Default" value="${adminNotice.boardTitle}">
+								<input name="boardTitle" class="form-control" id="input-Default" maxlength="50" value="${adminNotice.boardTitle}">
 							</div>
 						</div>
 
@@ -48,7 +48,7 @@
 						<div class="row">
 							<div class="form-group">
 								<label for="input-readonly" class="col-sm-2 control-label">첨부파일</label>
-								<div class="col-sm-10">
+								<div class="col-sm-8">
 									<input type="file" class="form-control"
 											name="uploadFile" ><br> 
 								<a href="FileDown.do?boardNo=${adminNotice.boardNo}">${adminNotice.attachFile}</a>

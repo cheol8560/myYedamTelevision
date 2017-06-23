@@ -18,7 +18,6 @@ import yolo.myTv.comments.service.CommentsDAO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-@SuppressWarnings("restriction")
 @Controller
 public class CommentController {
 

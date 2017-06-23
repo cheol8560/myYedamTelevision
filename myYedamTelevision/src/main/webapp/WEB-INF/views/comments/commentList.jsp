@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,7 @@ function makeCommentView(comment){
 	div.comment = comment;  //{id:1,.... }
 	
 	var s="";
-	if(comment.memberId == "admin" /* "${login}" */){
+	if(comment.memberId == "${login.memberId}" || "${login.memberId}" =='admin'){
 		s = "<input class=\"button\" type=\"button\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.commentNo+"')\"/>"
 			+"<input class=\"button\" type=\"button\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.commentNo+"')\"/>"
 	}
@@ -91,12 +92,11 @@ function makeCommentView(comment){
 
 //댓글 등록 ajax 요청
 function addComment() {
-	/* if("${login}"==""){
+	 if("${login}"==""){
 	alert('로그인 후 등록이 가능합니다.');
-	 location.href="../login/loginform.jsp";
 	 return;
-	} */
-	var memberId = "admin";/* '${login}'; *///document.addForm.writer.value;
+	} 
+	var memberId = '${login.memberId}'; //document.addForm.writer.value;
 	var commentText = document.addForm.commentText.value;
 	var params = "memberId="+encodeURIComponent(memberId)+"&"+
 	             "commentText="+encodeURIComponent(commentText) 

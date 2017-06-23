@@ -3,11 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <script>
+
 function fn_egov_link_page(pageNo){
 document.listForm.pageIndex.value = pageNo;
 document.listForm.action = "<c:url value='/getChargeList.do'/>";
 document.listForm.submit();
 }
+
+//목록리스트 이동 
+$(function(){
+	console.log('${chargeVO.pageIndex}');
+	if('${chargeVO.searchUseYn}' != '' ){
+		location.href='#charge'	
+	}
+		
+})
+
 </script>
 		<!--========== 대문 ==========-->
 		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
@@ -185,9 +196,11 @@ document.listForm.submit();
     <!-- End Services v4 -->
 		
 		<!-- 충전 포인트 끝 -->
+		<!-- 충전내역 시작 -->
 <section class="full-width-container" style="width: 1100px; margin: auto;" id="charge"> <!-- Heading v1 -->
 	<form name="listForm" action="getChargeList.do">
-		<input type="hidden" name="pageIndex"	value="${(empty chargeVO.pageIndex)? 1 : chargeVO.pageIndex }" /> 
+		<input type="hidden" name="pageIndex"	value="${(empty chargeVO.pageIndex)? 1 : chargeVO.pageIndex }" />
+		<input type="hidden" name="searchUseYn" value="charge" /> 
 		<div class="heading-v1 text-center margin-t-60 margin-b-60">
 			<h2 class="heading-v1-title">기쁨 충전 내역</h2>
 			<p class="heading-v1-text">

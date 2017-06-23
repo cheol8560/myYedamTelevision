@@ -9,6 +9,15 @@ document.listForm.pageIndex.value = pageNo;
 document.listForm.action = "<c:url value='/getExchangeList.do'/>";
 document.listForm.submit();
 }
+
+//목록리스트 이동 
+$(function(){
+	console.log('${exchangeVO.pageIndex}');
+	if('${exchangeVO.searchUseYn}' != '' ){
+		location.href='#exchange'	
+	}
+		
+})
 </script>
 <!--========== 대문 ==========-->
 		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
@@ -110,9 +119,10 @@ document.listForm.submit();
 <section class="full-width-container"
 	style="width: 1100px; margin: auto;">
 	<!-- Heading v1 -->
-<form name ="listForm" action="getSendPointList.do">
-			<input type="hidden" name="pageIndex" value="${(empty exchangeVO.pageIndex)? 1 : exchangeVO.pageIndex }"/>	
-	<div class="heading-v1 text-center margin-t-60 margin-b-60">
+<form name ="listForm" action="getExchangeList.do">
+			<input type="hidden" name="pageIndex" value="${(empty exchangeVO.pageIndex)? 1 : exchangeVO.pageIndex }"/>
+			<input type="hidden" name="searchUseYn" value="exchange" />	
+	<div class="heading-v1 text-center margin-t-60 margin-b-60" id="exchange">
 		<h2 class="heading-v1-title">환전리스트</h2>
 		<div class="heading-v1 text-center margin-b-80">
 					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
@@ -138,8 +148,8 @@ document.listForm.submit();
 						</select>월
 						<button type="submit">검색</button>
 						<script>
-						$("[name='year']").val('${chargeVO.year}');
-						$("[name='month']").val('${chargeVO.month}');
+						$("[name='year']").val('${exchangeVO.year}');
+						$("[name='month']").val('${exchangeVO.month}');
 						</script>
 					</p>
 				</div>

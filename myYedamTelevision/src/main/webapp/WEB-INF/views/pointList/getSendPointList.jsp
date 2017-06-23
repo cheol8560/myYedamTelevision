@@ -8,6 +8,15 @@ document.listForm.pageIndex.value = pageNo;
 document.listForm.action = "<c:url value='/getSendPointList.do'/>";
 document.listForm.submit();
 }
+
+//목록리스트 이동 
+$(function(){
+	console.log('${translatePointVO.pageIndex}');
+	if('${translatePointVO.searchUseYn}' != '' ){
+		location.href='#send'	
+	}
+		
+})
 </script>
 <!--========== 대문 ==========-->
 		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
@@ -64,10 +73,11 @@ document.listForm.submit();
 
 <form name ="listForm" action="getSendPointList.do">
 			<input type="hidden" name="pageIndex" value="${(empty translatePointVO.pageIndex)? 1 : translatePointVO.pageIndex }" />
+			<input type="hidden" name="searchUseYn" value="send" />
 		<div class="bg-color-sky-light" id="send">
 			<div class="content-md container-sm">
 				<!-- Heading v1 -->
-				<div class="heading-v1 text-center margin-b-80">
+				<div class="heading-v1 text-center margin-b-80" >
 					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
 					<p class="heading-v1-text">
 						<select  name="year">

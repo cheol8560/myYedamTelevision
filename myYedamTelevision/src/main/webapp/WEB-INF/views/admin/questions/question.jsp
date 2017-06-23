@@ -40,6 +40,7 @@
 											<th>작성자</th>
 											<th>작성일자</th>
 											<th>조회수</th>
+											<th>답변여부</th>
 
 										</tr>
 									</tfoot>
@@ -51,6 +52,7 @@
 											<td>${list.memberId }</td>
 											<td>${list.writeDate }</td>
 											<td>${list.viewCount }</td>
+											<th>${list.answer }</th>
 										</tr>
 									</c:forEach>	
 									</tbody>

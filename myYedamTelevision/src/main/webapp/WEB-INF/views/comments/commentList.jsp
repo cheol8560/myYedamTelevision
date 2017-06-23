@@ -16,6 +16,24 @@
 <script src="${pageContext.request.contextPath}/assets/scripts/ajax.js"></script>
 <script>
 
+$(function () {
+	$("#enter").keydown(function(e){
+		if(e.keyCode == 13){
+			addComment(); 
+			return false;
+		}
+		});
+	
+	$("#Uenter").keydown(function(e){
+		if(e.keyCode == 13){
+			updateComment(); 
+			return false;
+		}
+		});
+})
+
+
+
 window.onload = function() {
 	loadCommentList();  // 목록조회 ajax 요청
 }
@@ -142,6 +160,8 @@ function updateResult(req) {
 				var commentDiv = makeCommentView(comment);
 
 				var oldCommentDiv = document.getElementById('c'+comment.commentNo);
+				var updateFormDiv = document.getElementById('commentUpdate');
+				document.body.appendChild(updateFormDiv);
 				listDiv.replaceChild(commentDiv, oldCommentDiv);
 				alert("수정했습니다!");
 				
@@ -209,6 +229,7 @@ function deleteResult(req) {
 	}
 }
 
+
 </script>
 </head>
 <body>
@@ -218,7 +239,7 @@ function deleteResult(req) {
 <div id="commentAdd">
 	<form action="" name="addForm">
 	<input type="hidden" name="memberId" size="10"><br/>
-	댓글: <input name="commentText" size="100">
+	댓글: <input id="enter" name="commentText" size="100">
 	<input type="button" value="등록" onclick="addComment()"/>
 	</form>
 </div>
@@ -228,7 +249,7 @@ function deleteResult(req) {
 	<form action="" name="updateForm">
 	<input type="hidden" name="commentNo" value=""/>
 	<input type="hidden" name="memberId" size="10"><br/>
-	댓글: <textarea name="commentText" cols="60"></textarea>
+	댓글: <input id="Uenter" name="commentText" size="100">
 	<input type="button" value="등록" onclick="updateComment()"/>
 	<input type="button" value="취소" onclick="cancelUpdate()"/>
 	</form>

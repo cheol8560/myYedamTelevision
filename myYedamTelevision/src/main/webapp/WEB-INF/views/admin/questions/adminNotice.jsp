@@ -92,7 +92,7 @@
 						<br>
 						</form>
 						<div class="row">
-							<div class="col-md-offset-2 col-md-9">
+							<div class="col-md-offset-2 col-md-9" style="font-size:17px;">
 								<c:import
 									url="../comments/commentList.jsp?boardNo=${adminNotice.boardNo}"></c:import>
 							</div>

@@ -40,6 +40,11 @@
 		}
 	}
 	
+	//아이콘 추가
+	function icon(){
+		window.open("${pageContext.request.contextPath}/getContentIcon.do", window);
+	}
+
 </script>
 <div class="page-title">
 	<h3>카테고리 관리</h3>
@@ -70,7 +75,7 @@
 										</div>
 										<div class="form-group">
 											<input type="text" id="position-input" class="form-control"
-												placeholder="컨텐츠 아이콘" name="contentIcon" >
+												placeholder="컨텐츠 아이콘" name="contentIcon" id="contenticon">
 										</div>
 										<div class="form-group">
 											<input type="text" id="age-input" class="form-control"
@@ -79,7 +84,7 @@
 									</div>
 
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default" onclick="win()">아이콘추가</button>
+										<button type="button" class="btn btn-default" onclick="icon();">아이콘추가</button>
 										<button type="submit" class="btn btn-default" data-dismiss="modal" onclick="add();">저장</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 									</div>
@@ -117,6 +122,7 @@
 									</div>
 
 									<div class="modal-footer">
+										<button type="button" class="btn btn-default" onclick="icon();">아이콘추가</button>
 										<button type="button" class="btn btn-default" onclick="del();">삭제</button>
 										<button type="submit" class="btn btn-default" data-dismiss="modal" onclick="update();">수정</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal" onclick="delete();">취소</button>

@@ -53,5 +53,10 @@ public class ContentController {
 		return "admin/contents/content";
 	}
 	
+	//아이콘 창 띄우기
+	@RequestMapping("/getContentIcon.do")
+	public String getContentIcon(){
+		return "admin/contents/icon";
+	}
 
 }

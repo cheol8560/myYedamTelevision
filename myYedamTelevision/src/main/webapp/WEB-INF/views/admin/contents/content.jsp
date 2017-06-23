@@ -44,7 +44,7 @@
 	function icon(){
 		window.open("${pageContext.request.contextPath}/getContentIcon.do", window);
 	}
-
+ 
 </script>
 <div class="page-title">
 	<h3>카테고리 관리</h3>

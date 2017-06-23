@@ -16,7 +16,7 @@ $(function(){
 	if('${chargeVO.searchUseYn}' != '' ){
 		location.href='#charge'	
 	}
-		
+		 
 })
 
 </script>

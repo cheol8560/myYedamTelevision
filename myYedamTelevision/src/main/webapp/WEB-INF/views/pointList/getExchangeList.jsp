@@ -16,7 +16,7 @@ $(function(){
 	if('${exchangeVO.searchUseYn}' != '' ){
 		location.href='#exchange'	
 	}
-		
+		 
 })
 </script>
 <!--========== 대문 ==========-->

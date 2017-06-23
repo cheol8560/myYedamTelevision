@@ -1,7 +1,7 @@
 <div class="page-inner">
                 <div class="page-title">
                     <h3>아이콘 추가</h3>
-                </div>
+                </div> 
                 <div id="main-wrapper">
                     <div class="row">
                         <div class="col-md-12">

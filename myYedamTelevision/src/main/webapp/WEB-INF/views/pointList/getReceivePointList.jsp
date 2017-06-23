@@ -18,7 +18,7 @@ $(function(){
 	if('${translatePointVO.searchUseYn}' != '' ){
 		location.href='#receive'	
 	}
-		
+		 
 })
 </script>
 <!--========== 대문 ==========-->

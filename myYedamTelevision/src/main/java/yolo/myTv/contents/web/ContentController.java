@@ -57,6 +57,6 @@ public class ContentController {
 	@RequestMapping("/getContentIcon.do")
 	public String getContentIcon(){
 		return "admin/contents/icon";
-	}
+	} 
 
 }

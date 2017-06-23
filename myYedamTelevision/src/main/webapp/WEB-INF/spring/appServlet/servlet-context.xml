@@ -28,6 +28,7 @@
 	 <resources mapping="/assets/**" location="/assets/" />
 	 <resources mapping="/assetsAdmin/**" location="/assetsAdmin/" />
 	 <resources mapping="/include/**" location="/include/" />
+	 <resources mapping="/img/**" location="/img/" />
 	<!-- <default-servlet-handler/> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

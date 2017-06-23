@@ -59,10 +59,8 @@
 </head>
 <!-- END HEAD -->
 <body>
-
 <!-- wrapper -->
 <div class="wrapper animsition">
-
 	<tiles:insertAttribute name="menu"/>	
 
 	<!--========== PAGE CONTENT ==========-->

@@ -99,6 +99,35 @@ public class MemberController {
 		}
 	}
 
+	@RequestMapping(value = "/chkLoginId.do")
+	public void chkLoginId(HttpServletRequest req, HttpServletResponse res,
+						ModelMap model) throws Exception {
+		PrintWriter out = res.getWriter();
+		try {
+
+			// 넘어온 ID를 받는다.
+			String paramId = (req.getParameter("memberId") == null) ? "" : String.valueOf(req.getParameter("memberId"));
+
+			MemberVO vo = new MemberVO();
+			vo.setMemberId(paramId.trim());
+			int chkPoint = memberService.chkDupId(vo);
+
+			// out.print(chkPoint);
+			if(chkPoint == 0) {
+				out.print("false");
+			} else {
+				out.print("true");
+			}
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			// out.print("1");
+			out.print("false");
+		}
+	}
+	
+	
 	@RequestMapping(value = "/chkDupId.do")
 	public void checkId(HttpServletRequest req, HttpServletResponse res,
 						ModelMap model) throws Exception {

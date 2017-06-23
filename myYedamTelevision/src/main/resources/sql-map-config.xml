@@ -13,6 +13,7 @@
 		<typeAlias alias="translate" type="yolo.myTv.translatePoints.service.TranslatePointVO"/>
 		<typeAlias alias="transVO" type="yolo.myTv.translatePoints.service.TransVO"/>
 		<typeAlias alias="exchange" type="yolo.myTv.exchanges.service.ExchangeVO"/>
+		<typeAlias alias="blacklist" type="yolo.myTv.blacklists.service.BlacklistVO"/>
 	</typeAliases>
 
 </configuration>

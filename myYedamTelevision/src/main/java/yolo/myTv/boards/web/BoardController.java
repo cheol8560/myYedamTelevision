@@ -145,9 +145,11 @@ public class BoardController {
 	public String insertInquiry(BoardVO vo, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		MultipartFile file = vo.getUploadFile();
-		File savefile = new File("d:/upload/", file.getOriginalFilename());
-		file.transferTo(savefile); // 서버에 파일 저장
-		vo.setAttachFile(file.getOriginalFilename());
+		if(file !=null && file.getSize()>0){
+			File savefile = new File("d:/upload/", file.getOriginalFilename());
+			file.transferTo(savefile); // 서버에 파일 저장
+			vo.setAttachFile(file.getOriginalFilename());
+		}
 		System.out.println(vo);
 
 		boardService.insertBoard(vo);

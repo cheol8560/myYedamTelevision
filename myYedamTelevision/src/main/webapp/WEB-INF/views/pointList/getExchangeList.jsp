@@ -172,8 +172,8 @@ $(function(){
 							<tr>
 								<td><fmt:formatDate pattern = "yyyy년 MM월 dd일 HH:mm:ss" value = "${exchangeList.requestDate}"/></td>
 								<td>${exchangeList.requestPoint}</td>
-								<td>${exchangeList.commission}원</td>
-								<td>${exchangeList.realReceipt}원</td>
+								<td><fmt:formatNumber value="${exchangeList.commission}" groupingUsed="true"/>원</td>
+								<td><fmt:formatNumber value="${exchangeList.realReceipt}" groupingUsed="true"/>원</td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -61,9 +61,9 @@
 										<td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 												value="${exchange.requestDate}" /></td>
 										<td>${exchange.memberId}</td>
-										<td>${exchange.requestPoint}</td>
-										<td>${exchange.commission}원</td>
-										<td>${exchange.realReceipt}원</td>
+										<td><fmt:formatNumber value="${exchange.requestPoint}" groupingUsed="true"/></td>
+										<td><fmt:formatNumber value="${exchange.commission}" groupingUsed="true"/>원</td>
+										<td><fmt:formatNumber value="${exchange.realReceipt}" groupingUsed="true"/>원</td>
 										<td></td>
 									</tr>
 								</c:forEach>

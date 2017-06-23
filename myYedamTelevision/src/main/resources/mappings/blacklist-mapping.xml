@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.myTv.broadcasts.service.impl.BlacklistMapper">
+
+	<resultMap id="blacklistResult" type="blacklist" >
+		<id property="broadcastNo" column="BROADCAST_NO"/>
+		<id property="memberId" column="MEMBER_ID"/>
+		<result property="nickName" column="NICK_NAME"/>
+		<result property="registDate" column="REGIST_DATE"/>
+	</resultMap>
+
+	<insert id="insertBlacklist" parameterType="blacklist">
+		INSERT INTO BLACKLISTS(BROADCAST_NO, MEMBER_ID)
+		VALUES(#{broadcastNo}, #{memberId})
+	</insert>
+
+	<delete id="deleteBlacklist">
+        DELETE FROM BLACKLISTS
+        WHERE #{broadcastNo} AND #{memberId}
+	</delete>
+
+	<select id="getBlacklistList" resultMap="blacklistResult">
+		SELECT BROADCAST_NO
+			 , MEMBER_ID
+			 , NICK_NAME
+			 , REGIST_DATE
+		FROM BLACKLISTS
+	</select>
+
+</mapper>

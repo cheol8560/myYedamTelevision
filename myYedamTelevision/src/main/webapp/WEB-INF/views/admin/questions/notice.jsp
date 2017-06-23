@@ -32,31 +32,31 @@
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
-									<th style="width: 100px;" id="DESC">게시글번호</th>
-									<th style="width: 400px;">제목</th>
-									<th style="width: 100px;">작성자</th>
-									<th style="width: 100px;">작성일자</th>
-									<th style="width: 100px;">조회수</th>
+									<th class="text-center" style="width: 100px;" id="DESC">게시글번호</th>
+									<th class="text-center" style="width: 400px;">제목</th>
+									<th class="text-center" style="width: 100px;">작성자</th>
+									<th class="text-center" style="width: 100px;">작성일자</th>
+									<th class="text-center" style="width: 100px;">조회수</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th>게시글번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-									<th>조회수</th>
+									<th class="text-center">게시글번호</th>
+									<th class="text-center">제목</th>
+									<th class="text-center">작성자</th>
+									<th class="text-center">작성일자</th>
+									<th class="text-center">조회수</th>
 								</tr>
 							</tfoot>
 							<tbody>
 								<c:forEach items="${adminNoticeList}" var="boards">
 									<tr>
-										<td>${boards.boardNo}</td>
+										<td class="text-center">${boards.boardNo}</td>
 										<td><a href="adminNotice.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
-										<td>${boards.memberId}</td>
-										<td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+										<td class="text-center">${boards.memberId}</td>
+										<td class="text-center"><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 												value="${boards.writeDate}"/></td>
-										<td>${boards.viewCount}</td>
+										<td class="text-center">${boards.viewCount}</td>
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -34,37 +34,37 @@
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
-									<th style="width: 100px;" id="DESC">번호</th>
-									<th style="width: 100px;">요청날짜</th>
-									<th style="width: 100px;">요청 회원</th>
-									<th style="width: 100px;">환전 포인트</th>
-									<th style="width: 100px;">수수료</th>
-									<th style="width: 100px;">실수령 금액</th>
-									<th style="width: 100px;">비고</th>
+									<th class="text-center" style="width: 100px;" id="DESC">번호</th>
+									<th class="text-center" style="width: 100px;">요청날짜</th>
+									<th class="text-center" style="width: 100px;">요청 회원</th>
+									<th class="text-center" style="width: 100px;">환전 포인트</th>
+									<th class="text-center" style="width: 100px;">수수료</th>
+									<th class="text-center" style="width: 100px;">실수령 금액</th>
+									<th class="text-center" style="width: 100px;">비고</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th style="width: 100px;">번호</th>
-									<th style="width: 100px;">요청날짜</th>
-									<th style="width: 100px;">요청 회원</th>
-									<th style="width: 100px;">환전 포인트</th>
-									<th style="width: 100px;">수수료</th>
-									<th style="width: 100px;">실수령 금액</th>
-									<th style="width: 100px;">비고</th>
+									<th class="text-center" style="width: 100px;">번호</th>
+									<th class="text-center" style="width: 100px;">요청날짜</th>
+									<th class="text-center" style="width: 100px;">요청 회원</th>
+									<th class="text-center" style="width: 100px;">환전 포인트</th>
+									<th class="text-center" style="width: 100px;">수수료</th>
+									<th class="text-center" style="width: 100px;">실수령 금액</th>
+									<th class="text-center" style="width: 100px;">비고</th>
 								</tr>
 							</tfoot>
 							<tbody>
 								<c:forEach items="${adminExchangeList}" var="exchange">
 									<tr>
-										<td>${exchange.exchangeNo}</td>
-										<td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+										<td class="text-center">${exchange.exchangeNo}</td>
+										<td class="text-center"><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 												value="${exchange.requestDate}" /></td>
-										<td>${exchange.memberId}</td>
-										<td><fmt:formatNumber value="${exchange.requestPoint}" groupingUsed="true"/></td>
-										<td><fmt:formatNumber value="${exchange.commission}" groupingUsed="true"/>원</td>
-										<td><fmt:formatNumber value="${exchange.realReceipt}" groupingUsed="true"/>원</td>
-										<td></td>
+										<td class="text-center">${exchange.memberId}</td>
+										<td class="text-center"><fmt:formatNumber value="${exchange.requestPoint}" groupingUsed="true"/></td>
+										<td class="text-right"><fmt:formatNumber value="${exchange.commission}" groupingUsed="true"/>원</td>
+										<td class="text-right"><fmt:formatNumber value="${exchange.realReceipt}" groupingUsed="true"/>원</td>
+										<td class="text-center"></td>
 									</tr>
 								</c:forEach>
 							</tbody>

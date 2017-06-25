@@ -85,7 +85,7 @@
                                 
                             </ul>
                         </li>
-                        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>컨텐츠 관리</p></a></li>
+                        <li><a href="${pageContext.request.contextPath}/getContentList.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>컨텐츠 관리</p></a></li>
 
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->

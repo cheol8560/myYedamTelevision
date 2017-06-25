@@ -16,15 +16,19 @@ $(function() {
 		})
 	}); */
 });
+
+	$(function () {
+		$("#DESC").click();
+	})
+
 </script>
 	<div class="page-title">
 			<h3>포인트 관리</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="#">선물 관리</a></li>
-					<li><a href="#">충전 관리</a></li>
-					<li><a href="#">환전 관리</a></li>
+					<li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">교환관리</a></li>
+                   	<li><a href="${pageContext.request.contextPath}/adminCharge.do">충전관리</a></li>
+                    <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전관리</a></li>
 				</ol>
 			</div>
 		</div>
@@ -41,26 +45,26 @@ $(function() {
 									style="width: 100%; cellspacing: 0;">
 									<thead>
 										<tr>
-											<th style="width: 100px;">번호</th>
-											<th style="width: 100px;">충전일자</th>
-											<th style="width: 100px;">충전한 회원</th>
-											<th style="width: 100px;">충전금액</th>
-											<th style="width: 100px;">충전포인트</th>
-											<th style="width: 100px;">결제수단</th>
-											<th style="width: 100px;">승인상태</th>
-											<th style="width: 100px;">비고</th>
+											<th class="text-center" style="width: 100px;" id="DESC">번호</th>
+											<th class="text-center" style="width: 100px;">충전일자</th>
+											<th class="text-center" style="width: 100px;">충전한 회원</th>
+											<th class="text-center" style="width: 100px;">충전금액</th>
+											<th class="text-center" style="width: 100px;">충전포인트</th>
+											<th class="text-center" style="width: 100px;">결제수단</th>
+											<th class="text-center" style="width: 100px;">승인상태</th>
+											<th class="text-center" style="width: 100px;">비고</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>번호</th>
-											<th>충전일자</th>
-											<th>충전한 회원</th>
-											<th>충전금액</th>
-											<th>충전포인트</th>
-											<th>결제수단</th>
-											<th>승인상태</th>
-											<th>비고</th>
+											<th class="text-center">번호</th>
+											<th class="text-center">충전일자</th>
+											<th class="text-center">충전한 회원</th>
+											<th class="text-center">충전금액</th>
+											<th class="text-center">충전포인트</th>
+											<th class="text-center">결제수단</th>
+											<th class="text-center">승인상태</th>
+											<th class="text-center">비고</th>
 
 										</tr>
 									</tfoot>
@@ -69,14 +73,14 @@ $(function() {
 								
 								<c:forEach items="${adminchargeList}" var="adminchargeList">
 									<tr>
-										<td>${adminchargeList.chargeNo}</td>
-										<td><fmt:formatDate value="${adminchargeList.approveDate}" pattern="yyyy-MM-dd"/></td>
-										<td>${adminchargeList.memberId}</td>
-										<td><fmt:formatNumber value="${adminchargeList.chargeMoney}" groupingUsed="true"/>원</td>
-										<td><fmt:formatNumber value="${adminchargeList.chargePoint}" groupingUsed="true"/>기쁨</td>
-										<td>${adminchargeList.paymentWayName}</td>
-										<td>${adminchargeList.approveStatusName}</td>
-										<td>
+										<td class="text-center">${adminchargeList.chargeNo}</td>
+										<td class="text-center"><fmt:formatDate value="${adminchargeList.approveDate}" pattern="yyyy-MM-dd"/></td>
+										<td class="text-center">${adminchargeList.memberId}</td>
+										<td class="text-right"><fmt:formatNumber value="${adminchargeList.chargeMoney}" groupingUsed="true"/>원</td>
+										<td class="text-center"><fmt:formatNumber value="${adminchargeList.chargePoint}" groupingUsed="true"/>기쁨</td>
+										<td class="text-center">${adminchargeList.paymentWayName}</td>
+										<td class="text-center">${adminchargeList.approveStatusName}</td>
+										<td class="text-center">
 										<c:if test="${adminchargeList.approveStatus== 'b1'}">
 											<a href="./approveAdmin.do?chargeNo=${adminchargeList.chargeNo}&memberId=${adminchargeList.memberId}&chargePoint=${adminchargeList.chargePoint}">
 												<input type="button" id="btnInsert" value="승인">

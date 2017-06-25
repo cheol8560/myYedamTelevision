@@ -295,7 +295,7 @@ public class BoardController {
 			@RequestMapping("/getQuestionListAll.do")
 			public String getQuestionListAll(BoardVO vo, Model model){
 				/*vo.setCategory("d2");*/
-				model.addAttribute("adminQuestion", boardService.getQuestionList(vo) );
+				model.addAttribute("adminQuestion", boardService.getQuestionListAll(vo) );
 				
 				return "admin/questions/questionAll";
 			}

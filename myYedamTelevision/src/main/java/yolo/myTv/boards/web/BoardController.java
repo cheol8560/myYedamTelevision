@@ -273,7 +273,7 @@ public class BoardController {
 		return "redirect:/adminNotice.do?boardNo=" + vo.getBoardNo();
 	}
 	
-	// 공지사항 삭제
+		// 공지사항 삭제
 		@RequestMapping("/deleteAdminNotice.do")
 		public String deleteAdminNotice(@ModelAttribute("adminNotice") BoardVO vo,
 				SessionStatus status) throws Exception {
@@ -281,8 +281,68 @@ public class BoardController {
 			status.setComplete();
 			return "forward:/adminNoticeList.do";
 		}
+		
+		//일대일 문의 내역 조회(댓글 없는 것)
+		@RequestMapping("/getQuestionList.do")
+		public String getQuestionList(BoardVO vo, Model model){
+			/*vo.setCategory("d2");*/
+			model.addAttribute("adminQuestion", boardService.getQuestionList(vo) );
+			
+			return "admin/questions/question";
+		}
+		
+		//관리자 문의내역 전체 조회
+			@RequestMapping("/getQuestionListAll.do")
+			public String getQuestionListAll(BoardVO vo, Model model){
+				/*vo.setCategory("d2");*/
+				model.addAttribute("adminQuestion", boardService.getQuestionList(vo) );
+				
+				return "admin/questions/questionAll";
+			}
+		
+		
+		//관리자 문의내역 상세조회
+		@RequestMapping("/adminQuestion.do")
+		public String adminQuestion(BoardVO vo, Model model) {
+			System.out.println(vo);
+			model.addAttribute("adminQuestion", boardService.adminBoard(vo, true));
+			return "admin/questions/adminQuestion";
+		}
 	
-	
+		//관리자 문의내역 수정 폼
+		@RequestMapping("/UpdateAdminQuestionForm.do")
+		// get
+		public String UpdateAdminQuestionForm(@ModelAttribute("adminQuestion") BoardVO vo, Model model) {
+			System.out.println(vo);
+			model.addAttribute("adminQuestion", boardService.adminBoard(vo, false));
+			return "admin/questions/QuestionUpdate";
+		}
+		
+		// 관리자 문의내역 수정
+		@RequestMapping(value = "/updateAdminQuestion.do", method = RequestMethod.POST)
+		public String updateAdminQuestion(@ModelAttribute("adminQuestion") BoardVO vo,
+				SessionStatus status, HttpServletRequest request)
+				throws IllegalStateException, IOException {
+			MultipartFile file = vo.getUploadFile();
+			if(file !=null && file.getSize()>0){
+				File savefile = new File("d:/upload/", file.getOriginalFilename());
+				file.transferTo(savefile); // 서버에 파일 저장
+				vo.setAttachFile(file.getOriginalFilename());
+			}
+			System.out.println(vo);
+			boardService.updateAdminBoard(vo);
+			status.setComplete(); // 세션에 저장된 vo를 삭제
+			return "redirect:/adminQuestion.do?boardNo=" + vo.getBoardNo();
+		}
+		
+		// 문의내역 삭제
+				@RequestMapping("/deleteAdminQuestion.do")
+				public String deleteAdminQuestion(@ModelAttribute("adminQuestion") BoardVO vo,
+						SessionStatus status) throws Exception {
+					boardService.deleteAdminBoard(vo);
+					status.setComplete();
+					return "forward:/getQuestionListAll.do";
+				}
 	
 	
 	/**
@@ -417,22 +477,6 @@ public class BoardController {
 	}
 	
 	
-	//일대일 문의 내역 조회(댓글 없는 것)
-	@RequestMapping("/getQuestionList.do")
-	public String getQuestionList(BoardVO vo, Model model){
-		
-		model.addAttribute("list", boardService.getQuestionList(vo) );
-		
-		return "admin/questions/question";
-	}
 	
-	//문의내역 전체 조회
-		@RequestMapping("/getQuestionListAll.do")
-		public String getQuestionListAll(BoardVO vo, Model model){
-			
-			model.addAttribute("list", boardService.getQuestionList(vo) );
-			
-			return "admin/questions/questionAll";
-		}
 
 }

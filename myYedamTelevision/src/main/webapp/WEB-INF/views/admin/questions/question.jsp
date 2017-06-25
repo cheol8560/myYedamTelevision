@@ -3,6 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 
+<script>
+	$(function () {
+		$("#DESC").click();
+	})
+
+</script>
+
 		<div class="page-title">
 			<h3>게시판 관리</h3>
 			<div class="page-breadcrumb">
@@ -26,7 +33,7 @@
 									style="width: 100%; cellspacing: 0;">
 									<thead>
 										<tr>
-											<th style="width: 100px;">게시글번호</th>
+											<th style="width: 100px;" id="DESC">게시글번호</th>
 											<th style="width: 400px;">제목</th>
 											<th style="width: 100px;">작성자</th>
 											<th style="width: 100px;">작성일자</th>
@@ -46,14 +53,14 @@
 										</tr>
 									</tfoot>
 									<tbody>
-									<c:forEach items="${ list}" var="list">
+									<c:forEach items="${adminQuestion}" var="adminQuestion">
 										<tr>
-											<td>${list.boardNo }</td>
-											<td><a href="getNotice.do?boardNo=${list.boardNo}">${list.boardTitle }</td>
-											<td>${list.memberId }</td>
-											<td>${list.writeDate }</td>
-											<td>${list.viewCount }</td>
-											<th>${list.answer }</th>
+											<td>${adminQuestion.boardNo }</td>
+											<td><a href="adminQuestion.do?boardNo=${adminQuestion.boardNo}">${adminQuestion.boardTitle }</a></td>
+											<td>${adminQuestion.memberId }</td>
+											<td>${adminQuestion.writeDate }</td>
+											<td>${adminQuestion.viewCount }</td>
+											<th>${adminQuestion.answer }</th>
 										</tr>
 									</c:forEach>	
 									</tbody>

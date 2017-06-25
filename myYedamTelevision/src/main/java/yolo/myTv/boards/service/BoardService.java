@@ -33,8 +33,6 @@ public interface BoardService {
 	
 	//페이징
 	int getBoardListCount(BoardVO vo);
-	int getQuestionListCount(BoardVO vo);
-	int getQuestionListAllCount(BoardVO vo);
 	List<Map<String, Object>> adminNoticeList(BoardVO vo);
 
 	//관리자 수정

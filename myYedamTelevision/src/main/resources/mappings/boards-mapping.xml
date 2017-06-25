@@ -165,8 +165,6 @@
 
 	<select id="getQuestionList" resultType="map">
 
-		SELECT * FROM (
-		SELECT A.*, ROWNUM RNUM FROM (
 		SELECT
       	B.BOARD_NO "boardNo"
 		, B.BOARD_TITLE "boardTitle"
@@ -185,18 +183,6 @@
     	WHERE C.MEMBER_ID != 'admin'
    		OR C.COMMENT_NO IS NULL 
 		ORDER BY "boardNo"
-				<![CDATA[					
-	) A WHERE ROWNUM <= #{lastIndex}
-)WHERE RNUM > #{firstIndex}
-]]>
-	</select>
-
-	<select id="getQuestionListCount" resultType="int">
-		SELECT COUNT(*)
-		FROM BOARDS B FULL OUTER JOIN COMMENTS C
-		ON B.BOARD_NO = C.BOARD_NO
-		WHERE B.CATEGORY = 'd2'
-		AND C.COMMENT_NO IS NULL
 
 	</select>
 
@@ -236,12 +222,6 @@
 		ORDER BY "boardNo"
 		
 	</select>
-	
-	
-	<select id="getQuestionListAllCount" resultType="int">
-	SELECT COUNT(*)
-	FROM	BOARDS B FULL OUTER JOIN COMMENTS C
-	ON B.BOARD_NO = C.BOARD_NO
-	</select>
+
 
 </mapper>

@@ -14,10 +14,9 @@
 	<h3>포인트 관리</h3>
 	<div class="page-breadcrumb">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="#">선물 관리</a></li>
-			<li><a href="#">충전 관리</a></li>
-			<li><a href="#">환전 관리</a></li>
+			<li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">교환관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminCharge.do">충전관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전관리</a></li>
 		</ol>
 	</div>
 </div>

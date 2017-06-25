@@ -2,14 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+		
+<script>
+	$(function () {
+		$("#DESC").click();
+	})
+
+</script>		
+		
 		<div class="page-title">
 			<h3>포인트 관리</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="#">선물 관리</a></li>
-					<li><a href="#">충전 관리</a></li>
-					<li><a href="#">환전 관리</a></li>
+					<li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">교환관리</a></li>
+                    <li><a href="${pageContext.request.contextPath}/adminCharge.do">충전관리</a></li>
+                    <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전관리</a></li>
 				</ol>
 			</div>
 		</div>
@@ -26,35 +33,35 @@
 									style="width: 100%; cellspacing: 0;">
 									<thead>
 										<tr>
-											<th style="width: 100px;">번호</th>
-											<th style="width: 150px;">선물한 날짜</th>
-											<th style="width: 100px;">보내는사람</th>
-											<th style="width: 100px;">받는사람</th>
-											<th style="width: 150px;">포인트</th>
-											<th style="width: 150px;">-</th> 
+											<th class="text-center" style="width: 100px;" id="DESC">번호</th>
+											<th class="text-center" style="width: 150px;">선물한 날짜</th>
+											<th class="text-center" style="width: 100px;">보내는사람</th>
+											<th class="text-center" style="width: 100px;">받는사람</th>
+											<th class="text-center" style="width: 150px;">포인트</th>
+											<th class="text-center" style="width: 150px;">-</th> 
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th style="width: 100px;">번호</th>
-											<th style="width: 150px;">선물한 날짜</th>
-											<th style="width: 100px;">보내는사람</th>
-											<th style="width: 100px;">받는사람</th>
-											<th style="width: 150px;">포인트</th>
-											<th style="width: 150px;">-</th> 
+											<th class="text-center" style="width: 100px;">번호</th>
+											<th class="text-center" style="width: 150px;">선물한 날짜</th>
+											<th class="text-center" style="width: 100px;">보내는사람</th>
+											<th class="text-center" style="width: 100px;">받는사람</th>
+											<th class="text-center" style="width: 150px;">포인트</th>
+											<th class="text-center" style="width: 150px;">-</th> 
 										</tr>
 									</tfoot>
 									<tbody>
 										<c:forEach var="list" items="${ translateList}">
 										<tr>
-											<td>${list.translateId }</td>
-											<td>
+											<td class="text-center">${list.translateId }</td>
+											<td class="text-center">
 											<fmt:formatDate pattern = "yyyy년 MM월 dd일 HH:mm:ss" value = "${list.translateDate }" />
 											</td>
-											<td>${list.sendMemberId }</td>
-											<td>${list.receiveMemberId }</td>
-											<td>${list.translatePoint }</td>
-											<td>-</td>
+											<td class="text-center">${list.sendMemberId }</td>
+											<td class="text-center">${list.receiveMemberId }</td>
+											<td class="text-center"><fmt:formatNumber value="${list.translatePoint }" groupingUsed="true"/></td>
+											<td class="text-center">-</td>
 										</tr>
 								</c:forEach>
 									</tbody>

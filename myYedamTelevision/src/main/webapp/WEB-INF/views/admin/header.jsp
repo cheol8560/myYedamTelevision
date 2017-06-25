@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
             <div class="navbar">
                 <div class="navbar-inner">
@@ -68,19 +69,19 @@
                         </div>
                     </div>
                     <ul class="menu accordion-menu">
-                        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>관리자 홈</p></a></li>
-                        <li><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>회원관리</p></a></li>
+                        <li><a href="${pageContext.request.contextPath}/adminIndex.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>관리자 홈</p></a></li>
+                        <li><a href="${pageContext.request.contextPath}/adminMemberForm.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>회원관리</p></a></li>
                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>공지사항 및 문의</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="#">공지사항 관리</a></li>
-                                <li><a href="#">문의내역 관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">공지사항 관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/getQuestionListAll.do">문의내역 관리</a></li>
                             </ul>
                         </li>
                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span><p>충전 및 환전관리</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="#">교환관리</a></li>
-                                <li><a href="#">충전관리</a></li>
-                                <li><a href="#">환전관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">교환관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/adminCharge.do">충전관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전관리</a></li>
                                 
                             </ul>
                         </li>

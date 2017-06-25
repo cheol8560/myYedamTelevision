@@ -24,4 +24,10 @@ public class MainController {
 		return "redirect:/getOnBroadcastList.do";
 	}
 	
+	@RequestMapping("/adminIndex.do")
+	public String adminMain(Locale locale, Model model){
+		return "admin/main/adminIndex";
+	}
+
+	
 }

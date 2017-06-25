@@ -421,20 +421,18 @@ public class BoardController {
 	@RequestMapping("/getQuestionList.do")
 	public String getQuestionList(BoardVO vo, Model model){
 		
-		//페이징
-				/** pageing setting */
-				PaginationInfo paginationInfo = new PaginationInfo();
-				paginationInfo.setCurrentPageNo(vo.getPageIndex());
-				paginationInfo.setRecordCountPerPage(vo.getPageUnit());
-				paginationInfo.setPageSize(vo.getPageSize());
-				vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
-				vo.setLastIndex(paginationInfo.getLastRecordIndex());
-				paginationInfo.setTotalRecordCount(boardService.getQuestionListCount(vo));
-				model.addAttribute("paginationInfo", paginationInfo);
-		
 		model.addAttribute("list", boardService.getQuestionList(vo) );
 		
 		return "admin/questions/question";
 	}
+	
+	//문의내역 전체 조회
+		@RequestMapping("/getQuestionListAll.do")
+		public String getQuestionListAll(BoardVO vo, Model model){
+			
+			model.addAttribute("list", boardService.getQuestionList(vo) );
+			
+			return "admin/questions/questionAll";
+		}
 
 }

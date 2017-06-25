@@ -112,7 +112,7 @@
 										</div>
 										<div class="form-group">
 											<input type="text" id="position-input" class="form-control"
-												placeholder="컨텐츠 아이콘" name="contentIcon" >
+												placeholder="컨텐츠 아이콘" name="contentIcon" id="contentIcon">
 										</div>
 										<div class="form-group">
 											<input type="text" id="age-input" class="form-control"

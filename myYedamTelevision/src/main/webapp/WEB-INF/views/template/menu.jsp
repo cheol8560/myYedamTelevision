@@ -87,7 +87,7 @@
                                      <c:if test="${login.memberId == 'admin'}">
                                     <li class="nav-dropdown-menu-item">
                                     	<a class="nav-dropdown-menu-link font-size-14" 
-                                    		href="${pageContext.request.contextPath}/adminMemberForm.do">관리자페이지</a>
+                                    		href="${pageContext.request.contextPath}/adminIndex.do">관리자페이지</a>
                                     </li>
                                     </c:if>
                                     <!-- End 회원탈퇴 -->

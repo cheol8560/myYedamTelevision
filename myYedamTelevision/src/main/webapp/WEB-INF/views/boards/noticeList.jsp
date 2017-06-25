@@ -48,20 +48,20 @@ document.listForm.submit();
 							<table class="table" id="noticeListTable">
 								<thead>
 									<tr>
-										<th style="width:50px">번호</th>
-										<th style="width:300px">제목</th>
-										<th style="width:100px">날짜</th>
-										<th style="width:50px">조회수</th>
+										<th class="text-center" style="width:50px">번호</th>
+										<th class="text-center" style="width:300px">제목</th>
+										<th class="text-center" style="width:100px">날짜</th>
+										<th class="text-center" style="width:50px">조회수</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${noticeList}" var="boards">
 										<tr>
-											<td>${boards.boardNo}</td>
-											<td><a href="getNotice.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
-											<td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+											<td class="text-center">${boards.boardNo}</td>
+											<td class="text-center"><a href="getNotice.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
+											<td class="text-center"><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 												value="${boards.writeDate}"/></td>
-											<td>${boards.viewCount}</td>
+											<td class="text-center">${boards.viewCount}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

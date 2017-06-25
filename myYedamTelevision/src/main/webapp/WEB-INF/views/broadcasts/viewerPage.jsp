@@ -10,9 +10,17 @@
 	<div class="bg-color-white" style="border-bottom: 2px solid #00bcd4;">
 		<div class="full-width-container" style="margin-left: 30px;">
 			<div class="col-md-10">
-				<p class="font-size-30 font-style-italic font-family-droid line-height-2 margin-b-0">
-					<a href="${pageContext.request.contextPath}/">My Yedam Television</a>
-				</p>
+				<!-- Icon Box v4 -->
+				<div class="icon-box-v4">
+					<div class="theme-icons-wrap icon-box-v4-element">
+						<i class="theme-icons theme-icons-dark-bg theme-icons-lg radius-circle icon-genius"></i>
+					</div>
+					<div class="icon-box-v4-body margin-t-20">
+						<span class="icon-box-v4-body-title">${broadcastResult.broadcastTitle}</span>
+						<span class="icon-box-v4-body-text">${broadcastResult.nickName}</span>
+					</div>
+				</div>
+				<!-- End Icon Box v4 -->
 			</div>
 			<div class="col-md-2 text-center" style="padding-top:15px;">
 				<button type="button" id="broadcastEndBtn" class="btn-base-brd btn-base-xs radius-3">방송종료</button>
@@ -23,57 +31,14 @@
 	
     <!--========== PAGE CONTENT ==========-->
     <!-- Viewer Page -->
-    <div class="full-width-container">
+    <div class="full-width-container" style="border-bottom:1px solid #00bcd4;">
         <div class="row no-space-row">
             <!-- Left Area -->
             <div class="col-md-8" id="leftArea">
                 <!-- Video Player -->
-                <div class="full-width-container" id="videoArea">
-                	<!-- <video id="viewerVideo" width="100%" height="100%"></video> -->
+                <div class="full-width-container padding-0" id="videoArea">
                 </div>
                 <!-- End Video Player -->
-				
-				<!-- Divider v1 -->
-        		<div class="divider-v1" style="margin:15px auto;">
-        			<div class="divider-v1-element">
-        				<i class="divider-v1-icon fa fa-skyatlas"></i>
-        			</div>
-        		</div>
-        		<!-- End Divider v1 -->
-				
-                <!-- Air Info -->
-                <div class="full-width-container margin-l-30 margin-b-30">
-					<div class="col-sm-8">
-						<!-- Icon Box v4 -->
-						<div class="icon-box-v4">
-							<div class="theme-icons-wrap icon-box-v4-element">
-								<i class="theme-icons theme-icons-dark-bg theme-icons-lg radius-circle icon-genius"></i>
-							</div>
-							<div class="icon-box-v4-body">
-								<h3 class="icon-box-v4-body-title">${broadcastResult.broadcastTitle}</h3>
-								<p class="icon-box-v4-body-text">${broadcastResult.nickName}</p>
-							</div>
-						</div>
-						<!-- End Icon Box v4 -->
-					</div>
-					<div class="col-sm-4 text-right">
-						<!-- Theme Icons Base On Hover -->
-		                <ul class="list-inline" style="margin:0;">
-		                    <li class="theme-icons-wrap">
-		                    	<a href="#" style="text-decoration: none;">
-		                    		<i class="theme-icons theme-icons-sm radius-circle fa fa-facebook margin-0"></i>
-		                    		기쁨선물
-		                    	</a>
-		                    </li>
-		                    <li class="theme-icons-wrap">
-			                    <i class="theme-icons theme-icons-sm radius-circle fa fa-twitter margin-0"></i>
-			                    <span class="view-count"></span> 명 시청중
-							</li>
-		                </ul>
-		                <!-- End Theme Icons Base On Hover -->
-					</div>
-				</div>
-                <!-- End Air Info -->
             </div>
             <!--  End Left Area -->
             
@@ -83,7 +48,7 @@
 				<div class="col-md-6 padding-0" style="border-right:1px solid #00bcd4; border-left:1px solid #00bcd4;">
                     <div class="blog-sidebar">
                         <div class="blog-sidebar-heading">
-                            <i class="blog-sidebar-heading-icon icon-book-open"></i>
+                            <i class="blog-sidebar-heading-icon fa fa-comments font-size-18"></i>
                             <h4 class="blog-sidebar-heading-title">채팅</h4>
                         </div>
                         
@@ -112,6 +77,41 @@
                 
                 <!-- Broadcast list -->
                 <div class="col-md-6 padding-0">
+                
+                	<!-- 시청자 목록 -->
+                    <div class="blog-sidebar">
+                        <div class="blog-sidebar-heading">
+                            <i class="blog-sidebar-heading-icon bordered-icon-box-item fa fa-group font-size-18"></i>
+                            <h4 class="blog-sidebar-heading-title">시청자</h4>
+                            <span style="float:right; margin-right:10px;"><span class="view-count">0</span>명</span>
+                        </div>
+                        <div class="blog-sidebar-content overflow-a padding-10" id="viewerList">
+                            <!-- Latest Tutorials -->
+							
+							<div class="btn-group btn-custom-toggle margin-b-10 bj-target">
+								<button type="button" class="btn-custom-bg dropdown-toggle radius-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="targetNickName"> ${broadcastResult.nickName} </span> (<span class="targetId"> ${broadcastResult.memberId} </span>)
+									<i class="bordered-icon-box-item fa fa-star" style="margin-left:5px;"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="#" data-toggle="modal" data-target="#presentPointModal">
+											<i class="dropdown-menu-icon fa fa-gift font-size-16"></i>
+											<span>기쁨 선물</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							
+							<div id="viewerArea">
+
+							</div>
+							
+							<!-- End Latest Tutorials -->
+                        </div>
+                    </div>
+                    <!-- End 시청자 목록 -->
+                
                     <div class="blog-sidebar margin-b-30">
                         <div class="blog-sidebar-heading">
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
@@ -186,6 +186,85 @@
     </div>
     <!-- End Interactive Banner v1 -->
 	<!--========== END PAGE CONTENT ==========-->
+
+	<!-- 기쁨 선물 Modal -->
+	<div class="modal fade" id="presentPointModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width:400px;">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close pointModalClose" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">기쁨 선물</h4>
+				</div>
+				<div class="modal-body">
+			
+					<form class="form-horizontal" id="pointFrm">
+						<input type="hidden" name="inSendMemberId" value="${login.memberId}">
+						<div class="form-group">
+							<label class="col-sm-5 control-label" style="padding-right:0;">기쁨을 선물할 회원 : </label>
+							<div class="col-sm-7" style="padding-top: 7px; padding-left:10px;">
+								<span id="receiveMember"></span>
+								<input type="hidden" name="inReceiveMemberId" id="inReceiveMemberId" value="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-5 control-label" style="padding-right:0;">내가 보유한 기쁨 : </label>
+							<div class="col-sm-7" style="padding-top: 7px; padding-left:10px;">
+								<span id="myPoint">${login.point}</span> 개
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-5 control-label" style="padding-right:0;">선물할 기쁨 : </label>
+							<div class="col-sm-7" style="padding-left:10px;">
+								<input type="text" class="form-control" id="inTranslatePoint" name="inTranslatePoint"
+										style="height:30px; width:60%; display:inline; margin-right:5px;"> 개
+							</div>
+						</div>
+					</form>
+
+					<div class="alert alert-warning collapse font-size-13 text-center" id="pointAlert" role="alert">
+						<button type="button" class="close" onclick="$('#pointAlert').hide();">
+							<span>&times;</span>
+						</button>
+						<strong>주의!</strong> 선물할 기쁨을 입력해주세요.
+					</div>
+
+					<div class="alert alert-info collapse font-size-13 text-center" id="pointConfirm" role="alert">
+						<strong id="confirmMember"></strong> 님에게 <strong id="confirmPoint"></strong> 기쁨을 선물하시겠습니까?
+					</div>
+
+					<div class="alert alert-danger collapse font-size-13 text-center" id="pointFail" role="alert">
+						<button type="button" class="close" onclick="$('#pointFail').hide();">
+							<span>&times;</span>
+						</button>
+						<strong>경고!</strong> 보유하신 기쁨이 부족합니다.
+					</div>
+
+					<div class="alert alert-danger collapse font-size-13 text-center" id="pointFail2" role="alert">
+						<button type="button" class="close" onclick="$('#pointFail2').hide();">
+							<span>&times;</span>
+						</button>
+						<strong>경고!</strong> <span id="pointErrorMsg"></span>
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<div id="pointEvent1">
+						<button type="button" class="btn-base-bg btn-base-xs" id="presentPointBtn">선물하기</button>
+						<button type="button" class="btn-grey-brd btn-base-xs pointModalClose" data-dismiss="modal" aria-label="Close">취소</button>
+					</div>
+					<div id="pointEvent2" style="display: none;">
+						<button class="btn-base-bg btn-base-xs" id="pointYes">예</button>
+						<button class="btn-grey-brd btn-base-xs" id="pointNo">아니오</button>
+					</div>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 기쁨 선물 Modal -->
 	
 	<!-- 강퇴 확인 Modal -->
 	<div class="modal fade" id="leavedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -359,8 +438,91 @@
 	}, false);
 	
 	appViewer.on("stateChange", function(state, peerid, userid) {
-		viewCount(channelId);
 		console.log(state);
+		if(state === "CONNECTED" || state === "CLOSED") {
+			
+			// 시청자 목록 출력
+			appViewer.getPeerList(channelId, function(data) {
+				
+				var peerList = data.peers;
+				$("#viewerArea").html("");
+				$(".view-count").text("0");
+				
+				if(peerList.length > 1) {
+					var view = peerList.length-1;
+					$(".view-count").text(view);
+					
+					var i = 0;
+					
+					while(true) {
+						if(peerList[i].uid) {
+							
+							// div tag
+							var tDiv = document.createElement("div");
+							tDiv.classList.add("btn-group");
+							tDiv.classList.add("btn-custom-toggle");
+							tDiv.classList.add("margin-b-10");
+							tDiv.classList.add("target");
+							
+							// button tag
+							var tBtn = document.createElement("button");
+							tBtn.setAttribute("type", "button");
+							tBtn.classList.add("btn-custom-bg");
+							tBtn.classList.add("dropdown-toggle");
+							tBtn.classList.add("radius-3");
+							tBtn.setAttribute("data-toggle", "dropdown");
+							tBtn.setAttribute("aria-haspopup", "true");
+							tBtn.setAttribute("aria-expanded", "false");
+
+							// spanTag
+							var tSpan = "<span class='targetNickName'>" + peerList[i].userName + "</span> (<span class='targetId'>" + peerList[i].uid +"</span>)";
+							tBtn.innerHTML = tSpan;
+							
+							if(peerList[i].uid != "${login.memberId}") {
+							
+							// ul tag
+							var tUl = document.createElement("ul");
+							tUl.classList.add("dropdown-menu");
+							
+							// 첫번째 li tag 
+							var tLi_1 = document.createElement("li");
+									
+							var tLi_1_tA = document.createElement("a");
+							tLi_1_tA.setAttribute("href", "#");
+							tLi_1_tA.setAttribute("data-toggle", "modal");
+							tLi_1_tA.setAttribute("data-target", "#presentPointModal");
+							
+							var tLi_1_tI = document.createElement("i");
+							tLi_1_tI.classList.add("dropdown-menu-icon");
+							tLi_1_tI.classList.add("fa");
+							tLi_1_tI.classList.add("fa-gift");
+							tLi_1_tI.classList.add("font-size-16");
+							var tLi_1_tSpan = document.createElement("span");
+							tLi_1_tSpan.textContent = "기쁨 선물";
+							
+							tLi_1_tA.appendChild(tLi_1_tI);
+							tLi_1_tA.appendChild(tLi_1_tSpan);
+							
+							tLi_1.appendChild(tLi_1_tA);
+							
+							// 태그 구조 생성
+							tUl.appendChild(tLi_1);
+							tDiv.appendChild(tUl);
+							
+							}
+							
+							tDiv.appendChild(tBtn);
+							viewerArea.appendChild(tDiv);
+							
+						}
+						
+						i++;
+						
+						if (i >= peerList.length) { break; }
+					}
+				}
+			});
+		}
 	});
 	
 	// 시청자수 출력 함수
@@ -468,9 +630,6 @@
 			
 		});
 		
-		dataChannel.on("error", function(err) {
-			console.log(err);
-		});
 	});
 	
 	// 방송 시작 후 video Tag 생성
@@ -501,6 +660,7 @@
 		event.preventDefault();
 		if(confirm("방송을 종료하시겠습니까?")) {
 			appViewer.disconnectChannel();
+			location.href = "${pageContext.request.contextPath}/";
 		}
 	});
 	
@@ -550,6 +710,25 @@
 		
 		$("#sendTextArea").val("").focus();
 	}, false);
+	
+	// 모달로 값 넘기기
+	$("#viewerArea").on("click", ".target" ,function(e) {
+		var nodeName = e.target.nodeName;
+		
+		if((nodeName == "SPAN" && $(e.target).attr("class")) || nodeName == "BUTTON") {
+			console.log(e.target);
+			targetNickName = $(e.target).parent().find(".targetNickName").text();
+			targetMemberId = $(e.target).parent().find(".targetId").text();
+			targetPeerId = appViewer.getPeerByUserId(targetMemberId).id;
+			targetMember = targetNickName + " (" + targetMemberId + ")";
+			// console.log(targetNickName + "/" + targetMemberId + "/" + targetPeerId + "/" + targetMember);
+			
+			// 기쁨 선물 모달
+			$("#receiveMember").text(targetMember);
+			$("#inReceiveMemberId").val(targetMemberId);
+		}
+		
+	});
 	
 	// 강퇴알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#leavedModal").on("hidden.bs.modal", function(e) {
@@ -601,10 +780,15 @@
 
 	// 동적 크기 조절
 	$(function() {
-		$("#videoArea").css( "height", $("#leftArea").width()/2+40 );
-		$("#chattingArea").css( "height", $("#videoArea").height()-22 );
+		$("#videoArea").css("height", $("#leftArea").width() / 1.35);
+		$("#chattingArea").css("height", $("#videoArea").height() - 147);
+		$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
+		$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		$(window).resize(function() {
-			$("#chattingArea").css( "height", $("#videoArea").height()-22 );
+			$("#videoArea").css("height", $("#leftArea").width() / 1.35);
+			$("#chattingArea").css("height", $("#videoArea").height() - 147);
+			$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
+			$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		});
 	});
 	

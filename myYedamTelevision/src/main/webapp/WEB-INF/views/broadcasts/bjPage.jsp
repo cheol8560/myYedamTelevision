@@ -845,13 +845,12 @@
 	$("#viewerArea").on("click", ".target" ,function(e) {
 		var nodeName = e.target.nodeName;
 		
-		if(nodeName == "SPAN" || nodeName == "BUTTON") {
-			//console.log(e.target);
+		if((nodeName == "SPAN" && $(e.target).attr("class")) || nodeName == "BUTTON") {
+			console.log($(e.target).attr("class"));
 			targetNickName = $(e.target).parent().find(".targetNickName").text();
 			targetMemberId = $(e.target).parent().find(".targetId").text();
 			targetPeerId = appBj.getPeerByUserId(targetMemberId).id;
 			targetMember = targetNickName + " (" + targetMemberId + ")";
-			//console.log(targetNickName + "/" + targetMemberId + "/" + targetPeerId + "/" + targetMember);
 			
 			// 기쁨 선물 모달
 			$("#receiveMember").text(targetMember);
@@ -1130,7 +1129,7 @@
 		$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
 		$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		$(window).resize(function() {
-			$("#videoArea").css("height", $("#leftArea").width() / 1.35);
+			$("#videoArea").css("height", $("#leftArea").width() / 1.33);
 			$("#chattingArea").css("height", $("#videoArea").height() - 130);
 			$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
 			$("#viewerArea").css("height", $("#viewerList").height() * 0.85);

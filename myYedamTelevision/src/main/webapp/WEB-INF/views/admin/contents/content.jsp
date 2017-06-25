@@ -137,32 +137,32 @@
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
-									<th>컨텐츠 코드</th>
-									<th>컨텐츠 명</th>
-									<th>컨텐츠 아이콘</th>
-									<th>컨텐츠 소개</th>
-									<th>비고</th>
+									<th class="text-center">컨텐츠 코드</th>
+									<th class="text-center">컨텐츠 명</th>
+									<th class="text-center">컨텐츠 아이콘</th>
+									<th class="text-center">컨텐츠 소개</th>
+									<th class="text-center">비고</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="con" items="${ contentList}">
 									<tr>
-										<td>${con.contentCode }</td>
-										<td>${con.contentName }</td>
-										<td>${con.contentIcon }</td>
-										<td>${con.contentIntro }</td>
-										<td><button type="button" onclick="get(${con.contentCode});">수정</button></td>
+										<td class="text-center">${con.contentCode }</td>
+										<td class="text-center">${con.contentName }</td>
+										<td class="text-center">${con.contentIcon }</td>
+										<td class="text-center">${con.contentIntro }</td>
+										<td class="text-center"><button type="button" onclick="get(${con.contentCode});">수정</button></td>
 									</tr>
 								</c:forEach>
 
 							</tbody>
 							<tfoot>
 								<tr>
-									<th>컨텐츠 코드</th>
-									<th>컨텐츠 명</th>
-									<th>컨텐츠 아이콘</th>
-									<th>컨텐츠 소개</th>
-									<th>비고</th>
+									<th class="text-center">컨텐츠 코드</th>
+									<th class="text-center">컨텐츠 명</th>
+									<th class="text-center">컨텐츠 아이콘</th>
+									<th class="text-center">컨텐츠 소개</th>
+									<th class="text-center">비고</th>
 								</tr>
 							</tfoot>
 						</table>

@@ -20,5 +20,8 @@ public interface ContentService {
 
 		// 글 목록 조회
 		List<ContentVO> getContentList(ContentVO vo);
+		
+		// 컨텐츠 사용 체크
+		int countContent(ContentVO contentvo);
 
 }

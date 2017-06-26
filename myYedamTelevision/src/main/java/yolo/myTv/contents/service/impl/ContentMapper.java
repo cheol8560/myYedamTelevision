@@ -18,4 +18,6 @@ public interface ContentMapper {
 	public ContentVO getContent(ContentVO vo);
 	
 	public List<ContentVO> getContentList(ContentVO vo);
+	
+	int countContent(ContentVO countvo);
 }

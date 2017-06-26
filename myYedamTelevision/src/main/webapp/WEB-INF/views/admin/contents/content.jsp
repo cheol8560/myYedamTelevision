@@ -34,7 +34,16 @@
 		if (confirm("삭제할까요?")){
 			
 			var no = $('[name="contentCode"]').val();
-			
+			var num ;
+			$.get("${pageContext.request.contextPath}/countContent.do?contentCode="+no, function(data){
+				num = data;
+			},
+			"json")
+			if( num == 0 ){
+				alert("삭제");
+			}else {
+				alert("삭제 안됨");
+			}			
 			location.href="${pageContext.request.contextPath}/deleteContent.do?contentCode="+no;
 		}
 	}

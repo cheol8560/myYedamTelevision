@@ -40,5 +40,10 @@ public class ContentServiceImpl implements ContentService{
 		return contentMapper.getContentList(vo);
 	}
 
+	@Override
+	public int countContent(ContentVO contentvo) {
+		return contentMapper.countContent(contentvo);
+	}
+
 	
 }

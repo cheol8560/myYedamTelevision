@@ -55,4 +55,10 @@
 		CONTENT_CODE = #{contentCode}
 	</delete>
 
+	<select id="countContent" resultType="int">
+	SELECT COUNT(*) AS "number"
+	FROM BROADCASTS B JOIN CONTENTS C
+	ON B.CONTENT_CODE = C.CONTENT_CODE
+	WHERE B.CONTENT_CODE = #{contentCode}
+	</select>
 </mapper>

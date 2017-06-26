@@ -34,7 +34,7 @@ public class ContentController {
 	//삭제
 	@RequestMapping("/deleteContent.do")
 	public String deleteContent(ContentVO vo){
-		contentService.deleteContent(vo);
+			contentService.deleteContent(vo);
 		return "redirect:/getContentList.do";
 	}
 	
@@ -58,5 +58,10 @@ public class ContentController {
 	public String getContentIcon(){
 		return "admin/contents/icon";
 	} 
-
+	
+	//컨텐츠를 사용하는 방송수
+	@RequestMapping("/countContent.do")
+	public @ResponseBody int countContent(ContentVO contentvo ){
+		return contentService.countContent(contentvo);
+	}
 }

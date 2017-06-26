@@ -8,7 +8,7 @@ public interface BroadcastService {
 	void insertBroadcast(BroadcastVO vo);
 	
 	// 방송 수정
-		void updateBroadcast(BroadcastVO vo);
+	void updateBroadcast(BroadcastVO vo);
 	
 	// 방송 삭제
 	void deleteBroadcast(BroadcastVO vo);

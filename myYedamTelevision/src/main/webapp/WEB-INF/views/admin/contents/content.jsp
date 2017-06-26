@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 	//등록
@@ -41,8 +40,8 @@
 	}
 	
 	//아이콘 추가
-	function icon(){
-		window.open("${pageContext.request.contextPath}/getContentIcon.do", window);
+	function icon(n){
+		window.open("${pageContext.request.contextPath}/getContentIcon.do?mode="+n);
 	}
  
 </script>
@@ -60,7 +59,7 @@
 					<button type="button" class="btn btn-default" onclick="$('#contentAdd').modal({backdrop:false})" >컨텐츠 추가</button>
 
 					<!-- Modal -->
-					<form id="add-row-form" action="${pageContext.request.contextPath}/insertContent.do">
+					<form id="add-row-form" action="${pageContext.request.contextPath}/insertContent.do" method="post">
 						<div class="modal fade" id="contentAdd" role="dialog" tabindex="-1">
 							
 							<div class="modal-dialog">
@@ -84,7 +83,7 @@
 									</div>
 
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default" onclick="icon();">아이콘추가</button>
+										<button type="button" class="btn btn-default" onclick="icon(1);">아이콘추가</button>
 										<button type="submit" class="btn btn-default" data-dismiss="modal" onclick="add();">저장</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 									</div>
@@ -94,7 +93,7 @@
 					</form>
 					<!-- 모달창 끝 -->
 					<!-- Modal2 update delete -->
-					<form id="update-row-form" action="${pageContext.request.contextPath}/updateContent.do?">
+					<form id="update-row-form" action="${pageContext.request.contextPath}/updateContent.do?" method="post">
 						<div class="modal fade" id="contentUpdate" role="dialog" tabindex="-1">
 							
 							<div class="modal-dialog">
@@ -113,7 +112,7 @@
 										</div>
 										<div class="form-group">
 											<input type="text" id="position-input" class="form-control"
-												placeholder="컨텐츠 아이콘" name="contentIcon" >
+												placeholder="컨텐츠 아이콘" name="contentIcon" id="contentIcon">
 										</div>
 										<div class="form-group">
 											<input type="text" id="age-input" class="form-control"
@@ -122,7 +121,7 @@
 									</div>
 
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default" onclick="icon();">아이콘추가</button>
+										<button type="button" class="btn btn-default" onclick="icon(2);">아이콘변경</button>
 										<button type="button" class="btn btn-default" onclick="del();">삭제</button>
 										<button type="submit" class="btn btn-default" data-dismiss="modal" onclick="update();">수정</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal" onclick="delete();">취소</button>
@@ -138,32 +137,32 @@
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
-									<th>컨텐츠 코드</th>
-									<th>컨텐츠 명</th>
-									<th>컨텐츠 아이콘</th>
-									<th>컨텐츠 소개</th>
-									<th>비고</th>
+									<th class="text-center">컨텐츠 코드</th>
+									<th class="text-center">컨텐츠 명</th>
+									<th class="text-center">컨텐츠 아이콘</th>
+									<th class="text-center">컨텐츠 소개</th>
+									<th class="text-center">비고</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="con" items="${ contentList}">
 									<tr>
-										<td>${con.contentCode }</td>
-										<td>${con.contentName }</td>
-										<td>${con.contentIcon }</td>
-										<td>${con.contentIntro }</td>
-										<td><button type="button" onclick="get(${con.contentCode});">수정</button></td>
+										<td class="text-center">${con.contentCode }</td>
+										<td class="text-center">${con.contentName }</td>
+										<td class="text-center">${con.contentIcon }</td>
+										<td class="text-center">${con.contentIntro }</td>
+										<td class="text-center"><button type="button" onclick="get(${con.contentCode});">수정</button></td>
 									</tr>
 								</c:forEach>
 
 							</tbody>
 							<tfoot>
 								<tr>
-									<th>컨텐츠 코드</th>
-									<th>컨텐츠 명</th>
-									<th>컨텐츠 아이콘</th>
-									<th>컨텐츠 소개</th>
-									<th>비고</th>
+									<th class="text-center">컨텐츠 코드</th>
+									<th class="text-center">컨텐츠 명</th>
+									<th class="text-center">컨텐츠 아이콘</th>
+									<th class="text-center">컨텐츠 소개</th>
+									<th class="text-center">비고</th>
 								</tr>
 							</tfoot>
 						</table>

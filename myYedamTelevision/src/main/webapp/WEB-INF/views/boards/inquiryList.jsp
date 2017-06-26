@@ -48,18 +48,18 @@ document.listForm.submit();
 							<table class="table">
 								<thead>
 									<tr>
-										<th style="width: 100px">문의일자</th>
-										<th style="width: 400px">제목</th>
-										<th style="width: 100px">답변여부</th>
+										<th class="text-center" style="width: 100px">문의일자</th>
+										<th class="text-center" style="width: 400px">제목</th>
+										<th class="text-center" style="width: 100px">답변여부</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${inquiryList}" var="boards">
 										<tr>
-											<td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+											<td class="text-center" ><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 												value="${boards.writeDate}"/></td>
-											<td><a href="getInquiry.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
-											<td>${boards.viewCount}</td>
+											<td class="text-center"><a href="getInquiry.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
+											<td class="text-center">${boards.viewCount}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

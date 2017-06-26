@@ -17,7 +17,7 @@
 		<div class="col-md-12">
 			<div class="panel panel-white">
 				<div class="panel-heading clearfix">
-					<h4 class="panel-title">공지사항 수정</h4>
+					<h4 class="panel-title">문의내역 수정</h4>
 				</div>
 				<div class="panel-body">
 					<form class="form-horizontal" action="updateAdminNotice.do" method="post"
@@ -26,13 +26,13 @@
 						<div class="form-group">
 							<label for="input-Default" class="col-sm-2 control-label">게시글 번호</label>
 							<div class="col-sm-9">
-								<input name="boardNo" class="form-control" id="input-Default" value="${adminNotice.boardNo}" readonly="readonly">
+								<input name="boardNo" class="form-control" id="input-Default" value="${adminQuestion.boardNo}" readonly="readonly">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="input-Default" class="col-sm-2 control-label">제목</label>
 							<div class="col-sm-9">
-								<input name="boardTitle" class="form-control" id="input-Default" maxlength="50" value="${adminNotice.boardTitle}">
+								<input name="boardTitle" class="form-control" id="input-Default" maxlength="50" value="${adminQuestion.boardTitle}">
 							</div>
 						</div>
 
@@ -40,7 +40,7 @@
 							<label for="input-Default" class="col-sm-2 control-label">작성내용</label>
 							<div class="col-md-9">
 								<textarea name="boardText" class="input-large form-control" id="message"
-									rows="15">${adminNotice.boardText}</textarea>
+									rows="15">${adminQuestion.boardText}</textarea>
 							</div>
 						</div>
 						<br>
@@ -50,16 +50,16 @@
 								<div class="col-sm-8">
 									<input type="file" class="form-control"
 											name="uploadFile" ><br> 
-								<a href="FileDown.do?boardNo=${adminNotice.boardNo}">${adminNotice.attachFile}</a>
+								<a href="FileDown.do?boardNo=${adminQuestion.boardNo}">${adminQuestion.attachFile}</a>
 								</div>
 							</div>
 						</div>
-						<input type="hidden" name="category" value="d1" />
+						<input type="hidden" name="category" value="d2" />
 						
 						<div class="row">
 							<button type="submit"
 								class="btn btn-success col-md-offset-10">확인</button>
-							<a href="${pageContext.request.contextPath}/adminNoticeList.do"><button type="button" class="btn btn-default radius-3 ">취소</button></a>
+							<a href="${pageContext.request.contextPath}/adminQuestionList.do"><button type="button" class="btn btn-default radius-3 ">취소</button></a>
 					
 						</div>
 						<br>

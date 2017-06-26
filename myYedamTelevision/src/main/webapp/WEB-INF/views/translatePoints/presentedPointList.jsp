@@ -4,6 +4,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 
+
 <script>
 /* pagination 페이지 링크 function */
 function fn_egov_link_page(pageNo){

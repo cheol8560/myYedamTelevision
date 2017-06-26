@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="page-title">
-	<h3>공지사항</h3>
+	<h3>게시판 관리</h3>
 	<div class="page-breadcrumb">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="#">공지사항</a></li>
-			<li class="active">문의내역</li>
+			<li><a href="${pageContext.request.contextPath}/adminNoticeList.do">공지사항 관리</a></li>
+			<li><a href="${pageContext.request.contextPath}/getQuestionListAll.do">문의내역 관리</a></li>
 		</ol>
 	</div>
 </div>

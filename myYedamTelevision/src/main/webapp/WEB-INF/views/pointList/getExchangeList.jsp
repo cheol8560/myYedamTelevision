@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
+
+
 <script>
 function fn_egov_link_page(pageNo){
 document.listForm.pageIndex.value = pageNo;
@@ -20,7 +22,7 @@ $(function(){
 })
 </script>
 <!--========== 대문 ==========-->
-		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
+		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center" style="background: url(assets/img/1920x1080/exchange.jpg) no-repeat;">
 			<div class="container">
 				<div class="margin-b-30">
 					<h2 class="breadcrumbs-v5-title margin-b-10">환전</h2>

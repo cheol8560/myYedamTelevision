@@ -118,7 +118,7 @@ $(function(){
                     <div class="services-v4 radius-3 services-v4-equal-height">
                         <div class="center-content-hor-wrap-sm services-v4-body">
                             <div class="center-content-hor-align-sm services-v4-media">
-                                <img class="services-v4-icon" src="assets/img/icons/03.png" alt="">
+                                <img class="services-v4-icon" src="assets/img/icons/01.png" alt="">
                             </div>
                             <div class="center-content-hor-align-sm services-v4-content">
                                 <h3 class="services-v4-title">3000원 / 30기쁨</h3>
@@ -156,7 +156,7 @@ $(function(){
                     <div class="services-v4 radius-3 services-v4-equal-height">
                         <div class="center-content-hor-wrap-sm services-v4-body">
                             <div class="center-content-hor-align-sm services-v4-media">
-                                <img class="services-v4-icon" src="assets/img/icons/05.png" alt="">
+                                <img class="services-v4-icon" src="assets/img/icons/02.png" alt="">
                             </div>
                             <div class="center-content-hor-align-sm services-v4-content">
                                 <h3 class="services-v4-title">10,000원 / 100기쁨</h3>
@@ -173,7 +173,7 @@ $(function(){
                     <div class="services-v4 radius-3 services-v4-equal-height">
                         <div class="center-content-hor-wrap-sm services-v4-body">
                             <div class="center-content-hor-align-sm services-v4-media">
-                                <img class="services-v4-icon" src="assets/img/icons/04.png" alt="">
+                                <img class="services-v4-icon" src="assets/img/icons/03.png" alt="">
                             </div>
                             <div class="center-content-hor-align-sm services-v4-content">
                                 <h3 class="services-v4-title">30,000원 / 300기쁨</h3>
@@ -190,7 +190,7 @@ $(function(){
                     <div class="services-v4 radius-3 services-v4-equal-height">
                         <div class="center-content-hor-wrap-sm services-v4-body">
                             <div class="center-content-hor-align-sm services-v4-media">
-                                <img class="services-v4-icon" src="assets/img/icons/06.png" alt="">
+                                <img class="services-v4-icon" src="assets/img/icons/03.png" alt="">
                             </div>
                             <div class="center-content-hor-align-sm services-v4-content">
                                 <h3 class="services-v4-title">50,000원 / 500기쁨</h3>

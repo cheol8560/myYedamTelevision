@@ -3273,7 +3273,7 @@ h1 > a:focus, h2 > a:focus, h3 > a:focus, h4 > a:focus, h5 > a:focus, h6 > a:foc
 }
 
 .breadcrumbs-v5.breadcrumbs-v5-bg-img-v7 {
-  background: url(../../assets/img/1920x1080/34.jpg) no-repeat;
+  background: url(../../assets/img/1920x1080/cash.jpg) no-repeat;
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -12916,7 +12916,7 @@ fieldset[disabled] .btn-ig-bg {
     [Banner Image v6]
 ------------------------------------------------------------------*/
 .banner-img-v6 {
-  background: url(../../assets/img/1920x1080/42.jpg) no-repeat;
+  background: url(../../assets/img/1920x1080/point.jpg) no-repeat;
   background-size: cover;
   background-position: center center;
 }
@@ -14862,7 +14862,7 @@ fieldset[disabled] .btn-ig-bg {
 
 .services-v4 .services-v4-body .services-v4-title {
   font-size: 24px;
-  color: #fff;
+  color: #333;
   margin: 0 0 10px;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -14870,7 +14870,7 @@ fieldset[disabled] .btn-ig-bg {
 }
 
 .services-v4 .services-v4-body .services-v4-text {
-  color: #fff;
+  color: #333;
   opacity: 1;
   margin-bottom: 5px;
   -webkit-transform: translate3d(0, 0, 0);

@@ -40,8 +40,8 @@
 	}
 	
 	//아이콘 추가
-	function icon(){
-		window.open("${pageContext.request.contextPath}/getContentIcon.do");
+	function icon(n){
+		window.open("${pageContext.request.contextPath}/getContentIcon.do?mode="+n);
 	}
  
 </script>
@@ -83,7 +83,7 @@
 									</div>
 
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default" onclick="icon();">아이콘추가</button>
+										<button type="button" class="btn btn-default" onclick="icon(1);">아이콘추가</button>
 										<button type="submit" class="btn btn-default" data-dismiss="modal" onclick="add();">저장</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 									</div>
@@ -121,7 +121,7 @@
 									</div>
 
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default" onclick="icon();">아이콘추가</button>
+										<button type="button" class="btn btn-default" onclick="icon(2);">아이콘변경</button>
 										<button type="button" class="btn btn-default" onclick="del();">삭제</button>
 										<button type="submit" class="btn btn-default" data-dismiss="modal" onclick="update();">수정</button>
 										<button type="button" class="btn btn-default" data-dismiss="modal" onclick="delete();">취소</button>

@@ -4,7 +4,13 @@
 		$(".get-icon").on("click", "i", function() {
 			var thisTxt = $(this).attr('class');
 			console.log(thisTxt);
-			opener.document.getElementsByName( "contentIcon" )[0].value = thisTxt;
+			if('${param.mode}'==1){
+				opener.document.getElementsByName( "contentIcon" )[0].value = thisTxt;	
+			}
+			else {
+				opener.document.getElementsByName( "contentIcon" )[1].value = thisTxt;
+			}
+			
 			window.close();
 		});
 

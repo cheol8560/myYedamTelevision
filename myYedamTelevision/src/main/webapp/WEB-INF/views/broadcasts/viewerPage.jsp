@@ -10,7 +10,6 @@
 	<div class="bg-color-white" style="border-bottom: 2px solid #00bcd4;">
 		<div class="full-width-container" style="margin-left: 30px;">
 			<div class="col-md-10">
-				<!-- Icon Box v4 -->
 				<div class="icon-box-v4">
 					<div class="theme-icons-wrap icon-box-v4-element">
 						<i class="theme-icons theme-icons-dark-bg theme-icons-lg radius-circle icon-genius"></i>
@@ -20,7 +19,6 @@
 						<span class="icon-box-v4-body-text">${broadcastResult.nickName}</span>
 					</div>
 				</div>
-				<!-- End Icon Box v4 -->
 			</div>
 			<div class="col-md-2 text-center" style="padding-top:15px;">
 				<button type="button" id="broadcastEndBtn" class="btn-base-brd btn-base-xs radius-3">방송종료</button>
@@ -57,21 +55,17 @@
 						</div>
 						
                         <div class="" style="border-top: 1px solid #00bcd4;">
-		                    <!-- Comment Form v1 -->
 		                    <div class="bg-color-white">
-		                        <!-- Comment Form v1 -->
-		                            <div class="full-width-container">
-		                                <textarea class="form-control" rows="4" placeholder="Your message" name="textarea" 
-		                                		  id="sendTextArea" style="resize:none; padding:10px 10px; width:75%; border:none;"
-		                                		  ></textarea>
-										<button class="btn-base-bg btn-base-xs radius-3" id="sendTextBtn"
-												style="position: absolute; top:25px; right:10px;">보내기</button>
-		                            </div>
-		                        <!-- Comment Form v1 -->
-		                    </div>
-		                    <!-- End Comment Form v1 -->
-                        </div>
-                    </div>
+								<div class="full-width-container">
+									<textarea class="form-control" rows="4" placeholder="Your message" name="textarea" 
+											id="sendTextArea" style="resize:none; padding:10px 10px; width:75%; border:none;"
+											></textarea>
+									<button class="btn-base-bg btn-base-xs radius-3" id="sendTextBtn"
+											style="position: absolute; top:25px; right:10px;">보내기</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
                 <!-- End Chatting Area -->
                 
@@ -86,30 +80,9 @@
                             <span style="float:right; margin-right:10px;"><span class="view-count">0</span>명</span>
                         </div>
                         <div class="blog-sidebar-content overflow-a padding-10" id="viewerList">
-                            <!-- Latest Tutorials -->
-							
-							<div class="btn-group btn-custom-toggle margin-b-10 bj-target">
-								<button type="button" class="btn-custom-bg dropdown-toggle radius-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="targetNickName"> ${broadcastResult.nickName} </span> (<span class="targetId"> ${broadcastResult.memberId} </span>)
-									<i class="bordered-icon-box-item fa fa-star" style="margin-left:5px;"></i>
-								</button>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="#" data-toggle="modal" data-target="#presentPointModal">
-											<i class="dropdown-menu-icon fa fa-gift font-size-16"></i>
-											<span>기쁨 선물</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-							
-							<div id="viewerArea">
 
-							</div>
-							
-							<!-- End Latest Tutorials -->
                         </div>
-                    </div>
+					</div>
                     <!-- End 시청자 목록 -->
                 
                     <div class="blog-sidebar margin-b-30">
@@ -182,9 +155,8 @@
             </div>
             <!-- End Right Area -->
         </div>
-        <!-- End Equal Height Interactive Banner v1 -->
+
     </div>
-    <!-- End Interactive Banner v1 -->
 	<!--========== END PAGE CONTENT ==========-->
 
 	<!-- 기쁨 선물 Modal -->
@@ -228,7 +200,7 @@
 						<button type="button" class="close" onclick="$('#pointAlert').hide();">
 							<span>&times;</span>
 						</button>
-						<strong>주의!</strong> 선물할 기쁨을 입력해주세요.
+						선물할 기쁨을 입력해주세요.
 					</div>
 
 					<div class="alert alert-info collapse font-size-13 text-center" id="pointConfirm" role="alert">
@@ -239,14 +211,14 @@
 						<button type="button" class="close" onclick="$('#pointFail').hide();">
 							<span>&times;</span>
 						</button>
-						<strong>경고!</strong> 보유하신 기쁨이 부족합니다.
+						보유하신 기쁨이 부족합니다.
 					</div>
 
 					<div class="alert alert-danger collapse font-size-13 text-center" id="pointFail2" role="alert">
 						<button type="button" class="close" onclick="$('#pointFail2').hide();">
 							<span>&times;</span>
 						</button>
-						<strong>경고!</strong> <span id="pointErrorMsg"></span>
+						<span id="pointErrorMsg"></span>
 					</div>
 
 				</div>
@@ -280,7 +252,7 @@
 				<div class="modal-body">
 			
 					<div class="alert alert-warning font-size-13 text-center" id="leaveAlert" role="alert">
-						<strong>주의!</strong> 현재 방송에서 <br> <strong>강제퇴장</strong>당하셨습니다.
+						현재 방송에서 <strong>강제퇴장</strong>되었습니다.
 					</div>
 
 				</div>
@@ -307,8 +279,8 @@
 				<div class="modal-body">
 			
 					<div class="alert alert-danger font-size-13 text-center" id="blacklistAlert" role="alert">
-						<strong>경고!</strong> 현재 방송에서 <strong>블랙리스트</strong>로 등록되어 <br>
-						강제퇴장당하셨습니다.
+						현재 방송에서 <strong>블랙리스트</strong>로 등록되어 <br>
+						강제퇴장되었습니다.
 					</div>
 
 				</div>
@@ -335,7 +307,7 @@
 				<div class="modal-body">
 			
 					<div class="alert alert-danger font-size-13 text-center" id="blacklistAlert" role="alert">
-						<strong>경고!</strong> 현재 방송에서 <strong>블랙리스트</strong>로 <br> 
+						현재 방송에서 <strong>블랙리스트</strong>로 <br> 
 						등록되어 입장할 수 없습니다.
 					</div>
 
@@ -371,10 +343,11 @@
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.animsition.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.back-to-top.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.number.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.smooth-scroll.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.animsition.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
@@ -437,6 +410,7 @@
 		
 	}, false);
 	
+	// 방송상태 변경 이벤트
 	appViewer.on("stateChange", function(state, peerid, userid) {
 		console.log(state);
 		if(state === "CONNECTED" || state === "CLOSED") {
@@ -445,81 +419,78 @@
 			appViewer.getPeerList(channelId, function(data) {
 				
 				var peerList = data.peers;
-				$("#viewerArea").html("");
+				$("#viewerList").html("");
 				$(".view-count").text("0");
 				
-				if(peerList.length > 1) {
-					var view = peerList.length-1;
-					$(".view-count").text(view);
+				var view = peerList.length-1;
+				$(".view-count").text(view);
 					
-					var i = 0;
-					
-					while(true) {
-						if(peerList[i].uid) {
+				for( var i = 0; i < peerList.length; i++ ) {
 							
-							// div tag
-							var tDiv = document.createElement("div");
-							tDiv.classList.add("btn-group");
-							tDiv.classList.add("btn-custom-toggle");
-							tDiv.classList.add("margin-b-10");
-							tDiv.classList.add("target");
-							
-							// button tag
-							var tBtn = document.createElement("button");
-							tBtn.setAttribute("type", "button");
-							tBtn.classList.add("btn-custom-bg");
-							tBtn.classList.add("dropdown-toggle");
-							tBtn.classList.add("radius-3");
-							tBtn.setAttribute("data-toggle", "dropdown");
-							tBtn.setAttribute("aria-haspopup", "true");
-							tBtn.setAttribute("aria-expanded", "false");
+					// div tag
+					var tDiv = document.createElement("div");
+					tDiv.classList.add("btn-group");
+					tDiv.classList.add("btn-custom-toggle");
+					tDiv.classList.add("margin-b-10");
+					tDiv.classList.add("target");
+						
+					// button tag
+					var tBtn = document.createElement("button");
+					tBtn.setAttribute("type", "button");
+					tBtn.classList.add("btn-custom-bg");
+					tBtn.classList.add("dropdown-toggle");
+					tBtn.classList.add("radius-3");
+					tBtn.classList.add("font-size-14");
+					tBtn.setAttribute("data-toggle", "dropdown");
+					tBtn.setAttribute("aria-haspopup", "true");
+					tBtn.setAttribute("aria-expanded", "false");
 
-							// spanTag
-							var tSpan = "<span class='targetNickName'>" + peerList[i].userName + "</span> (<span class='targetId'>" + peerList[i].uid +"</span>)";
-							tBtn.innerHTML = tSpan;
-							
-							if(peerList[i].uid != "${login.memberId}") {
-							
-							// ul tag
-							var tUl = document.createElement("ul");
-							tUl.classList.add("dropdown-menu");
-							
-							// 첫번째 li tag 
-							var tLi_1 = document.createElement("li");
-									
-							var tLi_1_tA = document.createElement("a");
-							tLi_1_tA.setAttribute("href", "#");
-							tLi_1_tA.setAttribute("data-toggle", "modal");
-							tLi_1_tA.setAttribute("data-target", "#presentPointModal");
-							
-							var tLi_1_tI = document.createElement("i");
-							tLi_1_tI.classList.add("dropdown-menu-icon");
-							tLi_1_tI.classList.add("fa");
-							tLi_1_tI.classList.add("fa-gift");
-							tLi_1_tI.classList.add("font-size-16");
-							var tLi_1_tSpan = document.createElement("span");
-							tLi_1_tSpan.textContent = "기쁨 선물";
-							
-							tLi_1_tA.appendChild(tLi_1_tI);
-							tLi_1_tA.appendChild(tLi_1_tSpan);
-							
-							tLi_1.appendChild(tLi_1_tA);
-							
-							// 태그 구조 생성
-							tUl.appendChild(tLi_1);
-							tDiv.appendChild(tUl);
-							
-							}
-							
-							tDiv.appendChild(tBtn);
-							viewerArea.appendChild(tDiv);
-							
-						}
-						
-						i++;
-						
-						if (i >= peerList.length) { break; }
+					// spanTag
+					var tSpan = "<span class='targetNickName'>" + peerList[i].userName + "</span> (<span class='targetId'>" + peerList[i].uid +"</span>)";
+					tBtn.innerHTML = tSpan;
+					
+					if(peerList[i].uid == "${broadcastResult.memberId}") {
+						var tI = "<i class='bordered-icon-box-item fa fa-star' style='margin-left:5px;'></i>";
+						$(tBtn).append($(tI));
 					}
+					
+					// ul tag
+					var tUl = document.createElement("ul");
+					tUl.classList.add("dropdown-menu");
+					
+					// 첫번째 li tag 
+					var tLi_1 = document.createElement("li");
+							
+					var tLi_1_tA = document.createElement("a");
+					tLi_1_tA.setAttribute("href", "#");
+					tLi_1_tA.setAttribute("data-toggle", "modal");
+					tLi_1_tA.setAttribute("data-target", "#presentPointModal");
+					
+					var tLi_1_tI = document.createElement("i");
+					tLi_1_tI.classList.add("dropdown-menu-icon");
+					tLi_1_tI.classList.add("fa");
+					tLi_1_tI.classList.add("fa-gift");
+					tLi_1_tI.classList.add("font-size-16");
+					
+					var tLi_1_tSpan = document.createElement("span");
+					tLi_1_tSpan.style.fontSize = "12px";
+					tLi_1_tSpan.textContent = "기쁨 선물";
+					
+					tLi_1_tA.appendChild(tLi_1_tI);
+					tLi_1_tA.appendChild(tLi_1_tSpan);
+					
+					tLi_1.appendChild(tLi_1_tA);
+					
+					// 태그 구조 생성
+					tUl.appendChild(tLi_1);
+					
+					tDiv.appendChild(tBtn);
+					if(peerList[i].uid != "${login.memberId}") {
+						tDiv.appendChild(tUl);
+					}
+						
+					viewerList.appendChild(tDiv);
+					
 				}
 			});
 		}
@@ -545,14 +516,14 @@
 				var sendMember = msgArr[1];
 				var targetMember = msgArr[2];
 				var acceptedMessage = msgArr[3];
-				var targetPeerId = msgArr[4];
+				var acceptedPeerId = msgArr[4];
 				
 				// 방송 입장
 				if(category == "#1") {
 					
 					var tP = document.createElement("p");
 					tP.style.paddingLeft = "5px";
-					tP.classList.add("font-size-12");
+					tP.classList.add("font-size-13");
 					tP.textContent = "＃ " + sendMember + acceptedMessage;
 					chattingArea.appendChild(tP);
 					
@@ -575,18 +546,22 @@
 					
 					tH3 = document.createElement("h3");
 					tH3.classList.add("services-v5-body-title");
-					tH3.classList.add("font-size-14");
+					tH3.classList.add("font-size-15");
+					tH3.style.marginBottom = "5px";
 					tH3.textContent = sendMember;
 					
 					tP = document.createElement("p");
 					tP.classList.add("services-v5-text");
-					tP.classList.add("font-size-13");
+					tP.classList.add("font-size-14");
 					tP.textContent = acceptedMessage;
 					
 					tDiv2.appendChild(tH3);
 					tDiv1.appendChild(tDiv2);
 					tDiv1.appendChild(tP);
 					chattingArea.appendChild(tDiv1);
+					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
 					
 				}
 				// 방송종료
@@ -596,17 +571,53 @@
 				// 별풍선 선물
 				else if (category == "#4") {
 					
+					// 선물받은 회원 현재 포인트 갱신
+					if(targetMember == mine) {
+						var recentPoint = parseInt($("#myPoint").text().replace(",", ""));
+						var acceptedPoint = parseInt(acceptedMessage.replace(",", ""));
+						recentPoint += acceptedPoint;
+						$("#myPoint").text($.number(recentPoint));
+					}
+					
+					var tDiv1 = document.createElement("div");
+					tDiv1.classList.add("chat-point-wrap");
+					
+					var tDiv2 = document.createElement("div");
+					tDiv2.classList.add("chat-point");
+					tDiv2.innerHTML = 
+						"<div class='chat-point-img-gradient' style='padding: 0px 60px;'>" + 
+							"<img class='img-responsive' src='assets/img/round.png'>" + 
+						"</div>" + 
+						"<div class='chat-point-content'>" + 
+							"<div class='chat-point-center-align'>" + 
+								"<h4 class='chat-point-member font-size-36'>" + acceptedMessage + "</h4>" + 
+								"<span class='chat-point chat-point-member-position font-size-18'>기쁨!</span>" + 
+							"</div>" + 
+						"</div>";
+					
+					tDiv1.appendChild(tDiv2);	
+					tDiv1.innerHTML += 
+						"<div class='alert alert-success text-center font-size-13 padding-10 margin-b-0 margin-t-5' role='alert'>" +
+							"<strong>" + sendMember + "</strong> 님이 <br>" + 
+							"<strong>" + targetMember + "</strong> 님에게 선물!" + 
+						"</div>";
+					
+					chattingArea.appendChild(tDiv1);
+					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
+					
 				}
 				// 강퇴
 				else if (category == "#5") {
 					
-					if( appViewer.getPeerId() == targetPeerId ) {
+					if( appViewer.getPeerId() == acceptedPeerId ) {
 						$("#leavedModal").modal();
 					}
 					
 					var tP = document.createElement("p");
 					tP.style.paddingLeft = "5px";
-					tP.classList.add("font-size-12");
+					tP.classList.add("font-size-13");
 					tP.textContent = "＃ " + targetMember + acceptedMessage;
 					chattingArea.appendChild(tP);
 					
@@ -614,13 +625,13 @@
 				// 블랙리스트 등록
 				else if (category == "#6") {
 					
-					if( appViewer.getPeerId() == targetPeerId ) {
+					if( appViewer.getPeerId() == acceptedPeerId ) {
 						$("#blacklistModal").modal();
 					}
 					
 					var tP = document.createElement("p");
 					tP.style.paddingLeft = "5px";
-					tP.classList.add("font-size-12");
+					tP.classList.add("font-size-13");
 					tP.textContent = "＃ " + targetMember + acceptedMessage;
 					chattingArea.appendChild(tP);
 					
@@ -691,12 +702,13 @@
 			
 			tH3 = document.createElement("h3");
 			tH3.classList.add("services-v5-body-title");
-			tH3.classList.add("font-size-14");
+			tH3.classList.add("font-size-15");
+			tH3.style.marginBottom = "5px";
 			tH3.textContent = mine;
 			
 			tP = document.createElement("p");
 			tP.classList.add("services-v5-text");
-			tP.classList.add("font-size-13");
+			tP.classList.add("font-size-14");
 			tP.textContent = message;
 			
 			tDiv2.appendChild(tH3);
@@ -712,23 +724,125 @@
 	}, false);
 	
 	// 모달로 값 넘기기
-	$("#viewerArea").on("click", ".target" ,function(e) {
+	$("#viewerList").on("click", ".target" ,function(e) {
 		var nodeName = e.target.nodeName;
 		
 		if((nodeName == "SPAN" && $(e.target).attr("class")) || nodeName == "BUTTON") {
-			console.log(e.target);
 			targetNickName = $(e.target).parent().find(".targetNickName").text();
 			targetMemberId = $(e.target).parent().find(".targetId").text();
-			targetPeerId = appViewer.getPeerByUserId(targetMemberId).id;
 			targetMember = targetNickName + " (" + targetMemberId + ")";
-			// console.log(targetNickName + "/" + targetMemberId + "/" + targetPeerId + "/" + targetMember);
+			console.log(targetNickName + "/" + targetMemberId + "/" + targetMember);
+			
+			if(targetMemberId != "${login.memberId}") {
+				targetPeerId = appViewer.getPeerByUserId(targetMemberId).id;
+			} 
 			
 			// 기쁨 선물 모달
 			$("#receiveMember").text(targetMember);
 			$("#inReceiveMemberId").val(targetMemberId);
-		}
-		
+		} 
 	});
+	
+	/* 방송 중 포인트 선물 */
+	
+	var inTranslatePoint;
+	// 선물하기 버튼 클릭 이벤트
+	presentPointBtn.addEventListener("click", function(event) {
+		inTranslatePoint = $("#inTranslatePoint").val();
+		
+		// 포인트 미입력시
+		if(inTranslatePoint == "" || inTranslatePoint == null || inTranslatePoint == 0) {
+			$("#pointAlert").fadeIn();
+			return;
+		} 
+		// 포인트 부족할 경우
+		else if( inTranslatePoint > parseInt($("#myPoint").text().replace(",", "")) ) {
+			$("#pointFail").fadeIn();
+		} 
+		else {
+			$("#confirmMember").text(targetMember);
+			$("#confirmPoint").text(inTranslatePoint);
+			$("#pointConfirm").fadeIn();
+			$("#pointEvent1").css("display", "none");
+			$("#pointEvent2").css("display", "block");
+		}
+	});
+	
+	// 선물하기 버튼 클릭 후 예 버튼 이벤트
+	$("#pointYes").click(function() {
+		var param = $("#pointFrm").serialize();
+		$.getJSON( "insertTrans.do", param, function(data) {
+			
+			if(data.trans.outErrorcode == -1) {
+				$("#pointErrorMsg").text(data.trans.outMessage);
+				$("#pointFail2").fadeIn();
+			} else if (data.trans.outErrorcode > 0) {
+				$(".pointModalClose").click();
+				console.log(data.member.point);
+				$("#myPoint").text($.number(data.member.point));
+				
+				var pointMsg = "#4/" + mine + "/" + targetMember + "/" + $.number(inTranslatePoint) + "/" + targetPeerId;
+				appViewer.sendText(pointMsg);
+				
+				var tDiv1 = document.createElement("div");
+				tDiv1.classList.add("chat-point-wrap");
+				
+				var tDiv2 = document.createElement("div");
+				tDiv2.classList.add("chat-point");
+				tDiv2.innerHTML = 
+					"<div class='chat-point-img-gradient' style='padding: 0px 60px;'>" + 
+						"<img class='img-responsive' src='assets/img/round.png'>" + 
+					"</div>" + 
+					"<div class='chat-point-content'>" + 
+						"<div class='chat-point-center-align'>" + 
+							"<h4 class='chat-point-member font-size-36'>" + $.number(inTranslatePoint) + "</h4>" + 
+							"<span class='chat-point chat-point-member-position font-size-18'>기쁨!</span>" + 
+						"</div>" + 
+					"</div>";
+				
+				tDiv1.appendChild(tDiv2);	
+				tDiv1.innerHTML += 
+					"<div class='alert alert-success text-center font-size-13 padding-10 margin-b-0 margin-t-5' role='alert'>" +
+						"<strong>" + mine + "</strong> 님이 <br>" + 
+						"<strong>" + targetMember + "</strong> 님에게 선물!" + 
+					"</div>";
+				
+				chattingArea.appendChild(tDiv1);
+				
+				// 채팅 등록 후 스크롤 가장 마지막으로
+				chattingArea.scrollTop = chattingArea.scrollHeight;
+			}
+		});
+	});
+	
+	// 선물하기 버튼 클릭 후 아니오 버튼 이벤트 
+	$("#pointNo").click(function() {
+		$("#pointConfirm").hide();
+		$("#pointEvent1").css("display", "block");
+		$("#pointEvent2").css("display", "none");
+	});
+	
+	// 포인트 입력 중 알림창 숨기기
+	$("#inTranslatePoint").keydown(function() {
+		$("#pointAlert").hide();
+		$("#pointFail").hide();
+		$("#pointFail2").hide();
+		$("#pointNo").click();
+	});
+	
+	// 포인트 모달 닫기 / 취소 버튼 클릭 시
+	$("#presentPointModal").on("hidden.bs.modal", function(e) {
+		$("#pointAlert").hide();
+		$("#pointConfirm").hide();
+		$("#pointFail").hide();
+		$("#pointFail2").hide();
+		$("#inTranslatePoint").val(" ");
+		$("#pointEvent1").css("display", "block");
+		$("#pointEvent2").css("display", "none");
+	});
+	
+	/* End 방송 중 포인트 선물 */
+	
 	
 	// 강퇴알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#leavedModal").on("hidden.bs.modal", function(e) {
@@ -744,7 +858,6 @@
 	
 	// 블랙리스트 입장알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#blacklistRejectModal").on("hidden.bs.modal", function(e) {
-		// appViewer.disconnectChannel(appViewer.getPeerId());
 		location.href = "getOnBroadcastList.do";
 	});
 	
@@ -781,15 +894,23 @@
 	// 동적 크기 조절
 	$(function() {
 		$("#videoArea").css("height", $("#leftArea").width() / 1.35);
-		$("#chattingArea").css("height", $("#videoArea").height() - 147);
-		$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
-		$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
+		$("#chattingArea").css("height", $("#videoArea").height() - 146);
+		$("#viewerList").css("height", $("#chattingArea").height() / 2.8);
 		$(window).resize(function() {
 			$("#videoArea").css("height", $("#leftArea").width() / 1.35);
-			$("#chattingArea").css("height", $("#videoArea").height() - 147);
+			$("#chattingArea").css("height", $("#videoArea").height() - 146);
 			$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
-			$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		});
+		
+		// number formatting
+		$(".view-count").number(true);
+		$("#myPoint").number(true);
+
+		// 모달 show 이벤트
+		$('#presentPointModal').on('shown.bs.modal', function() {
+			$('#inTranslatePoint').focus();
+		});
+		
 	});
 	
 </script>

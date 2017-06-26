@@ -152,7 +152,6 @@
                             </span>
                         </div>
                         <div class="blog-sidebar-content overflow-a padding-10" id="viewerList">
-                            <!-- Latest Tutorials -->
 							
 							<div class="btn-group btn-custom-toggle margin-b-10 viewerInfo">
 								<button class="btn-custom-bg radius-3">
@@ -161,11 +160,6 @@
 								</button>
 							</div>
 							
-							<div id="viewerArea">
-								
-							</div>
-							
-							<!-- End Latest Tutorials -->
                         </div>
                     </div>
                     <!-- End 시청자 목록 -->
@@ -221,7 +215,7 @@
 						<button type="button" class="close" onclick="$('#pointAlert').hide();">
 							<span>&times;</span>
 						</button>
-						<strong>주의!</strong> 선물할 기쁨을 입력해주세요.
+						선물할 기쁨을 입력해주세요.
 					</div>
 
 					<div class="alert alert-info collapse font-size-13 text-center" id="pointConfirm" role="alert">
@@ -232,14 +226,14 @@
 						<button type="button" class="close" onclick="$('#pointFail').hide();">
 							<span>&times;</span>
 						</button>
-						<strong>경고!</strong> 보유하신 기쁨이 부족합니다.
+						보유하신 기쁨이 부족합니다.
 					</div>
 
 					<div class="alert alert-danger collapse font-size-13 text-center" id="pointFail2" role="alert">
 						<button type="button" class="close" onclick="$('#pointFail2').hide();">
 							<span>&times;</span>
 						</button>
-						<strong>경고!</strong> <span id="pointErrorMsg"></span>
+						<span id="pointErrorMsg"></span>
 					</div>
 
 				</div>
@@ -273,7 +267,7 @@
 				<div class="modal-body">
 			
 					<div class="alert alert-warning font-size-13 text-center" id="leaveAlert" role="alert">
-						<strong>주의!</strong> <span id="leaveMember" class="fweight-700"></span> 님을 <br>
+						<span id="leaveMember" class="fweight-700"></span> 님을 <br>
 						강제 퇴장시키시겠습니까?
 					</div>
 
@@ -345,9 +339,9 @@
 				<div class="modal-body">
 			
 					<div class="alert alert-danger font-size-13 text-center" id="blacklistInsAlert" role="alert">
-						<strong>주의!</strong> <span id="blacklistInsMember" class="fweight-700"></span> 님을 <br>
+						<span id="blacklistInsMember" class="fweight-700"></span> 님을 <br>
 						블랙리스트로 등록하시겠습니까? 
-						<div class="font-size-11">* 블랙리스트로 등록하면 해당 회원은 <br> 강제퇴장되고 방송 입장이 불가능합니다.</div> 
+						<div class="font-size-11" style="padding-top:10px;">* 블랙리스트로 등록하면 해당 회원은 <br> 강제퇴장되고 방송 입장이 불가능합니다.</div> 
 					</div>
 					
 					<div class="alert alert-success collapse font-size-13 text-center" id="blacklistInsEndAlert" role="alert">
@@ -431,7 +425,7 @@
 	var inputChannelId = document.querySelector("#channelId");
 	var inputBroadcastNo = document.querySelector("#broadcastNo");
 	var chattingArea = document.querySelector("#chattingArea");
-	var viewerArea = document.querySelector("#viewerArea");
+	var viewerList = document.querySelector("#viewerList"); 
 	var sendTextBtn = document.querySelector("#sendTextBtn");
 	var presentPointBtn = document.querySelector("#presentPointBtn");
 	var broadcastStatusCheck = false;
@@ -462,13 +456,6 @@
 	// BJ connectChannel 이벤트 핸들러
 	appBj.on("connectChannel", function(channelId, options) {
 		inputChannelId.value = channelId;
-		
-		options = {
-			peer: {
-				uid: "${login.memberId}",
-				userName: "${login.nickName}"
-			}
-		};
 		
 		// 방송 등록 AJAX 처리
 		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1";
@@ -512,121 +499,123 @@
 			appBj.getPeerList(inputChannelId.value, function(data) {
 				
 				var peerList = data.peers;
-				$("#viewerArea").html("");
+				$("#viewerList").html("");
 				$(".view-count").text("0");
 				
-				if(peerList.length > 1) {
-					var view = peerList.length-1;
-					$(".view-count").text(view);
+				var view = peerList.length-1;
+				$(".view-count").text(view);
 					
-					var i = 0;
+				for( var i = 0; i < peerList.length; i++ ) {
+							
+					// div tag
+					var tDiv = document.createElement("div");
+					tDiv.classList.add("btn-group");
+					tDiv.classList.add("btn-custom-toggle");
+					tDiv.classList.add("margin-b-10");
+					tDiv.classList.add("target");
 					
-					while(true) {
-						if(peerList[i].uid) {
-							
-							// div tag
-							var tDiv = document.createElement("div");
-							tDiv.classList.add("btn-group");
-							tDiv.classList.add("btn-custom-toggle");
-							tDiv.classList.add("margin-b-10");
-							tDiv.classList.add("target");
-							
-							// button tag
-							var tBtn = document.createElement("button");
-							tBtn.setAttribute("type", "button");
-							tBtn.classList.add("btn-custom-bg");
-							tBtn.classList.add("dropdown-toggle");
-							tBtn.classList.add("radius-3");
-							tBtn.setAttribute("data-toggle", "dropdown");
-							tBtn.setAttribute("aria-haspopup", "true");
-							tBtn.setAttribute("aria-expanded", "false");
+					// button tag
+					var tBtn = document.createElement("button");
+					tBtn.setAttribute("type", "button");
+					tBtn.classList.add("btn-custom-bg");
+					tBtn.classList.add("dropdown-toggle");
+					tBtn.classList.add("radius-3");
+					tBtn.setAttribute("data-toggle", "dropdown");
+					tBtn.setAttribute("aria-haspopup", "true");
+					tBtn.setAttribute("aria-expanded", "false");
 
-							// spanTag
-							var tSpan = "<span class='targetNickName'>" + peerList[i].userName + "</span> (<span class='targetId'>" + peerList[i].uid +"</span>)";
-							tBtn.innerHTML = tSpan;
-							
-							// ul tag
-							var tUl = document.createElement("ul");
-							tUl.classList.add("dropdown-menu");
-							
-							// 첫번째 li tag 
-							var tLi_1 = document.createElement("li");
-									
-							var tLi_1_tA = document.createElement("a");
-							tLi_1_tA.setAttribute("href", "#");
-							tLi_1_tA.setAttribute("data-toggle", "modal");
-							tLi_1_tA.setAttribute("data-target", "#presentPointModal");
-							
-							var tLi_1_tI = document.createElement("i");
-							tLi_1_tI.classList.add("dropdown-menu-icon");
-							tLi_1_tI.classList.add("fa");
-							tLi_1_tI.classList.add("fa-gift");
-							tLi_1_tI.classList.add("font-size-16");
-							var tLi_1_tSpan = document.createElement("span");
-							tLi_1_tSpan.textContent = "기쁨 선물";
-							
-							tLi_1_tA.appendChild(tLi_1_tI);
-							tLi_1_tA.appendChild(tLi_1_tSpan);
-							
-							tLi_1.appendChild(tLi_1_tA);
-							
-							// 두번째 li tag 
-							var tLi_2 = document.createElement("li");
-									
-							var tLi_2_tA = document.createElement("a");
-							tLi_2_tA.setAttribute("href", "#");
-							tLi_2_tA.setAttribute("data-toggle", "modal");
-							tLi_2_tA.setAttribute("data-target", "#leaveModal");
-							
-							var tLi_2_tI = document.createElement("i");
-							tLi_2_tI.classList.add("dropdown-menu-icon");
-							tLi_2_tI.classList.add("fa");
-							tLi_2_tI.classList.add("fa-sign-out");
-							tLi_2_tI.classList.add("font-size-16");
-							var tLi_2_tSpan = document.createElement("span");
-							tLi_2_tSpan.textContent = "강퇴";
-							
-							tLi_2_tA.appendChild(tLi_2_tI);
-							tLi_2_tA.appendChild(tLi_2_tSpan);
-							
-							tLi_2.appendChild(tLi_2_tA);
-							
-							// 세번째 li tag 
-							var tLi_3 = document.createElement("li");
-									
-							var tLi_3_tA = document.createElement("a");
-							tLi_3_tA.setAttribute("href", "#");
-							tLi_3_tA.setAttribute("data-toggle", "modal");
-							tLi_3_tA.setAttribute("data-target", "#blacklistInsModal");
-							
-							var tLi_3_tI = document.createElement("i");
-							tLi_3_tI.classList.add("dropdown-menu-icon");
-							tLi_3_tI.classList.add("fa");
-							tLi_3_tI.classList.add("fa-thumb-tack");
-							tLi_3_tI.classList.add("font-size-16");
-							var tLi_3_tSpan = document.createElement("span");
-							tLi_3_tSpan.textContent = "블랙리스트 등록";
-							
-							tLi_3_tA.appendChild(tLi_3_tI);
-							tLi_3_tA.appendChild(tLi_3_tSpan);
-							
-							tLi_3.appendChild(tLi_3_tA);
-							
-							// 태그 구조 생성
-							tUl.appendChild(tLi_1);
-							tUl.appendChild(tLi_2);
-							tUl.appendChild(tLi_3);
-							
-							tDiv.appendChild(tBtn);
-							tDiv.appendChild(tUl);
-							viewerArea.appendChild(tDiv);
-							
-						}
-						
-						i++;
-						
-						if (i >= peerList.length) { break; }
+					// spanTag
+					var tSpan = "<span class='targetNickName'>" + peerList[i].userName + "</span> (<span class='targetId'>" + peerList[i].uid +"</span>)";
+					tBtn.innerHTML = tSpan;
+					
+					if(peerList[i].uid == "${login.memberId}") {
+						var tI = "<i class='bordered-icon-box-item fa fa-star' style='margin-left:5px;'></i>";
+						$(tBtn).append($(tI));
 					}
+					
+					// ul tag
+					var tUl = document.createElement("ul");
+					tUl.classList.add("dropdown-menu");
+						
+					// 첫번째 li tag 
+					var tLi_1 = document.createElement("li");
+							
+					var tLi_1_tA = document.createElement("a");
+					tLi_1_tA.setAttribute("href", "#");
+					tLi_1_tA.setAttribute("data-toggle", "modal");
+					tLi_1_tA.setAttribute("data-target", "#presentPointModal");
+							
+					var tLi_1_tI = document.createElement("i");
+					tLi_1_tI.classList.add("dropdown-menu-icon");
+					tLi_1_tI.classList.add("fa");
+					tLi_1_tI.classList.add("fa-gift");
+					tLi_1_tI.classList.add("font-size-16");
+					
+					var tLi_1_tSpan = document.createElement("span");
+					tLi_1_tSpan.textContent = "기쁨 선물";
+						
+					tLi_1_tA.appendChild(tLi_1_tI);
+					tLi_1_tA.appendChild(tLi_1_tSpan);
+						
+					tLi_1.appendChild(tLi_1_tA);
+						
+					// 두번째 li tag 
+					var tLi_2 = document.createElement("li");
+							
+					var tLi_2_tA = document.createElement("a");
+					tLi_2_tA.setAttribute("href", "#");
+					tLi_2_tA.setAttribute("data-toggle", "modal");
+					tLi_2_tA.setAttribute("data-target", "#leaveModal");
+					
+					var tLi_2_tI = document.createElement("i");
+					tLi_2_tI.classList.add("dropdown-menu-icon");
+					tLi_2_tI.classList.add("fa");
+					tLi_2_tI.classList.add("fa-sign-out");
+					tLi_2_tI.classList.add("font-size-16");
+					
+					var tLi_2_tSpan = document.createElement("span");
+					tLi_2_tSpan.textContent = "강퇴";
+						
+					tLi_2_tA.appendChild(tLi_2_tI);
+					tLi_2_tA.appendChild(tLi_2_tSpan);
+						
+					tLi_2.appendChild(tLi_2_tA);
+					
+					// 세번째 li tag 
+					var tLi_3 = document.createElement("li");
+								
+					var tLi_3_tA = document.createElement("a");
+					tLi_3_tA.setAttribute("href", "#");
+					tLi_3_tA.setAttribute("data-toggle", "modal");
+					tLi_3_tA.setAttribute("data-target", "#blacklistInsModal");
+						
+					var tLi_3_tI = document.createElement("i");
+					tLi_3_tI.classList.add("dropdown-menu-icon");
+					tLi_3_tI.classList.add("fa");
+					tLi_3_tI.classList.add("fa-thumb-tack");
+					tLi_3_tI.classList.add("font-size-16");
+					
+					var tLi_3_tSpan = document.createElement("span");
+					tLi_3_tSpan.textContent = "블랙리스트 등록";
+						
+					tLi_3_tA.appendChild(tLi_3_tI);
+					tLi_3_tA.appendChild(tLi_3_tSpan);
+						
+					tLi_3.appendChild(tLi_3_tA);
+						
+					// 태그 구조 생성
+					tUl.appendChild(tLi_1);
+					tUl.appendChild(tLi_2);
+					tUl.appendChild(tLi_3);
+						
+					tDiv.appendChild(tBtn);
+					
+					if(peerList[i].uid != "${login.memberId}") {
+						tDiv.appendChild(tUl);
+					}
+						
+					viewerList.appendChild(tDiv);
+						
 				}
 			});
 		}
@@ -656,7 +645,7 @@
 				var sendMember = msgArr[1];
 				var targetMember = msgArr[2];
 				var acceptedMessage = msgArr[3];
-				var targetPeerId = msgArr[4];
+				var acceptedPeerId = msgArr[4];
 				
 				// 방송 입장
 				if(category == "#1") {
@@ -699,10 +688,51 @@
 					tDiv1.appendChild(tP);
 					chattingArea.appendChild(tDiv1);
 					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
+					
 				}
-				
+				// 별풍선 선물
+				else if (category == "#4") {
+					
+					// 선물받은 회원 현재 포인트 갱신
+					if(targetMember == mine) {
+						var recentPoint = parseInt($("#myPoint").text().replace(",", ""));
+						var acceptedPoint = parseInt(acceptedMessage.replace(",", ""));
+						recentPoint += acceptedPoint;
+						$("#myPoint").text($.number(recentPoint));
+					}
+					
+					var tDiv1 = document.createElement("div");
+					tDiv1.classList.add("chat-point-wrap");
+					
+					var tDiv2 = document.createElement("div");
+					tDiv2.classList.add("chat-point");
+					tDiv2.innerHTML = 
+						"<div class='chat-point-img-gradient'>" + 
+							"<img class='img-responsive' src='assets/img/round.png'>" + 
+						"</div>" + 
+						"<div class='chat-point-content'>" + 
+							"<div class='chat-point-center-align'>" + 
+								"<h4 class='chat-point-member'>" + acceptedMessage + "</h4>" + 
+								"<span class='chat-point chat-point-member-position'>기쁨!</span>" + 
+							"</div>" + 
+						"</div>";
+					
+					tDiv1.appendChild(tDiv2);	
+					tDiv1.innerHTML += 
+						"<div class='alert alert-success text-center font-size-13 padding-10 margin-b-0 margin-t-5' role='alert'>" +
+							"<strong>" + sendMember + "</strong> 님이 <br>" + 
+							"<strong>" + targetMember + "</strong> 님에게 선물!" + 
+						"</div>";
+					
+					chattingArea.appendChild(tDiv1);
+					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
+					
+				}
 			}
-			
 		});
 	});
 	
@@ -736,7 +766,6 @@
 				var err = textStatus + " : " + error;
 				alert(err);
 			});
-		
 	});
 	
 	// 방송 시작 버튼 이벤트
@@ -746,13 +775,20 @@
 		var title = $("#broadcastTitle").val();
 		var code = $("#contentCode").val();
 		
+		options = {
+			peer: {
+				uid: "${login.memberId}",
+				userName: "${login.nickName}"
+			}
+		};
+		
 		if(title == null || title == "" || code == null || code == "") {
 			alert("방송정보를 모두 입력해주세요.");
 			return false;
 		}
 		
 		if(PlayRTC.utils.userMediaSupport) {
-			appBj.createChannel();
+			appBj.createChannel(options);
 		} else {
 			alert("방송 가능한 미디어 장치가 없습니다.");
 		}
@@ -842,11 +878,10 @@
 	}, false);
 	
 	// 모달로 값 넘기기
-	$("#viewerArea").on("click", ".target" ,function(e) {
+	$("#viewerList").on("click", ".target" ,function(e) {
 		var nodeName = e.target.nodeName;
 		
 		if((nodeName == "SPAN" && $(e.target).attr("class")) || nodeName == "BUTTON") {
-			console.log($(e.target).attr("class"));
 			targetNickName = $(e.target).parent().find(".targetNickName").text();
 			targetMemberId = $(e.target).parent().find(".targetId").text();
 			targetPeerId = appBj.getPeerByUserId(targetMemberId).id;
@@ -900,7 +935,7 @@
 				$(".pointModalClose").click();
 				$("#myPoint").text($.number(data.member.point));
 				
-				var pointMsg = "#4/" + mine + "/" + targetMember + "/" + $.number(inTranslatePoint) + "/" + appBj.getPeerId();
+				var pointMsg = "#4/" + mine + "/" + targetMember + "/" + $.number(inTranslatePoint) + "/" + targetPeerId;
 				appBj.sendText(pointMsg);
 				
 				var tDiv1 = document.createElement("div");
@@ -1127,12 +1162,10 @@
 		$("#videoArea").css("height", $("#leftArea").width() / 1.33);
 		$("#chattingArea").css("height", $("#videoArea").height() - 130);
 		$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
-		$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		$(window).resize(function() {
 			$("#videoArea").css("height", $("#leftArea").width() / 1.33);
 			$("#chattingArea").css("height", $("#videoArea").height() - 130);
 			$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
-			$("#viewerArea").css("height", $("#viewerList").height() * 0.85);
 		});
 
 		// number formatting

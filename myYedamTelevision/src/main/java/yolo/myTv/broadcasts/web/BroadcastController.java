@@ -17,6 +17,7 @@ import yolo.myTv.broadcasts.service.BroadcastService;
 import yolo.myTv.broadcasts.service.BroadcastVO;
 import yolo.myTv.contents.service.ContentService;
 import yolo.myTv.contents.service.ContentVO;
+import yolo.myTv.members.service.MemberService;
 import yolo.myTv.members.service.MemberVO;
 
 @Controller
@@ -25,6 +26,7 @@ public class BroadcastController {
 
 	@Autowired BroadcastService broadcastService;
 	@Autowired ContentService contentService;
+	@Autowired MemberService memberService;
 	
 	@ModelAttribute("broadcast")
 	public BroadcastVO broadcast() {
@@ -98,9 +100,11 @@ public class BroadcastController {
 	
 	// 방송 입장
 	@RequestMapping("/getOnBroadcast.do")
-	public String getOnBroadcast(@ModelAttribute("broadcast") BroadcastVO vo, Model model) {
-		System.out.println(vo);
+	public String getOnBroadcast(@ModelAttribute("broadcast") BroadcastVO vo, Model model, HttpSession session) {
 		BroadcastVO result = broadcastService.getBroadcast(vo);
+		MemberVO currMember = (MemberVO) session.getAttribute("login");
+		MemberVO searchMember = memberService.getMember(currMember);
+		session.setAttribute("login", searchMember);
 		model.addAttribute("broadcastResult", result);
 		return "blank/broadcasts/viewerPage";
 	}

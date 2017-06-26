@@ -21,6 +21,25 @@ $(function(){
 		 
 })
 </script>
+<script>
+window.onload = function(){
+	 var startYear= 2015;
+	 var intNum = 2; //해당 연도에서 +,- 개수
+	 var  thisDate = new Date();
+	 var currentYear = thisDate.getFullYear(); //현재년도
+	 var selName = document.getElementById("nowYear"); //option추가할 select명
+	 
+	 //option 태그를 생성해서 select에 넣기
+	  for (var i = startYear; i <= currentYear ; i++) {
+		  
+	     var opt = document.createElement("option"); //option 태그 생성
+	        opt.value = i;
+	        opt.appendChild(document.createTextNode(i)); //option 태그에 텍스트 추가
+	        selName.appendChild(opt); // select 태그에 추가
+	  } 
+	}
+
+</script>
 <!--========== 대문 ==========-->
 		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center" style="background: url(assets/img/1920x1080/exchange.jpg) no-repeat;">
 			<div class="container">
@@ -129,24 +148,23 @@ $(function(){
 		<div class="heading-v1 text-center margin-b-80">
 					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
 					<p class="heading-v1-text">
-						<select  name="year">
-							<option selected="selected" value="">선택
-							<option value="2017">2017
-						</select>년 
+						<select id="nowYear" onchange="changeYear(this.value);" name="year">
+						<option selected="selected" value="">선택
+ 						</select>년 
 						<select name="month">
 							<option selected="selected" value="">선택
-							<option value="01">01
-							<option value="02">02
-							<option value="03">03
-							<option value="04">04
-							<option value="05">05
-							<option value="06">06
-							<option value="07">07
-							<option value="08">08
-							<option value="09">09
-							<option value="10">10
-							<option value="11">11
-							<option value="12">12
+							<option value="01">
+							<option value="02">
+							<option value="03">
+							<option value="04">
+							<option value="05">
+							<option value="06">
+							<option value="07">
+							<option value="08">
+							<option value="09">
+							<option value="10">
+							<option value="11">
+							<option value="12">
 						</select>월
 						<button type="submit">검색</button>
 						<script>

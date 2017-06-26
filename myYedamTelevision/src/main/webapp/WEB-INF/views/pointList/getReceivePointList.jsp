@@ -21,6 +21,25 @@ $(function(){
 		 
 })
 </script>
+<script>
+window.onload = function(){
+	 var startYear= 2015;
+	 var intNum = 2; //해당 연도에서 +,- 개수
+	 var  thisDate = new Date();
+	 var currentYear = thisDate.getFullYear(); //현재년도
+	 var selName = document.getElementById("nowYear"); //option추가할 select명
+	 
+	 //option 태그를 생성해서 select에 넣기
+	  for (var i = startYear; i <= currentYear ; i++) {
+		  
+	     var opt = document.createElement("option"); //option 태그 생성
+	        opt.value = i;
+	        opt.appendChild(document.createTextNode(i)); //option 태그에 텍스트 추가
+	        selName.appendChild(opt); // select 태그에 추가
+	  } 
+	}
+
+</script>
 <!--========== 대문 ==========-->
 		<section class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
 			<div class="container">
@@ -83,10 +102,9 @@ $(function(){
 	<div class="heading-v1 text-center margin-b-80" id="receive">
 					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
 					<p class="heading-v1-text">
-						<select  name="year">
-							<option selected="selected" value="">선택
-							<option value="2017">2017
-						</select>년 
+						<select id="nowYear" onchange="changeYear(this.value);" name="year">
+						<option selected="selected" value="">선택
+ 						</select>년  
 						<select name="month">
 							<option selected="selected" value="">선택
 							<option value="01">01

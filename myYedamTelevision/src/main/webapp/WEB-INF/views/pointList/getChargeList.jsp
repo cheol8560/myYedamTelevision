@@ -47,7 +47,7 @@ $(function(){
     <!--========== END BREADCRUMBS V5 ==========-->
 		<!-- 현재 충전 조회 -->
 		<div class="bg-color-sky-light" >
-			<div class="content-md container">
+			<div class="content-md container"> 
 				<div class="row">
 					<div class="col-md-offset-1 col-md-3 col-sm-6 md-margin-b-30">
 						<!-- 총 충전 포인트 -->

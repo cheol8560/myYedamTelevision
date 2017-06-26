@@ -5,7 +5,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+document.getElementById("pay").addEventListener("click", function(event){
+    event.preventDefault()
+});
+
+
+	function chkCard(){
+		if (confirm("고객님께서 선택하신 충전 포인트는 "+ "${charge.chargePoint}"+"이며, "+
+				"결제될 금액은 "+ "${charge.chargeMoney}"+"입니다."+
+				"정말 결제하시겠습니까??") == true){    //확인
+			$.get("insertPoint.do?paymentWay=c1", function() {    alert("결제되었습니다.");
+			location.href="getChargeList.do"});
+		}else{   //취소
+		    return;
+		}
+	}
+	
+	function chkCash(){
+		if (confirm("고객님께서 선택하신 충전 포인트는 "+ "${charge.chargePoint}"+"이며, "+
+				"결제될 금액은 "+ "${charge.chargeMoney}"+"입니다."+
+				"정말 결제하시겠습니까??") == true){    //확인
+			$.get("insertPoint.do?paymentWay=c2", function() {    alert("관리자 승인후 결제완료 됩니다.");
+			location.href="getChargeList.do"});
+		}else{   //취소
+		    return;
+		}
+	}
+	
+	function chkTransfer(){
+		if (confirm("고객님께서 선택하신 충전 포인트는 "+ "${charge.chargePoint}"+"이며, "+
+				"결제될 금액은 "+ "${charge.chargeMoney}"+"입니다."+
+				"정말 결제하시겠습니까??") == true){    //확인
+			$.get("insertPoint.do?paymentWay=c3", function() {    alert("관리자 승인후 결제완료 됩니다.");
+			location.href="getChargeList.do"});
+		}else{   //취소
+		    return;
+		}
+	}
+
+</script>
 </head>
+
 <body>
 
 
@@ -33,7 +74,7 @@
                             	지금의 감정에 충실하세요. <br>
                             	어짜피 카드요금 통지서는 다음달에.. </p>
                         </div>
-                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=c1"></a>
+                        <a id="pay" class="icon-box-v1-link" href="#" onclick="chkCard();"></a>
                     </div>
                     <!-- End Icon Box v1 -->
                 </div>
@@ -50,7 +91,7 @@
                             	핵심은 어떤 대접을 받고 있는지 입니다. <br>
                             	여기서는 당신이 신이 될수도 있습니다.</p>
                         </div>
-                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=c2"></a>
+                         <a id="pay" class="icon-box-v1-link" href="#" onclick="chkCash();"></a>
                     </div>
                     <!-- End Icon Box v1 -->
                 </div>
@@ -67,7 +108,7 @@
                             	 결제 시스템이 당신의 실시간 계좌 이체를<br>
                             	 도와줄겁니다. 걱정하지마세요.</p>
                         </div>
-                        <a class="icon-box-v1-link" href="insertPoint.do?paymentWay=c3"></a>
+                        <a id="pay" class="icon-box-v1-link" href="#" onclick="chkTransfer();"></a>
                     </div>
                     <!-- End Icon Box v1 -->
                 </div>

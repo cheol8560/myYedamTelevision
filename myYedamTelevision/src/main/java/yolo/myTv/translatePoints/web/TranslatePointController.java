@@ -67,7 +67,6 @@ public class TranslatePointController {
 		model.addAttribute("paginationInfo", paginationInfo);
 		System.out.println("1+++++++"+paginationInfo);
 		model.addAttribute("chargeList", chargeService.getChargeList(chargevo));
-		
 		//--------------------------------------------------------------
 		//내가 선물한 포인트 조회
 		

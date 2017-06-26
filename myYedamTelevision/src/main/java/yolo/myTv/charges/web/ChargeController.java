@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import yolo.myTv.charges.service.ChargeService;
@@ -41,7 +42,8 @@ public class ChargeController {
 	
 	// 결제 페이지
 	@RequestMapping("/insertPoint.do")
-	public String insertPoint(@ModelAttribute("charge")ChargeVO vo, Model model, HttpSession session) {
+	@ResponseBody
+	public void insertPoint(@ModelAttribute("charge")ChargeVO vo, Model model, HttpSession session) {
 		model.addAttribute("charge",vo);
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
@@ -53,7 +55,6 @@ public class ChargeController {
 		} else {
 		chargeService.subUpdateCharge(vo);
 		}
-		return "redirect:getHoldingPointList.do";
 	}
 	
 	

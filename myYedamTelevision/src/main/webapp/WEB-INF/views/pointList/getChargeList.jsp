@@ -20,6 +20,7 @@ $(function(){
 		 
 })
 
+
 </script>
 <script>
 window.onload = function(){
@@ -109,8 +110,8 @@ window.onload = function(){
             <!-- Heading v1 -->
             <div class="heading-v1 heading-v1-black text-center margin-b-80">
                 <h1 class="heading-v1-title">포인트 충전 신청</h1>
-                <p class="heading-v1-text">원하는 금액의 기쁨(POINT)을 선택하여 충전하세요. 아무리 충전해도 과하지 않습니다.  <br/>
-                기쁨 선물하기를 통하여 당신의 배포를 증명하세요. 당신의 능력을 절대 과소평가 하지 마세요.</p>
+                <p class="heading-v1-text">원하는 금액의 기쁨(POINT)을 선택하여 충전하세요.<br/>
+                기쁨 선물하기를 통하여 기쁨을 나누어 보세요. 기쁨은 나눌수록 배가 됩니다.</p>
             </div>
             <!-- End Heading v1 -->
 
@@ -281,7 +282,7 @@ window.onload = function(){
 								<tr>
 									<td class="text-center">${charge.requestDate}</td>
 									<td class="text-center"><fmt:formatNumber value="${charge.chargePoint}" groupingUsed="true"/>기쁨</td>
-									<td class="text-center">${charge.paymentWay}</td>
+									<td class="text-center">${charge.PAYMENT_WAY_NAME}</td>
 									<td class="text-right"><fmt:formatNumber value="${charge.chargeMoney}" groupingUsed="true"/>원</td>
 									<td class="text-center">${charge.chargeNo}</td>
 								</tr>

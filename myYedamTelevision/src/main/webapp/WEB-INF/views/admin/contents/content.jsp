@@ -41,10 +41,11 @@
 			"json")
 			if( num == 0 ){
 				alert("삭제");
+				location.href="${pageContext.request.contextPath}/deleteContent.do?contentCode="+no;
 			}else {
 				alert("삭제 안됨");
 			}			
-			location.href="${pageContext.request.contextPath}/deleteContent.do?contentCode="+no;
+			
 		}
 	}
 	

@@ -84,5 +84,10 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.getQuestionListAll(vo);
 	}
 
+	@Override
+	public List<Map<String, Object>> getQuestionToday(BoardVO boardvo) {
+		return boardDAO.getQuestionToday(boardvo);
+	}
+
 
 }

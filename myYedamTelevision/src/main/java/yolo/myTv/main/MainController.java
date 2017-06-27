@@ -36,8 +36,8 @@ public class MainController {
 	}
 	
 	@RequestMapping("/adminIndex.do")
-	public String adminMain(BoardVO bvo, Model model){
-		model.addAttribute("adminQuestion", boardService.getQuestionList(bvo));
+	public String adminMain(BoardVO boardvo, Model model){
+		model.addAttribute("adminQuestion", boardService.getQuestionToday(boardvo));
 		return "admin/main/adminIndex";
 	}
 	

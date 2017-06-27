@@ -185,6 +185,34 @@
 		ORDER BY "boardNo" DESC
 
 	</select>
+	
+	
+	<select id="getQuestionToday" resultType="map">
+
+		SELECT
+      	B.BOARD_NO "boardNo"
+		, B.BOARD_TITLE "boardTitle"
+		, B.MEMBER_ID "memberId"
+		,	B.CATEGORY "category"
+		, B.WRITE_DATE "writeDate"
+		, B.BOARD_TEXT	"boardText"
+		, B.VIEW_COUNT "viewCount"
+		, B.ATTACH_FILE "attachFile"
+		, case C.MEMBER_ID
+      	WHEN 'admin' THEN '답변함'
+      	ELSE '답변안됨'
+     	END AS "answer"
+		FROM	BOARDS B FULL OUTER JOIN COMMENTS C
+		ON B.BOARD_NO = C.BOARD_NO
+    	WHERE B.MEMBER_ID != 'admin'
+      AND TO_CHAR(B.WRITE_DATE, 'YY/MM/DD') = TO_CHAR(SYSDATE, 'YY/MM/DD')
+      AND case C.MEMBER_ID
+      	WHEN 'admin' THEN '답변함'
+      	ELSE '답변안됨'
+     	END = '답변안됨'
+		ORDER BY 1
+
+	</select>
 
 	<select id="adminNoticeList" resultMap="boardsResult">
 		SELECT BOARD_NO

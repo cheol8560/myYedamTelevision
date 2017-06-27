@@ -39,7 +39,8 @@ public interface BoardService {
 	void updateAdminBoard(BoardVO vo);
 	//관리자 삭제
 	void deleteAdminBoard(BoardVO vo);
-
+	
+	List<Map<String, Object>> getQuestionToday(BoardVO boardvo);
 	
 	
 

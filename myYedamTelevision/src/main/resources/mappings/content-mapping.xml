@@ -50,9 +50,15 @@
 		CONTENT_CODE = #{contentCode}
 	</update>
 
-	<delete id="deleteContent" parameterType="int">
-		DELETE FROM CONTENTS WHERE
-		CONTENT_CODE = #{contentCode}
+	<delete id="deleteContent" statementType="CALLABLE"	parameterType="content">
+		{ call delContent 
+			(
+			#{inContentCode},
+			#{outErrorcode, mode=OUT, jdbcType=NUMERIC, javaType=int},
+			#{outMessage, mode=OUT, jdbcType=VARCHAR, javaType=String}
+			)
+		}
+		
 	</delete>
 
 	<select id="countContent" resultType="int">

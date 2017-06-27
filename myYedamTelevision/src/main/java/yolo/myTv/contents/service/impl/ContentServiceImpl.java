@@ -26,8 +26,8 @@ public class ContentServiceImpl implements ContentService{
 	}
 
 	@Override
-	public void deleteContent(ContentVO vo) {
-		contentMapper.deleteContent(vo);
+	public void deleteContent(ContentVO contentvo) {
+		contentMapper.deleteContent(contentvo);
 	}
 
 	@Override

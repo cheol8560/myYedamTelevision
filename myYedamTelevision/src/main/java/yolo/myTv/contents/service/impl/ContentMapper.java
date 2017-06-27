@@ -13,7 +13,7 @@ public interface ContentMapper {
 	
 	public void updateContent(ContentVO vo);
 
-	public void deleteContent(ContentVO vo);
+	public void deleteContent(ContentVO contentvo);
 	
 	public ContentVO getContent(ContentVO vo);
 	

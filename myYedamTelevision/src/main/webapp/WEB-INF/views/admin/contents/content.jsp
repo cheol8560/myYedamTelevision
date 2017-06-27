@@ -29,22 +29,24 @@
 			document.getElementById('update-row-form').submit();
 		}
 	}
-	//삭제
+	//삭제 컨텐츠를 쓰는 방송이 없거나 컨텐츠를 쓰는 방송의 방송 상태가 방송종료이면 삭제
 	function del(){
 		if (confirm("삭제할까요?")){
 			
 			var no = $('[name="contentCode"]').val();
-			var num ;
-			$.get("${pageContext.request.contextPath}/countContent.do?contentCode="+no, function(data){
-				num = data;
+			var message;
+			var code;
+			$.get("${pageContext.request.contextPath}/deleteContent.do?inContentCode="+no, function(data){
+				message=data.outMessage;
+				code=data.outErrorcode;
+				if(code == 1){
+					alert(message);
+					window.location.reload(true);
+				} else{
+					alert(message);
+				}
 			},
 			"json")
-			if( num == 0 ){
-				alert("삭제");
-				location.href="${pageContext.request.contextPath}/deleteContent.do?contentCode="+no;
-			}else {
-				alert("삭제 안됨");
-			}			
 			
 		}
 	}

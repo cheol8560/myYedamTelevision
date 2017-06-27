@@ -33,9 +33,9 @@ public class ContentController {
 	
 	//삭제
 	@RequestMapping("/deleteContent.do")
-	public String deleteContent(ContentVO vo){
+	public @ResponseBody ContentVO deleteContent(ContentVO vo, Model model){
 			contentService.deleteContent(vo);
-		return "redirect:/getContentList.do";
+		return vo;
 	}
 	
 	//단건조회

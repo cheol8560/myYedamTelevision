@@ -13,7 +13,7 @@ public interface ContentService {
 		void updateContent(ContentVO vo);
 
 		// 글 삭제
-		void deleteContent(ContentVO vo);
+		void deleteContent(ContentVO contentvo);
 
 		// 글 상세 조회
 		ContentVO getContent(ContentVO vo);

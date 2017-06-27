@@ -69,7 +69,7 @@
 							style="width: 240px; display: inline;" type="text"
 							autocomplete="on" placeholder="계좌 번호" name="inAccount"> <i
 							class="icon-box-item fa fa-check-circle-o"
-							style="width: 20px; display: inline; color: #4ed7e8; font-size: 24px;"></i></input><br>
+							style="width: 20px; display: inline; color: #4ed7e8; font-size: 24px;"></i><br>
 						<br> <input class="form-control" type="text"
 							style="width: 390px;" autocomplete="on" placeholder="환전할 기쁨"
 							name="inRequestPoint" /><br>
@@ -94,7 +94,7 @@
 			<div class="col-md-3 col-sm-6 md-margin-b-30">
 				<!-- Counters v3 -->
 				<div class="counters-v3">
-					<i class="counters-v3-icon radius-circle icon-lightbulb"></i>
+					<i class="counters-v3-icon radius-circle fa fa-money"></i>
 					<figure class="counter counters-v3-number" id="requestMoney"></figure>
 					<h4 class="counters-v3-title">환전될 금액</h4>
 				</div>
@@ -103,7 +103,7 @@
 			<div class="col-md-3 col-sm-6 md-margin-b-30">
 				<!-- Counters v3 -->
 				<div class="counters-v3">
-					<i class="counters-v3-icon radius-circle icon-trophy"></i>
+					<i class="counters-v3-icon radius-circle fa fa-cc-paypal"></i>
 					<figure class="counter counters-v3-number" id="commission"></figure>
 					<h4 class="counters-v3-title">수수료</h4>
 				</div>
@@ -112,7 +112,7 @@
 			<div class="col-md-3 col-sm-6 md-margin-b-30">
 				<!-- Counters v3 -->
 				<div class="counters-v3">
-					<i class="counters-v3-icon radius-circle icon-happy"></i>
+					<i class="counters-v3-icon radius-circle fa fa-krw"></i>
 					<figure class="counter counters-v3-number" id="realReceipt"></figure>
 					<h4 class="counters-v3-title">실수령 금액</h4>
 				</div>
@@ -121,7 +121,7 @@
 			<div class="col-md-3 col-sm-6">
 				<!-- Counters v3 -->
 				<div class="counters-v3">
-					<i class="counters-v3-icon radius-circle icon-speedometer"></i>
+					<i class="counters-v3-icon radius-circle fa fa-line-chart"></i>
 					<figure class="counter counters-v3-number" id="totalExchange"></figure>
 					<h4 class="counters-v3-title">누적 환전수</h4>
 				</div>
@@ -150,7 +150,7 @@
 			<div type="button" class="services-v6 services-v6-bg-img-one"
 				data-toggle="modal" data-target="#myModal1"
 				style="background: url(assets/img/1920x1080/exchange1.png) no-repeat;">
-				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
+				<i class="services-v6-icon radius-circle fa fa-money"></i>
 				<h3 class="services-v6-title">환전될 금액</h3>
 			</div>
 			<!-- End Services v6 -->
@@ -186,7 +186,7 @@
 			<div type="button" class="services-v6 services-v6-bg-img-two"
 				data-toggle="modal" data-target="#myModal2"
 				style="background: url(assets/img/1920x1080/tax1.png) no-repeat;">
-				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
+				<i class="services-v6-icon radius-circle fa fa-cc-paypal"></i>
 				<h3 class="services-v6-title">수수료</h3>
 			</div>
 			<!-- End Services v6 -->
@@ -201,7 +201,7 @@
 							<h4 class="modal-title">수수료</h4>
 						</div>
 						<div class="modal-body">
-							<p>수수료란? <br>환전과정에서 고객님의 환전신청금액의 10%를 수수료가 발생하며 이는 모든 이용자에게 해당됩니다. 이외 다른 수수료는 일절 발생하지 않습니다.</p>
+							<p>수수료란? <br>환전과정에서 고객님의 환전신청금액의 10%를 수수료가 발생하며 이는 모든 <br>이용자에게 해당됩니다. 이외 다른 수수료는 일절 발생하지 않습니다.</p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
@@ -217,7 +217,7 @@
 			<div type="button" class="services-v6 services-v6-bg-img-three"
 				data-toggle="modal" data-target="#myModal3"
 				style="background: url(assets/img/1920x1080/real.png) no-repeat;">
-				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
+				<i class="services-v6-icon radius-circle fa fa-krw"></i>
 				<h3 class="services-v6-title">실수령 금액</h3>
 			</div>
 			<!-- End Services v6 -->
@@ -232,7 +232,7 @@
 							<h4 class="modal-title">실수령 금액</h4>
 						</div>
 						<div class="modal-body">
-							<p>실수령 금액이란? <br>고객님께서 신청하신 환전금액에서 10%의 수수료를 제외한 고객님의 계좌로 지급될 금액을 의미합니다.</p>
+							<p>실수령 금액이란? <br>고객님께서 신청하신 환전금액에서 10%의 수수료를 제외한 고객님의 계좌로 <br>지급될 금액을 의미합니다.</p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
@@ -248,7 +248,7 @@
 			<div type="button" class="services-v6 services-v6-bg-img-four"
 				data-toggle="modal" data-target="#myModal4"
 				style="background: url(assets/img/1920x1080/accumulate.PNG) no-repeat;">
-				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
+				<i class="services-v6-icon radius-circle fa fa-line-chart"></i>
 				<h3 class="services-v6-title">누적 환전 포인트</h3>
 			</div>
 			<!-- End Services v6 -->
@@ -263,7 +263,7 @@
 							<h4 class="modal-title">누적 환전 포인트</h4>
 						</div>
 						<div class="modal-body">
-							<p>누적 환전 포인트란? <br>고객님께서 현재까지 이용하신 환전포인트입니다. 계정을 생성한후 부터 최근 환정신청까지의 포인트 총 합을 의미합니다.</p>
+							<p>누적 환전 포인트란? <br>고객님께서 현재까지 이용하신 환전포인트입니다. 계정을 생성한후 부터 최근 <br>환정신청까지의 포인트 총 합을 의미합니다.</p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"

@@ -163,7 +163,7 @@
 									onclick="location.href='${pageContext.request.contextPath}/logout.do'">
 								<b>로그아웃</b> 
 								<span class="btn-base-element-md"> 
-									<i class="btn-base-element-icon fa fa-video-camera"></i>
+									<i class="btn-base-element-icon fa fa-sign-out"></i>
 								</span>
 							</button>
 						</c:if>

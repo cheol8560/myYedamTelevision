@@ -38,7 +38,7 @@
 </script>
 <!--========== 대문 ==========-->
 <section
-	class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center">
+	class="breadcrumbs-v5 breadcrumbs-v5-bg-img-v-2 bg-position-center-center" style="background: url(assets/img/1920x1080/pre.jpg) no-repeat;">
 	<div class="container">
 		<div class="margin-b-30">
 			<h2 class="breadcrumbs-v5-title margin-b-10">나누는 기쁨</h2>
@@ -52,10 +52,10 @@
 <div class="bg-color-sky-light">
 	<div class="content-md container">
 		<div class="row">
-			<div class="col-md-3 col-sm-6 md-margin-b-30">
+			<div class="col-md-offset-1 col-md-3 col-sm-6 md-margin-b-30">
 				<!-- 총 나눠준 포인트 -->
 				<div class="counters-v2 bg-color-white">
-					<i class="counters-v2-icon icon-layers"></i>
+					<i class="counters-v2-icon fa fa-plane"></i>
 					<figure class="counter color-base counters-v2-no">${point.totalSendPoint}</figure>
 					<h4 class="counters-v2-title">총 나눠준 포인트</h4>
 				</div>
@@ -64,7 +64,7 @@
 			<div class="col-md-3 col-sm-6 md-margin-b-30">
 				<!-- 이번달 나눠준 포인트 -->
 				<div class="counters-v2 bg-color-white">
-					<i class="counters-v2-icon icon-trophy"></i>
+					<i class="counters-v2-icon fa fa-paper-plane-o"></i>
 					<figure class="counter color-base counters-v2-no">${point.monthSendPoint}</figure>
 					<h4 class="counters-v2-title">이번달 나눠준 포인트</h4>
 				</div>
@@ -73,7 +73,7 @@
 			<div class="col-md-3 col-sm-6 sm-margin-b-30">
 				<!-- 현재 보유 포인트 -->
 				<div class="counters-v2 bg-color-white">
-					<i class="counters-v2-icon icon-happy"></i>
+					<i class="counters-v2-icon fa fa-heartbeat"></i>
 					<figure class="counter color-base counters-v2-no">${point.nowPoint}</figure>
 					<h4 class="counters-v2-title">현재 보유 포인트</h4>
 				</div>
@@ -92,7 +92,7 @@
 			value="${(empty translatePointVO.pageIndex)? 1 : translatePointVO.pageIndex }" />
 				<!-- Heading v1 -->
 				<div class="heading-v1 text-center margin-b-80" id="send">
-					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
+					<h2 class="heading-v1-title">선물한 기쁨 내역</h2><br>
 					<p class="heading-v1-text">
 						<select id="nowYear" name="year">
 							<option selected="selected" value="">선택

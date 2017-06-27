@@ -72,7 +72,7 @@ window.onload = function(){
 					<div class="col-md-offset-1 col-md-3 col-sm-6 md-margin-b-30">
 						<!-- 총 충전 포인트 -->
 						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-layers"></i>
+							<i class="counters-v2-icon icon-trophy"></i>
 							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.totalChargePoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">총 충전 포인트</h4>
 						</div>
@@ -81,7 +81,7 @@ window.onload = function(){
 					<div class="col-md-3 col-sm-6 md-margin-b-30">
 						<!-- 이번달 충전 포인트 -->
 						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-trophy"></i>
+							<i class="counters-v2-icon fa fa-star"></i>
 							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.monthChargePoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">이번달 충전 포인트</h4>
 						</div>
@@ -90,7 +90,7 @@ window.onload = function(){
 					<div class="col-md-3 col-sm-6 sm-margin-b-30">
 						<!-- 현재 보유 포인트 -->
 						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-happy"></i>
+							<i class="counters-v2-icon fa fa-heartbeat"></i>
 							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.nowPoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">현재 보유 포인트</h4>
 						</div>

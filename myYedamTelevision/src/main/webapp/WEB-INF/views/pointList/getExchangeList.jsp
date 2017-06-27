@@ -59,7 +59,7 @@ window.onload = function(){
 					<div class="col-md-offset-1 col-md-3 col-sm-6 md-margin-b-40">
 						<!-- 총 환전 포인트 -->
 						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-layers"></i>
+							<i class="counters-v2-icon fa fa-krw"></i>
 							<figure class="counter color-base counters-v2-no">${point.totalExchangePoint}</figure>
 							<h4 class="counters-v2-title">총 환전 포인트</h4>
 						</div>
@@ -68,7 +68,7 @@ window.onload = function(){
 					<div class="col-md-3 col-sm-6 md-margin-b-40">
 						<!-- 이번달 환전 포인트 -->
 						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-trophy"></i>
+							<i class="counters-v2-icon fa fa-money"></i>
 							<figure class="counter color-base counters-v2-no">${point.monthExchangePoint}</figure>
 							<h4 class="counters-v2-title">이번달 환전 포인트</h4>
 						</div>
@@ -77,7 +77,7 @@ window.onload = function(){
 					<div class="col-md-3 col-sm-6 sm-margin-b-40">
 						<!-- 현재 보유 포인트 -->
 						<div class="counters-v2 bg-color-white">
-							<i class="counters-v2-icon icon-happy"></i>
+							<i class="counters-v2-icon fa fa-heartbeat"></i>
 							<figure class="counter color-base counters-v2-no">${point.nowPoint}</figure>
 							<h4 class="counters-v2-title">현재 보유 포인트</h4>
 						</div>
@@ -142,7 +142,7 @@ window.onload = function(){
 			<input type="hidden" name="searchUseYn" value="exchange" />	
 	<div class="heading-v1 text-center margin-t-60 margin-b-60" id="exchange">
 		<div class="heading-v1 text-center margin-b-80">
-					<h2 class="heading-v1-title">환전 내역</h2>
+					<h2 class="heading-v1-title">환전 내역</h2><br>
 					<p class="heading-v1-text">
 						<select id="nowYear" onchange="changeYear(this.value);" name="year">
 						<option selected="selected" value="">선택

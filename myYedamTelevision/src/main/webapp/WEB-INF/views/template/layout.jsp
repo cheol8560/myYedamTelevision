@@ -69,9 +69,10 @@
 		<!-- Logo -->
 		<div class="bg-color-base">
             <div class="container-sm" style="margin-left: 30px; padding-top:10px; padding-bottom:10px;">
-                <p class="font-size-36 font-style-italic font-family-droid color-white line-height-2 margin-b-0">
+                <a href="getOnBroadcastList.do" class="font-size-36 font-style-italic 
+                		 font-family-droid color-white line-height-2 margin-b-0" style="text-decoration: none;">
                 	My Yedam Television
-                </p>
+                </a>
             </div>
         </div>
         <!-- End Logo -->

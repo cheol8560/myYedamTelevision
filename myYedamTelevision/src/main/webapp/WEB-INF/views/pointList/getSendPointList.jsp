@@ -19,22 +19,23 @@
 	})
 </script>
 <script>
-	window.onload = function() {
-		var startYear = 2015;
-		var intNum = 2; //해당 연도에서 +,- 개수
-		var thisDate = new Date();
-		var currentYear = thisDate.getFullYear(); //현재년도
-		var selName = document.getElementById("year"); //option추가할 select명
-
-		//option 태그를 생성해서 select에 넣기
-		for (var i = startYear; i <= currentYear; i++) {
-
-			var opt = document.createElement("option"); //option 태그 생성
-			opt.value = i;
-			opt.appendChild(document.createTextNode(i)); //option 태그에 텍스트 추가
-			selName.appendChild(opt); // select 태그에 추가
-		} selName.options['${param.year}'].selected = $("[name='year']").val('${translateVO.year}');
+window.onload = function(){
+	 var startYear= 2015;
+	 var intNum = 2; //해당 연도에서 +,- 개수
+	 var  thisDate = new Date();
+	 var currentYear = thisDate.getFullYear(); //현재년도
+	 var selName = document.getElementById("year"); //option추가할 select명
+	 
+	 //option 태그를 생성해서 select에 넣기
+	  for (var i = startYear; i <= currentYear ; i++) {
+		  
+	     var opt = document.createElement("option"); //option 태그 생성
+	        opt.value = i;
+	        opt.appendChild(document.createTextNode(i)); //option 태그에 텍스트 추가
+	        selName.appendChild(opt); // select 태그에 추가
+	  } selName.options['${param.year}'].selected = $("[name='year']").val('${translatePointVO.year}');
 	}
+
 </script>
 <!--========== 대문 ==========-->
 <section
@@ -114,8 +115,7 @@
 						<button type="submit" class="btn btn-default btn-rounded">검색</button>
 						<script>
 							$("[name='year']").val('${translatePointVO.year}');
-							$("[name='month']")
-									.val('${translatePointVO.month}');
+							$("[name='month']").val('${translatePointVO.month}');
 						</script>
 					</p>
 				</div>

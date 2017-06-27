@@ -44,8 +44,8 @@
                                     </ul>
                                 </li> -->
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
-                                        <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
+                                    <a href="${pageContext.request.contextPath}/login.do" class="log-out waves-effect waves-button waves-classic">
+                                        <span><i class="fa fa-sign-out m-r-xs" ></i>Log out</span>
                                     </a>
                                 </li>
                                 

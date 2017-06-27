@@ -37,35 +37,35 @@
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
-									<th style="width: 100px;" id="DESC">게시글번호</th>
-									<th style="width: 400px;">제목</th>
-									<th style="width: 100px;">작성자</th>
-									<th style="width: 100px;">작성일자</th>
-									<th style="width: 100px;">조회수</th>
-									<th style="width: 100px;">답변여부</th>
+									<th class="text-center" style="width: 100px;" id="DESC">게시글번호</th>
+									<th class="text-center" style="width: 400px;">제목</th>
+									<th class="text-center" style="width: 100px;">작성자</th>
+									<th class="text-center" style="width: 100px;">작성일자</th>
+									<th class="text-center" style="width: 100px;">조회수</th>
+									<th class="text-center" style="width: 100px;">답변여부</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<th>게시글번호</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일자</th>
-									<th>조회수</th>
-									<th>답변여부</th>
+									<th class="text-center">게시글번호</th>
+									<th class="text-center">제목</th>
+									<th class="text-center">작성자</th>
+									<th class="text-center">작성일자</th>
+									<th class="text-center">조회수</th>
+									<th class="text-center">답변여부</th>
 
 								</tr>
 							</tfoot>
 							<tbody>
 								<c:forEach items="${adminQuestion}" var="adminQuestion">
 									<tr>
-										<td>${adminQuestion.boardNo }</td>
-										<td><a
+										<td class="text-center">${adminQuestion.boardNo }</td>
+										<td class="text-center"><a
 											href="adminQuestion.do?boardNo=${adminQuestion.boardNo}">${adminQuestion.boardTitle }</a></td>
-										<td>${adminQuestion.memberId }</td>
-										<td>${adminQuestion.writeDate }</td>
-										<td>${adminQuestion.viewCount }</td>
-										<th>${adminQuestion.answer }</th>
+										<td class="text-center">${adminQuestion.memberId }</td>
+										<td class="text-center">${adminQuestion.writeDate }</td>
+										<td class="text-center">${adminQuestion.viewCount }</td>
+										<th class="text-center">${adminQuestion.answer }</th>
 									</tr>
 								</c:forEach>
 							</tbody>

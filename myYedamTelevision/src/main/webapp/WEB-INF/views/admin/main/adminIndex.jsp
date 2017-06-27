@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script>
+$(function(){
+	$.get("${pageContext.request.contextPath}/sumInfo.do", function(data){
+		
+		$("#outSumMember").text(data.outSumMember);
+		$("#outSumPoint").text(data.outSumPoint+" Point");
+		$("#outCountBoard").text(data.outCountBoard);
+		$("#outCountBroadcast").text(data.outCountBroadcast);
+		
+	},
+	"json");
+	
+});
 
+</script>
 <div class="page-title">
 	<h3>관리자 페이지</h3>
 </div>
@@ -11,7 +25,7 @@
 			<div class="panel info-box panel-white">
 				<div class="panel-body">
 					<div class="info-box-stats">
-						<p class="counter">107,200</p>
+						<p id="outSumMember">0</p>
 						<span class="info-box-title">총 회원 수</span>
 					</div>
 					<div class="info-box-icon">
@@ -31,7 +45,7 @@
 			<div class="panel info-box panel-white">
 				<div class="panel-body">
 					<div class="info-box-stats">
-						<p class="counter">340,230</p>
+						<p id="outCountBroadcast"></p>
 						<span class="info-box-title">현재 개설된 방송수</span>
 					</div>
 					<div class="info-box-icon">
@@ -51,8 +65,8 @@
 			<div class="panel info-box panel-white">
 				<div class="panel-body">
 					<div class="info-box-stats">
-						<p>
-							$<span class="counter">653,000</span>
+						<p id="outSumPoint">
+							P
 						</p>
 						<span class="info-box-title">오늘 충전된 기쁨</span>
 					</div>
@@ -73,7 +87,7 @@
 			<div class="panel info-box panel-white">
 				<div class="panel-body">
 					<div class="info-box-stats">
-						<p class="counter">47,500</p>
+						<p id="outCountBoard">47,500</p>
 						<span class="info-box-title">오늘의 1:1 문의 건수</span>
 					</div>
 					<div class="info-box-icon">

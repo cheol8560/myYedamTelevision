@@ -1,6 +1,7 @@
 package yolo.myTv.main;
 
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import yolo.myTv.boards.service.BoardService;
 import yolo.myTv.boards.service.BoardVO;
@@ -26,6 +28,8 @@ public class MainController {
 	BoardService boardService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	MainService mainService;
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -40,7 +44,11 @@ public class MainController {
 		model.addAttribute("adminQuestion", boardService.getQuestionToday(boardvo));
 		return "admin/main/adminIndex";
 	}
-	
+	@RequestMapping("/sumInfo.do")
+	public @ResponseBody MainVO sumInfo(MainVO mainvo){
+		mainService.sumInfo(mainvo);
+		return mainvo;
+	}
 	
 	
 }

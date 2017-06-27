@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.myTv.main.MainMapper">
+<select id="sumInfo" statementType="CALLABLE"	parameterType="yolo.myTv.main.MainVO">
+		{ call adminindex(
+		#{outSumMember, mode=OUT, jdbcType=NUMERIC, javaType=int},
+		#{outSumPoint, mode=OUT, jdbcType=NUMERIC, javaType=int},
+		#{outCountBoard, mode=OUT, jdbcType=NUMERIC, javaType=int},
+		#{outCountBroadcast, mode=OUT, jdbcType=NUMERIC, javaType=int})
+		}
+</select>
+</mapper>

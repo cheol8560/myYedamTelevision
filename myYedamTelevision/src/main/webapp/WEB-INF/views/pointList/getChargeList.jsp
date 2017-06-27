@@ -278,7 +278,7 @@ window.onload = function(){
 							<c:forEach items="${chargeList}" var="charge">
 								<tr>
 									<td class="text-center">${charge.requestDate}</td>
-									<td class="text-center"><fmt:formatNumber value="${charge.chargePoint}" groupingUsed="true"/>기쁨</td>
+									<td class="text-right"><fmt:formatNumber value="${charge.chargePoint}" groupingUsed="true"/></td>
 									<td class="text-center">${charge.PAYMENT_WAY_NAME}</td>
 									<td class="text-right"><fmt:formatNumber value="${charge.chargeMoney}" groupingUsed="true"/>원</td>
 									<td class="text-center">${charge.chargeNo}</td>

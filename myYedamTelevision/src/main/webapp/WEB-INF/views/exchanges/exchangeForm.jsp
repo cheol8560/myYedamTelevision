@@ -3,34 +3,44 @@
 <script>
 	$(function() {
 
-		$("#btn").click(function() {
-			var a = $("#insertEx").serialize();
-			$.ajax({
-				url : "insertExchange.do",
-				method : "post",
-				type : "json",
-				data : a,
-				success : function(data) {
-					
-					if (data.code == "true") {
-						$("#requestMoney").html(data.result.requestPoint * 100);
-						$("#commission").html(data.result.commission);
-						$("#realReceipt").html(data.result.realReceipt);
-						$("#totalExchange").html(data.result.totalRequest);
-						alert("환전되었습니다.!");
-					} else {
-						alert(data.error);
-					}
-				}
-			});
-			
+		$("#btn")
+				.click(
+						function() {
+							var a = $("#insertEx").serialize();
+							$
+									.ajax({
+										url : "insertExchange.do",
+										method : "post",
+										type : "json",
+										data : a,
+										success : function(data) {
 
-		})
+											if (data.code == "true") {
+												$("#requestMoney")
+														.html(
+																data.result.requestPoint * 100);
+												$("#commission").html(
+														data.result.commission);
+												$("#realReceipt")
+														.html(
+																data.result.realReceipt);
+												$("#totalExchange")
+														.html(
+																data.result.totalRequest);
+												alert("환전되었습니다.!");
+											} else {
+												alert(data.error);
+											}
+										}
+									});
+
+						})
 
 	});
 </script>
 <!--========== PROMO BLOCK V11 ==========-->
-<section class="promo-block-v11 fullheight" style="background: url(assets/img/1920x1080/bigexchange.jpg) no-repeat;">
+<section class="promo-block-v11 fullheight"
+	style="background: url(assets/img/1920x1080/exchange3.jpg) no-repeat;">
 	<div class="container vertical-center-aligned">
 		<div class="margin-b-40">
 			<h2 class="promo-block-v11-title wow fadeInUp" data-wow-duration=".2"
@@ -137,39 +147,132 @@
 	<div class="row">
 		<div class="col-md-3 col-sm-6 md-margin-b-30">
 			<!-- Services v6 -->
-			<div class="services-v6 services-v6-bg-img-one">
+			<div type="button" class="services-v6 services-v6-bg-img-one"
+				data-toggle="modal" data-target="#myModal1"
+				style="background: url(assets/img/1920x1080/exchange1.png) no-repeat;">
 				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
 				<h3 class="services-v6-title">환전될 금액</h3>
-				<a class="services-v6-link" href="#"></a>
 			</div>
 			<!-- End Services v6 -->
+			<!-- Modal -->
+			<div class="modal fade" id="myModal1" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">환전될 금액</h4>
+						</div>
+						<div class="modal-body">
+							<p>환전될 금액이란?<br>
+							고객님께서 보유하신 기쁨포인트 내에서 원하시는 환전포인트 만큼 포인트가<br> 
+							차감되어 고객님의 계좌로 현금이 지급됩니다.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
 		</div>
+
+
 		<div class="col-md-3 col-sm-6 md-margin-b-30">
 			<!-- Services v6 -->
-			<div class="services-v6 services-v6-bg-img-two">
-				<i class="services-v6-icon radius-circle icon-camera"></i>
+			<div type="button" class="services-v6 services-v6-bg-img-two"
+				data-toggle="modal" data-target="#myModal2"
+				style="background: url(assets/img/1920x1080/tax1.png) no-repeat;">
+				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
 				<h3 class="services-v6-title">수수료</h3>
-				<a class="services-v6-link" href="#"></a>
 			</div>
 			<!-- End Services v6 -->
+			<!-- Modal -->
+			<div class="modal fade" id="myModal2" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">수수료</h4>
+						</div>
+						<div class="modal-body">
+							<p>수수료란? <br>환전과정에서 고객님의 환전신청금액의 10%를 수수료가 발생하며 이는 모든 이용자에게 해당됩니다. 이외 다른 수수료는 일절 발생하지 않습니다.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 		<div class="col-md-3 col-sm-6 sm-margin-b-30">
 			<!-- Services v6 -->
-			<div class="services-v6 services-v6-bg-img-three">
-				<i class="services-v6-icon radius-circle icon-tools"></i>
+			<div type="button" class="services-v6 services-v6-bg-img-three"
+				data-toggle="modal" data-target="#myModal3"
+				style="background: url(assets/img/1920x1080/real.png) no-repeat;">
+				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
 				<h3 class="services-v6-title">실수령 금액</h3>
-				<a class="services-v6-link" href="#"></a>
 			</div>
 			<!-- End Services v6 -->
+			<!-- Modal -->
+			<div class="modal fade" id="myModal3" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">실수령 금액</h4>
+						</div>
+						<div class="modal-body">
+							<p>실수령 금액이란? <br>고객님께서 신청하신 환전금액에서 10%의 수수료를 제외한 고객님의 계좌로 지급될 금액을 의미합니다.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 		<div class="col-md-3 col-sm-6">
 			<!-- Services v6 -->
-			<div class="services-v6 services-v6-bg-img-four">
-				<i class="services-v6-icon radius-circle icon-wallet"></i>
-				<h3 class="services-v6-title">누적 환전수</h3>
-				<a class="services-v6-link" href="#"></a>
+			<div type="button" class="services-v6 services-v6-bg-img-four"
+				data-toggle="modal" data-target="#myModal4"
+				style="background: url(assets/img/1920x1080/accumulate.PNG) no-repeat;">
+				<i class="services-v6-icon radius-circle icon-lightbulb"></i>
+				<h3 class="services-v6-title">누적 환전 포인트</h3>
 			</div>
 			<!-- End Services v6 -->
+			<!-- Modal -->
+			<div class="modal fade" id="myModal4" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">누적 환전 포인트</h4>
+						</div>
+						<div class="modal-body">
+							<p>누적 환전 포인트란? <br>고객님께서 현재까지 이용하신 환전포인트입니다. 계정을 생성한후 부터 최근 환정신청까지의 포인트 총 합을 의미합니다.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 	</div>
 	<!--// end row -->

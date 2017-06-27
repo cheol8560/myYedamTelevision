@@ -95,7 +95,7 @@ window.onload = function(){
 	<div class="content-md container-sm" style="text-align: center;">
 		<!-- Heading v1 -->
 		<div class="heading-v1 text-center margin-b-80">
-			<h2 class="heading-v1-title">기쁨 환전</h2>
+			<h1 class="heading-v1-title">환전 신청</h1>
 		</div>
 		<!-- End Heading v1 -->
 
@@ -141,29 +141,28 @@ window.onload = function(){
 			<input type="hidden" name="pageIndex" value="${(empty exchangeVO.pageIndex)? 1 : exchangeVO.pageIndex }"/>
 			<input type="hidden" name="searchUseYn" value="exchange" />	
 	<div class="heading-v1 text-center margin-t-60 margin-b-60" id="exchange">
-		<h2 class="heading-v1-title">환전리스트</h2>
 		<div class="heading-v1 text-center margin-b-80">
-					<h2 class="heading-v1-title">선물한 기쁨 내역</h2>
+					<h2 class="heading-v1-title">환전 내역</h2>
 					<p class="heading-v1-text">
 						<select id="nowYear" onchange="changeYear(this.value);" name="year">
 						<option selected="selected" value="">선택
  						</select>년 
 						<select name="month">
 							<option selected="selected" value="">선택
-							<option value="01">
-							<option value="02">
-							<option value="03">
-							<option value="04">
-							<option value="05">
-							<option value="06">
-							<option value="07">
-							<option value="08">
-							<option value="09">
-							<option value="10">
-							<option value="11">
-							<option value="12">
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
 						</select>월
-						<button type="submit">검색</button>
+						<button type="submit" class="btn btn-default btn-rounded">검색</button>
 						<script>
 						$("[name='year']").val('${exchangeVO.year}');
 						$("[name='month']").val('${exchangeVO.month}');

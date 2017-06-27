@@ -252,7 +252,7 @@ window.onload = function(){
 					<option value="11">11
 					<option value="12">12
 				</select>월
-				<button type="submit">검색</button>
+				<button type="submit" class="btn btn-default btn-rounded">검색</button>
 				<script>
 				$("[name='year']").val('${chargeVO.year}');
 				$("[name='month']").val('${chargeVO.month}');

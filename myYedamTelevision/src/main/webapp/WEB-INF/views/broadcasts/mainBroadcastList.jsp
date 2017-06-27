@@ -9,14 +9,15 @@
 				<div class="theme-portfolio">
 					<!-- Portfolio 5 Columns Grid Filter -->
 					<div id="portfolio-5-col-grid-filter" class="cbp-l-filters-alignCenter">
-						<div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
-							<i class="theme-icons theme-icons-base-hover theme-icons-xs radius-circle fa fa-facebook"></i>
+						<div data-filter="*" class="cbp-filter-item-active cbp-filter-item"
+							 style="padding: 5px 10px 0 0">
+							<i class="theme-icons theme-icons-base-hover theme-icons-xs radius-circle fa fa-asterisk"></i>
 							All	<div class="cbp-filter-counter"></div>
 						</div>
 					<c:forEach items="${contentList}" var="content">	
 						
-						<div data-filter=".${content.contentCode}" class="cbp-filter-item">
-							<i class="theme-icons theme-icons-base-hover theme-icons-xs radius-circle fa fa-facebook"></i>
+						<div data-filter=".${content.contentCode}" class="cbp-filter-item" style="padding: 5px 10px 0 0">
+							<i class="theme-icons theme-icons-base-hover theme-icons-xs radius-circle ${content.contentIcon}"></i>
 							${content.contentName} <div class="cbp-filter-counter"></div>
 						</div>
 					</c:forEach>	
@@ -26,17 +27,19 @@
 					<!-- Portfolio 5 Columns Grid -->
 					<div id="portfolio-5-col-grid" class="cbp">
 					
-					<c:forEach items="${broadcastList}" var="broadcast" >	
+					<c:forEach items="${broadcastList}" var="broadcast">	
 						<!-- Cbp Item -->
 						<div class="cbp-item ${broadcast.contentCode} theme-portfolio-item-v2 theme-portfolio-item-xs">
 							<div class="cbp-caption">
-								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
-									<img src="assets/img/970x647/01.jpg" alt="">
+								<div class="cbp-caption-defaultWrap">
+									<img src="img/${broadcast.memberImage}" class="img-responsive" style="max-height:180px;">
+									<!-- 
 									<div class="theme-icons-wrap theme-portfolio-lightbox">
 										<a class="cbp-lightbox" href="assets/img/970x647/02.jpg" data-title="Portfolio"> 
 											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
 										</a>
 									</div>
+									 -->
 								</div>
 							</div>
 							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
@@ -58,7 +61,6 @@
 						<!-- End Cbp Item -->
 					</c:forEach>
 					
-					
 						<!-- Cbp Item -->
 						<div class="cbp-item 1 theme-portfolio-item-v2 theme-portfolio-item-xs">
 							<div class="cbp-caption">
@@ -69,6 +71,7 @@
 											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
 										</a>
 									</div>
+									
 								</div>
 							</div>
 							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
@@ -102,7 +105,7 @@
 				</div>
 			</div>
 			<!-- End Theme Portfolio -->
-		
+
 		</div>
 		<!--========== END PAGE CONTENT ==========-->
 
@@ -116,8 +119,9 @@
 		video: false,
 		audio: false
 	});
-
+	
 	window.addEventListener("load", function(event) {
+		
 		$(".channelId").each(function() {
 			var channelId = $(this).text();
 			app.getPeerList(channelId, function(data) {
@@ -125,6 +129,8 @@
 				$(".view-count").text(view);
 			});
 		});
+		
 	});
+	
 </script>
 		

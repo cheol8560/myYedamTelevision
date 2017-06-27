@@ -10,13 +10,10 @@
 	<!-- Logo -->
 	<div class="bg-color-white" style="border-bottom: 2px solid #00bcd4;">
 		<div class="container-sm" style="margin-left: 30px;">
-			<div class="col-md-10">
+			<div class="col-md-11">
 				<p class="font-size-30 font-style-italic font-family-droid line-height-2 margin-b-0">
 					My Yedam Television
 				</p>
-			</div>
-			<div class="col-md-2">
-
 			</div>
 		</div>
 	</div>
@@ -82,6 +79,7 @@
 							<form id="broadcastForm" class="comment-form-v1">
 								<%-- <input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}"> --%>
 								<input type="hidden" name="channelId" id="channelId" value="">
+								<input type="hidden" name="streamUrl" id="streamUrl" value="">
 								<div class="row">
 									<div class="col-md-12 margin-b-10">
 										<label for="broadcastTitle">방송제목</label>
@@ -107,7 +105,9 @@
 									<div class="col-md-12" style="margin-bottom:5px;">
 										<label for="contentCode">비디오 &amp; 오디오 Mute</label>
 										<div class="col-md-6 padding-0"> 
-											<div class="col-md-6 text-center font-size-13" style="padding:3px 0;">비디오</div>
+											<div class="col-md-6 text-center font-size-13" style="padding:3px 0;">
+												비디오
+											</div>
 											<div class="col-md-6" style="padding: 0 3px 0 3px;">
 												<label class="switch"> 
 													<input type="checkbox" id="videoMute" disabled="disabled">
@@ -423,6 +423,7 @@
 	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
 	var broadcastInfoUpdBtn = document.querySelector("#broadcastInfoUpdBtn");
 	var inputChannelId = document.querySelector("#channelId");
+	var inputStreamUrl = document.querySelector("#streamUrl");
 	var inputBroadcastNo = document.querySelector("#broadcastNo");
 	var chattingArea = document.querySelector("#chattingArea");
 	var viewerList = document.querySelector("#viewerList"); 
@@ -456,6 +457,7 @@
 	// BJ connectChannel 이벤트 핸들러
 	appBj.on("connectChannel", function(channelId, options) {
 		inputChannelId.value = channelId;
+		inputStreamUrl.value = PlayRTC.utils.createObjectURL(appBj.getMedia().getStream());
 		
 		// 방송 등록 AJAX 처리
 		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1";
@@ -692,6 +694,19 @@
 					chattingArea.scrollTop = chattingArea.scrollHeight;
 					
 				}
+				// 시청자 방송종료
+				else if (category == "#3") {
+					
+					var tP = document.createElement("p");
+					tP.style.paddingLeft = "5px";
+					tP.classList.add("font-size-11");
+					tP.textContent = "＃ " + sendMember + acceptedMessage;
+					chattingArea.appendChild(tP);
+					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
+					
+				}
 				// 별풍선 선물
 				else if (category == "#4") {
 					
@@ -800,6 +815,21 @@
 		event.preventDefault();
 		
 		if(confirm("방송을 종료하시겠습니까?")) {
+			var msg = "#3/" + mine + "/ / 님이 방송을 종료하였습니다./ ";
+			
+			appBj.sendText(msg, function() {
+				
+				var tP = document.createElement("p");
+				tP.style.paddingLeft = "8px";
+				tP.classList.add("font-size-12");
+				tP.textContent = "▷ 방송이 종료되었습니다.";
+				chattingArea.appendChild(tP);
+				
+				// 채팅 등록 후 스크롤 가장 마지막으로
+				chattingArea.scrollTop = chattingArea.scrollHeight;
+				
+			});
+			
 			appBj.deleteChannel();
 		}
 		

@@ -8,19 +8,21 @@
 		<id property="broadcastNo" column="BROADCAST_NO"/>
 		<result property="broadcastTitle" column="BROADCAST_TITLE"/>
 		<result property="channelId" column="CHANNEL_ID"/>
+		<result property="streamUrl" column="STREAM_URL"/>
 		<result property="startDate" column="START_DATE"/>
 		<result property="broadcastStatus" column="BROADCAST_STATUS"/>
 		<result property="contentCode" column="CONTENT_CODE"/>
 		<result property="memberId" column="MEMBER_ID"/>
 		<result property="nickName" column="NICK_NAME"/>
+		<result property="memberImage" column="MEMBER_IMAGE"/>
 	</resultMap>
 
 	<insert id="insertBroadcast" parameterType="broadcast">
 		<selectKey keyProperty="broadcastNo" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(BROADCAST_NO), 0)+1 FROM BROADCASTS
 		</selectKey>
-		INSERT INTO BROADCASTS(BROADCAST_NO, BROADCAST_TITLE, START_DATE, BROADCAST_STATUS, CONTENT_CODE, MEMBER_ID, CHANNEL_ID)
-		VALUES(#{broadcastNo}, #{broadcastTitle}, SYSDATE, 'e1', #{contentCode}, #{memberId}, #{channelId})
+		INSERT INTO BROADCASTS(BROADCAST_NO, BROADCAST_TITLE, START_DATE, BROADCAST_STATUS, CONTENT_CODE, MEMBER_ID, CHANNEL_ID, STREAM_URL)
+		VALUES(#{broadcastNo}, #{broadcastTitle}, SYSDATE, 'e1', #{contentCode}, #{memberId}, #{channelId}, #{streamUrl})
 	</insert>
 
 	<update id="updateBroadcast">
@@ -30,12 +32,14 @@
        		, CONTENT_CODE = #{contentCode}
 	        	<if test="updateCheck == false">
 	        	, CHANNEL_ID = #{channelId}
+	        	, STREAM_URL = #{streamUrl}
         		, BROADCAST_STATUS = #{broadcastStatus}
 	        	, START_DATE = SYSDATE
 	        	</if>
         	</if>
         	<if test="broadcastStatus == 'e3'">
         	  CHANNEL_ID = ''
+        	, STREAM_URL = ''
         	, BROADCAST_STATUS = #{broadcastStatus}
         	</if>
         WHERE BROADCAST_NO = #{broadcastNo}
@@ -45,11 +49,13 @@
         SELECT BROADCAST_NO
         	 , BROADCAST_TITLE
         	 , CHANNEL_ID
+        	 , STREAM_URL
         	 , START_DATE
         	 , BROADCAST_STATUS
         	 , CONTENT_CODE
         	 , MEMBER_ID
         	 , (SELECT NICK_NAME FROM MEMBERS WHERE MEMBER_ID = #{memberId}) as "nickName"
+        	 , (SELECT MEMBER_IMAGE FROM MEMBERS WHERE MEMBER_ID = #{memberId}) as "memberImage"
         FROM BROADCASTS
         WHERE 1=1
         <if test="broadcastNo != 0">
@@ -69,6 +75,8 @@
 			 , B.MEMBER_ID as "memberId"
 			 , M.NICK_NAME as "nickName"
 			 , B.CHANNEL_ID as "channelId"
+			 , B.STREAM_URL as "streamUrl"
+			 , M.MEMBER_IMAGE as "memberImage"
 		FROM BROADCASTS B, MEMBERS M
 		WHERE 1 = 1
 		AND B.MEMBER_ID = M.MEMBER_ID

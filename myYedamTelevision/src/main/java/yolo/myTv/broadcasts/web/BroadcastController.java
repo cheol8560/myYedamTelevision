@@ -102,6 +102,12 @@ public class BroadcastController {
 	@RequestMapping("/getOnBroadcast.do")
 	public String getOnBroadcast(@ModelAttribute("broadcast") BroadcastVO vo, Model model, HttpSession session) {
 		BroadcastVO result = broadcastService.getBroadcast(vo);
+		
+		// 이미 종료된 방송 입장 시 예외처리
+		if(result.getBroadcastStatus().equals("e3")) {
+			return "blank/broadcasts/disconnectAlert";
+		}
+		
 		MemberVO currMember = (MemberVO) session.getAttribute("login");
 		MemberVO searchMember = memberService.getMember(currMember);
 		session.setAttribute("login", searchMember);

@@ -321,6 +321,33 @@
 	</div>
 	<!-- End 블랙리스트 확인 Modal -->
 	
+	<!-- 방송 종료 Modal -->
+	<div class="modal fade" id="broadcastEndModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">방송 종료</h4>
+				</div>
+				<div class="modal-body">
+			
+					<div class="alert alert-warning font-size-13 text-center" id="leaveAlert" role="alert">
+						현재 방송이 <strong>종료</strong>되었습니다.
+					</div>
+
+				</div>
+				<div class="modal-footer text-center">
+					<button type="button" class="btn-base-bg btn-base-xs" data-dismiss="modal" aria-label="Close">확인</button>
+				</div>
+							
+			</div>
+		</div>
+	</div>
+	<!-- End 방송 종료 Modal -->
+	
 </div>
 <!-- END WRAPPER -->
 
@@ -370,6 +397,7 @@
 	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
 	var chattingArea = document.querySelector("#chattingArea");
 	var channelId = "${broadcastResult.channelId}";
+	var stateSuccessCheck = false;
 	var appViewer;
 	var options;
 	var targetNickName;
@@ -377,6 +405,7 @@
 	var targetPeerId;
 	var targetMember;
 	var mine = "${login.nickName} (${login.memberId})";
+	var bj = "${broadcastResult.nickName} (${broadcastResult.memberId})";
 	
 	// 시청자 객체 및 변수 설정
 	appViewer = new PlayRTC({
@@ -413,6 +442,27 @@
 	// 방송상태 변경 이벤트
 	appViewer.on("stateChange", function(state, peerid, userid) {
 		console.log(state);
+		
+		if(state === "SUCCESS" && !stateSuccessCheck) {
+			var msg = "#1/" + mine + "/ / 님이 입장하셨습니다./ ";
+			
+			appViewer.sendText(msg, function() {
+				
+				var tP = document.createElement("p");
+				tP.style.paddingLeft = "5px";
+				tP.classList.add("font-size-13");
+				tP.textContent = "＃ " + mine + " 님이 입장하셨습니다.";
+				chattingArea.appendChild(tP);
+				
+				// 채팅 등록 후 스크롤 가장 마지막으로
+				chattingArea.scrollTop = chattingArea.scrollHeight;
+			
+			});
+			
+			// 방송입장 여부 변경
+			stateSuccessCheck = true;
+		}
+		
 		if(state === "CONNECTED" || state === "CLOSED") {
 			
 			// 시청자 목록 출력
@@ -488,7 +538,7 @@
 					if(peerList[i].uid != "${login.memberId}") {
 						tDiv.appendChild(tUl);
 					}
-						
+					
 					viewerList.appendChild(tDiv);
 					
 				}
@@ -526,6 +576,9 @@
 					tP.classList.add("font-size-13");
 					tP.textContent = "＃ " + sendMember + acceptedMessage;
 					chattingArea.appendChild(tP);
+					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
 					
 				} 
 				// 방송 중 채팅
@@ -566,6 +619,19 @@
 				}
 				// 방송종료
 				else if (category == "#3") {
+					
+					if(sendMember == bj) {
+						$("#broadcastEndModal").modal();
+					}
+					
+					var tP = document.createElement("p");
+					tP.style.paddingLeft = "5px";
+					tP.classList.add("font-size-13");
+					tP.textContent = "＃ " + sendMember + acceptedMessage;
+					chattingArea.appendChild(tP);
+					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
 					
 				}
 				// 별풍선 선물
@@ -621,6 +687,9 @@
 					tP.textContent = "＃ " + targetMember + acceptedMessage;
 					chattingArea.appendChild(tP);
 					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
+					
 				}
 				// 블랙리스트 등록
 				else if (category == "#6") {
@@ -635,12 +704,12 @@
 					tP.textContent = "＃ " + targetMember + acceptedMessage;
 					chattingArea.appendChild(tP);
 					
+					// 채팅 등록 후 스크롤 가장 마지막으로
+					chattingArea.scrollTop = chattingArea.scrollHeight;
+					
 				}
-				
 			}
-			
 		});
-		
 	});
 	
 	// 방송 시작 후 video Tag 생성
@@ -663,15 +732,19 @@
 	
 	// 방송 종료 시 이벤트 처리
 	appViewer.on("disconnectChannel", function() {
-		$("video").remove();
+		
 	});
 	
 	// 시청자 입장 후 방송 종료
 	broadcastEndBtn.addEventListener("click", function(event) {
 		event.preventDefault();
 		if(confirm("방송을 종료하시겠습니까?")) {
-			appViewer.disconnectChannel();
-			location.href = "${pageContext.request.contextPath}/";
+			var msg = "#3/" + mine + "/ / 님이 퇴장하셨습니다./ ";
+			
+			appViewer.sendText(msg, function() {
+				appViewer.disconnectChannel();
+			});
+			location.href = "getOnBroadcastList.do";
 		}
 	});
 	
@@ -858,6 +931,11 @@
 	
 	// 블랙리스트 입장알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#blacklistRejectModal").on("hidden.bs.modal", function(e) {
+		location.href = "getOnBroadcastList.do";
+	});
+	
+	// 방송 종료 모달 hide 시 메인페이지로 이동
+	$("#broadcastEndModal").on("hidden.bs.modal", function(e) {
 		location.href = "getOnBroadcastList.do";
 	});
 	

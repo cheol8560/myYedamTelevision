@@ -282,7 +282,7 @@ window.onload = function(){
 									<td class="text-center">${charge.PAYMENT_WAY_NAME}</td>
 									<td class="text-right"><fmt:formatNumber value="${charge.chargeMoney}" groupingUsed="true"/>원</td>
 									<td class="text-center">${charge.chargeNo}</td>
-								</tr>
+								</tr> 
 							</c:forEach>
 						</tbody>
 					</table>

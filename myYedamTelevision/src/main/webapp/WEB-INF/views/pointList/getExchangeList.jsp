@@ -27,7 +27,7 @@ window.onload = function(){
 	 var intNum = 2; //해당 연도에서 +,- 개수
 	 var  thisDate = new Date();
 	 var currentYear = thisDate.getFullYear(); //현재년도
-	 var selName = document.getElementById("nowYear"); //option추가할 select명
+	 var selName = document.getElementById("year"); //option추가할 select명
 	 
 	 //option 태그를 생성해서 select에 넣기
 	  for (var i = startYear; i <= currentYear ; i++) {
@@ -36,7 +36,7 @@ window.onload = function(){
 	        opt.value = i;
 	        opt.appendChild(document.createTextNode(i)); //option 태그에 텍스트 추가
 	        selName.appendChild(opt); // select 태그에 추가
-	  } 
+	  } selName.options['${param.year}'].selected = $("[name='year']").val('${exchangeVO.year}');
 	}
 
 </script>
@@ -134,8 +134,7 @@ window.onload = function(){
 		<!-- 환전신청 끝 -->
 		
 		<!-- 환전 리스트 -->
-<section class="full-width-container"
-	style="width: 1100px; margin: auto;">
+<section class="full-width-container" style="width: 1100px; margin: auto;" >
 	<!-- Heading v1 -->
 <form name ="listForm" action="getExchangeList.do">
 			<input type="hidden" name="pageIndex" value="${(empty exchangeVO.pageIndex)? 1 : exchangeVO.pageIndex }"/>
@@ -144,7 +143,7 @@ window.onload = function(){
 		<div class="heading-v1 text-center margin-b-80">
 					<h2 class="heading-v1-title">환전 내역</h2><br>
 					<p class="heading-v1-text">
-						<select id="nowYear" onchange="changeYear(this.value);" name="year">
+						<select id="year" onchange="changeYear(this.value);" name="year">
 						<option selected="selected" value="">선택
  						</select>년 
 						<select name="month">

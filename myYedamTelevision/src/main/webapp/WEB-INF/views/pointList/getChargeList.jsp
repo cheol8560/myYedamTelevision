@@ -25,19 +25,17 @@ $(function(){
 <script>
 window.onload = function(){
 	 var startYear= 2015;
-	 var intNum = 2; //해당 연도에서 +,- 개수
-	 var  thisDate = new Date();
+	 var thisDate = new Date();
 	 var currentYear = thisDate.getFullYear(); //현재년도
-	 var selName = document.getElementById("nowYear"); //option추가할 select명
+	 var selName = document.getElementById("year"); //option추가할 select명
 	 
 	 //option 태그를 생성해서 select에 넣기
 	  for (var i = startYear; i <= currentYear ; i++) {
-		  
 	     var opt = document.createElement("option"); //option 태그 생성
 	        opt.value = i;
 	        opt.appendChild(document.createTextNode(i)); //option 태그에 텍스트 추가
 	        selName.appendChild(opt); // select 태그에 추가
-	  } 
+	  }selName.options['${param.year}'].selected = $("[name='year']").val('${chargeVO.year}');
 	}
 
 </script>
@@ -234,23 +232,23 @@ window.onload = function(){
 		<div class="heading-v1 text-center margin-t-60 margin-b-60">
 			<h2 class="heading-v1-title">기쁨 충전 내역</h2>
 			<p class="heading-v1-text">
-				<select id="nowYear" onchange="changeYear(this.value);" name="year">
+				<select id="year" name="year">
 						<option selected="selected" value="">선택
  						</select>년 
 				<select name="month">
 					<option selected="selected" value="">선택
-					<option value="01">01
-					<option value="02">02
-					<option value="03">03
-					<option value="04">04
-					<option value="05">05
-					<option value="06">06
-					<option value="07">07
-					<option value="08">08
-					<option value="09">09
-					<option value="10">10
-					<option value="11">11
-					<option value="12">12
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+					<option value="09">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
 				</select>월
 				<button type="submit" class="btn btn-default btn-rounded">검색</button>
 				<script>

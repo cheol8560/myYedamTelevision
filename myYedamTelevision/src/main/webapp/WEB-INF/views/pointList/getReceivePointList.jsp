@@ -27,7 +27,7 @@
 		var intNum = 2; //해당 연도에서 +,- 개수
 		var thisDate = new Date();
 		var currentYear = thisDate.getFullYear(); //현재년도
-		var selName = document.getElementById("nowYear"); //option추가할 select명
+		var selName = document.getElementById("year"); //option추가할 select명
 
 		//option 태그를 생성해서 select에 넣기
 		for (var i = startYear; i <= currentYear; i++) {
@@ -36,7 +36,7 @@
 			opt.value = i;
 			opt.appendChild(document.createTextNode(i)); //option 태그에 텍스트 추가
 			selName.appendChild(opt); // select 태그에 추가
-		}
+		}selName.options['${param.year}'].selected = $("[name='year']").val('${translateVO.year}');
 	}
 </script>
 <!--========== 대문 ==========-->
@@ -90,12 +90,13 @@
 	style="width: 1100px; margin: auto;">
 	<!-- Heading v1 -->
 	<form name="listForm">
-		<br> <input type="hidden" name="pageIndex"
-			value="${(empty translatePointVO.pageIndex)? 1 : translatePointVO.pageIndex }" />
+		<br> 
+		<input type="hidden" name="pageIndex" 	value="${(empty translatePointVO.pageIndex)? 1 : translatePointVO.pageIndex }" />
+		<input type="hidden" name="searchUseYn" value="receive" />
 		<div class="heading-v1 text-center margin-b-80" id="receive">
 			<h2 class="heading-v1-title">선물받은 기쁨 내역</h2><br>
 			<p class="heading-v1-text">
-				<select id="nowYear" onchange="changeYear(this.value);" name="year">
+				<select id="year" onchange="changeYear(this.value);" name="year">
 					<option selected="selected" value="">선택
 				</select>년 <select name="month">
 					<option selected="selected" value="">선택

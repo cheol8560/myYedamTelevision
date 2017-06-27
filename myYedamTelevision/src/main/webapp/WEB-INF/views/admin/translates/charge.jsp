@@ -77,7 +77,7 @@ $(function() {
 										<td class="text-center"><fmt:formatDate value="${adminchargeList.approveDate}" pattern="yyyy-MM-dd"/></td>
 										<td class="text-center">${adminchargeList.memberId}</td>
 										<td class="text-right"><fmt:formatNumber value="${adminchargeList.chargeMoney}" groupingUsed="true"/>원</td>
-										<td class="text-center"><fmt:formatNumber value="${adminchargeList.chargePoint}" groupingUsed="true"/>기쁨</td>
+										<td class="text-right"><fmt:formatNumber value="${adminchargeList.chargePoint}" groupingUsed="true"/></td>
 										<td class="text-center">${adminchargeList.paymentWayName}</td>
 										<td class="text-center">${adminchargeList.approveStatusName}</td>
 										<td class="text-center">

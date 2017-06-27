@@ -22,42 +22,42 @@
                                     <table id="memberTable" class="display table" style="width: 100%; cellspacing: 0;">
                                         <thead>
                                             <tr>
-                                                <th style="width:100px">ID</th>
-                                                <th style="width:100px">닉네임</th>
-                                                <th style="width:100px">이름</th>
-                                                <th style="width:150px">E-mail</th>
-                                                <th style="width:100px">Tel</th>
-                                                <th style="width:100px">Point</th>
-                                                <th style="width:150px">이미지</th>
-                                                <th style="width:100px">은행</th>
-                                                <th style="width:150px">계좌번호</th>   
+                                                <th class="text-center" style="width:100px">ID</th>
+                                                <th class="text-center" style="width:100px">닉네임</th>
+                                                <th class="text-center" style="width:100px">이름</th>
+                                                <th class="text-center" style="width:150px">E-mail</th>
+                                                <th class="text-center" style="width:100px">Tel</th>
+                                                <th class="text-center" style="width:100px">Point</th>
+                                                <th class="text-center" style="width:150px">이미지</th>
+                                                <th class="text-center" style="width:100px">은행</th>
+                                                <th class="text-center" style="width:150px">계좌번호</th>   
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                              	<th>ID</th>
-                                                <th>닉네임</th>
-                                                <th>이름</th>
-                                                <th>E-mail</th>
-                                                <th>Tel</th>
-                                                <th>Point</th>
-                                                <th>이미지</th>
-                                                <th>은행</th>
-                                                <th>계좌번호</th>
+                                              	<th class="text-center">ID</th>
+                                                <th class="text-center">닉네임</th>
+                                                <th class="text-center">이름</th>
+                                                <th class="text-center">E-mail</th>
+                                                <th class="text-center">Tel</th>
+                                                <th class="text-center">Point</th>
+                                                <th class="text-center">이미지</th>
+                                                <th class="text-center">은행</th>
+                                                <th class="text-center">계좌번호</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                    		<c:forEach items="${member}" var="member">
 										<tr>
-											<td><a href="getMemberForm.do?memberId=${member.memberId}">${member.memberId}</a></td>
-											<td>${member.nickName}</td>
-											<td>${member.memberName}</td>
-											<td>${member.email}</td>
-											<td>${member.tel}</td>
-											<td><fmt:formatNumber value="${member.point}" groupingUsed="true"/>기쁨</td>
-											<td>${member.memberImage}</td>
-											<td>${member.bankName}</td>
-											<td>${member.account}</td>
+											<td class="text-center"><a href="getMemberForm.do?memberId=${member.memberId}">${member.memberId}</a></td>
+											<td class="text-center">${member.nickName}</td>
+											<td class="text-center">${member.memberName}</td>
+											<td class="text-center">${member.email}</td>
+											<td class="text-center">${member.tel}</td>
+											<td class="text-right"><fmt:formatNumber value="${member.point}" groupingUsed="true"/></td>
+											<td class="text-center">${member.memberImage}</td>
+											<td class="text-center">${member.bankName}</td>
+											<td class="text-center">${member.account}</td>
 										</tr>
 										</c:forEach>
                                         </tbody>

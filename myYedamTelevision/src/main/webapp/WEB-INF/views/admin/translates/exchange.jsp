@@ -60,7 +60,7 @@
 										<td class="text-center"><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 												value="${exchange.requestDate}" /></td>
 										<td class="text-center">${exchange.memberId}</td>
-										<td class="text-center"><fmt:formatNumber value="${exchange.requestPoint}" groupingUsed="true"/></td>
+										<td class="text-right"><fmt:formatNumber value="${exchange.requestPoint}" groupingUsed="true"/></td>
 										<td class="text-right"><fmt:formatNumber value="${exchange.commission}" groupingUsed="true"/>원</td>
 										<td class="text-right"><fmt:formatNumber value="${exchange.realReceipt}" groupingUsed="true"/>원</td>
 										<td class="text-center"></td>

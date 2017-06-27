@@ -147,7 +147,7 @@ window.onload = function(){
 						<option selected="selected" value="">선택
  						</select>년 
 						<select name="month">
-							<option selected="selected" value="">선택
+							<option selected="selected" value="">선택 
 							<option value="01">1</option>
 							<option value="02">2</option>
 							<option value="03">3</option>

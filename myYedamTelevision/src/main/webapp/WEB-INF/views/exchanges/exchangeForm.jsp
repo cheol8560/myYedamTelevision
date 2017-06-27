@@ -11,14 +11,13 @@
 				type : "json",
 				data : a,
 				success : function(data) {
-
+					
 					if (data.code == "true") {
-
 						$("#requestMoney").html(data.result.requestPoint * 100);
 						$("#commission").html(data.result.commission);
 						$("#realReceipt").html(data.result.realReceipt);
 						$("#totalExchange").html(data.result.totalRequest);
-
+						alert("환전되었습니다.!");
 					} else {
 						alert(data.error);
 					}
@@ -31,7 +30,7 @@
 	});
 </script>
 <!--========== PROMO BLOCK V11 ==========-->
-<section class="promo-block-v11 fullheight">
+<section class="promo-block-v11 fullheight" style="background: url(assets/img/1920x1080/bigexchange.jpg) no-repeat;">
 	<div class="container vertical-center-aligned">
 		<div class="margin-b-40">
 			<h2 class="promo-block-v11-title wow fadeInUp" data-wow-duration=".2"
@@ -62,7 +61,7 @@
 							class="icon-box-item fa fa-check-circle-o"
 							style="width: 20px; display: inline; color: #4ed7e8; font-size: 24px;"></i></input><br>
 						<br> <input class="form-control" type="text"
-							style="width: 325px;" autocomplete="on" placeholder="환전할 기쁨"
+							style="width: 390px;" autocomplete="on" placeholder="환전할 기쁨"
 							name="inRequestPoint" /><br>
 
 					</div>

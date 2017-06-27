@@ -128,5 +128,12 @@ public class BroadcastController {
 		model.addAttribute("broadcastList", broadcastList);
 		return "broadcasts/mainBroadcastList";
 	}
-
+	
+	// 시청자 화면의 방송 목록 조회 (자기 방송 제외)
+	@RequestMapping("/getExceptOnBroadcastList.do")
+	public @ResponseBody List<Map<String, Object>> getExceptOnBroadcastList(@ModelAttribute("broadcast") BroadcastVO vo, Model model) {
+		vo.setBroadcastStatus("e1");
+		return broadcastService.getExceptBroadcastList(vo); 
+	}
+	
 }

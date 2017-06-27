@@ -27,7 +27,7 @@
             <div class="col-md-8" id="leftArea">
 								
 				<!-- Video Player -->
-                <div class="full-width-container" id="videoArea">
+                <div class="full-width-container padding-0" id="videoArea">
                 </div>
                 <!-- End Video Player -->
 				
@@ -79,7 +79,6 @@
 							<form id="broadcastForm" class="comment-form-v1">
 								<%-- <input type="hidden" name="broadcastNo" id="broadcastNo" value="${broadcastResult.broadcastNo}"> --%>
 								<input type="hidden" name="channelId" id="channelId" value="">
-								<input type="hidden" name="streamUrl" id="streamUrl" value="">
 								<div class="row">
 									<div class="col-md-12 margin-b-10">
 										<label for="broadcastTitle">방송제목</label>
@@ -423,7 +422,6 @@
 	var broadcastEndBtn = document.querySelector("#broadcastEndBtn");
 	var broadcastInfoUpdBtn = document.querySelector("#broadcastInfoUpdBtn");
 	var inputChannelId = document.querySelector("#channelId");
-	var inputStreamUrl = document.querySelector("#streamUrl");
 	var inputBroadcastNo = document.querySelector("#broadcastNo");
 	var chattingArea = document.querySelector("#chattingArea");
 	var viewerList = document.querySelector("#viewerList"); 
@@ -457,7 +455,6 @@
 	// BJ connectChannel 이벤트 핸들러
 	appBj.on("connectChannel", function(channelId, options) {
 		inputChannelId.value = channelId;
-		inputStreamUrl.value = PlayRTC.utils.createObjectURL(appBj.getMedia().getStream());
 		
 		// 방송 등록 AJAX 처리
 		var param = $("#broadcastForm").serialize() + "&broadcastStatus=e1";
@@ -1190,11 +1187,11 @@
 
 		// 동적 크기 조절
 		$("#videoArea").css("height", $("#leftArea").width() / 1.33);
-		$("#chattingArea").css("height", $("#videoArea").height() - 130);
+		$("#chattingArea").css("height", $("#videoArea").height() - 138);
 		$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
 		$(window).resize(function() {
-			$("#videoArea").css("height", $("#leftArea").width() / 1.33);
-			$("#chattingArea").css("height", $("#videoArea").height() - 130);
+			$("#videoArea").css("height", $("#leftArea").width() / 1.32);
+			$("#chattingArea").css("height", $("#videoArea").height() - 135);
 			$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
 		});
 

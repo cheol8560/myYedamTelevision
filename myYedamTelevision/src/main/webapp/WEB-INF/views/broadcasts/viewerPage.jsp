@@ -5,18 +5,23 @@
 <body>
 
 <!-- WRAPPER -->
-<div class="wrapper animsition fullheight" >
+<div class="wrapper animsition fullheight">
 	<!-- Logo -->
 	<div class="bg-color-white" style="border-bottom: 2px solid #00bcd4;">
-		<div class="full-width-container" style="margin-left: 30px;">
-			<div class="col-md-10">
+		<div class="full-width-container">
+			<div class="col-md-1">
+				<a href="getOnBroadcastList.do" target="_blank">
+					<img src="assets/img/mayetel-logo.png" class="img-responsive" style="max-height:65px;">
+				</a>
+			</div>
+			<div class="col-md-9">
 				<div class="icon-box-v4">
 					<div class="theme-icons-wrap icon-box-v4-element">
-						<i class="theme-icons theme-icons-dark-bg theme-icons-lg radius-circle icon-genius"></i>
+						<img src="img/${broadcastResult.memberImage}" class="theme-icons theme-icons-lg radius-circle" style="padding:0;">
 					</div>
 					<div class="icon-box-v4-body margin-t-20">
-						<span class="icon-box-v4-body-title">${broadcastResult.broadcastTitle}</span>
-						<span class="icon-box-v4-body-text">${broadcastResult.nickName}</span>
+						<span class="icon-box-v4-body-title" style="margin-right:10px;">${broadcastResult.broadcastTitle}</span>
+						<span class="icon-box-v4-body-text font-size-16">${broadcastResult.nickName}</span>
 					</div>
 				</div>
 			</div>
@@ -30,9 +35,9 @@
     <!--========== PAGE CONTENT ==========-->
     <!-- Viewer Page -->
     <div class="full-width-container" style="border-bottom:1px solid #00bcd4;">
-        <div class="row no-space-row">
+        <div class="row no-space-row" style="padding-left:80px; padding-right:80px;">
             <!-- Left Area -->
-            <div class="col-md-8" id="leftArea">
+            <div class="col-sm-8" id="leftArea" style="border-left:1px solid #00bcd4;">
                 <!-- Video Player -->
                 <div class="full-width-container padding-0" id="videoArea">
                 </div>
@@ -41,7 +46,7 @@
             <!--  End Left Area -->
             
             <!-- Right Area -->
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <!-- Chatting Area -->
 				<div class="col-md-6 padding-0" style="border-right:1px solid #00bcd4; border-left:1px solid #00bcd4;">
                     <div class="blog-sidebar">
@@ -70,7 +75,7 @@
                 <!-- End Chatting Area -->
                 
                 <!-- Broadcast list -->
-                <div class="col-md-6 padding-0">
+                <div class="col-sm-6 padding-0" style="border-right:1px solid #00bcd4;">
                 
                 	<!-- 시청자 목록 -->
                     <div class="blog-sidebar">
@@ -88,10 +93,9 @@
                     <div class="blog-sidebar margin-b-30">
                         <div class="blog-sidebar-heading">
                             <i class="blog-sidebar-heading-icon icon-book-open"></i>
-                            <h4 class="blog-sidebar-heading-title">리스트</h4>
+                            <h4 class="blog-sidebar-heading-title">방송 리스트</h4>
                         </div>
-                        <div class="blog-sidebar-content blog-sidebar-content-height scrollbar">
-                            <!-- Latest Tutorials -->
+                        <div class="blog-sidebar-content overflow-a" id="broadcastList">
                             <article class="latest-tuts">
                                 <div class="latest-tuts-media">
                                     <img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/06.jpg" alt="">
@@ -101,52 +105,7 @@
                                     <small class="latest-tuts-content-time">35 minutes ago</small>
                                 </div>
                             </article>
-                            <article class="latest-tuts">
-                                <div class="latest-tuts-media">
-                                    <img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/11.jpg" alt="">
-                                </div>
-                                <div class="latest-tuts-content">
-                                    <h5 class="latest-tuts-content-title"><a href="#">Photoshop: Image Cropping</a></h5>
-                                    <small class="latest-tuts-content-time">7 hours ago</small>
-                                </div>
-                            </article>
-                            <article class="latest-tuts">
-                                <div class="latest-tuts-media">
-                                    <img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/08.jpg" alt="">
-                                </div>
-                                <div class="latest-tuts-content">
-                                    <h5 class="latest-tuts-content-title"><a href="#">Video editing</a></h5>
-                                    <small class="latest-tuts-content-time">12 hours ago</small>
-                                </div>
-                            </article>
-                            <article class="latest-tuts">
-                                <div class="latest-tuts-media">
-                                    <img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/09.jpg" alt="">
-                                </div>
-                                <div class="latest-tuts-content">
-                                    <h5 class="latest-tuts-content-title"><a href="#">Web development technologies</a></h5>
-                                    <small class="latest-tuts-content-time">1 day ago</small>
-                                </div>
-                            </article>
-                            <article class="latest-tuts">
-                                <div class="latest-tuts-media">
-                                    <img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/10.jpg" alt="">
-                                </div>
-                                <div class="latest-tuts-content">
-                                    <h5 class="latest-tuts-content-title"><a href="#">The section element - HTML</a></h5>
-                                    <small class="latest-tuts-content-time">2 days ago</small>
-                                </div>
-                            </article>
-                            <article class="latest-tuts">
-                                <div class="latest-tuts-media">
-                                    <img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/07.jpg" alt="">
-                                </div>
-                                <div class="latest-tuts-content">
-                                    <h5 class="latest-tuts-content-title"><a href="#">Creata a logo using Adobe Illustrator</a></h5>
-                                    <small class="latest-tuts-content-time">3 days ago</small>
-                                </div>
-                            </article>
-                            <!-- End Latest Tutorials -->
+                            
                         </div>
                     </div>
                 
@@ -398,6 +357,7 @@
 	var chattingArea = document.querySelector("#chattingArea");
 	var channelId = "${broadcastResult.channelId}";
 	var stateSuccessCheck = false;
+	var timeId;
 	var appViewer;
 	var options;
 	var targetNickName;
@@ -435,6 +395,28 @@
 			} else {
 				$("#blacklistRejectModal").modal();
 			}
+		});
+		
+		$.getJSON("getExceptOnBroadcastList.do", "broadcastNo=${broadcastResult.broadcastNo}", function(data) {
+			
+			for( var i = 0; i < data.length; i++ ) {
+				
+				var tArticle = $("<article class='latest-tuts'></article>");
+				
+				var tDiv1 = $("<div class='latest-tuts-media'></div>");
+				$(tDiv1).append("<img class='latest-tuts-media-img radius-circle' src='img/" + data[i].memberImage + "'>");
+				
+				var tDiv2 = $("<div class='latest-tuts-content'></div>");
+				var tA = $("<a href='getOnBroadcast.do?broadcastNo="+data[i].broadcastNo+"&memberId="+data[i].memberId+"'>"+data[i].broadcastTitle+"</a>");
+				$(tDiv2).append($("<h5 class='latest-tuts-content-title'></h5>").append(tA));
+				$(tDiv2).append("<small class='latest-tuts-content-time'>" + data[i].nickName + "</small>");
+				
+				$(tArticle).append(tDiv1);
+				$(tArticle).append(tDiv2);
+				
+				$("#broadcastList").append(tArticle);
+			}
+			
 		});
 		
 	}, false);
@@ -971,13 +953,15 @@
 
 	// 동적 크기 조절
 	$(function() {
-		$("#videoArea").css("height", $("#leftArea").width() / 1.35);
-		$("#chattingArea").css("height", $("#videoArea").height() - 146);
+		$("#videoArea").css("height", $("#leftArea").width() / 1.34);
+		$("#chattingArea").css("height", $("#videoArea").height() - 145);
 		$("#viewerList").css("height", $("#chattingArea").height() / 2.8);
+		$("#broadcastList").css("height", $("#chattingArea").height() / 1.46);
 		$(window).resize(function() {
-			$("#videoArea").css("height", $("#leftArea").width() / 1.35);
-			$("#chattingArea").css("height", $("#videoArea").height() - 146);
-			$("#viewerList").css("height", $("#chattingArea").height() / 1.8);
+			$("#videoArea").css("height", $("#leftArea").width() / 1.34);
+			$("#chattingArea").css("height", $("#videoArea").height() - 145);
+			$("#viewerList").css("height", $("#chattingArea").height() / 2.8);
+			$("#broadcastList").css("height", $("#chattingArea").height() / 1.46);
 		});
 		
 		// number formatting

@@ -43,5 +43,11 @@ public class BroadcastServiceImpl implements BroadcastService {
 	public List<Map<String, Object>> getBroadcastList(BroadcastVO vo) {
 		return broadcastMapper.getBroadcastList(vo);
 	}
+
+	// 현재 자신의 방송을 제외한 방송 목록 조회
+	@Override
+	public List<Map<String, Object>> getExceptBroadcastList(BroadcastVO vo) {
+		return broadcastMapper.getExceptBroadcastList(vo);
+	}
 	
 }

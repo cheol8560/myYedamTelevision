@@ -11,7 +11,6 @@ public class BroadcastVO {
 	private String contentCode;
 	private String memberId;
 	private String channelId;
-	private String streamUrl;
 	private String memberImage;
 	private String nickName;
 	private int viewerCount;
@@ -59,12 +58,6 @@ public class BroadcastVO {
 	public void setChannelId(String channelId) {
 		this.channelId = channelId;
 	}
-	public String getStreamUrl() {
-		return streamUrl;
-	}
-	public void setStreamUrl(String streamUrl) {
-		this.streamUrl = streamUrl;
-	}
 	public String getMemberImage() {
 		return memberImage;
 	}
@@ -96,9 +89,9 @@ public class BroadcastVO {
 				+ broadcastTitle + ", startDate=" + startDate
 				+ ", broadcastStatus=" + broadcastStatus + ", contentCode="
 				+ contentCode + ", memberId=" + memberId + ", channelId="
-				+ channelId + ", streamUrl=" + streamUrl + ", memberImage="
-				+ memberImage + ", nickName=" + nickName + ", viewerCount="
-				+ viewerCount + ", updateCheck=" + updateCheck + "]";
+				+ channelId + ", memberImage=" + memberImage + ", nickName="
+				+ nickName + ", viewerCount=" + viewerCount + ", updateCheck="
+				+ updateCheck + "]";
 	}
 	
 }

@@ -19,4 +19,6 @@ public interface BroadcastMapper {
 	
 	public List<Map<String, Object>> getBroadcastList(BroadcastVO vo);
 	
+	public List<Map<String, Object>> getExceptBroadcastList(BroadcastVO vo);
+	
 }

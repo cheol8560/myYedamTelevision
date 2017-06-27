@@ -19,4 +19,6 @@ public interface BroadcastService {
 	// 방송 전체 조회
 	List<Map<String, Object>> getBroadcastList(BroadcastVO vo);
 	
+	// 방송 내 방송 목록 조회
+	List<Map<String, Object>> getExceptBroadcastList(BroadcastVO vo);
 }

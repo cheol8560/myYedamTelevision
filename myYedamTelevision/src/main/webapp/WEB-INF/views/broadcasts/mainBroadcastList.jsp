@@ -15,7 +15,6 @@
 							All	<div class="cbp-filter-counter"></div>
 						</div>
 					<c:forEach items="${contentList}" var="content">	
-						
 						<div data-filter=".${content.contentCode}" class="cbp-filter-item" style="padding: 5px 10px 0 0">
 							<i class="theme-icons theme-icons-base-hover theme-icons-xs radius-circle ${content.contentIcon}"></i>
 							${content.contentName} <div class="cbp-filter-counter"></div>
@@ -64,14 +63,15 @@
 						<!-- Cbp Item -->
 						<div class="cbp-item 1 theme-portfolio-item-v2 theme-portfolio-item-xs">
 							<div class="cbp-caption">
-								<div class="cbp-caption-defaultWrap theme-portfolio-active-wrap">
-									<img src="assets/img/970x647/01.jpg" alt="">
+								<div class="cbp-caption-defaultWrap">
+									<img src="img/basic.jpg" class="img-responsive" style="max-height:180px;">
+									<!-- 
 									<div class="theme-icons-wrap theme-portfolio-lightbox">
 										<a class="cbp-lightbox" href="assets/img/970x647/02.jpg" data-title="Portfolio"> 
 											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
 										</a>
 									</div>
-									
+									 -->
 								</div>
 							</div>
 							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">

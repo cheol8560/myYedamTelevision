@@ -75,7 +75,6 @@ window.onload = function(){
 							<i class="counters-v2-icon icon-layers"></i>
 							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.totalChargePoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">총 충전 포인트</h4>
-							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
 						<!-- 총 충전 포인트 끝 -->
 					</div>
@@ -85,7 +84,6 @@ window.onload = function(){
 							<i class="counters-v2-icon icon-trophy"></i>
 							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.monthChargePoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">이번달 충전 포인트</h4>
-							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
 						<!-- 이번달 충전 포인트 끝 -->
 					</div>
@@ -95,7 +93,6 @@ window.onload = function(){
 							<i class="counters-v2-icon icon-happy"></i>
 							<figure class="counter color-base counters-v2-no"><fmt:formatNumber value="${point.nowPoint}" groupingUsed="true"/></figure>
 							<h4 class="counters-v2-title">현재 보유 포인트</h4>
-							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
 						<!-- 현재 보유 포인트 끝 -->
 					</div>

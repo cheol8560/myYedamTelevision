@@ -62,7 +62,6 @@ window.onload = function(){
 							<i class="counters-v2-icon icon-layers"></i>
 							<figure class="counter color-base counters-v2-no">${point.totalReceivePoint}</figure>
 							<h4 class="counters-v2-title">총 받은 포인트</h4>
-							<span class="counters-v2-subtitle">Great Performance</span>
 						</div>
 						<!-- 총 받은 포인트 끝 -->
 					</div>
@@ -72,7 +71,6 @@ window.onload = function(){
 							<i class="counters-v2-icon icon-trophy"></i>
 							<figure class="counter color-base counters-v2-no">${point.monthReceivePoint}</figure>
 							<h4 class="counters-v2-title">이번달 받은 포인트</h4>
-							<span class="counters-v2-subtitle">Excellence</span>
 						</div>
 						<!-- 이번달 받은 포인트 끝 -->
 					</div>
@@ -82,7 +80,6 @@ window.onload = function(){
 							<i class="counters-v2-icon icon-happy"></i>
 							<figure class="counter color-base counters-v2-no">${point.nowPoint}</figure>
 							<h4 class="counters-v2-title">현재 보유 포인트</h4>
-							<span class="counters-v2-subtitle">More enthusiasm</span>
 						</div>
 						<!-- 현재 보유 포인트 끝 -->
 					</div>

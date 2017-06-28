@@ -367,6 +367,31 @@
 	var mine = "${login.nickName} (${login.memberId})";
 	var bj = "${broadcastResult.nickName} (${broadcastResult.memberId})";
 	
+	// 방송 시청 중 방송 목록 조회
+	function getOnBroadcastList() {
+		$.getJSON("getExceptOnBroadcastList.do", "broadcastNo=${broadcastResult.broadcastNo}", function(data) {
+			
+			for( var i = 0; i < data.length; i++ ) {
+				
+				var tArticle = $("<article class='latest-tuts'></article>");
+				
+				var tDiv1 = $("<div class='latest-tuts-media'></div>");
+				$(tDiv1).append("<img class='latest-tuts-media-img radius-circle' src='img/" + data[i].memberImage + "'>");
+				
+				var tDiv2 = $("<div class='latest-tuts-content'></div>");
+				var tA = $("<a href='getOnBroadcast.do?broadcastNo="+data[i].broadcastNo+"&memberId="+data[i].memberId+"'>"+data[i].broadcastTitle+"</a>");
+				$(tDiv2).append($("<h5 class='latest-tuts-content-title'></h5>").append(tA));
+				$(tDiv2).append("<small class='latest-tuts-content-time'>" + data[i].nickName + "</small>");
+				
+				$(tArticle).append(tDiv1);
+				$(tArticle).append(tDiv2);
+				
+				$("#broadcastList").append(tArticle);
+			}
+			
+		});
+	}
+	
 	// 시청자 객체 및 변수 설정
 	appViewer = new PlayRTC({
 		projectKey: '60ba608a-e228-4530-8711-fa38004719c1',
@@ -397,27 +422,11 @@
 			}
 		});
 		
-		$.getJSON("getExceptOnBroadcastList.do", "broadcastNo=${broadcastResult.broadcastNo}", function(data) {
-			
-			for( var i = 0; i < data.length; i++ ) {
-				
-				var tArticle = $("<article class='latest-tuts'></article>");
-				
-				var tDiv1 = $("<div class='latest-tuts-media'></div>");
-				$(tDiv1).append("<img class='latest-tuts-media-img radius-circle' src='img/" + data[i].memberImage + "'>");
-				
-				var tDiv2 = $("<div class='latest-tuts-content'></div>");
-				var tA = $("<a href='getOnBroadcast.do?broadcastNo="+data[i].broadcastNo+"&memberId="+data[i].memberId+"'>"+data[i].broadcastTitle+"</a>");
-				$(tDiv2).append($("<h5 class='latest-tuts-content-title'></h5>").append(tA));
-				$(tDiv2).append("<small class='latest-tuts-content-time'>" + data[i].nickName + "</small>");
-				
-				$(tArticle).append(tDiv1);
-				$(tArticle).append(tDiv2);
-				
-				$("#broadcastList").append(tArticle);
-			}
-			
-		});
+		// 방송 입장 후 방송 목록 조회 및 타이머 설정
+		getOnBroadcastList();
+		setInterval(function() {
+			getOnBroadcastList();
+		}, 10000);
 		
 	}, false);
 	
@@ -425,7 +434,7 @@
 	appViewer.on("stateChange", function(state, peerid, userid) {
 		console.log(state);
 		
-		if(state === "SUCCESS" && !stateSuccessCheck) {
+		if(state === "CONNECTED" && !stateSuccessCheck) {
 			var msg = "#1/" + mine + "/ / 님이 입장하셨습니다./ ";
 			
 			appViewer.sendText(msg, function() {

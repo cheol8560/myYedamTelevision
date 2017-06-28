@@ -59,7 +59,12 @@
                     <br>
                     <ul class="menu accordion-menu">
                         <li><a href="${pageContext.request.contextPath}/adminIndex.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>관리자 홈</p></a></li>
-                        <li><a href="${pageContext.request.contextPath}/adminMemberForm.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>회원관리</p></a></li>
+                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>회원관리</p><span class="arrow"></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="${pageContext.request.contextPath}/adminMemberForm.do">기존회원 관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/leaveMemberForm.do">탈퇴회원 관리</a></li>
+                            </ul>
+                        </li>
                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>공지사항 및 문의</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">공지사항 관리</a></li>

@@ -88,6 +88,15 @@
         		, find_code_name(BANK) as BANK_NAME
         		, ACCOUNT 
         FROM MEMBERS
+        WHERE LEAVE_CHECK = 'f1'
+	</select>
+	
+	<select id="getLeaveList" resultMap="memberMap"> 
+        SELECT MEMBER_ID
+        		, EMAIL
+        		, POINT
+        FROM MEMBERS
+        WHERE LEAVE_CHECK = 'f2'
 	</select>
 	
 	 

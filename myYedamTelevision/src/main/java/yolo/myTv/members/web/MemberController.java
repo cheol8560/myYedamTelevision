@@ -218,6 +218,13 @@ public class MemberController {
 		model.addAttribute("member", memberService.getMemberList(vo));
 		return "admin/members/member";
 	}
+	
+	//관리자 탈퇴회원 관리 페이지폼
+		@RequestMapping("/leaveMemberForm.do")
+		public String leaveMemberForm(MemberVO vo, Model model) throws Exception {
+			model.addAttribute("leaveMember", memberService.getLeaveList(vo));
+			return "admin/members/leaveMember";
+		}
 		
 	//관리자 회원 수정 페이지
 	@RequestMapping("/getMemberForm.do")

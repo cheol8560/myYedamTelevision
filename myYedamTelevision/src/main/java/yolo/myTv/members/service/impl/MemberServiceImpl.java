@@ -74,5 +74,9 @@ public class MemberServiceImpl implements MemberService {
 	public void adminChangePw(MemberVO vo) {
 		MemberDAO.adminChangePw(vo);
 	}
+	@Override
+	public List<Map<String, Object>> getLeaveList(MemberVO vo) {
+		return MemberDAO.getLeaveList(vo);
+	}
 
 }

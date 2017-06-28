@@ -18,4 +18,6 @@ public interface MemberService {
 	public int chkDupMail(MemberVO vo);
 	public void updateAdmin(MemberVO vo);
 	public void adminChangePw(MemberVO vo);
+	public List<Map<String,Object>>
+	getLeaveList(MemberVO vo);
 }

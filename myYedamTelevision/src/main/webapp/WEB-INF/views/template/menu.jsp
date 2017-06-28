@@ -15,7 +15,6 @@
 
                     <!-- BJ 이미지 -->
                     <div class="navbar-logo">
-                        <a class="navbar-logo-wrap" href="#" >
 						<c:if test="${empty login}">	
 							<img class="navbar-logo-img" src="${pageContext.request.contextPath}/assets/img/mayetel-logo.png" 
 								 alt="My Yedam Television">
@@ -23,7 +22,6 @@
 						<c:if test="${!empty login}">
 							<img class="navbar-logo-img" src="./img/${login.memberImage}" >
 						</c:if>
-                        </a>
                     </div>
                     <!-- End Logo -->
                     
@@ -69,9 +67,23 @@
 						<!-- 사용자 메뉴 -->
                         <ul class="header-vertical-menu margin-b-30">
                             
+                            <!-- Home -->
+                            <li class="nav-item nav-main-item">
+                                <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" 
+                                	href="javascript:void(0);" onclick="location.href='getOnBroadcastList.do'">
+                                	<i class="bordered-icon-box-item fa fa-home" style="padding-right:5px;"></i>
+                                	Home
+                                </a>
+                            </li>
+                            <!-- End Home -->
+                            
                             <!-- My 정보 -->
                             <li class="nav-item nav-main-item">
-                                <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" href="javascript:void(0);">My 정보</a>
+                                <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" 
+                                	href="javascript:void(0);">
+                                	<i class="bordered-icon-box-item fa fa-user" style="padding-right:5px;"></i>
+                                	My 정보
+                                </a>
                                 <ul class="nav-dropdown-menu">
                                     <!-- 회원정보수정 -->
                                     <li class="nav-dropdown-menu-item">
@@ -84,7 +96,7 @@
                                     	<a class="nav-dropdown-menu-link font-size-14" 
                                     		href="${pageContext.request.contextPath}/deleteMemberForm.do">회원탈퇴</a>
                                     </li>
-                                     <c:if test="${login.memberId == 'admin'}">
+									<c:if test="${login.memberId == 'admin'}">
                                     <li class="nav-dropdown-menu-item">
                                     	<a class="nav-dropdown-menu-link font-size-14" 
                                     		href="${pageContext.request.contextPath}/adminIndex.do">관리자페이지</a>
@@ -97,7 +109,11 @@
 
                             <!-- My 기쁨 -->
                             <li class="nav-item nav-main-item">
-                                <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" href="javascript:void(0);">My 기쁨</a>
+                                <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" 
+                                	href="javascript:void(0);">
+                                	<i class="bordered-icon-box-item fa fa-gift" style="padding-right:5px;"></i>
+                                	My 기쁨
+                                </a>
                                 <ul class="nav-dropdown-menu">
                                  
                                     <li class="nav-dropdown-menu-item">
@@ -129,7 +145,11 @@
 
                             <!-- 고객센터 -->
                             <li class="nav-item nav-main-item">
-                                <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" href="javascript:void(0);">고객센터</a>
+                                <a class="nav-item-child nav-main-item-child nav-main-item-child-dropdown active font-size-18 fweight-700" 
+                                	href="javascript:void(0);">
+                                	<i class="bordered-icon-box-item fa fa-question-circle" style="padding-right:5px;"></i>
+                                	고객센터
+                                </a>
                                 <ul class="nav-dropdown-menu">
                                     <!-- 공지사항 -->
                                     <li class="nav-dropdown-menu-item">

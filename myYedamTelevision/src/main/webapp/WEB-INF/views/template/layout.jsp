@@ -68,12 +68,22 @@
     
 		<!-- Logo -->
 		<div class="bg-color-base">
-            <div class="container-sm" style="margin-left: 30px; padding-top:10px; padding-bottom:10px;">
-                <a href="getOnBroadcastList.do" class="font-size-36 font-style-italic 
-                		 font-family-droid color-white line-height-2 margin-b-0" style="text-decoration: none;">
-                	My Yedam Television
-                </a>
+            <div class="full-width-container" style="margin-left: 30px; padding-top:10px; padding-bottom:10px;">
+				<div class="col-md-10">
+					<a href="getOnBroadcastList.do" class="font-size-36 font-style-italic 
+								font-family-droid color-white line-height-2 margin-b-0" style="text-decoration: none;">
+		                My Yedam Television
+					</a>
+				</div>
+				<div class="col-md-2 text-left" style="margin-top:15px;">
+					<a href="" class="color-white font-size-18 fweight-700 line-height-2" 
+						style="text-decoration: none;">
+						<i class="bordered-icon-box-item fa fa-sign-out" style="padding-right:5px;"></i>
+						로그아웃
+					</a>
+				</div>
             </div>
+            
         </div>
         <!-- End Logo -->
 	

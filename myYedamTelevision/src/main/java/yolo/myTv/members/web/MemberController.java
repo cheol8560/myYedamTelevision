@@ -157,41 +157,41 @@ public class MemberController {
 		}
 	}
 	 
-	@RequestMapping(value = "/chkDupNick.do")
+	@RequestMapping(value = "/chkDupNick.do", method=RequestMethod.POST)
 	public void checkNick(HttpServletRequest req, HttpServletResponse res,
 						  ModelMap model) throws Exception {
 		PrintWriter out = res.getWriter();
 		try {
 
 			// 넘어온 ID를 받는다.
-			String paramNick = (req.getParameter("nickName") == null) ? "" : String.valueOf(req.getParameter("nickName"));
+			String paramNick = (req.getParameter("prmNick") == null) ? "" : String.valueOf(req.getParameter("prmNick"));
 
 			MemberVO vo = new MemberVO();
 			vo.setNickName(paramNick.trim());
 			int chkPoint = memberService.chkDupNick(vo);
 			//out.print(chkPoint);
 			if(chkPoint == 0) {
-				out.print("true");
+				out.print("0");
 			} else {
-				out.print("false");
+				out.print("1");
 			}
 			out.flush();
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			// out.print("1");
-			out.print("false");
+			out.print("1");
 		}
 	}
 	 
-	@RequestMapping(value = "/chkDupMail.do")
+	@RequestMapping(value = "/chkDupMail.do",method=RequestMethod.POST)
 	public void checkMail(HttpServletRequest req, HttpServletResponse res,
 						  ModelMap model) throws Exception {
 		PrintWriter out = res.getWriter();
 		try {
 
 			// 넘어온 ID를 받는다.
-			String paramMail = (req.getParameter("email") == null) ? "" : String.valueOf(req.getParameter("email"));
+			String paramMail = (req.getParameter("prmMail") == null) ? "" : String.valueOf(req.getParameter("prmMail"));
 
 			MemberVO vo = new MemberVO();
 			vo.setEmail(paramMail.trim());
@@ -199,16 +199,16 @@ public class MemberController {
 
 			// out.print(chkPoint);
 			if(chkPoint == 0) {
-				out.print("true");
+				out.print("0");
 			} else {
-				out.print("false");
+				out.print("1");
 			}
 			out.flush();
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			// out.print("1");
-			out.print("false");
+			out.print("1");
 		}
 	}
 	 

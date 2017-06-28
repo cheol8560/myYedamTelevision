@@ -10,7 +10,7 @@
 
 </script>
 <div class="page-title">
-	<h3>게시판 관리</h3>
+	<h3>공지사항 및 문의내역</h3>
 	<div class="page-breadcrumb">
 		<ol class="breadcrumb">
 			<li><a href="${pageContext.request.contextPath}/adminNoticeList.do">공지사항 관리</a></li>

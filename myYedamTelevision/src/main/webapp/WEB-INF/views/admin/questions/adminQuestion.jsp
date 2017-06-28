@@ -4,11 +4,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="page-title">
-	<h3>게시판 관리</h3>
+	<h3>공지사항 및 문의내역</h3>
 	<div class="page-breadcrumb">
 		<ol class="breadcrumb">
-			<li><a href="${pageContext.request.contextPath}/adminNoticeList.do">공지사항 관리</a></li>
-			<li><a href="${pageContext.request.contextPath}/getQuestionListAll.do">문의내역 관리</a></li>
+			<li><a
+				href="${pageContext.request.contextPath}/adminNoticeList.do">공지사항
+					관리</a></li>
+			<li><a
+				href="${pageContext.request.contextPath}/getQuestionListAll.do">문의내역
+					관리</a></li>
 		</ol>
 	</div>
 </div>
@@ -76,26 +80,28 @@
 
 						<div class="row">
 							<div class="col-md-offset-9">
-								<a href="UpdateAdminQuestionForm.do?boardNo=${adminQuestion.boardNo}"><button
+								<a
+									href="UpdateAdminQuestionForm.do?boardNo=${adminQuestion.boardNo}"><button
 										type="button" class="btn btn-default">수정</button></a> <a
 									href="deleteAdminQuestion.do?boardNo=${adminQuestion.boardNo}"><button
-										type="button" class="btn btn-default">삭제</button></a>
-										<a href="${pageContext.request.contextPath}/getQuestionListAll.do"><button type="button" class="btn btn-success">목록</button></a>
+										type="button" class="btn btn-default">삭제</button></a> <a
+									href="${pageContext.request.contextPath}/getQuestionListAll.do"><button
+										type="button" class="btn btn-success">목록</button></a>
 							</div>
 							<br> <br> <input type="hidden" name="category"
 								value="d2" /> <br>
-							
+
 						</div>
 						<br>
-						</form>
-						<div class="row">
-							<div class="col-md-offset-2 col-md-9" style="font-size:17px;">
-								<c:import
-									url="../comments/commentList.jsp?boardNo=${adminQuestion.boardNo}"></c:import>
-							</div>
+					</form>
+					<div class="row">
+						<div class="col-md-offset-2 col-md-9" style="font-size: 17px;">
+							<c:import
+								url="../comments/commentList.jsp?boardNo=${adminQuestion.boardNo}"></c:import>
 						</div>
-					
-					
+					</div>
+
+
 				</div>
 			</div>
 		</div>

@@ -68,9 +68,9 @@
                         </li>
                         <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span><p>충전 및 환전관리</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">교환관리</a></li>
-                                <li><a href="${pageContext.request.contextPath}/adminCharge.do">충전관리</a></li>
-                                <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">선물내역 관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/adminCharge.do">충전 관리</a></li>
+                                <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전 관리</a></li>
                                 
                             </ul>
                         </li>

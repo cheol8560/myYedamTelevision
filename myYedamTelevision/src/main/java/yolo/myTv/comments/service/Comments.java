@@ -8,9 +8,16 @@ public class Comments {
 	String commentText;	//내용
 	String writeDate;	//댓글작성일자
 	String boardNo;	//글번호
+	String nickName;
 	
 	
 	
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 	public String getCommentNo() {
 		return commentNo;
 	}

@@ -49,7 +49,7 @@ function loadCommentList() {
 function loadCommentResult(req) {
 	if (req.readyState == 4) {    //응답이 완료
 		if (req.status == 200) {  //정상실행  
-			var xmlDoc = req.responseXML;   // 응답결과가 XML 
+			var xmlDoc = req.responseXML;   // 응답결과가 XML
 			var code = xmlDoc.getElementsByTagName('code').item(0)
 			                 .firstChild.nodeValue;
 			if (code == 'success') {
@@ -83,7 +83,7 @@ function makeCommentView(comment){
 		s = "<input class=\"button\" type=\"button\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.commentNo+"')\"/>"
 			+"<input class=\"button\" type=\"button\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.commentNo+"')\"/>"
 	}
-	var str = "<strong>" + comment.memberId +" : "+ "</strong>" + comment.commentText +"<span class=\"date\">"+ comment.writeDate+"</span>" 
+	var str = "<strong>" + comment.nickName + "<strong>" + "(" +comment.memberId + ")" +" : "+ "</strong>" + comment.commentText +"<span class=\"date\">"+ comment.writeDate+"</span>" 
 				+s
 	
 	div.innerHTML = str ;
@@ -97,11 +97,15 @@ function addComment() {
 	 return;
 	} 
 	var memberId = '${login.memberId}'; //document.addForm.writer.value;
+	var nickName = '${login.nickName}';
+	console.log(nickName);
 	var commentText = document.addForm.commentText.value;
-	var params = "memberId="+encodeURIComponent(memberId)+"&"+
+	var params = "nickName="+encodeURIComponent(nickName)+"&"+
+				 "memberId="+encodeURIComponent(memberId)+"&"+
 	             "commentText="+encodeURIComponent(commentText) 
 	             + "&cmd=insert"
 	             + "&boardNo=<%=request.getParameter("boardNo")%>";
+	console.log(params);
 	new ajax.xhr.Request('${pageContext.request.contextPath}/CommentController', params, addResult, 'POST');
 }
 ////댓글 등록 콜백함수
@@ -120,6 +124,7 @@ function addResult(req) {
 					listDiv.appendChild(commentDiv);
 					//등록폼 텍스트필드 클리어
 					document.addForm.memberId.value = '';
+					document.addForm.nickName.value = '';
 					document.addForm.commentText.value = '';				
 					alert("등록했습니다!");
 				} else if (code == 'fail') {
@@ -137,9 +142,11 @@ function addResult(req) {
 function updateComment() {
 	var commentNo = document.updateForm.commentNo.value;
 	var memberId = document.updateForm.memberId.value;
+	var nickName = document.updateForm.nickName.value;
 	var commentText = document.updateForm.commentText.value;
 	var params = "commentNo="+ commentNo +"&"+
 	             "memberId="+encodeURIComponent(memberId)+"&"+
+	             "nickName="+encodeURIComponent(nickName)+"&"+
 	             "commentText="+encodeURIComponent(commentText) + "&cmd=update";
 	new ajax.xhr.Request('${pageContext.request.contextPath}/CommentController', params, updateResult, 'POST');
 }
@@ -188,6 +195,7 @@ function viewUpdateForm(commentNo) {
 	var comment = commentDiv.comment;   //댓글 객체 { id:'', content:'', name:'' }
 	document.updateForm.commentNo.value = comment.commentNo;    
 	document.updateForm.memberId.value = comment.memberId;
+	document.updateForm.nickName.value = comment.nickName;
 	document.updateForm.commentText.value = comment.commentText;
 	updateFormDiv.style.display = '';   //수정폼 보이게
 }
@@ -238,7 +246,7 @@ function deleteResult(req) {
 <!-- 댓글등록시작 -->
 <div id="commentAdd">
 	<form action="" name="addForm">
-	<input type="hidden" name="memberId" size="10"><br/>
+	<input type="hidden" name="memberId" size="10"><input type="hidden" name="nickName" size="10"><br/>
 	댓글: <input id="enter" name="commentText" size="100">
 	<input type="button" value="등록" onclick="addComment()"/>
 	</form>
@@ -248,7 +256,7 @@ function deleteResult(req) {
 <div id="commentUpdate" style="display:none">
 	<form action="" name="updateForm">
 	<input type="hidden" name="commentNo" value=""/>
-	<input type="hidden" name="memberId" size="10"><br/>
+	<input type="hidden" name="memberId" size="10"><input type="hidden" name="nickName" size="10"><br/>
 	댓글: <input id="Uenter" name="commentText" size="100">
 	<input type="button" value="등록" onclick="updateComment()"/>
 	<input type="button" value="취소" onclick="cancelUpdate()"/>

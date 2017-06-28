@@ -35,6 +35,7 @@ public class CommentsDAO extends DAO {
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("commentNo", rs.getString("comment_No"));
 				map.put("memberId", rs.getString("member_Id"));
+				map.put("nickName", rs.getString("nick_Name"));
 				map.put(("commentText"), rs.getString("comment_Text"));
 				map.put("writeDate", rs.getString("write_Date"));
 				map.put("boardNo", rs.getString("board_No"));
@@ -86,6 +87,7 @@ public class CommentsDAO extends DAO {
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("commentNo", rs.getString("comment_No"));
 			map.put("memberId",  rs.getString("member_Id"));
+			map.put("nickName", rs.getString("nick_Name"));
 			map.put(("commentText"), rs.getString("comment_Text"));
 			map.put("writeDate", rs.getString("write_Date"));
 			
@@ -146,17 +148,19 @@ public class CommentsDAO extends DAO {
 				System.out.println(date);
 			}
 			nextcommentNo++;  //시퀀스 용도
-			pstmtCommentInsert = conn.prepareStatement("insert into COMMENTS(comment_No, member_Id, comment_Text, write_Date, board_No) values (?, ?, ?, sysdate, ?)");
+			pstmtCommentInsert = conn.prepareStatement("insert into COMMENTS(comment_No, nick_Name, member_Id, comment_Text, write_Date, board_No) values (?, ?, ?, ?, sysdate, ?)");
 			pstmtCommentInsert.setInt(1, nextcommentNo);
-			pstmtCommentInsert.setString(2, bean.getMemberId());
-			pstmtCommentInsert.setString(3, bean.getCommentText());
+			pstmtCommentInsert.setString(2, bean.getNickName());
+			pstmtCommentInsert.setString(3, bean.getMemberId());
+			pstmtCommentInsert.setString(4, bean.getCommentText());
 			
-			pstmtCommentInsert.setString(4, bean.getBoardNo());
+			pstmtCommentInsert.setString(5, bean.getBoardNo());
 			pstmtCommentInsert.executeUpdate();
 			conn.commit();   // 커밋
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("commentNo", nextcommentNo);
 			map.put("memberId", bean.getMemberId());
+			map.put("nickName", bean.getNickName());
 			map.put(("commentText"), bean.getCommentText());
 			map.put("writeDate", date);
 			map.put("boardNo", bean.getBoardNo());

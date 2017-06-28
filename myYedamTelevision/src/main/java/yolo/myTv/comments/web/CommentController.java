@@ -45,6 +45,7 @@ public class CommentController {
 				Comments bean = new Comments();
 				bean.setCommentText(request.getParameter("commentText"));
 				bean.setMemberId(request.getParameter("memberId"));
+				bean.setNickName(request.getParameter("nickName"));
 				bean.setBoardNo(request.getParameter("boardNo"));
 				
 				
@@ -57,6 +58,7 @@ public class CommentController {
 				//빈을 생성해서 파라미터를 빈에 담기
 				Comments bean = new Comments();
 				bean.setMemberId(request.getParameter("memberId"));
+				bean.setNickName(request.getParameter("nickName"));
 				bean.setCommentText(request.getParameter("commentText"));
 				bean.setCommentNo(request.getParameter("commentNo"));
 				
@@ -89,6 +91,7 @@ public class CommentController {
 			sb.append("{ ");
 			sb.append(" commentNo:" + map.get("commentNo"));
 			sb.append(", memberId:'" + map.get("memberId") + "'");
+			sb.append(", nickName:'" + map.get("nickName") + "'");
 			sb.append(", commentText:'" + map.get("commentText") + "'");
 			sb.append(", writeDate:'" + map.get("writeDate") + "'");
 			sb.append(", boardNo:'" + map.get("boardNo") + "'");

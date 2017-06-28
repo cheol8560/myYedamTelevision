@@ -6,7 +6,6 @@
 <html>
 
 
-<title>Insert title here</title>
     <head>
         
         <!-- Title -->

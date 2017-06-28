@@ -34,8 +34,8 @@ $(function(){
 					<div class="info-box-progress">
 						<div class="progress progress-xs progress-squared bs-n">
 							<div class="progress-bar progress-bar-success" role="progressbar"
-								aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-								style="width: 40%"></div>
+								aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+								style="width: 100%"></div>
 						</div>
 					</div>
 				</div>
@@ -46,7 +46,7 @@ $(function(){
 				<div class="panel-body">
 					<div class="info-box-stats">
 						<p id="outCountBroadcast"></p>
-						<span class="info-box-title">현재 개설된 방송수</span>
+						<span class="info-box-title">현재 진행중인 방송수</span>
 					</div>
 					<div class="info-box-icon">
 						<i class="icon-eye"></i>
@@ -54,8 +54,8 @@ $(function(){
 					<div class="info-box-progress">
 						<div class="progress progress-xs progress-squared bs-n">
 							<div class="progress-bar progress-bar-info" role="progressbar"
-								aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-								style="width: 80%"></div>
+								aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+								style="width: 100%"></div>
 						</div>
 					</div>
 				</div>
@@ -76,8 +76,8 @@ $(function(){
 					<div class="info-box-progress">
 						<div class="progress progress-xs progress-squared bs-n">
 							<div class="progress-bar progress-bar-warning" role="progressbar"
-								aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-								style="width: 60%"></div>
+								aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+								style="width: 100%"></div>
 						</div>
 					</div>
 				</div>
@@ -96,8 +96,8 @@ $(function(){
 					<div class="info-box-progress">
 						<div class="progress progress-xs progress-squared bs-n">
 							<div class="progress-bar progress-bar-danger" role="progressbar"
-								aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-								style="width: 50%"></div>
+								aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+								style="width: 100%"></div>
 						</div>
 					</div>
 				</div>

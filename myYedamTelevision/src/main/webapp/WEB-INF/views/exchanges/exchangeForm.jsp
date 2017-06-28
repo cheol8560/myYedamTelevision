@@ -68,7 +68,7 @@
 						</select> <input class="form-control"
 							style="width: 240px; display: inline;" type="text"
 							autocomplete="on" placeholder="계좌 번호" name="inAccount"> <i
-							class="icon-box-item fa fa-check-circle-o"
+							class="icon-box-item "
 							style="width: 20px; display: inline; color: #4ed7e8; font-size: 24px;"></i><br>
 						<br> <input class="form-control" type="text"
 							style="width: 390px;" autocomplete="on" placeholder="환전할 기쁨"
@@ -79,7 +79,7 @@
 					<!-- End Button White Toggle -->
 					<button type="button" id="btn"
 						class="btn-base-bg btn-base-md radius-3 margin-b-10">
-						<i class="fa fa-search margin-r-5"></i> 확인
+						<i class="fa fa-gratipay margin-r-5"></i>환전
 					</button>
 				</div>
 			</div>

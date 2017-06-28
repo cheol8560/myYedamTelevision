@@ -42,7 +42,7 @@
 						<div class="row">
 							<div class="col-md-5 margin-b-30">
 								<div class="form-control comment-form-v1-input">
-									<h5>작성자 : ${inquiry.boardNo}</h5>
+									<h5>작성자 : ${inquiry.memberId}</h5>
 								</div>
 							</div>
 							<div class="col-md-7 margin-b-30">

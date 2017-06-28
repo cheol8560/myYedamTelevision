@@ -75,7 +75,7 @@
                             </ul>
                         </li>
                         <li><a href="${pageContext.request.contextPath}/getContentList.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>컨텐츠 관리</p></a></li>
-						<li><a href="${pageContext.request.contextPath}/getOnBroadcastList.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-in"></span><p>메인페이지 이동</p></a></li>
+						<li><a href="${pageContext.request.contextPath}/getOnBroadcastList.do" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-in"></span><p>사용자 홈</p></a></li>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
           

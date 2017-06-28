@@ -49,6 +49,8 @@ public class ExchangeController {
 			vo.setExchangeNo(exvo.getExchangeNo());
 			map.put("code", "true");
 			map.put("result", exchangeService.getExchange(vo));
+			member.setBank(exvo.getInBank());
+			member.setAccount(exvo.getInAccount());
 		}else{
 			 map.put("code", "false");
 			 map.put("error", exvo.getMessage());
@@ -73,6 +75,5 @@ public class ExchangeController {
 		model.addAttribute("adminExchangeList", exchangeService.adminExchangeList(vo));
 		return "admin/translates/exchange";
 	}
-	
 	
 }

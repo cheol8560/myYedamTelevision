@@ -2,39 +2,36 @@
 	pageEncoding="UTF-8"%>
 <script>
 	$(function() {
-
-		$("#btn")
-				.click(
-						function() {
-							var a = $("#insertEx").serialize();
-							$.ajax({
-										url : "insertExchange.do",
-										method : "post",
-										type : "json",
-										data : a,
-										success : function(data) {
-										if (confirm("환전할까요?")) {
-												if (data.code == "true") {
-													$("#requestMoney")
-															.html(
-																	data.result.requestPoint * 100);
-													$("#commission").html(
-															data.result.commission);
-													$("#realReceipt")
-															.html(
-																	data.result.realReceipt);
-													$("#totalExchange")
-															.html(
-																	data.result.totalRequest);
-													alert("환전되었습니다.!");
-												} else {
-													alert(data.error);
-												}
-											}
-										}
-									});
-						})
-	});
+		
+		$('[name="inBank"]').val("${login.bank}");
+		
+		$("#btn").click(function() {
+			if($('[name="inRequestPoint"]').val()==""){
+				alert("값을 입력하세요")
+				return;
+			}
+				
+					var a = $("#insertEx").serialize();
+									$.ajax({	url : "insertExchange.do",
+												method : "post",
+												type : "json",
+												data : a,
+												success : function(data) {
+															if (confirm("환전할까요?")) {
+																if (data.code == "true") {
+																	$("#requestMoney").html(data.result.requestPoint * 100);
+																	$("#commission").html(data.result.commission);
+																	$("#realReceipt").html(data.result.realReceipt);
+																	$("#totalExchange").html(data.result.totalRequest);
+																	alert("환전되었습니다.!");
+																} else {
+																	alert(data.error);
+																}
+															}
+														}
+											});
+									})
+					});
 </script>
 <!--========== PROMO BLOCK V11 ==========-->
 <section class="promo-block-v11 fullheight"
@@ -63,7 +60,7 @@
 							<option value="a4">국민은행</option>
 							<option value="a5">하나은행</option>
 							<option value="a6">기업은행</option>
-						</select> <input class="form-control"
+						</select> <input class="form-control" value="${login.account }"
 							style="width: 240px; display: inline;" type="text"
 							autocomplete="on" placeholder="계좌 번호" name="inAccount"> <i
 							class="icon-box-item "

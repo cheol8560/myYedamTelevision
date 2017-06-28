@@ -75,12 +75,15 @@
 		                My Yedam Television
 					</a>
 				</div>
+				<!-- 로그아웃 버튼 -->
 				<div class="col-md-2 text-left" style="margin-top:15px;">
-					<a href="" class="color-white font-size-18 fweight-700 line-height-2" 
+				<c:if test="${!empty login}">
+					<a href="logout.do" class="color-white font-size-18 fweight-700 line-height-2" 
 						style="text-decoration: none;">
 						<i class="bordered-icon-box-item fa fa-sign-out" style="padding-right:5px;"></i>
 						로그아웃
 					</a>
+				</c:if>
 				</div>
             </div>
             

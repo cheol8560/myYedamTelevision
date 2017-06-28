@@ -176,25 +176,9 @@
                         </ul>
                         <!-- End 사용자 메뉴 -->
                         
-                        <!-- 로그아웃 버튼 -->
-						<div class="row text-center margin-b-30">
-						<c:if test="${!empty login}">
-							<button type="button" class="btn-dark-bg btn-base-animate-to-top btn-base-md radius-50"
-									onclick="location.href='${pageContext.request.contextPath}/logout.do'">
-								<b>로그아웃</b> 
-								<span class="btn-base-element-md"> 
-									<i class="btn-base-element-icon fa fa-sign-out"></i>
-								</span>
-							</button>
-						</c:if>
-						</div>
-						<!-- End 로그아웃 버튼 -->
-                        
                     </div>
                 </div>
                 <!-- End Navbar Collapse -->
-
-				
 	
 			</div>
         </nav>

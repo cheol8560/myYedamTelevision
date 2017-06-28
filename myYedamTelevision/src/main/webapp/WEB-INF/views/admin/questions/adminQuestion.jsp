@@ -75,18 +75,16 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-3 col-md-offset-10">
+							<div class="col-md-offset-9">
 								<a href="UpdateAdminQuestionForm.do?boardNo=${adminQuestion.boardNo}"><button
 										type="button" class="btn btn-default">수정</button></a> <a
 									href="deleteAdminQuestion.do?boardNo=${adminQuestion.boardNo}"><button
 										type="button" class="btn btn-default">삭제</button></a>
+										<a href="${pageContext.request.contextPath}/getQuestionListAll.do"><button type="button" class="btn btn-success">목록</button></a>
 							</div>
 							<br> <br> <input type="hidden" name="category"
 								value="d2" /> <br>
-							<div class="col-md-1 col-md-offset-10">
-								<a href="${pageContext.request.contextPath}/getQuestionListAll.do"><button type="button" class="btn btn-success">목록으로</button></a>
-
-							</div>
+							
 						</div>
 						<br>
 						</form>

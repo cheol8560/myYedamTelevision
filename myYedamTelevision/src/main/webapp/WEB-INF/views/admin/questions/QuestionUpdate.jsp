@@ -59,7 +59,7 @@
 						<div class="row">
 							<button type="submit"
 								class="btn btn-success col-md-offset-10">확인</button>
-							<a href="${pageContext.request.contextPath}/adminQuestionList.do"><button type="button" class="btn btn-default radius-3 ">취소</button></a>
+							<a href="${pageContext.request.contextPath}/getQuestionListAll.do"><button type="button" class="btn btn-default radius-3 ">취소</button></a>
 					
 						</div>
 						<br>

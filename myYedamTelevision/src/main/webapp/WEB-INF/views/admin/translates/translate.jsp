@@ -11,10 +11,10 @@
 </script>		
 		
 		<div class="page-title">
-			<h3>포인트 관리</h3>
+			<h3>충전 및 환전관리</h3>
 			<div class="page-breadcrumb">
 				<ol class="breadcrumb">
-					<li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">교환관리</a></li>
+					<li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">선물내역관리</a></li>
                     <li><a href="${pageContext.request.contextPath}/adminCharge.do">충전관리</a></li>
                     <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전관리</a></li>
 				</ol>
@@ -25,7 +25,7 @@
 				<div class="col-md-12">
 					<div class="panel panel-white">
 						<div class="panel-heading clearfix">
-							<h4 class="panel-title">선물 관리</h4>
+							<h4 class="panel-title">선물내역 관리</h4>
 						</div>
 						<div class="panel-body">
 							<div class="table-responsive">
@@ -38,7 +38,6 @@
 											<th class="text-center" style="width: 100px;">보내는사람</th>
 											<th class="text-center" style="width: 100px;">받는사람</th>
 											<th class="text-center" style="width: 150px;">포인트</th>
-											<th class="text-center" style="width: 150px;">-</th> 
 										</tr>
 									</thead>
 									<tfoot>
@@ -48,7 +47,6 @@
 											<th class="text-center" style="width: 100px;">보내는사람</th>
 											<th class="text-center" style="width: 100px;">받는사람</th>
 											<th class="text-center" style="width: 150px;">포인트</th>
-											<th class="text-center" style="width: 150px;">-</th> 
 										</tr>
 									</tfoot>
 									<tbody>
@@ -61,7 +59,6 @@
 											<td class="text-center">${list.sendMemberId }</td>
 											<td class="text-center">${list.receiveMemberId }</td>
 											<td class="text-center"><fmt:formatNumber value="${list.translatePoint }" groupingUsed="true"/></td>
-											<td class="text-center">-</td>
 										</tr>
 								</c:forEach>
 									</tbody>

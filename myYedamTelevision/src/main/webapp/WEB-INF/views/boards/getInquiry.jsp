@@ -75,7 +75,7 @@
 								<a href="deleteInquiry.do?boardNo=${inquiry.boardNo}"><button type="button" class="btn-grey-brd btn-base-xs">삭제</button></a>
 							</div>
 							<div class="col-md-1 col-md-offset-10">
-								<button class="btn-base-bg btn-base-sm radius">목록으로</button>
+								<button class="btn-base-bg btn-base-sm radius">목록</button>
 
 							</div>
 						</div>

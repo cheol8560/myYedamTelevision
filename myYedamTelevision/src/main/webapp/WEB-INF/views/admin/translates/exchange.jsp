@@ -11,10 +11,10 @@
 </script>
 
 <div class="page-title">
-	<h3>포인트 관리</h3>
+	<h3>충전 및 환전관리</h3>
 	<div class="page-breadcrumb">
 		<ol class="breadcrumb">
-			<li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">교환관리</a></li>
+			<li><a href="${pageContext.request.contextPath}/getTranslatePointList.do">선물내역관리</a></li>
             <li><a href="${pageContext.request.contextPath}/adminCharge.do">충전관리</a></li>
             <li><a href="${pageContext.request.contextPath}/adminExchangeList.do">환전관리</a></li>
 		</ol>
@@ -39,7 +39,6 @@
 									<th class="text-center" style="width: 100px;">환전 포인트</th>
 									<th class="text-center" style="width: 100px;">수수료</th>
 									<th class="text-center" style="width: 100px;">실수령 금액</th>
-									<th class="text-center" style="width: 100px;">비고</th>
 								</tr>
 							</thead>
 							<tfoot>
@@ -50,7 +49,6 @@
 									<th class="text-center" style="width: 100px;">환전 포인트</th>
 									<th class="text-center" style="width: 100px;">수수료</th>
 									<th class="text-center" style="width: 100px;">실수령 금액</th>
-									<th class="text-center" style="width: 100px;">비고</th>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -63,7 +61,6 @@
 										<td class="text-right"><fmt:formatNumber value="${exchange.requestPoint}" groupingUsed="true"/></td>
 										<td class="text-right"><fmt:formatNumber value="${exchange.commission}" groupingUsed="true"/>원</td>
 										<td class="text-right"><fmt:formatNumber value="${exchange.realReceipt}" groupingUsed="true"/>원</td>
-										<td class="text-center"></td>
 									</tr>
 								</c:forEach>
 							</tbody>

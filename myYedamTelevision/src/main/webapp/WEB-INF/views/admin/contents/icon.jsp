@@ -644,9 +644,6 @@
 			<i class="fa fa-language"></i> fa-language
 		</div>
 		<div class="fa-item col-md-offset-1 col-md-2 col-sm-4 get-icon" style="font-size: 16px;">
-			<i class="fa fa-Modern"></i> fa-Modern
-		</div>
-		<div class="fa-item col-md-offset-1 col-md-2 col-sm-4 get-icon" style="font-size: 16px;">
 			<i class="fa fa-leaf"></i> fa-leaf
 		</div>
 		<div class="fa-item col-md-offset-1 col-md-2 col-sm-4 get-icon" style="font-size: 16px;">

@@ -27,7 +27,7 @@ document.listForm.submit();
 <!-- BEGIN PAGE CONTENT -->
 <div class="bg-color-sky-light">
 	<div class="content-md container">
-		<div class="row margin-b-30">
+		<div class="row margin-b-30" style="width:1200px; margin:auto;">
 			<div class="col-md-12 md-margin-b-30">
 				<!-- Table Wrap -->
 				<div class="table-wrap">
@@ -59,7 +59,7 @@ document.listForm.submit();
 										<tr>
 											<td class="text-center">${boards.boardNo}</td>
 											<td class="text-center"><a href="getNotice.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
-											<td class="text-center"><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+											<td class="text-center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
 												value="${boards.writeDate}"/></td>
 											<td class="text-center">${boards.viewCount}</td>
 										</tr>

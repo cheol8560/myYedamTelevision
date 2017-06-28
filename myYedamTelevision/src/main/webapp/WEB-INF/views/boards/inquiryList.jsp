@@ -27,7 +27,7 @@ document.listForm.submit();
 <!-- BEGIN PAGE CONTENT -->
 <div class="bg-color-sky-light">
 	<div class="content-md container">
-		<div class="row margin-b-30">
+		<div class="row margin-b-30" style="width:1200px; margin:auto;">
 			<div class="col-md-12 md-margin-b-30">
 				<!-- Table Wrap -->
 				<div class="table-wrap">
@@ -73,15 +73,8 @@ document.listForm.submit();
 				<!-- End Table Wrap -->
 			</div>
 
-
 		</div>
 		<!--// end row -->
-
-
-		<!--// end row -->
-
-		
-		<!--// end row -->
-	
+	</div>
 </div>
 <!--========== END PAGE CONTENT ==========-->

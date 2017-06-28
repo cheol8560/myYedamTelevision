@@ -71,8 +71,8 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-1 col-md-offset-10">
-								<button class="btn-base-bg btn-base-sm radius">목록으로</button>
+							<div class="col-md-1 col-md-offset-11">
+								<button class="btn-base-bg btn-base-xs radius">목록</button>
 
 							</div>
 						</div>
@@ -81,7 +81,6 @@
 					</form>
 
 					<!-- Comment Form v1 -->
-					
 					
 					<c:import url="../comments/commentList.jsp?boardNo=${notice.boardNo}"></c:import>  
 				</div>

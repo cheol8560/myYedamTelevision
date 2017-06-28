@@ -171,7 +171,9 @@
 										<td class="text-center">${con.contentName }</td>
 										<td class="text-center">${con.contentIcon }</td>
 										<td class="text-center">${con.contentIntro }</td>
-										<td class="text-center"><button type="button" onclick="get(${con.contentCode});">수정</button></td>
+										<td class="text-center">
+											<button type="button" class="btn btn-default" onclick="get(${con.contentCode});">수정</button>
+										</td>
 									</tr>
 								</c:forEach>
 

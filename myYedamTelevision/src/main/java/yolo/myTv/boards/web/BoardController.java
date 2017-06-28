@@ -160,7 +160,7 @@ public class BoardController {
 	@RequestMapping("/getInquiryList.do")
 	public String getInquiryList(BoardVO vo, Model model, HttpSession session)
 			throws Exception {
-		vo.setCategory("d2");
+		
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		vo.setMemberId(member.getMemberId());
 		
@@ -172,10 +172,10 @@ public class BoardController {
 				paginationInfo.setPageSize(vo.getPageSize());
 				vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
 				vo.setLastIndex(paginationInfo.getLastRecordIndex());
-				paginationInfo.setTotalRecordCount(boardService.getBoardListCount(vo));
+				paginationInfo.setTotalRecordCount(boardService.myQuestionListCount(vo));
 				model.addAttribute("paginationInfo", paginationInfo);
 		
-		model.addAttribute("inquiryList", boardService.getBoardList(vo));
+		model.addAttribute("inquiryList", boardService.myQuestionList(vo));
 		return "boards/inquiryList";
 	}
 

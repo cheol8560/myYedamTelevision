@@ -250,6 +250,36 @@
 		ORDER BY "boardNo"
 		
 	</select>
+	
+	<select id="myQuestionList" resultType="map">
+	SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+	SELECT
+	BOARD_NO "boardNo"
+	, BOARD_TITLE "boardTitle"
+    , WRITE_DATE "writeDate"
+    , CASE WHEN (SELECT COUNT(*) 
+          		FROM COMMENTS C
+          		WHERE MEMBER_ID = 'admin'
+          		AND C.BOARD_NO = B.BOARD_NO) >= 1 THEN '답변완료'
+          ELSE '답변대기' 
+          END AS "answer"
+          FROM BOARDS B
+    WHERE MEMBER_ID = #{memberId}
+    and category='d2'
+    <![CDATA[					
+	) A WHERE ROWNUM <= #{lastIndex}
+)WHERE RNUM > #{firstIndex}
+]]>
+	
+	</select>
+	
+	<select id="myQuestionListCount" resultType="int">
+	SELECT COUNT(*)
+          FROM BOARDS B
+    WHERE MEMBER_ID = #{memberId}
+    and category='d2'
+	</select>
 
 
 </mapper>

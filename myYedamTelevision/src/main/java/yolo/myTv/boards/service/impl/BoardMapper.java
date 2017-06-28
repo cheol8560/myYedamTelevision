@@ -22,4 +22,6 @@ public interface BoardMapper {
 	public void updateAdminBoard(BoardVO vo);
 	public void deleteAdminBoard(BoardVO vo);
 	public List<Map<String, Object>> getQuestionToday(BoardVO boardvo);
+	public List<Map<String, Object>> myQuestionList(BoardVO boardvo);
+	int myQuestionListCount(BoardVO boardvo);
 }

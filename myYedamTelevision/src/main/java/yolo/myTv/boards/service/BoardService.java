@@ -39,9 +39,12 @@ public interface BoardService {
 	void updateAdminBoard(BoardVO vo);
 	//관리자 삭제
 	void deleteAdminBoard(BoardVO vo);
-	
+	//오늘 문의내역 조회
 	List<Map<String, Object>> getQuestionToday(BoardVO boardvo);
-	
+	//나의 문의 내역 전체 조회
+	List<Map<String, Object>> myQuestionList(BoardVO boardvo);
+	//나의 문의 내역 글 수
+	int myQuestionListCount(BoardVO boardvo);
 	
 
 	

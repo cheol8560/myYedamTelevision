@@ -59,7 +59,7 @@ document.listForm.submit();
 											<td class="text-center" ><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
 												value="${boards.writeDate}"/></td>
 											<td class="text-center"><a href="getInquiry.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
-											<td class="text-center">${boards.viewCount}</td>
+											<td class="text-center">${boards.answer}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

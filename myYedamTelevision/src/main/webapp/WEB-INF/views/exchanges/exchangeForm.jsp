@@ -7,35 +7,33 @@
 				.click(
 						function() {
 							var a = $("#insertEx").serialize();
-							$
-									.ajax({
+							$.ajax({
 										url : "insertExchange.do",
 										method : "post",
 										type : "json",
 										data : a,
 										success : function(data) {
-
-											if (data.code == "true") {
-												$("#requestMoney")
-														.html(
-																data.result.requestPoint * 100);
-												$("#commission").html(
-														data.result.commission);
-												$("#realReceipt")
-														.html(
-																data.result.realReceipt);
-												$("#totalExchange")
-														.html(
-																data.result.totalRequest);
-												alert("환전되었습니다.!");
-											} else {
-												alert(data.error);
+										if (confirm("환전할까요?")) {
+												if (data.code == "true") {
+													$("#requestMoney")
+															.html(
+																	data.result.requestPoint * 100);
+													$("#commission").html(
+															data.result.commission);
+													$("#realReceipt")
+															.html(
+																	data.result.realReceipt);
+													$("#totalExchange")
+															.html(
+																	data.result.totalRequest);
+													alert("환전되었습니다.!");
+												} else {
+													alert(data.error);
+												}
 											}
 										}
 									});
-
 						})
-
 	});
 </script>
 <!--========== PROMO BLOCK V11 ==========-->

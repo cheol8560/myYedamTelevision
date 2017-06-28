@@ -120,13 +120,15 @@ $(function(){
 				</div>
 				<div class="panel-body">
 					<div class="inbox-widget slimscroll">
-						<a href="#">
+					<c:forEach items="${adminOnBroadcast}" var="broadcast">	
+						<a href="#" target="_blank">
 							<div class="inbox-item">
-								<p class="inbox-item-author">방송중인 회원명</p>
-								<p class="inbox-item-text">방송중인 회원 소개</p>
-								<p class="inbox-item-date">13:40 PM</p>
+								<p class="inbox-item-author">${broadcast.broadcastTitle}</p>
+								<p class="inbox-item-text">${broadcast.nickName} (${broadcast.memberId})</p>
+								<p class="inbox-item-date">${broadcast.startDate}</p>
 							</div>
 						</a>
+					</c:forEach>
 					</div>
 				</div>
 			</div>

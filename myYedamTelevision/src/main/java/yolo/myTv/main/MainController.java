@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import yolo.myTv.boards.service.BoardService;
 import yolo.myTv.boards.service.BoardVO;
+import yolo.myTv.broadcasts.service.BroadcastService;
+import yolo.myTv.broadcasts.service.BroadcastVO;
 import yolo.myTv.members.service.MemberService;
 import yolo.myTv.members.service.MemberVO;
 
@@ -30,7 +32,8 @@ public class MainController {
 	MemberService memberService;
 	@Autowired
 	MainService mainService;
-	
+	@Autowired
+	BroadcastService broadcastService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
@@ -40,8 +43,10 @@ public class MainController {
 	}
 	
 	@RequestMapping("/adminIndex.do")
-	public String adminMain(BoardVO boardvo, Model model){
+	public String adminMain(BoardVO boardvo, BroadcastVO broadcastvo, Model model){
 		model.addAttribute("adminQuestion", boardService.getQuestionToday(boardvo));
+		broadcastvo.setBroadcastStatus("e1");
+		model.addAttribute("adminOnBroadcast", broadcastService.getBroadcastList(broadcastvo));
 		return "admin/main/adminIndex";
 	}
 	@RequestMapping("/sumInfo.do")

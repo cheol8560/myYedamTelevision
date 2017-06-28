@@ -19,7 +19,7 @@
 				url : './chkDupNick.do',
 				success : function(rData, textStatus, xhr) {
 					var chkRst = rData;
-					if (chkRst == 'true') {
+					if (chkRst == true) {
 						alert("등록 가능 합니다.");
 						$("#NickChk").val('Y');
 					} else {

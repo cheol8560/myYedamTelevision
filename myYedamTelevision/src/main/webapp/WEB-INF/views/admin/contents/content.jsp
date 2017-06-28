@@ -55,6 +55,14 @@
 	function icon(n){
 		window.open("${pageContext.request.contextPath}/getContentIcon.do?mode="+n);
 	}
+	
+	function reg(){
+		$('#contentAdd').modal({backdrop:false});
+		$('[name="contentCode"]').val("");
+		$('[name="contentName"]').val("");
+		$('[name="contentIcon"]').val("");
+		$('[name="contentIntro"]').val("");
+	}
  
 </script>
 <div class="page-title">
@@ -68,7 +76,7 @@
 					<h4 class="panel-title">카테고리 관리</h4>
 				</div>
 				<div class="panel-body">
-					<button type="button" class="btn btn-default" onclick="$('#contentAdd').modal({backdrop:false})" >컨텐츠 추가</button>
+					<button type="button" class="btn btn-default" onclick="reg();" >컨텐츠 추가</button>
 
 					<!-- Modal -->
 					<form id="add-row-form" action="${pageContext.request.contextPath}/insertContent.do" method="post">

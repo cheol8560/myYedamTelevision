@@ -44,8 +44,7 @@
 	
 	<update id="updateAdmin">
         UPDATE MEMBERS SET
-        		PASSWORD = #{password}
-                , EMAIL = #{email}
+                EMAIL = #{email}
                 , POINT = #{point}
         WHERE MEMBER_ID = #{memberId}
 	</update>

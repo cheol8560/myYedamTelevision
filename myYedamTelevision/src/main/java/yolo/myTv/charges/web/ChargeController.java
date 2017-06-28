@@ -41,7 +41,7 @@ public class ChargeController {
 	}
 	
 	// 결제 페이지
-	@RequestMapping("/insertPoint.do")
+	@RequestMapping(value="/insertPoint.do",method=RequestMethod.GET)
 	@ResponseBody
 	public void insertPoint(@ModelAttribute("charge")ChargeVO vo, Model model, HttpSession session) {
 		model.addAttribute("charge",vo);

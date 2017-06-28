@@ -303,11 +303,13 @@
 	SELECT POINT AS "nowPoint",
 	(SELECT SUM(CHARGE_POINT)
 	FROM CHARGES
-	WHERE MEMBER_ID = #{memberId}) AS "totalChargePoint",
+	WHERE MEMBER_ID = #{memberId} 
+	AND APPROVE_STATUS ='b2') AS "totalChargePoint",
 	(SELECT SUM(CHARGE_POINT)
 	FROM CHARGES
 	WHERE MEMBER_ID = #{memberId}
-	AND TO_CHAR(REQUEST_DATE, 'mm') = TO_CHAR(sysdate, 'mm') ) AS "monthChargePoint"
+	AND TO_CHAR(REQUEST_DATE, 'mm') = TO_CHAR(sysdate, 'mm') 
+	AND APPROVE_STATUS = 'b2') AS "monthChargePoint"
 	FROM MEMBERS
 	WHERE MEMBER_ID = #{memberId}
 	</select>

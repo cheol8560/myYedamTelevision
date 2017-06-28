@@ -281,6 +281,7 @@ public class MemberController {
 				vo.setMemberImage("basic.jpg");
 			}
 			memberService.updateMember(vo);
+			session.setAttribute("login", vo);
 			System.out.println(vo);
 			return "redirect:/";
 		}

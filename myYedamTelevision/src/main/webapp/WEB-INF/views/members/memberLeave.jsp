@@ -44,6 +44,15 @@
 <!-- FAVICON -->
 <link rel="shortcut icon" href="favicon.ico"/>
 <!-- END FAVICON -->
+<script type="text/javascript">
+function subBtn(){
+	if (confirm("정말 탈퇴하시겠습니까??") == true){    //확인
+	    document.form.submit();
+	}else{   //취소
+	    return;
+	}
+}
+</script>
 </head>
 <body>
 <div class="contact-us contact-us-equal-height bg-color-white">
@@ -72,7 +81,7 @@
 &nbsp;가입자 명의와 동일한 계좌번호, 은행명, 연락처를 기재하시어 고객센터 1:1 문의 하기로 환불신청 하시면 됩니다.<br>
 &nbsp;<b>(계좌주가 가입자 명의와 일치하지 않을 경우 환불이 불가합니다.)</b><br></pre>
 </div>
-<button class="btn-grey-brd btn-base-sm" type="submit" >탈퇴</button>
+<button class="btn-grey-brd btn-base-sm" type="submit" onclick="subBtn();">탈퇴</button>
 <button class="btn-grey-brd btn-base-sm" type="button" >취소 </button>
 </form>
 </div>

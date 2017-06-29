@@ -182,6 +182,7 @@
 		ON B.BOARD_NO = C.BOARD_NO
     	WHERE C.MEMBER_ID != 'admin'
    		OR C.COMMENT_NO IS NULL 
+   		AND B.CATEGORY ='d2'
 		ORDER BY "boardNo" DESC
 
 	</select>
@@ -247,6 +248,7 @@
      	END AS "answer"
 		FROM	BOARDS B FULL OUTER JOIN COMMENTS C
 		ON B.BOARD_NO = C.BOARD_NO
+		WHERE B.CATEGORY ='d2'
 		ORDER BY "boardNo"
 		
 	</select>

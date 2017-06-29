@@ -32,13 +32,6 @@
 							<div class="cbp-caption">
 								<div class="cbp-caption-defaultWrap">
 									<img src="img/${broadcast.memberImage}" class="img-responsive" style="max-height:180px;">
-									<!-- 
-									<div class="theme-icons-wrap theme-portfolio-lightbox">
-										<a class="cbp-lightbox" href="assets/img/970x647/02.jpg" data-title="Portfolio"> 
-											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
-										</a>
-									</div>
-									 -->
 								</div>
 							</div>
 							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
@@ -60,35 +53,6 @@
 						<!-- End Cbp Item -->
 					</c:forEach>
 					
-						<!-- Cbp Item -->
-						<div class="cbp-item 1 theme-portfolio-item-v2 theme-portfolio-item-xs">
-							<div class="cbp-caption">
-								<div class="cbp-caption-defaultWrap">
-									<img src="img/basic.jpg" class="img-responsive" style="max-height:180px;">
-									<!-- 
-									<div class="theme-icons-wrap theme-portfolio-lightbox">
-										<a class="cbp-lightbox" href="assets/img/970x647/02.jpg" data-title="Portfolio"> 
-											<i class="theme-icons theme-icons-white-bg theme-icons-sm radius-3 icon-focus"></i>
-										</a>
-									</div>
-									 -->
-								</div>
-							</div>
-							<div class="theme-portfolio-title-heading theme-portfolio-title-heading-sm">
-								<h4 class="theme-portfolio-title margin-b-10 text-left">
-									<a href="#">
-										송욜로의 점심시간
-									</a>
-								</h4>
-								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
-									<span style="float: left;">BJ송욜로</span> 
-									<span style="float: right;">
-										<i class="bordered-icon-box-item fa fa-group"></i> 2 명 시청
-									</span>
-								</span>
-							</div>
-						<!-- End Cbp Item -->
-						</div>
 					</div>
 					<!-- End Portfolio 5 Columns Grid -->
 		

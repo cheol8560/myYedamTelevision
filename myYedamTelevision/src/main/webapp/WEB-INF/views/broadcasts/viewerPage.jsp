@@ -96,15 +96,6 @@
                             <h4 class="blog-sidebar-heading-title">방송 리스트</h4>
                         </div>
                         <div class="blog-sidebar-content overflow-a" id="broadcastList">
-                            <article class="latest-tuts">
-                                <div class="latest-tuts-media">
-                                    <img class="latest-tuts-media-img radius-circle" src="assets/img/250x250/06.jpg" alt="">
-                                </div>
-                                <div class="latest-tuts-content">
-                                    <h5 class="latest-tuts-content-title"><a href="#">Visual brand designing</a></h5>
-                                    <small class="latest-tuts-content-time">35 minutes ago</small>
-                                </div>
-                            </article>
                             
                         </div>
                     </div>

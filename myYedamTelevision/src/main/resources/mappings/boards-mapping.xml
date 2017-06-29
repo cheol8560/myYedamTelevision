@@ -269,6 +269,7 @@
           FROM BOARDS B
     WHERE MEMBER_ID = #{memberId}
     and category='d2'
+    ORDER BY "boardNo" DESC
     <![CDATA[					
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}

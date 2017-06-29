@@ -3,6 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<script>
+$(function () {
+	var str = $("#result").html();
+	str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+	$("#result").html(str);
+})
+</script>  
+
 <!--========== PAGE CONTENT ==========-->
 <!-- FAQ -->
 <div class="faq">
@@ -56,8 +64,8 @@
 
 						<!--// end row -->
 						<div class="row">
-							<div class="col-md-12 margin-b-30">
-								<div>${inquiry.boardText}</div>
+							<div class="col-md-12 margin-b-30" id="result">
+								${inquiry.boardText}
 							</div>
 						</div>
 						<div class="row">

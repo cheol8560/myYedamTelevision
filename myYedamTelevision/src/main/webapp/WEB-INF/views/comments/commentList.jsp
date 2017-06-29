@@ -75,13 +75,14 @@ function loadCommentResult(req) {
 function makeCommentView(comment){
 	var div = document.createElement("div"); 
 	div.setAttribute("id", "c"+comment.commentNo);
+	div.style.paddingBottom = "3px";
 	div.className = 'comment';
 	div.comment = comment;  //{id:1,.... }
 	
 	var s="";
 	if(comment.memberId == "${login.memberId}" || "${login.memberId}" =='admin'){
-		s = "<input class=\"button\" type=\"button\" value=\"삭제\" onclick=\"confirmDeletion('"+comment.commentNo+"')\"/>"
-			+"<input class=\"button\" type=\"button\" value=\"수정\" onclick=\"viewUpdateForm('"+comment.commentNo+"')\"/>"
+		s = "<input class=\"button\" type=\"button\" value=\"삭제\" style='margin-right:8px;' onclick=\"confirmDeletion('"+comment.commentNo+"')\"/>"
+			+"<input class=\"button\" type=\"button\" value=\"수정\" style='margin-right:5px;' onclick=\"viewUpdateForm('"+comment.commentNo+"')\"/>"
 	}
 	var str = "<strong>" + comment.nickName + "<strong>" + "(" +comment.memberId + ")" +" : "+ "</strong>" + comment.commentText +"<span class=\"date\">"+ comment.writeDate+"</span>" 
 				+s

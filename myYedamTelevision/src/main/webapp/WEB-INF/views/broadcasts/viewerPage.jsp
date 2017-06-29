@@ -726,7 +726,7 @@
 			appViewer.sendText(msg, function() {
 				appViewer.disconnectChannel();
 			});
-			location.href = "getOnBroadcastList.do";
+			location.href = "${pageContext.request.contextPath}";
 		}
 	});
 	
@@ -902,23 +902,23 @@
 	// 강퇴알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#leavedModal").on("hidden.bs.modal", function(e) {
 		appViewer.disconnectChannel(appViewer.getPeerId());
-		location.href = "getOnBroadcastList.do";
+		location.href = "${pageContext.request.contextPath}/";
 	});
 	
 	// 블랙리스트 등록알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#blacklistModal").on("hidden.bs.modal", function(e) {
 		appViewer.disconnectChannel(appViewer.getPeerId());
-		location.href = "getOnBroadcastList.do";
+		location.href = "${pageContext.request.contextPath}/";
 	});
 	
 	// 블랙리스트 입장알림 모달 hide 시 disconnect 및 메인페이지로 이동
 	$("#blacklistRejectModal").on("hidden.bs.modal", function(e) {
-		location.href = "getOnBroadcastList.do";
+		location.href = "${pageContext.request.contextPath}/";
 	});
 	
 	// 방송 종료 모달 hide 시 메인페이지로 이동
 	$("#broadcastEndModal").on("hidden.bs.modal", function(e) {
-		location.href = "getOnBroadcastList.do";
+		location.href = "${pageContext.request.contextPath}/";
 	});
 	
 	// 채팅 입력창 엔터 이벤트

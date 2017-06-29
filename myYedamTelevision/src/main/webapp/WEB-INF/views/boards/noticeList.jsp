@@ -58,7 +58,7 @@ document.listForm.submit();
 									<c:forEach items="${noticeList}" var="boards">
 										<tr>
 											<td class="text-center">${boards.boardNo}</td>
-											<td class="text-center"><a href="getNotice.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
+											<td><a href="getNotice.do?boardNo=${boards.boardNo}">${boards.boardTitle}</a></td>
 											<td class="text-center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
 												value="${boards.writeDate}"/></td>
 											<td class="text-center">${boards.viewCount}</td>

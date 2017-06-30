@@ -87,7 +87,7 @@
 		<if test="broadcastStatus == 'e4'">
 		AND BROADCAST_STATUS = 'e4'
 		</if>
-		ORDER BY B.START_DATE
+		ORDER BY B.START_DATE DESC
 	</select>
 
 	<select id="getExceptBroadcastList" resultType="map">
@@ -116,7 +116,7 @@
 		<if test="broadcastStatus == 'e4'">
 		AND BROADCAST_STATUS = 'e4'
 		</if>
-		ORDER BY B.START_DATE
+		ORDER BY B.START_DATE DESC
 	</select>
 
 

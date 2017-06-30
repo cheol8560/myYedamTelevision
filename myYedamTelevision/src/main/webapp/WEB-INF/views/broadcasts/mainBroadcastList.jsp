@@ -42,7 +42,7 @@
 								</h4>
 								<span class="theme-portfolio-subtitle" style="padding:15px;"> 
 									<span style="float: left;">${broadcast.nickName}</span> 
-									<span style="float: right;">
+									<span style="float: right;" class="viewSpan">
 										<i class="bordered-icon-box-item fa fa-group"></i> 
 										<span class="view-count">0</span> 명 시청
 										<span class="channelId" style="display: none;">${broadcast.channelId}</span> 
@@ -88,12 +88,16 @@
 		
 		$(".channelId").each(function() {
 			var channelId = $(this).text();
-			app.getPeerList(channelId, function(data) {
-				var view = data.peers.length-1;
-				$(".view-count").text(view);
-			});
+			var viewCount = $(this).parent().find(".view-count");
+			
+			if(channelId != null && channelId != "") {
+				app.getPeerList(channelId, function(data) {
+					var view = data.peers.length-1;
+					viewCount.text(view);
+				});
+			}
+			
 		});
-		
 	});
 	
 </script>

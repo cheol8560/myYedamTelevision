@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<script>
+$(function () {
+	var str = $("#result").html();
+	str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+	$("#result").html(str);
+})
+</script>  
 
 <!--========== PAGE CONTENT ==========-->
 <!-- FAQ -->
@@ -49,16 +57,19 @@
 							</div>
 							<div class="col-md-7 margin-b-30">
 								<div class="form-control comment-form-v1-input">
-									<h5>작성일자 : <fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
-												value="${notice.writeDate}"/></h5>
+									<h5>
+										작성일자 :
+										<fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss"
+											value="${notice.writeDate}" />
+									</h5>
 								</div>
 							</div>
 
 						</div>
 						<!--// end row -->
 
-						<div class="col-md-12 margin-b-30">
-							<div>${notice.boardText}</div>
+						<div class="col-md-12 margin-b-30" id="result">
+						${notice.boardText}
 						</div>
 						<div class="row">
 							<div class="col-md-12 margin-b-30">
@@ -76,13 +87,14 @@
 
 							</div>
 						</div>
-						<input type="hidden" name="category" value="d1" />
-					<br><br>
+						<input type="hidden" name="category" value="d1" /> <br>
+						<br>
 					</form>
 
 					<!-- Comment Form v1 -->
-					
-					<c:import url="../comments/commentList.jsp?boardNo=${notice.boardNo}"></c:import>  
+
+					<c:import
+						url="../comments/commentList.jsp?boardNo=${notice.boardNo}"></c:import>
 				</div>
 				<!-- End Comment Form v1 -->
 			</div>

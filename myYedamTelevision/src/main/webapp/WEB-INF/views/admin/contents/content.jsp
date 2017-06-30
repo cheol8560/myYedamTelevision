@@ -29,7 +29,7 @@
 			document.getElementById('update-row-form').submit();
 		}
 	}
-	//삭제 컨텐츠를 쓰는 방송이 없거나 컨텐츠를 쓰는 방송의 방송 상태가 방송종료이면 삭제
+	//삭제 콘텐츠를 쓰는 방송이 없거나 콘텐츠를 쓰는 방송의 방송 상태가 방송종료이면 삭제
 	function del(){
 		if (confirm("삭제할까요?")){
 			
@@ -66,17 +66,17 @@
  
 </script>
 <div class="page-title">
-	<h3>카테고리 관리</h3>
+	<h3>콘텐츠 관리</h3>
 </div>
 <div id="main-wrapper">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-white">
 				<div class="panel-heading">
-					<h4 class="panel-title">카테고리 관리</h4>
+					<h4 class="panel-title">콘텐츠 관리</h4>
 				</div>
 				<div class="panel-body">
-					<button type="button" class="btn btn-default" onclick="reg();" >컨텐츠 추가</button>
+					<button type="button" class="btn btn-default" onclick="reg();" >콘텐츠 추가</button>
 
 					<!-- Modal -->
 					<form id="add-row-form" action="${pageContext.request.contextPath}/insertContent.do" method="post">
@@ -85,20 +85,20 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h4 class="modal-title" id="myModalLabel">컨텐츠 관리</h4>
+										<h4 class="modal-title" id="myModalLabel">콘텐츠 관리</h4>
 									</div>
 									<div class="modal-body">
 										<div class="form-group">
 											<input type="text" id="name-input" class="form-control"
-												placeholder="컨텐츠 명" name="contentName" >
+												placeholder="콘텐츠 명" name="contentName" >
 										</div>
 										<div class="form-group">
 											<input type="text" id="position-input" class="form-control"
-												placeholder="컨텐츠 아이콘" name="contentIcon" id="contenticon">
+												placeholder="콘텐츠 아이콘" name="contentIcon" id="contenticon">
 										</div>
 										<div class="form-group">
 											<input type="text" id="age-input" class="form-control"
-												placeholder="컨텐츠 소개" name="contentIntro" >
+												placeholder="콘텐츠 소개" name="contentIntro" >
 										</div>
 									</div>
 
@@ -119,24 +119,24 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h4 class="modal-title" id="myModalLabel">컨텐츠 관리</h4>
+										<h4 class="modal-title" id="myModalLabel">콘텐츠 관리</h4>
 									</div>
 									<div class="modal-body">
 									<div class="form-group">
 											<input type="text" id="name-input" class="form-control"
-												placeholder="컨텐츠 코드" name="contentCode" readonly="readonly" >
+												placeholder="콘텐츠 코드" name="contentCode" readonly="readonly" >
 										</div>
 										<div class="form-group">
 											<input type="text" id="name-input" class="form-control"
-												placeholder="컨텐츠 명" name="contentName" >
+												placeholder="콘텐츠 명" name="contentName" >
 										</div>
 										<div class="form-group">
 											<input type="text" id="position-input" class="form-control"
-												placeholder="컨텐츠 아이콘" name="contentIcon" id="contentIcon">
+												placeholder="콘텐츠 아이콘" name="contentIcon" id="contentIcon">
 										</div>
 										<div class="form-group">
 											<input type="text" id="age-input" class="form-control"
-												placeholder="컨텐츠 소개" name="contentIntro" >
+												placeholder="콘텐츠 소개" name="contentIntro" >
 										</div>
 									</div>
 
@@ -157,10 +157,10 @@
 							style="width: 100%; cellspacing: 0;">
 							<thead>
 								<tr>
-									<th class="text-center">컨텐츠 코드</th>
-									<th class="text-center">컨텐츠 명</th>
-									<th class="text-center">컨텐츠 아이콘</th>
-									<th class="text-center">컨텐츠 소개</th>
+									<th class="text-center">콘텐츠 코드</th>
+									<th class="text-center">콘텐츠 명</th>
+									<th class="text-center">콘텐츠 아이콘</th>
+									<th class="text-center">콘텐츠 소개</th>
 									<th class="text-center">비고</th>
 								</tr>
 							</thead>
@@ -180,10 +180,10 @@
 							</tbody>
 							<tfoot>
 								<tr>
-									<th class="text-center">컨텐츠 코드</th>
-									<th class="text-center">컨텐츠 명</th>
-									<th class="text-center">컨텐츠 아이콘</th>
-									<th class="text-center">컨텐츠 소개</th>
+									<th class="text-center">콘텐츠 코드</th>
+									<th class="text-center">콘텐츠 명</th>
+									<th class="text-center">콘텐츠 아이콘</th>
+									<th class="text-center">콘텐츠 소개</th>
 									<th class="text-center">비고</th>
 								</tr>
 							</tfoot>

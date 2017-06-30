@@ -60,7 +60,7 @@
 								<c:forEach items="${adminQuestion}" var="adminQuestion">
 									<tr>
 										<td class="text-center">${adminQuestion.boardNo }</td>
-										<td class="text-center"><a
+										<td><a
 											href="adminQuestion.do?boardNo=${adminQuestion.boardNo}">${adminQuestion.boardTitle }</a></td>
 										<td class="text-center">${adminQuestion.memberId }</td>
 										<td class="text-center">${adminQuestion.writeDate }</td>

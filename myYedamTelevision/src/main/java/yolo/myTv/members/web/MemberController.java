@@ -171,7 +171,7 @@ public class MemberController {
 			int chkPoint = memberService.chkDupNick(vo);
 			//out.print(chkPoint);
 			if(chkPoint == 0) {
-				out.print("true");
+				out.print("true"); 
 			} else {
 				out.print("false");
 			}

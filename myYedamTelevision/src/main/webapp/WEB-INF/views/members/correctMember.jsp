@@ -40,7 +40,7 @@
 	/* ----------------------------------------------------------------------------------- */
 
 	function chkDupMail() {
-		var prmMail = $('#email').val();
+		var email = $('#email').val();
 
 		if ($("#email").val() == '') {
 			alert('E-Mail을 입력해주세요.');
@@ -50,7 +50,7 @@
 		if ($("#email").val() != '${member.email}') {
 		$.ajax({
 			type : 'POST',
-			data : "prmMail=" + prmMail,
+			data : "email=" + email,
 			dataType : 'text',
 			url : './chkDupMail.do',
 			success : function(rData, textStatus, xhr) {

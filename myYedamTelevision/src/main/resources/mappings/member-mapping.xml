@@ -58,6 +58,7 @@
         			, MEMBER_IMAGE = null
         			, BANK = null
         			, ACCOUNT = null
+        			, LEAVE_CHECK ='f2'
         WHERE MEMBER_ID = #{memberId}
 	</delete>
 

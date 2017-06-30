@@ -4,7 +4,7 @@
 <script type="text/javascript">
 
 	function chkDupNick() {
-		var prmNick = $("#nickName").val();
+		var nickName = $("#nickName").val();
 
 		if ($("#nickName").val() == '') {
 			alert('Nick를 입력해주세요.');
@@ -14,12 +14,12 @@
 		if ($("#nickName").val() != '${member.nickName}') {
 			$.ajax({
 				type : 'POST',
-				data : "prmNick=" + prmNick,
+				data : "nickName=" + nickName,
 				dataType : 'text',
 				url : './chkDupNick.do',
 				success : function(rData, textStatus, xhr) {
 					var chkRst = rData;
-					if (chkRst == "0") {
+					if (chkRst == "true") {
 						alert("등록 가능 합니다.");
 						$("#NickChk").val('Y');
 					} else {
@@ -55,7 +55,7 @@
 			url : './chkDupMail.do',
 			success : function(rData, textStatus, xhr) {
 				var chkRst = rData;
-				if (chkRst == "0") {
+				if (chkRst == "true") {
 					alert("등록 가능 합니다.");
 					$("#MailChk").val('Y');
 				} else {

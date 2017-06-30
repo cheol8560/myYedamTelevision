@@ -164,23 +164,23 @@ public class MemberController {
 		try {
 
 			// 넘어온 ID를 받는다.
-			String paramNick = (req.getParameter("prmNick") == null) ? "" : String.valueOf(req.getParameter("prmNick"));
+			String paramNick = (req.getParameter("nickName") == null) ? "" : String.valueOf(req.getParameter("nickName"));
 
 			MemberVO vo = new MemberVO();
 			vo.setNickName(paramNick.trim());
 			int chkPoint = memberService.chkDupNick(vo);
 			//out.print(chkPoint);
 			if(chkPoint == 0) {
-				out.print("0");
+				out.print("true");
 			} else {
-				out.print("1");
+				out.print("false");
 			}
 			out.flush();
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			// out.print("1");
-			out.print("1");
+			out.print("false");
 		}
 	}
 	 
@@ -191,7 +191,7 @@ public class MemberController {
 		try {
 
 			// 넘어온 ID를 받는다.
-			String paramMail = (req.getParameter("prmMail") == null) ? "" : String.valueOf(req.getParameter("prmMail"));
+			String paramMail = (req.getParameter("email") == null) ? "" : String.valueOf(req.getParameter("email"));
 
 			MemberVO vo = new MemberVO();
 			vo.setEmail(paramMail.trim());
@@ -199,16 +199,16 @@ public class MemberController {
 
 			// out.print(chkPoint);
 			if(chkPoint == 0) {
-				out.print("0");
+				out.print("true");
 			} else {
-				out.print("1");
+				out.print("false");
 			}
 			out.flush();
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			// out.print("1");
-			out.print("1");
+			out.print("false");
 		}
 	}
 	 

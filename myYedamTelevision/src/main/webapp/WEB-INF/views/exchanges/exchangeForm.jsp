@@ -9,7 +9,10 @@
 			if($('[name="inRequestPoint"]').val()==""){
 				alert("값을 입력하세요")
 				return;
-			}
+			}else if($('[name="inRequestPoint"]').val()<100){
+				alert("100포인트 미만은 환전하실수 없습니다.")
+				return;
+			}	
 				
 					var a = $("#insertEx").serialize();
 									$.ajax({	url : "insertExchange.do",
@@ -42,7 +45,7 @@
 				data-wow-delay=".1s">기쁨 환전</h2>
 			<p class="promo-block-v11-subtitle wow fadeInUp"
 				data-wow-duration=".2" data-wow-delay=".2s">자신이 보유한 기쁨포인트를
-				환전해보세요. 환전포인트는 1000POINT 이상부터 가능합니다.</p>
+				환전해보세요. 환전포인트는 100POINT 이상부터 가능합니다.</p>
 			<hr>
 		</div>
 
@@ -118,7 +121,7 @@
 				<div class="counters-v3">
 					<i class="counters-v3-icon radius-circle fa fa-line-chart"></i>
 					<figure class="counter counters-v3-number" id="totalExchange"></figure>
-					<h4 class="counters-v3-title">누적 환전수</h4>
+					<h4 class="counters-v3-title">누적 환전 포인트</h4>
 				</div>
 				<!-- End Counters v3 -->
 			</div>

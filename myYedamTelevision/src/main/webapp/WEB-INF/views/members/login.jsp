@@ -29,13 +29,13 @@
                     <div class="form-group">
                     	<label for="memberId" class="col-md-3 control-label">아이디</label>
                     	<div class="col-md-9">
-                        	<input class="form-control" type="text" autocomplete="on" placeholder="Member ID" name="memberId" id="memberId"/>
+                        	<input class="form-control" type="text" autocomplete="on" placeholder="Member ID" name="memberId" id="memberId" maxlength="20"/>
                     	</div>
                     </div>
                     <div class="form-group">
                     	<label for="password" class="col-md-3 control-label">비밀번호</label>
                     	<div class="col-md-9">
-                        <input class="form-control" type="password" autocomplete="on" placeholder="Password" name="password" id="password"/>
+                        <input class="form-control" type="password" autocomplete="on" placeholder="Password" name="password" id="password" maxlength="16"/>
                     	</div>
                     </div>
                     <div class="login-form-actions">
@@ -80,49 +80,49 @@
                     <div class="form-group">
 	                   	 <label for="memberId" class="col-md-3 control-label">아이디</label>
 	                   	 <div class="col-md-9">
-                         	<input class="form-control" type="text" id="memberId" placeholder="ID" name="memberId"/>
+                         	<input class="form-control" type="text" id="memberId" placeholder="ID" name="memberId" maxlength="20"/>
                          </div>
                     </div>
                     
                     <div class="form-group">
                     	<label for="signup_password" class="col-md-3 control-label">비밀번호</label>
                     	<div class="col-md-9">
-                        	<input class="form-control" type="password" autocomplete="on" id="signup_password" placeholder="PASSWORD" name="password"/>
+                        	<input class="form-control" type="password" autocomplete="on" id="signup_password" placeholder="PASSWORD" name="password" maxlength="16"/>
                     	</div>
                     </div>
                     
                     <div class="form-group">
                     	<label for="confirm_password" class="col-md-3 control-label">비밀번호</label>
                        	<div class="col-md-9">
-                       		<input class="form-control" type="password" autocomplete="on" id="confirm_password" placeholder="CONFIRM PASSWORD" name="confirm_password"/>
+                       		<input class="form-control" type="password" autocomplete="on" id="confirm_password" placeholder="CONFIRM PASSWORD" name="confirm_password" maxlength="16"/>
                     	</div>
                     </div>
                     
                     <div class="form-group">
                     	<label for="memberName" class="col-md-3 control-label">회원이름</label>
                     	<div class="col-md-9">
-                        	<input class="form-control" type="text" autocomplete="on" id="memberName" placeholder="NAME" name="memberName"/>
+                        	<input class="form-control" type="text" autocomplete="on" id="memberName" placeholder="NAME" name="memberName" maxlength="30"/>
                     	</div>
                     </div>
                     
                     <div class="form-group">
                     	<label for="nickName" class="col-md-3 control-label">닉네임</label>
                     	<div class="col-md-9">
-                        	<input class="form-control" type="text" autocomplete="on" id="nickName" placeholder="NICK NAME" name="nickName"/>
+                        	<input class="form-control" type="text" autocomplete="on" id="nickName" placeholder="NICK NAME" name="nickName" maxlength="50"/>
                     	</div>
                     </div>
                     
                     <div class="form-group">
                     	<label for="email" class="col-md-3 control-label">이메일</label>
                     	<div class="col-md-9">
-                        	<input class="form-control" type="text" id="email" placeholder="E-MAIL" name="email"/>
+                        	<input class="form-control" type="text" id="email" placeholder="E-MAIL" name="email" maxlength="50"/>
                     	</div>
                     </div>
                     
                     <div class="form-group">
                     	<label for="tel" class="col-md-3 control-label">폰번호</label>
                     	<div class="col-md-9">
-                        	<input class="form-control" type="text" autocomplete="on" id="tel" placeholder="PHONE NUMBER" name="tel"/>
+                        	<input class="form-control" type="text" autocomplete="on" id="tel" placeholder="PHONE NUMBER" name="tel" maxlength="15"/>
                     	</div>
                     </div>
                     

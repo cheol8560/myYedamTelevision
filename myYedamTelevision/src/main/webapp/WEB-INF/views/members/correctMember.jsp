@@ -118,18 +118,18 @@
 						<div class="form-group">
 							<input class="form-control" type="text" autocomplete="on"
 								id="memberId" placeholder="ID" name="memberId" 
-								value="${member.memberId}" readonly="readonly"/>
+								value="${member.memberId}" readonly="readonly" maxlength="20"/>
 						</div>
 						
 						<div class="form-group">
 							<input class="form-control" type="password" autocomplete="on"
 								id="signup_password" placeholder="Password" name="password" 
-								value="${member.password}" />
+								value="${member.password}" maxlength="16" />
 						</div>
 						<div class="form-group">
 							<input class="form-control" type="password" autocomplete="on"
 								id="confirm_password" placeholder="Confirm Password"
-								name="confirm_password" value="${member.password}" />
+								name="confirm_password" value="${member.password}"  maxlength="16"/>
 						</div>
 						
 						<div class="form-group">
@@ -137,7 +137,7 @@
 							<div class="col-md-9">
 								<input class="form-control" type="text" autocomplete="on"
 									id="nickName" placeholder="nickname" name="nickName" 
-									value="${member.nickName}" />
+									value="${member.nickName}" maxlength="50"/>
 							</div>
 							<button class="col-md-3 control-label" type="button" onclick="chkDupNick();">중복체크</button>
 						</div>
@@ -147,7 +147,7 @@
 							<div class="col-md-9">
 								<input class="form-control" type="text" id="email"
 									placeholder="Email" name="email" 
-									value="${member.email}"/>
+									value="${member.email}" maxlength="50"/>
 							</div>
 							<button class="col-md-3 control-label" type="button" onclick="chkDupMail();">중복체크</button>
 						</div>
@@ -155,13 +155,13 @@
 						<div class="form-group">
 							<input class="form-control" type="text" autocomplete="on"
 								id="tel" placeholder="phoneNum" name="tel" 
-								value="${member.tel}"/>
+								value="${member.tel}" maxlength="15"/>
 						</div>
 						
 						<div class="form-group">
 							<input class="form-control" type="file" autocomplete="on"
 								id="insertImg" placeholder="img" name="uploadFile" 
-								value="${member.memberImage}"/>
+								value="${member.memberImage}" />
 						</div>
 						
 						<button type="submit" id="signup-submit-btn" 
